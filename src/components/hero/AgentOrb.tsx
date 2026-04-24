@@ -3,250 +3,352 @@
 import { useEffect, useRef } from "react";
 
 export default function AgentOrb() {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+useEffect(() => {
+const canvas = canvasRef.current;
+if (!canvas) return;
 
-    const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
+const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
+if (!ctx) return;
 
-    let t = 0;
-    let animationId = 0;
+const W = 400;
+const H = 400;
 
-    const W = 300;
-    const H = 240;
+canvas.width = W;
+canvas.height = H;
 
-    const CX = W / 2 + 10;
-    const CY = 110;
+const CX = W/2 ;
+const CY = H/2 - 20;
 
-    function draw(time: number) {
-      ctx.clearRect(0, 0, W, H);
+let t = 0;
+let frame:number;
 
-      const r = 105 + Math.sin(time) * 7;
+/* fixed first lavender palette only */
+const bands = [
+[190,130,255],
+[140,80,230],
+[100,50,200],
+[220,150,255],
+[160,100,240]
+];
 
-      /* floating shadow */
-      const shadow = ctx.createRadialGradient(
-        CX,
-        CY + r + 22,
-        12,
-        CX,
-        CY + r + 22,
-        78
-      );
+const shadowColor = [80,50,160];
 
-      shadow.addColorStop(
-        0,
-        "rgba(70,60,140,.22)"
-      );
+function blobR(
+theta:number,
+time:number,
+seed:number,
+amt:number
+){
+return 1
++Math.sin(theta*2+time*.7+seed)*amt*.5
++Math.sin(theta*3-time*1.1+seed*1.4)*amt*.35
++Math.sin(theta*5+time*.4+seed*2.1)*amt*.2
++Math.cos(theta*4-time*.9+seed*.8)*amt*.15;
+}
 
-      shadow.addColorStop(
-        .65,
-        "rgba(70,60,140,.08)"
-      );
+function drawBlob(
+cx:number,
+cy:number,
+baseR:number,
+color:number[],
+alpha:number,
+time:number,
+seed:number,
+amt:number,
+clipR:number
+){
+ctx.save();
 
-      shadow.addColorStop(
-        1,
-        "rgba(70,60,140,0)"
-      );
+ctx.beginPath();
+ctx.arc(CX,CY,clipR,0,Math.PI*2);
+ctx.clip();
 
-      ctx.beginPath();
+ctx.beginPath();
 
-      ctx.ellipse(
-        CX,
-        CY + r + 22,
-        78,
-        22,
-        0,
-        0,
-        Math.PI * 2
-      );
+for(let i=0;i<=90;i++){
+const th=i/90*Math.PI*2;
 
-      ctx.fillStyle = shadow;
+const r=
+baseR*
+blobR(th,time,seed,amt);
 
-      ctx.shadowBlur = 35;
-      ctx.shadowColor =
-        "rgba(130,110,255,.18)";
+const x=
+cx+
+Math.cos(th)*r;
 
-      ctx.fill();
+const y=
+cy+
+Math.sin(th)*r;
 
-      ctx.shadowBlur = 0;
+if(i===0)
+ctx.moveTo(x,y);
+else
+ctx.lineTo(x,y);
+}
 
+ctx.closePath();
 
-      /* orb gradient */
-      const orb = ctx.createRadialGradient(
-        CX - 28,
-        CY - 32,
-        10,
-        CX,
-        CY,
-        r
-      );
+const g=ctx.createRadialGradient(
+cx-baseR*.2,
+cy-baseR*.2,
+0,
+cx,
+cy,
+baseR*1.1
+);
 
-      orb.addColorStop(
-        0,
-        "rgba(255,255,255,1)"
-      );
+g.addColorStop(
+0,
+`rgba(${color[0]},${color[1]},${color[2]},${alpha})`
+);
 
-      orb.addColorStop(
-        .3,
-        "rgba(235,233,255,.96)"
-      );
+g.addColorStop(
+.55,
+`rgba(${color[0]*.7|0},${color[1]*.7|0},${color[2]*.7|0},${alpha*.5})`
+);
 
-      orb.addColorStop(
-        .65,
-        "rgba(188,182,250,.95)"
-      );
+g.addColorStop(
+1,
+`rgba(${color[0]*.2|0},${color[1]*.2|0},${color[2]*.2|0},0)`
+);
 
-      orb.addColorStop(
-        1,
-        "rgba(142,136,235,.88)"
-      );
+ctx.fillStyle=g;
+ctx.fill();
 
-      ctx.beginPath();
+ctx.restore();
+}
 
-      ctx.arc(
-        CX,
-        CY,
-        r,
-        0,
-        Math.PI * 2
-      );
+function draw(time:number){
 
-      ctx.fillStyle = orb;
-      ctx.fill();
+ctx.clearRect(0,0,W,H);
 
+const pulse=.08;
+const chaos=.45;
+const frost=.22;
 
-      /* animated internal blobs */
-      for (let i = 0; i < 5; i++) {
-
-        const bx =
-          CX +
-          Math.sin(
-            time * .75 + i
-          ) * 28;
-
-        const by =
-          CY +
-          Math.cos(
-            time * .65 + i
-          ) * 20;
-
-        const glow =
-          ctx.createRadialGradient(
-            bx,
-            by,
-            0,
-            bx,
-            by,
-            54
-          );
-
-        glow.addColorStop(
-          0,
-          "rgba(165,155,255,.45)"
-        );
-
-        glow.addColorStop(
-          1,
-          "rgba(255,255,255,0)"
-        );
-
-        ctx.beginPath();
-
-        ctx.arc(
-          bx,
-          by,
-          54,
-          0,
-          Math.PI * 2
-        );
-
-        ctx.fillStyle = glow;
-        ctx.fill();
-      }
+const R=
+140*
+(1+Math.sin(time)*pulse);
 
 
-      /* glass rim */
-      ctx.beginPath();
+/* shadow */
+const shadow=
+ctx.createRadialGradient(
+CX,
+CY+R*.88,
+0,
+CX,
+CY+R*.88,
+R*.85
+);
 
-      ctx.arc(
-        CX,
-        CY,
-        r,
-        0,
-        Math.PI * 2
-      );
+shadow.addColorStop(
+0,
+`rgba(${shadowColor[0]},${shadowColor[1]},${shadowColor[2]},.32)`
+);
 
-      ctx.strokeStyle =
-        "rgba(255,255,255,.65)";
+shadow.addColorStop(
+1,
+"rgba(0,0,0,0)"
+);
 
-      ctx.lineWidth = 2;
+ctx.save();
+ctx.scale(1,.28);
 
-      ctx.stroke();
+ctx.fillStyle=shadow;
 
+ctx.beginPath();
 
-      /* big highlight */
-      ctx.beginPath();
+ctx.arc(
+CX,
+(CY+R*.88)/.28,
+R*.85,
+0,
+Math.PI*2
+);
 
-      ctx.arc(
-        CX - 34,
-        CY - 40,
-        22,
-        0,
-        Math.PI * 2
-      );
-
-      ctx.fillStyle =
-        "rgba(255,255,255,.55)";
-
-      ctx.fill();
+ctx.fill();
+ctx.restore();
 
 
-      /* small glint */
-      ctx.beginPath();
+/* base sphere */
+const base=
+ctx.createRadialGradient(
+CX-R*.3,
+CY-R*.35,
+R*.05,
+CX,
+CY,
+R
+);
 
-      ctx.arc(
-        CX + 35,
-        CY - 35,
-        10,
-        0,
-        Math.PI * 2
-      );
+base.addColorStop(0,"white");
+base.addColorStop(.35,"rgba(240,232,255,1)");
+base.addColorStop(.75,"rgba(215,200,250,1)");
+base.addColorStop(1,"rgba(170,150,230,1)");
 
-      ctx.fillStyle =
-        "rgba(255,255,255,.35)";
+ctx.beginPath();
+ctx.arc(CX,CY,R,0,Math.PI*2);
 
-      ctx.fill();
-    }
+ctx.fillStyle=base;
+ctx.fill();
 
-    function animate() {
-      t += 0.016;
 
-      draw(t);
+/* internal blobs */
+for(let i=0;i<5;i++){
 
-      animationId =
-        requestAnimationFrame(
-          animate
-        );
-    }
+const frac=i/5;
+const seed=i*1.618;
 
-    animate();
+const bR=
+R*(0.72-frac*.4);
 
-    return () =>
-      cancelAnimationFrame(
-        animationId
-      );
-  }, []);
+const dx=
+CX+
+Math.sin(
+time*.28+seed
+)*R*chaos*.3;
 
-  return (
-    <div className="flex justify-center">
-      <canvas
-        ref={canvasRef}
-        width={300}
-        height={240}
-        className="w-full max-w-[300px]"
-      />
-    </div>
-  );
+const dy=
+CY+
+Math.cos(
+time*.22+seed
+)*R*chaos*.22;
+
+drawBlob(
+dx,
+dy,
+bR,
+bands[i],
+.5,
+time,
+seed,
+chaos*.5,
+R*.97
+);
+
+}
+
+
+/* frosted layer */
+const frostG=
+ctx.createRadialGradient(
+CX-R*.15,
+CY-R*.1,
+R*.1,
+CX,
+CY,
+R
+);
+
+frostG.addColorStop(
+0,
+`rgba(255,255,255,${frost})`
+);
+
+frostG.addColorStop(
+1,
+"rgba(220,210,255,.08)"
+);
+
+ctx.save();
+
+ctx.beginPath();
+ctx.arc(CX,CY,R,0,Math.PI*2);
+ctx.clip();
+
+ctx.fillStyle=frostG;
+
+ctx.fillRect(
+CX-R,
+CY-R,
+R*2,
+R*2
+);
+
+ctx.restore();
+
+
+/* glass rim */
+ctx.beginPath();
+
+ctx.arc(
+CX,
+CY,
+R,
+0,
+Math.PI*2
+);
+
+ctx.strokeStyle=
+"rgba(255,255,255,.72)";
+
+ctx.lineWidth=2.5;
+
+ctx.stroke();
+
+
+/* highlight */
+const h=
+ctx.createRadialGradient(
+CX-R*.32,
+CY-R*.38,
+0,
+CX-R*.32,
+CY-R*.38,
+R*.42
+);
+
+h.addColorStop(
+0,
+"rgba(255,255,255,.9)"
+);
+
+h.addColorStop(
+1,
+"rgba(255,255,255,0)"
+);
+
+ctx.save();
+
+ctx.beginPath();
+ctx.arc(CX,CY,R,0,Math.PI*2);
+ctx.clip();
+
+ctx.fillStyle=h;
+
+ctx.fillRect(
+CX-R,
+CY-R,
+R*2,
+R*2
+);
+
+ctx.restore();
+}
+
+function animate(){
+t+=0.016*0.8;
+draw(t);
+frame=requestAnimationFrame(animate);
+}
+
+animate();
+
+return ()=>{
+cancelAnimationFrame(frame);
+};
+
+},[]);
+
+return (
+<div className="flex justify-center">
+<canvas
+ref={canvasRef}
+className="w-full max-w-[240px]"
+/>
+</div>
+);
 }
