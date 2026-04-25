@@ -512,53 +512,6 @@ const frost=.22;
 const R=140*(1+Math.sin(time)*pulse);
 
 
-/* floating shadow */
-const shadow=
-ctx.createRadialGradient(
-CX,
-CY+R*1.02,
-0,
-CX,
-CY+R*1.02,
-R*1.8
-);
-
-shadow.addColorStop(0,"rgba(245,248,255,.18)");
-shadow.addColorStop(.35,"rgba(235,240,255,.10)");
-shadow.addColorStop(.75,"rgba(220,225,255,.04)");
-
-ctx.save();
-ctx.scale(1,.20);
-
-ctx.fillStyle=shadow;
-
-ctx.beginPath();
-ctx.arc(
-CX,
-(CY+R*1.02)/.20,
-R*1.08,
-0,
-Math.PI*2
-);
-
-ctx.fill();
-
-ctx.beginPath();
-ctx.fillStyle="rgba(166,155,173,.24)";
-
-ctx.arc(
-CX,
-(CY+R*1.02)/.20,
-R*.58,
-0,
-Math.PI*2
-);
-
-ctx.fill();
-
-ctx.restore();
-
-
 /* sphere */
 const base=
 ctx.createRadialGradient(
@@ -652,49 +605,6 @@ R*2
 
 ctx.restore();
 
-
-
-/* ===== visible blurred boundary ===== */
-// ctx.save();
-
-// /* glow ring 1 */
-// ctx.filter="blur(50px)";
-
-// ctx.beginPath();
-// ctx.arc(
-// CX,
-// CY,
-// R*1.015,
-// 0,
-// Math.PI*2
-// );
-
-// ctx.lineWidth = 14;
-// ctx.strokeStyle = "rgba(170,180,255,.32)";
-// ctx.stroke();
-
-
-// /* glow ring 2 */
-// ctx.filter="blur(24px)";
-
-// ctx.beginPath();
-// ctx.arc(
-// CX,
-// CY,
-// R*1.03,
-// 0,
-// Math.PI*2
-// );
-
-// ctx.lineWidth = 10;
-// ctx.strokeStyle = "rgba(120,130,255,.18)";
-// ctx.stroke();
-
-// ctx.filter="none";
-// ctx.restore();
-/* ===== end blur boundary ===== */
-
-/* ===== stronger blurred boundary ===== */
 ctx.save();
 
 /* inner glow ring */
