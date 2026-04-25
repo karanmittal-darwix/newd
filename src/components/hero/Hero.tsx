@@ -23,18 +23,18 @@ export default function Hero() {
 
 
         {/* Dynamic Orb */}
-        <div className="mt-14 flex justify-center">
+        <div className="mt-10 flex justify-center">
           <div className="max-w-5xl w-full">
             <AgentOrb />
           </div>
         </div>
 
 
-        <div className="mt-10">
-          <button className="bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-4 rounded-xl font-medium shadow-lg transition">
+        <div className="mt-5">
+          <button className="bg-indigo-600 hover:bg-indigo-500 text-white text-sm px-5 py-3 rounded-md font-medium shadow-lg transition-all duration-200">
             Create your agent
           </button>
-        </div>
+       </div>
 
       </div>
 

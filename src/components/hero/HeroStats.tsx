@@ -2,7 +2,7 @@ import { HERO_STATS } from "@/data/mockData";
 
 export default function HeroStats() {
   return (
-    <div className="w-full border-t border-gray-100 mt-12 pt-8 pb-6">
+    <div className="w-full border-t border-gray-100 mt-8 pt-8 pb-6">
       <div className="flex flex-wrap justify-center divide-x divide-gray-200">
         {HERO_STATS.map((stat, i) => (
           <div

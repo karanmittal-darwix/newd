@@ -6,7 +6,7 @@ export default function Navbar() {
   return (
     <nav className="bg-white sticky top-0 z-50 w-full border-b border-gray-200">
       
-      <div className="max-w-7xl mx-auto px-6 h-[72px] flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 h-[64px] flex items-center justify-between">
         
         {/* LOGO */}
         <div className="flex items-center">

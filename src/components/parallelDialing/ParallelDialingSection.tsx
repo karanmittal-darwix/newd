@@ -62,11 +62,11 @@ export default function ParallelDialingSection() {
               ))}
             </div>
 
-            <button className="w-fit bg-indigo-600 hover:bg-indigo-500 text-white text-medium font-large px-6 py-3 rounded-lg flex items-center gap-2 transition">
-              See the dialer live
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+            <button className="w-fit bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium px-5 py-3 rounded-md flex items-center gap-2 transition-all duration-200">
+                See the dialer live
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
             </button>
           </div>
 
