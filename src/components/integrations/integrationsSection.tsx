@@ -8,18 +8,18 @@ const INTEGRATIONS: {
 }[][] = [
   // Row 1 — 7 items
   [
-    { name: "WhatsApp Business", logo: "/images/int-whatsapp.svg" },
+    { name: "WhatsApp Business", logo: "/images/whatsapp.svg" },
     { name: "Gmail",             logo: "/images/int-gmail.svg" },
     { name: "Outlook",           logo: "/images/int-outlook.svg" },
-    { name: "Slack",             logo: "/images/int-slack.svg" },
-    { name: "Teams",             logo: "/images/int-teams.svg" },
-    { name: "Google Cal",        logo: "/images/int-gcal.svg" },
-    { name: "Cal.com",           logo: "/images/int-calccom.svg" },
+    { name: "Slack",             logo: "/images/company/slackLogo.svg" },
+    { name: "Teams",             logo: "/images/company/teams.svg" },
+    { name: "Google Cal",        logo: "/images/company/calen.svg" },
+    { name: "",           logo: "/images/company/cal.svg" },
   ],
   // Row 2 — 4 items
   [
     { name: "Segment",  logo: "/images/int-segment.svg" },
-    { name: "Zapier",   logo: "/images/int-zapier.svg" },
+    { name: "Zapier",   logo: "/images/company/zapier.svg" },
     { name: "Webhook",  logo: "/images/int-webhook.svg" },
     { name: "{ REST API }", logo: "/images/int-api.svg", textLogo: true, textColor: "text-gray-500" },
   ],

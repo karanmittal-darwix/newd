@@ -338,9 +338,9 @@ export const AUDIO_SAMPLES: AudioSample[] = [
     id: 5,
     header: {
       industry: "BFSI",
-      product: "Recovery",
-      useCase: "NPA",
-      title: "BFSI NPA Soft Recovery Call",
+      product: "NPA Recovery",
+      useCase: "Call Handling",
+      title: "BFSI NPA Recovery - Call Handling",
       subtitle: "Repeated calls, financial distress, no payment",
       duration: "2:49",
       languages: ["Hindi", "English"],
