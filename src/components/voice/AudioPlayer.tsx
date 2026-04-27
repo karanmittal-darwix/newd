@@ -174,7 +174,7 @@ const AudioPlayer = forwardRef<AudioPlayerRef, Props>(
             <div>
               <p className="text-xs text-gray-500 font-medium">Now Playing</p>
               <h3 className="text-sm font-semibold text-gray-900">
-                {header.title} — {header.useCase}
+                {header.industry} {header.product} - {header.useCase}
               </h3>
             </div>
           </div>
