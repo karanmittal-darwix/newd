@@ -1,21 +1,19 @@
-"use client";
-
 import Link from "next/link";
 
 export default function Navbar() {
   return (
     <nav className="bg-white sticky top-0 z-50 w-full border-b border-gray-200">
-      
+
       <div className="max-w-7xl mx-auto px-6 h-[64px] flex items-center justify-between">
-        
+
         {/* LOGO */}
-        <div className="flex items-center">
+        <Link href="/" className="flex items-center">
           <img
             src="/images/darwix.svg"
             alt="Darwix AI"
             className="h-10 w-auto"
           />
-        </div>
+        </Link>
 
         {/* CENTER */}
         <div className="hidden md:flex items-center gap-6 text-sm text-gray-600">
@@ -34,7 +32,10 @@ export default function Navbar() {
           <Link href="#" className="hover:text-black transition">
             Languages
           </Link>
-         
+          <Link href="/about" className="hover:text-black transition">
+            About Us
+          </Link>
+
         </div>
 
         {/* RIGHT */}
