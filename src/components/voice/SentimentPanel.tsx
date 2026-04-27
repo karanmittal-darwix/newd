@@ -74,7 +74,7 @@ export default function SentimentPanel({
           </div>
 
 
-          <div className="py-1 -my-1">
+          <div className="px-2 py-1 -my-1">
             <div
               className="flex gap-0.5 h-4 rounded-full"
               style={{
