@@ -21,28 +21,61 @@ export interface PostCallAction {
   text: string;
 }
 
-export interface AudioSample {
-  id: number;
-  industry: string;
-  duration: string;
-  title: string;
-  subtitle: string;
-  languages: string[];
-  audioSrc: string;
-  videoSrc?: string;
-  transcript: TranscriptMessage[];
-  intents: DetectedIntent[];
-  postCallActions: PostCallAction[];
-  sentimentLabel: string;
-  sentimentResolved: boolean;
-  languageTags: string[];
-  voiceGender: string;
+export interface SentimentStage {
+  label: string;       // e.g. "HESITANT", "CONFUSED", "ANGRY"
+  color: string;       // tailwind bg class e.g. "bg-red-400"
 }
 
-export interface PopularSample {
-  id: number;
+// ── UI-driven AudioSample schema ──────────────────────────────────────────────
+
+export interface SampleHeader {
   industry: string;
-  duration: string;
+  product: string;
+  useCase: string;
+
   title: string;
+  subtitle: string;
+  duration: string;
+
   languages: string[];
+  voiceGender: "Male" | "Female";
+
+  audioSrc: string;
+  videoSrc?: string;
+}
+
+export interface SampleSentiment {
+  from: string;           // e.g. "CONFUSED"
+  to: string;             // e.g. "RESOLVED"
+  resolved: boolean;
+  stages: SentimentStage[];
+}
+
+export interface SampleIntelligence {
+  intents: DetectedIntent[];
+  actions: PostCallAction[];
+}
+
+export interface SampleSummary {
+  text: string;
+  outcome: string;        // e.g. "Details shared via WhatsApp"
+}
+
+export interface AudioSample {
+  id: number;
+
+  header: SampleHeader;
+  sentiment: SampleSentiment;
+  transcript: TranscriptMessage[];
+  intelligence: SampleIntelligence;
+  summary: SampleSummary;
+}
+
+// ── Filter state ──────────────────────────────────────────────────────────────
+
+export interface FilterState {
+  industry: string;
+  product: string;
+  useCase: string;
+  language: string;
 }

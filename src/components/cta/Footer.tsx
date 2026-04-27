@@ -112,7 +112,7 @@ export default function Footer() {
 
 
       {/* Bottom Strip */}
-      <div className="bg-indigo-600 px-6 py-4">
+      <div className="bg-indigo-600 px-6 py-2">
         <div className="max-w-7xl mx-auto flex items-center">
 
           {/* left linkedin */}

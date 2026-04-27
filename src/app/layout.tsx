@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
   title: "Darwix AI",
-  description: "AI powered Solutions",
+  description: "AI Voice Automation Platform",
 };
 
 export default function RootLayout({

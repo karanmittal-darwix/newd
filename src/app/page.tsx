@@ -1,6 +1,5 @@
 import Hero from "@/components/hero/Hero";
 import VoicePlayground from "@/components/voice/VoicePlayground";
-import PopularSamples from "@/components/samples/PopularSamples";
 import CapabilitiesSection from "@/components/capabilities/CapabilitiesSection";
 import ParallelDialingSection from "@/components/parallelDialing/ParallelDialingSection";
 import LanguagesSection from "@/components/languages/LanguagesSection";
@@ -14,7 +13,6 @@ export default function Home() {
     <main>
       <Hero />
       <VoicePlayground />
-      <PopularSamples />
       <CapabilitiesSection />
       <ParallelDialingSection />
       <LanguagesSection />
