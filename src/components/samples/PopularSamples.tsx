@@ -1,44 +1,57 @@
 import SampleCard from "./SampleCard";
-import { POPULAR_SAMPLES } from "@/data/mockData";
-import Link from "next/link";
+import type { AudioSample } from "@/types";
 
-export default function PopularSamples() {
+interface Props {
+  samples: AudioSample[];
+  selectedId: number;
+  isPlaying?: boolean;
+  onSelect: (sample: AudioSample) => void;
+}
+
+export default function PopularSamples({
+  samples = [],
+  selectedId,
+  isPlaying = false,
+  onSelect,
+}: Props) {
   return (
-    <section className="bg-white py-16 px-6">
-      <div className="max-w-7xl mx-auto">
-        
-        {/* Header */}
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-xl font-semibold text-gray-900">
-            Popular samples
-          </h2>
+    <section>
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-xl font-semibold text-gray-900">Popular samples</h2>
 
-          <div className="flex items-center gap-3">
-            <span className="text-sm text-gray-400">
-              Showing 9 of 240
-            </span>
+        <div className="flex items-center gap-3">
+          <span className="text-sm text-gray-400">
+            Showing {samples.length} of 240
+          </span>
 
-            <Link
-              href="#"
-              className="text-sm text-indigo-600 hover:text-indigo-500 font-medium"
-            >
-              Browse library →
-            </Link>
-          </div>
+          <a
+            href="#"
+            className="text-sm text-indigo-600 hover:text-indigo-500 font-medium"
+          >
+            Browse library →
+          </a>
         </div>
+      </div>
 
-        {/* Grid */}
+      {samples.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {POPULAR_SAMPLES.map((sample, i) => (
+          {samples.map((sample) => (
             <SampleCard
               key={sample.id}
               sample={sample}
-              isActive={i === 0}
+              isActive={sample.id === selectedId}
+              isPlaying={isPlaying && sample.id === selectedId}
+              onSelect={onSelect}
             />
           ))}
         </div>
-
-      </div>
+      ) : (
+        <div className="py-16 text-center">
+          <p className="text-gray-500 font-medium mb-2">
+            No audio available for selected filters.
+          </p>
+        </div>
+      )}
     </section>
   );
 }
