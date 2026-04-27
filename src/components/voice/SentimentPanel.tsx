@@ -13,13 +13,28 @@ const ACTION_ICONS: Record<PostCallAction["icon"], string> = {
   email: "/images/email.svg",
 };
 
-export default function SentimentPanel({ sentiment, intents, postCallActions }: Props) {
+export default function SentimentPanel({
+  sentiment,
+  intents,
+  postCallActions
+}: Props) {
+
+  const colorMap: Record<string,string> = {
+    red: "bg-red-500",
+    orange: "bg-orange-500",
+    amber: "bg-amber-500",
+    yellow: "bg-yellow-400",
+    green: "bg-green-500",
+  };
+
   return (
     <div className="h-full flex flex-col p-4 overflow-hidden">
-      {/* Scrollable Content */}
+
       <div className="flex-1 overflow-y-auto space-y-4 pr-2">
+
         {/* Customer Sentiment */}
         <div className="flex-shrink-0">
+
           <p className="text-xs uppercase tracking-wide font-medium text-gray-400 mb-2">
             Customer sentiment
           </p>
@@ -28,6 +43,7 @@ export default function SentimentPanel({ sentiment, intents, postCallActions }: 
             <span className="text-xs font-semibold text-gray-900 uppercase">
               {sentiment.from}
             </span>
+
             {sentiment.resolved && (
               <span className="text-xs font-bold text-green-600 flex items-center gap-1 uppercase">
                 RESOLVED ✓
@@ -35,25 +51,54 @@ export default function SentimentPanel({ sentiment, intents, postCallActions }: 
             )}
           </div>
 
-          <div className="h-2.5 rounded-full overflow-hidden flex gap-0.5">
-            {sentiment.stages.map((stage, i) => (
-              <div
-                key={i}
-                className={`flex-1 rounded-full ${stage.color}`}
-              />
-            ))}
+
+          <div className="h-3 gap-0.5 rounded-full overflow-hidden flex shadow-sm">
+
+            {sentiment.sentimentJourney.map((stage, i) => {
+
+              const total =
+                sentiment.sentimentJourney[
+                  sentiment.sentimentJourney.length - 1
+                ].end;
+
+              const width =
+                ((stage.end - stage.start) / total) * 100;
+
+              return (
+                <div
+                  key={i}
+                  title={stage.label}
+                  style={{
+                    width:`${width}%`
+                  }}
+                  className={`
+                    ${colorMap[stage.color]}
+                    first:rounded-l-full
+                    last:rounded-r-full
+                  `}
+                />
+              );
+
+            })}
+
           </div>
+
         </div>
+
 
         {/* Detected Intents */}
         <div className="flex-shrink-0">
+
           <p className="text-xs uppercase tracking-wide font-medium text-gray-400 mb-2.5">
             Detected intents
           </p>
 
           <div className="flex flex-col gap-2">
             {intents.map((intent, i) => (
-              <div key={i} className="flex items-center justify-between">
+              <div
+                key={i}
+                className="flex items-center justify-between"
+              >
                 <div className="flex items-center gap-2">
                   <svg
                     className="w-4 h-4 text-green-500 flex-shrink-0"
@@ -68,25 +113,31 @@ export default function SentimentPanel({ sentiment, intents, postCallActions }: 
                       d="M5 13l4 4L19 7"
                     />
                   </svg>
-                  <span className="text-xs text-gray-700">{intent.label}</span>
+
+                  <span className="text-xs text-gray-700">
+                    {intent.label}
+                  </span>
                 </div>
-                {/* <span className="text-xs font-bold text-gray-900">
-                  {intent.confidence}%
-                </span> */}
               </div>
             ))}
           </div>
+
         </div>
+
 
         {/* Post-call Actions */}
         <div className="flex-shrink-0">
+
           <p className="text-xs uppercase tracking-wide font-medium text-gray-400 mb-2.5">
             Actions queued post-call
           </p>
 
           <div className="flex flex-col gap-2">
             {postCallActions.map((action, i) => (
-              <div key={i} className="flex items-start gap-3">
+              <div
+                key={i}
+                className="flex items-start gap-3"
+              >
                 <span className="flex-shrink-0 mt-0.5">
                   <Image
                     src={ACTION_ICONS[action.icon]}
@@ -96,14 +147,19 @@ export default function SentimentPanel({ sentiment, intents, postCallActions }: 
                     className="w-4 h-4"
                   />
                 </span>
+
                 <span className="text-xs text-gray-700 leading-snug">
                   {action.text}
                 </span>
+
               </div>
             ))}
           </div>
+
         </div>
+
       </div>
+
     </div>
   );
 }

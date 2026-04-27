@@ -21,12 +21,33 @@ export interface PostCallAction {
   text: string;
 }
 
+
 export interface SentimentStage {
-  label: string;       // e.g. "HESITANT", "CONFUSED", "ANGRY"
-  color: string;       // tailwind bg class e.g. "bg-red-400"
+  label: string;
+  color: string;
 }
 
-// ── UI-driven AudioSample schema ──────────────────────────────────────────────
+
+export interface SentimentJourneyStage {
+  label: string;
+  start: number; // seconds
+  end: number;   // seconds
+  color: string;
+}
+
+
+export interface SampleSentiment {
+  from: string;
+  to: string;
+  resolved: boolean;
+
+  stages: SentimentStage[];
+
+  sentimentJourney: SentimentJourneyStage[];
+}
+
+
+// ── UI-driven AudioSample schema ─────────────────────────
 
 export interface SampleHeader {
   industry: string;
@@ -44,22 +65,18 @@ export interface SampleHeader {
   videoSrc?: string;
 }
 
-export interface SampleSentiment {
-  from: string;           // e.g. "CONFUSED"
-  to: string;             // e.g. "RESOLVED"
-  resolved: boolean;
-  stages: SentimentStage[];
-}
 
 export interface SampleIntelligence {
   intents: DetectedIntent[];
   actions: PostCallAction[];
 }
 
+
 export interface SampleSummary {
   text: string;
-  outcome: string;        // e.g. "Details shared via WhatsApp"
+  outcome: string;
 }
+
 
 export interface AudioSample {
   id: number;
@@ -71,7 +88,8 @@ export interface AudioSample {
   summary: SampleSummary;
 }
 
-// ── Filter state ──────────────────────────────────────────────────────────────
+
+// ── Filter state ─────────────────────────────────────────
 
 export interface FilterState {
   industry: string;

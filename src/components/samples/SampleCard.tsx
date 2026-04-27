@@ -5,10 +5,16 @@ import type { AudioSample } from "@/types";
 interface Props {
   sample: AudioSample;
   isActive?: boolean;
+  isPlaying?: boolean;
   onSelect: (sample: AudioSample) => void;
 }
 
-export default function SampleCard({ sample, isActive = false, onSelect }: Props) {
+export default function SampleCard({
+  sample,
+  isActive = false,
+  isPlaying = false,
+  onSelect,
+}: Props) {
   const { header } = sample;
 
   return (
@@ -22,7 +28,7 @@ export default function SampleCard({ sample, isActive = false, onSelect }: Props
     >
       {/* Play / Pause indicator */}
       <button
-        aria-label={isActive ? "Now playing" : `Play ${header.title}`}
+        aria-label={isPlaying ? "Now playing" : `Play ${header.title}`}
         className={`w-8 h-8 rounded-full border flex items-center justify-center flex-shrink-0 mt-0.5 transition-colors ${
           isActive
             ? "bg-indigo-600 border-indigo-600 text-white"
@@ -33,12 +39,16 @@ export default function SampleCard({ sample, isActive = false, onSelect }: Props
           onSelect(sample);
         }}
       >
-        {isActive ? (
+        {isPlaying ? (
           <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
             <path d="M6 4h4v16H6zm8 0h4v16h-4z" />
           </svg>
         ) : (
-          <svg className="w-3.5 h-3.5 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+          <svg
+            className="w-3.5 h-3.5 ml-0.5"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
             <path d="M8 5v14l11-7z" />
           </svg>
         )}

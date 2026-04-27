@@ -52,12 +52,43 @@ export const AUDIO_SAMPLES: AudioSample[] = [
       voiceGender: "Female",
       audioSrc: "/audio/v1.mp3",
     },
+    
     sentiment: {
-      from: "CONFUSED",
-      to: "RESOLVED",
-      resolved: true,
-      stages: STAGES_CONFUSED_RESOLVED,
+  from: "CONFUSED",
+  to: "RESOLVED",
+  resolved: true,
+  stages: STAGES_CONFUSED_RESOLVED,
+
+  sentimentJourney: [
+    {
+      label: "Confused",
+      start: 1,
+      end: 61,
+      color: "red"
     },
+    {
+      label: "Resistant",
+      start: 61,
+      end: 75,
+      color: "orange"
+    },
+    {
+      label: "Converting",
+      start: 75,
+      end: 117,
+      color: "yellow"
+    },
+    {
+      label: "Resolved",
+      start: 117,
+      end: 172,
+      color: "green"
+    }
+  ]
+},
+
+    
+
     transcript: [
       { id: 1, speaker: "agent", name: "Ayesha", time: "00:01", text: "Hi, this is Ayesha from Edelweiss Life Insurance. How can I help you today?", tone: "Friendly" },
       { id: 2, speaker: "customer", name: "Customer", time: "00:06", text: "Hi Ayesha. I purchased a term insurance plan, but the major problem is my proposer and nominee both are demised — I'm unable to claim.", event: "Issue reported" },
@@ -123,7 +154,16 @@ export const AUDIO_SAMPLES: AudioSample[] = [
       to: "RESOLVED",
       resolved: true,
       stages: STAGES_CONFUSED_RESOLVED,
+      sentimentJourney: [
+ {label:"Confused",start:2,end:39,color:"red"},
+ {label:"Resistant",start:39,end:52,color:"orange"},
+ {label:"Converting",start:52,end:111,color:"yellow"},
+ {label:"Resolved",start:111,end:145,color:"green"},
+]
     },
+
+    
+    
     transcript: [
       { id: 1, speaker: "agent", name: "Ayesha", time: "00:02", text: "Hi Raj, this is Ayesha calling from LIC Mutual Funds about your KYC and RM connection.", tone: "Friendly" },
       { id: 2, speaker: "customer", name: "Raj", time: "00:07", text: "Hi Ayesha. Dekho main KYC kar raha tha — usme mujhe documents kya kya lagenge?", event: "KYC doubt" },
@@ -182,6 +222,12 @@ export const AUDIO_SAMPLES: AudioSample[] = [
       to: "RESOLVED",
       resolved: true,
       stages: STAGES_CONFUSED_RESOLVED,
+      sentimentJourney: [
+ {label:"Confused",start:2,end:58,color:"red"},
+ {label:"Resistant",start:58,end:67,color:"orange"},
+ {label:"Converting",start:67,end:108,color:"yellow"},
+ {label:"Resolved",start:108,end:154,color:"green"},
+]
     },
     transcript: [
       { id: 1, speaker: "agent", name: "Ayesha", time: "00:02", text: "Hi, this is Ayesha from New India Assurance calling to welcome you. How's your day going so far?", tone: "Friendly" },
@@ -240,6 +286,12 @@ export const AUDIO_SAMPLES: AudioSample[] = [
       to: "RESOLVED",
       resolved: true,
       stages: STAGES_DOUBTFUL_RESOLVED,
+      sentimentJourney: [
+ {label:"Confused",start:3,end:111,color:"red"},
+ {label:"Resistant",start:111,end:131,color:"orange"},
+ {label:"Converting",start:131,end:143,color:"yellow"},
+ {label:"Resolved",start:143,end:158,color:"green"},
+]
     },
     transcript: [
       { id: 1, speaker: "agent", name: "Ayesha", time: "00:03", text: "Hi Raj, this is Ayesha from SBI Business Loans. Can we talk quickly about your business loan needs today?", tone: "Friendly" },
@@ -300,6 +352,11 @@ export const AUDIO_SAMPLES: AudioSample[] = [
       to: "RESOLVED",
       resolved: true,
       stages: STAGES_ANGRY_RESOLVED,
+      sentimentJourney: [
+ {label:"Angry",start:0,end:124,color:"red"},
+ {label:"Converting",start:124,end:145,color:"yellow"},
+ {label:"Resolved",start:145,end:169,color:"green"},
+]
     },
     transcript: [
       { id: 1, speaker: "agent", name: "Ayesha", time: "00:00", text: "Good morning, I am calling on behalf of Edelweiss Asset Reconstruction Company Limited. My name is Ayesha. Am I speaking with Raj?", tone: "Professional" },
@@ -354,6 +411,12 @@ export const AUDIO_SAMPLES: AudioSample[] = [
       to: "RESOLVED",
       resolved: true,
       stages: STAGES_HESITANT_RESOLVED,
+      sentimentJourney: [
+ {label:"Hesitant",start:0,end:85,color:"orange"},
+ {label:"Resistant",start:85,end:91,color:"amber"},
+ {label:"Converting",start:91,end:117,color:"yellow"},
+ {label:"Resolved",start:117,end:148,color:"green"},
+]
     },
     transcript: [
       { id: 1, speaker: "agent", name: "Ayesha", time: "00:00", text: "Good morning Raj, this is Ayesha from SBI Motor Insurance calling about your policy renewal. Does now work for a quick chat?", tone: "Friendly" },
@@ -416,6 +479,11 @@ export const AUDIO_SAMPLES: AudioSample[] = [
       to: "RESOLVED",
       resolved: true,
       stages: STAGES_ANGRY_RESOLVED,
+      sentimentJourney: [
+ {label:"Angry",start:0,end:59,color:"red"},
+ {label:"Converting",start:59,end:99,color:"yellow"},
+ {label:"Resolved",start:99,end:152,color:"green"},
+]
     },
     transcript: [
       { id: 1, speaker: "agent", name: "Ayesha", time: "00:01", text: "Hi Raj, this is Ayesha calling from Siemens. How are you doing today?", tone: "Friendly" },
@@ -478,6 +546,12 @@ export const AUDIO_SAMPLES: AudioSample[] = [
       to: "RESOLVED",
       resolved: true,
       stages: STAGES_HESITANT_RESOLVED,
+      sentimentJourney: [
+ {label:"Hesitant",start:0,end:42,color:"orange"},
+ {label:"Resistant",start:42,end:60,color:"amber"},
+ {label:"Converting",start:60,end:122,color:"yellow"},
+ {label:"Resolved",start:122,end:155,color:"green"},
+]
     },
     transcript: [
       { id: 1, speaker: "agent", name: "Ayesha", time: "00:00", text: "Hi Raj, this is Ayesha from LIC Mutual Funds. Can I ask what's your main goal for investing?", tone: "Friendly" },
@@ -537,6 +611,12 @@ export const AUDIO_SAMPLES: AudioSample[] = [
       to: "RESOLVED",
       resolved: true,
       stages: STAGES_CONFUSED_RESOLVED,
+      sentimentJourney: [
+ {label:"Confused",start:0,end:22,color:"red"},
+ {label:"Resistant",start:22,end:75,color:"orange"},
+ {label:"Converting",start:75,end:139,color:"yellow"},
+ {label:"Resolved",start:139,end:213,color:"green"},
+]
     },
     transcript: [
       { id: 1, speaker: "agent", name: "Ayesha", time: "00:00", text: "Hi Raj, this is Ayesha from SBI. Just reaching out about your interest in life insurance. Do you have a minute to chat?", tone: "Friendly" },

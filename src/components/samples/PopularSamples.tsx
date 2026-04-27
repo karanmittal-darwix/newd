@@ -4,20 +4,20 @@ import type { AudioSample } from "@/types";
 interface Props {
   samples: AudioSample[];
   selectedId: number;
+  isPlaying?: boolean;
   onSelect: (sample: AudioSample) => void;
 }
 
 export default function PopularSamples({
   samples = [],
   selectedId,
+  isPlaying = false,
   onSelect,
 }: Props) {
   return (
     <section>
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-semibold text-gray-900">
-          Popular samples
-        </h2>
+        <h2 className="text-xl font-semibold text-gray-900">Popular samples</h2>
 
         <div className="flex items-center gap-3">
           <span className="text-sm text-gray-400">
@@ -40,6 +40,7 @@ export default function PopularSamples({
               key={sample.id}
               sample={sample}
               isActive={sample.id === selectedId}
+              isPlaying={isPlaying && sample.id === selectedId}
               onSelect={onSelect}
             />
           ))}
