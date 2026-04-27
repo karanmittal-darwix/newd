@@ -53,7 +53,7 @@ export default function Transcript({ messages }: Props) {
 
                   {msg.tone && (
                     <span className="inline-flex items-center text-[11px] bg-indigo-50 text-indigo-600 px-2 py-0.5 rounded-full font-medium">
-                      tone · {msg.tone}
+                      Tone - {msg.tone}
                     </span>
                   )}
 
