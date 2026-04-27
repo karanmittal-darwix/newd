@@ -17,8 +17,7 @@ export default function Footer() {
                 alt="Darwix AI"
                 className="h-10 w-auto"
               />
-            </Link>
-            
+            </Link>           
             <div className="flex flex-col gap-2">
               <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold ml-1">
                 Certifications
