@@ -47,7 +47,7 @@ export default function Navbar() {
           </Link>
 
           <button className="bg-indigo-600 hover:bg-indigo-500 text-white text-sm px-5 py-2 rounded-md font-medium transition-all duration-200">
-            Book a demo
+            Request a demo
           </button>
         </div>
 

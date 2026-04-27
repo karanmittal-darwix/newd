@@ -3,6 +3,7 @@ import type { SampleSentiment, DetectedIntent, PostCallAction } from "@/types";
 
 interface Props {
   sentiment: SampleSentiment;
+  currentTimeSec?: number;
   intents: DetectedIntent[];
   postCallActions: PostCallAction[];
 }
@@ -15,6 +16,7 @@ const ACTION_ICONS: Record<PostCallAction["icon"], string> = {
 
 export default function SentimentPanel({
   sentiment,
+  currentTimeSec,
   intents,
   postCallActions
 }: Props) {
@@ -26,6 +28,13 @@ export default function SentimentPanel({
     yellow: "bg-yellow-400",
     green: "bg-green-500",
   };
+
+  const activeStage =
+    sentiment.sentimentJourney.findIndex(
+      s =>
+        (currentTimeSec ?? 0) >= s.start &&
+        (currentTimeSec ?? 0) < s.end
+    );
 
   return (
     <div className="h-full flex flex-col p-4 overflow-hidden">
@@ -52,7 +61,7 @@ export default function SentimentPanel({
           </div>
 
 
-          <div className="h-3 gap-0.5 rounded-full overflow-hidden flex shadow-sm">
+          <div className="h-4 gap-1 rounded-full overflow-visible flex shadow-sm">
 
             {sentiment.sentimentJourney.map((stage, i) => {
 
@@ -73,8 +82,14 @@ export default function SentimentPanel({
                   }}
                   className={`
                     ${colorMap[stage.color]}
-                    first:rounded-l-full
-                    last:rounded-r-full
+                    rounded-full
+                    transition-all
+
+                    ${
+                      i === activeStage
+                        ? "border-3 border-black"
+                        : "border border-transparent"
+                    }
                   `}
                 />
               );
@@ -117,6 +132,7 @@ export default function SentimentPanel({
                   <span className="text-xs text-gray-700">
                     {intent.label}
                   </span>
+
                 </div>
               </div>
             ))}

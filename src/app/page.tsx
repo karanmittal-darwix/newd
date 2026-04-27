@@ -7,6 +7,7 @@ import PostCallSection from "@/components/postcall/PostCallSection";
 import IntegrationsSection from "@/components/integrations/integrationsSection";
 import DemoCallSection from "@/components/cta/DemoCallSection";
 import Footer from "@/components/cta/Footer";
+import DemoRequestSection from "@/components/cta/DemoRequestSection";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <PostCallSection />
       <IntegrationsSection />
       <DemoCallSection />
+      <DemoRequestSection />
       <Footer />
     </main>
   );

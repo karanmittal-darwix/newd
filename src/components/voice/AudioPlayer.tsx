@@ -32,6 +32,7 @@ const AudioPlayer = forwardRef<AudioPlayerRef, Props>(
     const [currentTime, setCurrentTime] = useState("00:00");
     const [duration, setDuration] = useState("00:00");
     const [remainingTime, setRemainingTime] = useState("00:00");
+    const [currentSeconds, setCurrentSeconds] = useState(0);
 
     useImperativeHandle(ref, () => ({
       play: () => wavesurferRef.current?.play(),
@@ -91,6 +92,8 @@ const AudioPlayer = forwardRef<AudioPlayerRef, Props>(
 
       ws.on("audioprocess", () => {
         const current = ws.getCurrentTime();
+        setCurrentSeconds(Math.floor(current));
+
         const total = ws.getDuration();
         const remain = Math.max(0, total - current);
 
@@ -142,7 +145,6 @@ const AudioPlayer = forwardRef<AudioPlayerRef, Props>(
 
     return (
       <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
-
         {/* Top Bar */}
         <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -221,12 +223,12 @@ const AudioPlayer = forwardRef<AudioPlayerRef, Props>(
           <div className="flex-1 overflow-hidden">
             <SentimentPanel
               sentiment={sentiment}
+              currentTimeSec={currentSeconds}
               intents={intelligence.intents}
               postCallActions={intelligence.actions}
             />
           </div>
         </div>
-
       </div>
     );
   },
