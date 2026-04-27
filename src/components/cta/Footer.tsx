@@ -1,141 +1,129 @@
+
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer>
-      {/* Main Footer */}
-      <div className="bg-gray-50 border-t border-gray-200 px-6 py-14">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-14">
+    <footer className="bg-gray-50 border-t border-gray-200 text-gray-900 mt-24 relative shadow-[0_-12px_40px_-12px_rgba(0,0,0,0.12)]">
+      {/* Main Footer Content */}
+      <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
 
-          {/* Left Side */}
-          <div className="flex flex-col gap-8">
-
-            {/* Logo */}
-            <div className="w-52 h-14 relative">
-              <Image
+          {/* LEFT COLUMN: Logo, Email, Badges, LinkedIn */}
+          <div className="flex flex-col gap-6">
+            <Link href="/" className="flex items-center">
+              <img
                 src="/images/darwix.svg"
                 alt="Darwix AI"
-                fill
-                className="object-contain object-left"
+                className="h-10 w-auto"
               />
-            </div>
+            </Link>
 
 
-            {/* Offices */}
-            <div className="flex flex-col gap-6">
 
-              <div>
-                <p className="text-sm font-semibold text-indigo-500 mb-1">
-                  India Office
-                </p>
-
-                <p className="text-xs text-gray-500 leading-relaxed">
-                  7th Floor, Imperia MindSpace,
-                  Golf Course Ext rd, Sec 62,
-                  <br />
-                  Gurugram, Haryana 122001
-                </p>
-              </div>
-
-
-              <div>
-                <p className="text-sm font-semibold text-indigo-500 mb-1">
-                  Dubai Office
-                </p>
-
-                <p className="text-xs text-gray-500 leading-relaxed">
-                  Innovation One, DIFC Dubai United Arab Emirates
-                </p>
-              </div>
-
-            </div>
-
-
-            {/* Email + Badges */}
-            <div className="flex items-center gap-5 flex-wrap">
-
-              <span className="text-xs text-gray-500">
-                transform@darwix.ai
+            <div className="flex flex-col gap-2">
+              <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold ml-1">
+                Certifications
               </span>
-
-              <div className="flex items-center gap-3">
-
-                <div className="w-10 h-10 relative">
+              <div className="flex gap-4">
+                <div className="w-12 h-12 relative">
                   <Image
                     src="/images/iso1.svg"
-                    alt="ISO badge"
+                    alt="ISO 27001"
                     fill
                     className="object-contain"
                   />
                 </div>
-
-                <div className="w-10 h-10 relative">
+                <div className="w-12 h-12 relative">
                   <Image
                     src="/images/iso2.svg"
-                    alt="SOC badge"
+                    alt="SOC 2"
                     fill
                     className="object-contain"
                   />
                 </div>
+              </div>
 
+            </div>
+
+            <div className="flex flex-col gap-3">
+              <h3 className="text-[10px] uppercase tracking-widest text-gray-400 font-bold ml-1">FOLLOW US</h3>
+              <Link
+                href="https://www.linkedin.com/company/darwix-ai/"
+                target="_blank"
+                className="flex items-center gap-3 p-3 rounded-xl border border-gray-100 bg-white shadow-sm hover:shadow-lg hover:border-[#0077B5] transition-all group w-fit pr-8"
+              >
+                <div className="w-10 h-10 bg-[#0077B5] rounded-lg flex items-center justify-center p-2 shrink-0">
+                  <div className="w-full h-full relative">
+                    <Image
+                      src="/images/linkedin.svg"
+                      alt="LinkedIn"
+                      fill
+                      className="object-contain brightness-0 invert"
+                    />
+                  </div>
+                </div>
+                <div className="flex flex-col leading-tight">
+                  <span className="font-bold text-gray-900 text-sm">LinkedIn</span>
+                  <span className="text-[11px] text-gray-400">Follow Darwix AI</span>
+                </div>
+              </Link>
+            </div>
+          </div>
+
+          {/* MIDDLE COLUMN: Offices */}
+          <div className="flex flex-col gap-10">
+            <div>
+              <h3 className="text-indigo-600 font-bold text-sm tracking-widest mb-1">INDIA OFFICE</h3>
+              <div className="w-8 h-[2px] bg-indigo-600 mb-6"></div>
+              <div className="text-gray-600 space-y-1 leading-relaxed">
+                <p>7th Floor, Imperia MindSpace,</p>
+                <p>Golf Course Ext rd, Sec 62,</p>
+                <p>Gurugram, Haryana 122001</p>
               </div>
             </div>
 
+            <div>
+              <h3 className="text-indigo-600 font-bold text-sm tracking-widest mb-1">DUBAI OFFICE</h3>
+              <div className="w-8 h-[2px] bg-indigo-600 mb-6"></div>
+              <div className="text-gray-600 space-y-1 leading-relaxed">
+                <p>Innovation One, DIFC</p>
+                <p>Dubai, United Arab Emirates</p>
+              </div>
+            </div>
           </div>
 
+          {/* RIGHT COLUMN: Contact Links */}
+          <div className="flex flex-col gap-6">
+            <h3 className="text-gray-400 font-bold text-sm tracking-widest uppercase">CONTACT</h3>
 
-          {/* Right Side */}
-          <div className="md:pr-24 flex flex-col gap-5 md:mt-20">
-            <p className="text-xs font-semibold uppercase tracking-widest text-indigo-500">
-              Contact
-            </p>
-
-            {[
-              "About Us",
-              "Privacy Policy",
-              "Terms & Conditions",
-            ].map((item) => (
-              <Link
-                key={item}
-                href="#"
-                className="text-sm text-gray-600 hover:text-indigo-600 transition-colors"
-              >
-                {item}
-              </Link>
-            ))}
+            <div className="flex flex-col gap-4">
+              {[
+                { name: "About Us", href: "/about" },
+                { name: "Privacy Policy", href: "/privacy-policy" },
+                { name: "Terms & Conditions", href: "/terms-and-conditions" },
+              ].map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="text-lg font-bold text-gray-900 hover:text-indigo-600 transition-colors flex items-center justify-between group max-w-[240px]"
+                >
+                  {item.name}
+                  <span className="text-indigo-600 opacity-40 group-hover:opacity-100 group-hover:translate-x-1 transition-all">→</span>
+                </Link>
+              ))}
+            </div>
           </div>
 
         </div>
       </div>
 
-
-
       {/* Bottom Strip */}
       <div className="bg-indigo-600 px-6 py-4">
-        <div className="max-w-7xl mx-auto flex items-center">
-
-          {/* left linkedin */}
-          <div className="w-7 h-7 relative">
-            <Image
-              src="/images/linkedin.svg"
-              alt="LinkedIn"
-              fill
-              className="object-contain"
-            />
-          </div>
-
-
-          {/* centered copyright */}
-          <p className="flex-1 text-center pl-140 text text-indigo-200">
-            ©2025 by Darwix AI, CUR8 Ventures Pvt. Ltd.
-            All rights reserved, all wrongs reversed!
+        <div className="max-w-7xl mx-auto text-center">
+          <p className="text-indigo-100 text-sm font-medium">
+            ©2026 by Darwix AI, CUR8 Ventures Pvt. Ltd. All rights reserved — all wrongs reversed!
           </p>
-
-
-          {/* right spacer */}
-          <div className="w-5" />
-
         </div>
       </div>
     </footer>
