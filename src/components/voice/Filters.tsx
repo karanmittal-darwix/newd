@@ -11,7 +11,6 @@ import type { FilterState } from "@/types";
 interface Props {
   filters: FilterState;
   onFilterChange: (key: keyof FilterState, value: string) => void;
-  onSurprise: () => void;
 }
 
 interface SelectProps {
@@ -53,7 +52,7 @@ function FilterSelect({ label, options, value, onChange }: SelectProps) {
   );
 }
 
-export default function Filters({ filters, onFilterChange, onSurprise }: Props) {
+export default function Filters({ filters, onFilterChange }: Props) {
   return (
     <div className="border border-gray-200 rounded-xl p-5 bg-white">
       <div className="flex flex-wrap gap-4">
@@ -84,15 +83,6 @@ export default function Filters({ filters, onFilterChange, onSurprise }: Props) 
       </div>
 
       <div className="flex items-center justify-center gap-3 mt-5">
-        <button
-          onClick={onSurprise}
-          className="flex items-center gap-2 border border-gray-200 rounded-md px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 transition-colors"
-        >
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-          </svg>
-          Surprise me
-        </button>
         <button className="flex items-center gap-2 border border-gray-200 rounded-md px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 transition-colors">
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />

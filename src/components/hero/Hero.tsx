@@ -32,7 +32,7 @@ export default function Hero() {
 
         <div className="mt-5">
           <button className="bg-indigo-600 hover:bg-indigo-500 text-white text-sm px-5 py-3 rounded-md font-medium shadow-lg transition-all duration-200">
-            Create your agent
+            Book a demo 
           </button>
        </div>
 

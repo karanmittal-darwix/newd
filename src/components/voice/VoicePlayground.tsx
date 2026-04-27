@@ -66,28 +66,6 @@ export default function VoicePlayground() {
   );
 
 
-  const handleSurprise = useCallback(() => {
-    const pool =
-      filteredSamples.length > 0
-        ? filteredSamples
-        : AUDIO_SAMPLES;
-
-    const random =
-      pool[Math.floor(Math.random() * pool.length)];
-
-    setSelectedSample(random);
-
-    setTimeout(() => {
-      if (playerRef.current) {
-        window.scrollTo({
-          top: playerRef.current.offsetTop - 90,
-          behavior: "smooth",
-        });
-      }
-    }, 50);
-
-  }, [filteredSamples]);
-
 
   return (
     <section className="bg-gray-50 py-20 px-6">
@@ -123,7 +101,6 @@ export default function VoicePlayground() {
           <Filters
             filters={filters}
             onFilterChange={handleFilterChange}
-            onSurprise={handleSurprise}
           />
         </div>
 
