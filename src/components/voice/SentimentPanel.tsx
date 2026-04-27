@@ -18,7 +18,7 @@ export default function SentimentPanel({
   sentiment,
   currentTimeSec,
   intents,
-  postCallActions
+  postCallActions,
 }: Props) {
 
   const colorMap: Record<string,string> = {
@@ -29,12 +29,25 @@ export default function SentimentPanel({
     green: "bg-green-500",
   };
 
+  const glowRgb: Record<string,string> = {
+    red:"239,68,68",
+    orange:"249,115,22",
+    amber:"245,158,11",
+    yellow:"234,179,8",
+    green:"34,197,94",
+  };
+
   const activeStage =
     sentiment.sentimentJourney.findIndex(
       s =>
         (currentTimeSec ?? 0) >= s.start &&
         (currentTimeSec ?? 0) < s.end
     );
+
+  const total =
+    sentiment.sentimentJourney[
+      sentiment.sentimentJourney.length-1
+    ].end;
 
   return (
     <div className="h-full flex flex-col p-4 overflow-hidden">
@@ -48,7 +61,7 @@ export default function SentimentPanel({
             Customer sentiment
           </p>
 
-          <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center justify-between mb-3">
             <span className="text-xs font-semibold text-gray-900 uppercase">
               {sentiment.from}
             </span>
@@ -61,41 +74,69 @@ export default function SentimentPanel({
           </div>
 
 
-          <div className="h-4 gap-1 rounded-full overflow-visible flex shadow-sm">
+          <div className="py-1 -my-1">
+            <div
+              className="flex gap-0.5 h-4 rounded-full"
+              style={{
+                overflow:"visible",
+                isolation:"isolate"
+              }}
+            >
 
-            {sentiment.sentimentJourney.map((stage, i) => {
+              {sentiment.sentimentJourney.map((stage,i)=>{
 
-              const total =
-                sentiment.sentimentJourney[
-                  sentiment.sentimentJourney.length - 1
-                ].end;
+                const width =
+                  ((stage.end-stage.start)/total)*100;
 
-              const width =
-                ((stage.end - stage.start) / total) * 100;
+                const isActive =
+                  i===activeStage;
 
-              return (
-                <div
-                  key={i}
-                  title={stage.label}
-                  style={{
-                    width:`${width}%`
-                  }}
-                  className={`
-                    ${colorMap[stage.color]}
-                    rounded-full
-                    transition-all
+                const rgb=
+                  glowRgb[stage.color];
 
-                    ${
-                      i === activeStage
-                        ? "border-3 border-black"
-                        : "border border-transparent"
-                    }
-                  `}
-                />
-              );
+                return(
+                  <div
+                    key={i}
+                    title={stage.label}
+                    style={{
+                      width:`${width}%`,
+                      borderRadius:"9999px",
 
-            })}
+                      opacity:
+                        isActive ? 1 : .45,
 
+                      filter:
+                        isActive
+                        ? "brightness(1.15)"
+                        : "none",
+
+                      transform:
+                        isActive
+                        ? "translateY(-1px)"
+                        : "none",
+
+                      transition:
+                        "all .35s ease",
+
+                      boxShadow: isActive
+                      ? [
+                        `0 0 0 2px #ffffff`,
+                        `0 0 10px rgba(${rgb},.9)`,
+                        `0 0 20px rgba(${rgb},.7)`,
+                        `0 0 30px rgba(${rgb},.45)`
+                       ].join(", ")
+                      : "none"
+
+                    }}
+                    className={`
+                      ${colorMap[stage.color]}
+                    `}
+                  />
+                )
+
+              })}
+
+            </div>
           </div>
 
         </div>
@@ -109,12 +150,13 @@ export default function SentimentPanel({
           </p>
 
           <div className="flex flex-col gap-2">
-            {intents.map((intent, i) => (
+            {intents.map((intent,i)=>(
               <div
                 key={i}
                 className="flex items-center justify-between"
               >
                 <div className="flex items-center gap-2">
+
                   <svg
                     className="w-4 h-4 text-green-500 flex-shrink-0"
                     fill="none"
@@ -149,11 +191,12 @@ export default function SentimentPanel({
           </p>
 
           <div className="flex flex-col gap-2">
-            {postCallActions.map((action, i) => (
+            {postCallActions.map((action,i)=>(
               <div
                 key={i}
                 className="flex items-start gap-3"
               >
+
                 <span className="flex-shrink-0 mt-0.5">
                   <Image
                     src={ACTION_ICONS[action.icon]}

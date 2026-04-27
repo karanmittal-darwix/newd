@@ -14,9 +14,9 @@ const LANGUAGES = [
   { script: 'ଓଡ଼ିଆ', name: 'Odia', speakers: '38M+', accents: 1 },
   { script: 'অসমীয়া', name: 'Assamese', speakers: '15M+', accents: 1 },
   { script: 'اُردُو', name: 'Urdu', speakers: '50M+', accents: 2 },
-  { script: 'भोजपुरी', name: 'Bhojpuri', speakers: '50M+', accents: 1 },
+  { script: 'Português', name: 'Portuguese', speakers: '50M+', accents: 1 },
   { script: 'Hi-En', name: 'Hinglish', speakers: '', accents: 3, isCodeSwitch: true, codeSwitchLabel: 'native code-switch' },
-  { script: 'Ta-En', name: 'Tanglish', speakers: '', accents: 2, isCodeSwitch: true, codeSwitchLabel: 'native code-switch' },
+  { script: 'العربية', name: 'Arabic', speakers: '', accents: 2, isCodeSwitch: true, codeSwitchLabel: 'native code-switch' },
 ];
 
 export default function LanguagesSection() {
@@ -29,12 +29,12 @@ export default function LanguagesSection() {
             Languages &amp; Accents
           </p>
           <h2 className="text-4xl font-bold text-gray-900">
-            Every state. Every dialect.
+            One Platform. Every Language. Every Accent.
           </h2>
           <p className="mt-4 text-3xl text-gray-500 text-sm max-w-3.1xl mx-auto leading-relaxed">
-            22 Indian languages plus native code-switching (Hinglish, Tanglish).
+            22+ Indian languages and global language support with native code-switching (Hinglish, Tanglish, and more). Accents are finely 
             <br />
-            Accents are tuned to regional delivery — a Mumbai Marathi call doesn't sound like a Pune Marathi call, and your customers notice.
+            tuned to regional nuance because a Mumbai Marathi call shouldn’t sound like Pune, and your customers notice.
           </p>
         </div>
 
