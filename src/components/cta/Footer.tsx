@@ -18,9 +18,7 @@ export default function Footer() {
                 className="h-10 w-auto"
               />
             </Link>
-
-
-
+            
             <div className="flex flex-col gap-2">
               <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold ml-1">
                 Certifications
