@@ -102,8 +102,8 @@ export default function SentimentPanel({
                       width:`${width}%`,
                       borderRadius:"9999px",
 
-                      opacity:
-                        isActive ? 1 : .45,
+                      opacity:1,
+                        
 
                       filter:
                         isActive
