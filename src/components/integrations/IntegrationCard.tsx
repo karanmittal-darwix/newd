@@ -5,9 +5,10 @@ interface Props {
   logo: string;
   textLogo?: boolean;
   textColor?: string;
+  logoClass?: string;
 }
 
-export default function IntegrationCard({ name, logo, textLogo = false, textColor }: Props) {
+export default function IntegrationCard({ name, logo, textLogo = false, textColor, logoClass }: Props) {
   return (
     <div className="border border-gray-200 rounded-xl bg-white px-4 py-3.5 flex items-center justify-center gap-2 min-h-[52px]">
       {textLogo ? (
@@ -16,7 +17,7 @@ export default function IntegrationCard({ name, logo, textLogo = false, textColo
         </span>
       ) : (
         <>
-          <div className="w-5 h-5 relative flex-shrink-0">
+          <div className={`w-5 h-5 relative flex-shrink-0 ${logoClass || ""}`}>
             <Image src={logo} alt={name} fill className="object-contain" />
           </div>
           <span className="text-sm text-gray-700 font-medium">{name}</span>
