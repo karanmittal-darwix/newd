@@ -1,45 +1,130 @@
+// import Link from "next/link";
+
+// export default function Navbar() {
+//   return (
+//     <nav className="bg-white sticky top-0 z-50 w-full border-b border-gray-200">
+
+//       <div className="max-w-7xl mx-auto px-6 h-[64px] flex items-center justify-between">
+
+//         {/* LOGO */}
+//         <Link href="/" className="flex items-center">
+//           <img
+//             src="/images/darwix.svg"
+//             alt="Darwix AI"
+//             className="h-10 w-auto"
+//           />
+//         </Link>
+
+//         {/* CENTER */}
+//         <div className="hidden md:flex items-center gap-6 text-sm text-gray-600">
+//           <Link href="#" className="hover:text-black transition">
+//             Voice playground
+//           </Link>
+//           <Link href="#" className="hover:text-black transition">
+//             Capabilities
+//           </Link>
+//           <Link href="#" className="hover:text-black transition">
+//             Parallel dialing
+//           </Link>
+//           <Link href="#" className="hover:text-black transition">
+//             Post-call actions
+//           </Link>
+//           <Link href="#" className="hover:text-black transition">
+//             Languages
+//           </Link>
+//           <Link href="/about" className="hover:text-black transition">
+//             About Us
+//           </Link>
+
+//         </div>
+
+//         {/* RIGHT */}
+//         <div className="flex items-center gap-4">
+//           <Link
+//             href="#"
+//             className="text-sm text-gray-600 hover:text-black transition"
+//           >
+//             Sign in
+//           </Link>
+
+//           <button className="bg-indigo-600 hover:bg-indigo-500 text-white text-sm px-5 py-2 rounded-md font-medium transition-all duration-200">
+//             Request a demo
+//           </button>
+//         </div>
+
+//       </div>
+//     </nav>
+//   );
+// }
+
+"use client";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
 export default function Navbar() {
+  const [open, setOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+
+    if (open) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [open]);
+
   return (
-    <nav className="bg-white sticky top-0 z-50 w-full border-b border-gray-200">
-
-      <div className="max-w-7xl mx-auto px-6 h-[64px] flex items-center justify-between">
-
-        {/* LOGO */}
-        <Link href="/" className="flex items-center">
+    <nav className="sticky top-0 z-50 w-full bg-white border-b border-gray-200">
+      <div
+        ref={menuRef}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[64px] flex items-center justify-between"
+      >
+        {/* Logo */}
+        <Link href="/" className="flex items-center shrink-0">
           <img
             src="/images/darwix.svg"
             alt="Darwix AI"
-            className="h-10 w-auto"
+            className="h-8 md:h-10 w-auto"
           />
         </Link>
 
-        {/* CENTER */}
+        {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-6 text-sm text-gray-600">
           <Link href="#" className="hover:text-black transition">
             Voice playground
           </Link>
+
           <Link href="#" className="hover:text-black transition">
             Capabilities
           </Link>
+
           <Link href="#" className="hover:text-black transition">
             Parallel dialing
           </Link>
+
           <Link href="#" className="hover:text-black transition">
             Post-call actions
           </Link>
+
           <Link href="#" className="hover:text-black transition">
             Languages
           </Link>
+
           <Link href="/about" className="hover:text-black transition">
             About Us
           </Link>
-
         </div>
 
-        {/* RIGHT */}
-        <div className="flex items-center gap-4">
+        {/* Desktop Right */}
+        <div className="hidden md:flex items-center gap-4">
           <Link
             href="#"
             className="text-sm text-gray-600 hover:text-black transition"
@@ -48,11 +133,88 @@ export default function Navbar() {
           </Link>
 
           <button className="bg-indigo-600 hover:bg-indigo-500 text-white text-sm px-5 py-2 rounded-md font-medium transition-all duration-200">
-            Request a demo
+            <a href="#request-demo">Request a demo</a>
           </button>
         </div>
 
+        {/* Mobile */}
+        <div className="flex items-center gap-3 md:hidden">
+          <button className="bg-indigo-600 hover:bg-indigo-500 text-white text-xs px-3 py-2 rounded-md font-medium transition">
+            Demo
+          </button>
+
+          <button
+            onClick={() => setOpen(!open)}
+            className="p-2 rounded-md border border-gray-300"
+            aria-label="Toggle Menu"
+          >
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
+              {open ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Menu */}
+      {open && (
+        <div className="md:hidden border-t border-gray-200 bg-white">
+          <div className="px-4 py-4 flex flex-col space-y-4 text-sm text-gray-700">
+            <Link href="#" onClick={() => setOpen(false)}>
+              Voice playground
+            </Link>
+
+            <Link href="#" onClick={() => setOpen(false)}>
+              Capabilities
+            </Link>
+
+            <Link href="#" onClick={() => setOpen(false)}>
+              Parallel dialing
+            </Link>
+
+            <Link href="#" onClick={() => setOpen(false)}>
+              Post-call actions
+            </Link>
+
+            <Link href="#" onClick={() => setOpen(false)}>
+              Languages
+            </Link>
+
+            <Link href="/about" onClick={() => setOpen(false)}>
+              About Us
+            </Link>
+
+            <Link
+              href="#"
+              onClick={() => setOpen(false)}
+              className="text-gray-600"
+            >
+              Sign in
+            </Link>
+
+            <button className="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-3 rounded-md font-medium">
+              <a href="#request-demo">Request a demo</a>
+            </button>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }
