@@ -81,6 +81,20 @@ export default function Navbar() {
     };
   }, [open]);
 
+  const handleDemoScroll = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    const demoSection = document.getElementById("demo-request");
+    if (demoSection) {
+      const navbarHeight = 64; // Height of sticky navbar
+      const targetPosition =
+        demoSection.getBoundingClientRect().top + window.scrollY - navbarHeight;
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <nav className="sticky top-0 z-50 w-full bg-white border-b border-gray-200">
       <div
@@ -132,14 +146,20 @@ export default function Navbar() {
             Sign in
           </Link>
 
-          <button className="bg-indigo-600 hover:bg-indigo-500 text-white text-sm px-5 py-2 rounded-md font-medium transition-all duration-200">
-            <a href="#request-demo">Request a demo</a>
+          <button
+            onClick={handleDemoScroll}
+            className="bg-indigo-600 hover:bg-indigo-500 text-white text-sm px-5 py-2 rounded-md font-medium transition-all duration-200"
+          >
+            Request a demo
           </button>
         </div>
 
         {/* Mobile */}
         <div className="flex items-center gap-3 md:hidden">
-          <button className="bg-indigo-600 hover:bg-indigo-500 text-white text-xs px-3 py-2 rounded-md font-medium transition">
+          <button
+            onClick={handleDemoScroll}
+            className="bg-indigo-600 hover:bg-indigo-500 text-white text-xs px-3 py-2 rounded-md font-medium transition"
+          >
             Demo
           </button>
 
