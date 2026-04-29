@@ -29,6 +29,7 @@ const AudioPlayer = forwardRef<AudioPlayerRef, Props>(
     const wavesurferRef = useRef<WaveSurfer | null>(null);
     const shouldAutoPlayRef = useRef(false);
     const isMountedRef = useRef(true);
+    const prevSampleIdRef = useRef<number | undefined>(undefined);
 
     const router = useRouter();
     const pathname = usePathname();
@@ -96,7 +97,16 @@ const AudioPlayer = forwardRef<AudioPlayerRef, Props>(
       setRemainingTime("00:00");
       setIsPlaying(false);
       onPlayingStateChange?.(false);
-      shouldAutoPlayRef.current = false;
+
+      // Determine if this is a sample selection (user clicked a different sample)
+      // Only autoplay if: previous sample existed AND current sample is different AND not a route change
+      const isUserSampleSwitch =
+        prevSampleIdRef.current !== undefined &&
+        prevSampleIdRef.current !== sample?.id;
+      shouldAutoPlayRef.current = isUserSampleSwitch;
+
+      // Track this sample for next comparison
+      prevSampleIdRef.current = sample?.id;
 
       // Destroy previous instance cleanly
       if (wavesurferRef.current) {
