@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import Filters from "./Filters";
 import AudioPlayer from "./AudioPlayer";
 import PopularSamples from "@/components/samples/PopularSamples";
@@ -9,6 +9,7 @@ import type { AudioSample, FilterState } from "@/types";
 
 export default function VoicePlayground() {
   const playerRef = useRef<HTMLDivElement>(null);
+  const audioPlayerRef = useRef<any>(null);
 
   const [selectedSample, setSelectedSample] = useState<AudioSample>(
     AUDIO_SAMPLES[0],
@@ -20,6 +21,16 @@ export default function VoicePlayground() {
     useCase: "All",
     language: "All",
   });
+
+  // Stop and reset audio on component unmount
+  useEffect(() => {
+    return () => {
+      if (audioPlayerRef.current) {
+        audioPlayerRef.current.pause();
+      }
+      setIsPlaying(false);
+    };
+  }, []);
 
   const filteredSamples = AUDIO_SAMPLES.filter((s) => {
     const { industry, product, useCase, language } = filters;
@@ -53,9 +64,8 @@ export default function VoicePlayground() {
   );
 
   return (
-    <section className="bg-gray-50 py-20 px-6">
+    <section id="voice-playground" className="bg-gray-50 py-20 px-6">
       <div className="max-w-5xl mx-auto">
-
         {/* Header */}
         <div className="text-center mb-10">
           <p className="text-xs font-semibold tracking-widest text-indigo-500 uppercase mb-3">
@@ -79,6 +89,7 @@ export default function VoicePlayground() {
         {/* Audio Player */}
         <div ref={playerRef}>
           <AudioPlayer
+            ref={audioPlayerRef}
             sample={selectedSample}
             onPlayingStateChange={setIsPlaying}
           />
@@ -93,7 +104,6 @@ export default function VoicePlayground() {
             onSelect={handleSelectSample}
           />
         </div>
-
       </div>
     </section>
   );

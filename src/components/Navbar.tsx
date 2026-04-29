@@ -81,19 +81,21 @@ export default function Navbar() {
     };
   }, [open]);
 
-  const handleDemoScroll = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    const demoSection = document.getElementById("demo-request");
-    if (demoSection) {
-      const navbarHeight = 64; // Height of sticky navbar
-      const targetPosition =
-        demoSection.getBoundingClientRect().top + window.scrollY - navbarHeight;
-      window.scrollTo({
-        top: targetPosition,
-        behavior: "smooth",
-      });
-    }
-  };
+  const handleSectionScroll =
+    (sectionId: string) =>
+    (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
+      e.preventDefault();
+      const section = document.getElementById(sectionId);
+      if (section) {
+        const navbarHeight = 64; // Height of sticky navbar
+        const targetPosition =
+          section.getBoundingClientRect().top + window.scrollY - navbarHeight;
+        window.scrollTo({
+          top: targetPosition,
+          behavior: "smooth",
+        });
+      }
+    };
 
   return (
     <nav className="sticky top-0 z-50 w-full bg-white border-b border-gray-200">
@@ -112,23 +114,43 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-6 text-sm text-gray-600">
-          <Link href="#" className="hover:text-black transition">
+          <Link
+            href="#"
+            onClick={handleSectionScroll("voice-playground")}
+            className="hover:text-black transition"
+          >
             Voice playground
           </Link>
 
-          <Link href="#" className="hover:text-black transition">
+          <Link
+            href="#"
+            onClick={handleSectionScroll("capabilities")}
+            className="hover:text-black transition"
+          >
             Capabilities
           </Link>
 
-          <Link href="#" className="hover:text-black transition">
+          <Link
+            href="#"
+            onClick={handleSectionScroll("parallel-dialing")}
+            className="hover:text-black transition"
+          >
             Parallel dialing
           </Link>
 
-          <Link href="#" className="hover:text-black transition">
+          <Link
+            href="#"
+            onClick={handleSectionScroll("post-call-actions")}
+            className="hover:text-black transition"
+          >
             Post-call actions
           </Link>
 
-          <Link href="#" className="hover:text-black transition">
+          <Link
+            href="#"
+            onClick={handleSectionScroll("languages")}
+            className="hover:text-black transition"
+          >
             Languages
           </Link>
 
@@ -147,7 +169,7 @@ export default function Navbar() {
           </Link>
 
           <button
-            onClick={handleDemoScroll}
+            onClick={handleSectionScroll("demo-request")}
             className="bg-indigo-600 hover:bg-indigo-500 text-white text-sm px-5 py-2 rounded-md font-medium transition-all duration-200"
           >
             Request a demo
@@ -157,7 +179,7 @@ export default function Navbar() {
         {/* Mobile */}
         <div className="flex items-center gap-3 md:hidden">
           <button
-            onClick={handleDemoScroll}
+            onClick={handleSectionScroll("demo-request")}
             className="bg-indigo-600 hover:bg-indigo-500 text-white text-xs px-3 py-2 rounded-md font-medium transition"
           >
             Demo
@@ -197,23 +219,53 @@ export default function Navbar() {
       {open && (
         <div className="md:hidden border-t border-gray-200 bg-white">
           <div className="px-4 py-4 flex flex-col space-y-4 text-sm text-gray-700">
-            <Link href="#" onClick={() => setOpen(false)}>
+            <Link
+              href="#"
+              onClick={(e) => {
+                handleSectionScroll("voice-playground")(e);
+                setOpen(false);
+              }}
+            >
               Voice playground
             </Link>
 
-            <Link href="#" onClick={() => setOpen(false)}>
+            <Link
+              href="#"
+              onClick={(e) => {
+                handleSectionScroll("capabilities")(e);
+                setOpen(false);
+              }}
+            >
               Capabilities
             </Link>
 
-            <Link href="#" onClick={() => setOpen(false)}>
+            <Link
+              href="#"
+              onClick={(e) => {
+                handleSectionScroll("parallel-dialing")(e);
+                setOpen(false);
+              }}
+            >
               Parallel dialing
             </Link>
 
-            <Link href="#" onClick={() => setOpen(false)}>
+            <Link
+              href="#"
+              onClick={(e) => {
+                handleSectionScroll("post-call-actions")(e);
+                setOpen(false);
+              }}
+            >
               Post-call actions
             </Link>
 
-            <Link href="#" onClick={() => setOpen(false)}>
+            <Link
+              href="#"
+              onClick={(e) => {
+                handleSectionScroll("languages")(e);
+                setOpen(false);
+              }}
+            >
               Languages
             </Link>
 
@@ -229,8 +281,14 @@ export default function Navbar() {
               Sign in
             </Link>
 
-            <button className="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-3 rounded-md font-medium">
-              <a href="#request-demo">Request a demo</a>
+            <button
+              onClick={(e) => {
+                handleSectionScroll("demo-request")(e);
+                setOpen(false);
+              }}
+              className="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-3 rounded-md font-medium"
+            >
+              Request a demo
             </button>
           </div>
         </div>
