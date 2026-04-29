@@ -214,6 +214,14 @@ const AudioPlayer = forwardRef<AudioPlayerRef, Props>(
       wavesurferRef.current?.playPause();
     };
 
+    const handleSeekToSentiment = (startTime: number, duration: number) => {
+      if (wavesurferRef.current) {
+        const seekPosition = startTime / duration;
+        wavesurferRef.current.seekTo(seekPosition);
+        wavesurferRef.current.play();
+      }
+    };
+
     return (
       <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
         {/* Top Bar */}
@@ -297,6 +305,7 @@ const AudioPlayer = forwardRef<AudioPlayerRef, Props>(
               currentTimeSec={currentSeconds}
               intents={intelligence.intents}
               postCallActions={intelligence.actions}
+              onSeekToSentiment={handleSeekToSentiment}
             />
           </div>
         </div>
