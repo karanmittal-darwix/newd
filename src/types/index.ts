@@ -5,6 +5,8 @@ export interface TranscriptMessage {
   speaker: Speaker;
   name: string;
   time: string;
+  start: number;
+  end: number;
   text: string;
   tone?: string;
   event?: string;

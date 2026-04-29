@@ -1,7 +1,22 @@
+"use client";
+
 import HeroStats from "./HeroStats";
 import AgentOrb from "./AgentOrb";
 
 export default function Hero() {
+  const handleDemoScroll = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    const demoSection = document.getElementById("demo-request");
+    if (demoSection) {
+      const navbarHeight = 64; // Height of sticky navbar
+      const targetPosition =
+        demoSection.getBoundingClientRect().top + window.scrollY - navbarHeight;
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
   return (
     <section className="bg-white pt-20 pb-0 px-6 overflow-hidden">
       <div className="max-w-5xl mx-auto text-center">
@@ -31,7 +46,7 @@ export default function Hero() {
 
 
         <div className="mt-5">
-          <button className="bg-indigo-600 hover:bg-indigo-500 text-white text-sm px-5 py-3 rounded-md font-medium shadow-lg transition-all duration-200">
+          <button onClick={handleDemoScroll} className="bg-indigo-600 hover:bg-indigo-500 text-white text-sm px-5 py-3 rounded-md font-medium shadow-lg transition-all duration-200">
             Request a demo 
           </button>
        </div>

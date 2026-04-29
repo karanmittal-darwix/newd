@@ -7,6 +7,7 @@ import {
   forwardRef,
   useImperativeHandle,
 } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import type { AudioSample } from "@/types";
 import SentimentPanel from "./SentimentPanel";
 import Transcript from "./Transcript";
@@ -27,6 +28,10 @@ const AudioPlayer = forwardRef<AudioPlayerRef, Props>(
     const waveformRef = useRef<HTMLDivElement>(null);
     const wavesurferRef = useRef<WaveSurfer | null>(null);
     const shouldAutoPlayRef = useRef(false);
+    const isMountedRef = useRef(true);
+
+    const router = useRouter();
+    const pathname = usePathname();
 
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentTime, setCurrentTime] = useState("00:00");
@@ -39,24 +44,64 @@ const AudioPlayer = forwardRef<AudioPlayerRef, Props>(
       pause: () => wavesurferRef.current?.pause(),
     }));
 
+    // Handle route change: stop and reset audio when navigating away
+    useEffect(() => {
+      const handleRouteChange = () => {
+        if (wavesurferRef.current) {
+          wavesurferRef.current.pause();
+          wavesurferRef.current.seekTo(0);
+        }
+        setIsPlaying(false);
+        shouldAutoPlayRef.current = false;
+      };
+
+      // Listen for pathname changes to detect navigation
+      return () => {
+        handleRouteChange();
+      };
+    }, [pathname]);
+
+    // Handle page visibility change (when user switches tabs or minimizes window)
+    useEffect(() => {
+      const handleVisibilityChange = () => {
+        if (document.hidden) {
+          // Page is hidden, pause audio
+          if (wavesurferRef.current?.isPlaying()) {
+            wavesurferRef.current.pause();
+            setIsPlaying(false);
+            onPlayingStateChange?.(false);
+          }
+        }
+      };
+
+      document.addEventListener("visibilitychange", handleVisibilityChange);
+
+      return () => {
+        document.removeEventListener(
+          "visibilitychange",
+          handleVisibilityChange,
+        );
+      };
+    }, [onPlayingStateChange]);
+
+    // Main effect: create and manage wavesurfer instance
     useEffect(() => {
       if (!waveformRef.current || !sample) return;
 
-      // Reset UI immediately
+      isMountedRef.current = true;
+
+      // Reset UI and playback state immediately
       setCurrentTime("00:00");
       setDuration("00:00");
       setRemainingTime("00:00");
       setIsPlaying(false);
       onPlayingStateChange?.(false);
-
-      // Only autoplay if switching samples (previous instance existed).
-      // On first mount wavesurferRef.current is null — skip autoplay
-      // to avoid browser autoplay policy violation.
-      const isSwitch = wavesurferRef.current !== null;
-      shouldAutoPlayRef.current = isSwitch;
+      shouldAutoPlayRef.current = false;
 
       // Destroy previous instance cleanly
       if (wavesurferRef.current) {
+        wavesurferRef.current.pause();
+        wavesurferRef.current.seekTo(0);
         wavesurferRef.current.destroy();
         wavesurferRef.current = null;
       }
@@ -77,13 +122,15 @@ const AudioPlayer = forwardRef<AudioPlayerRef, Props>(
       wavesurferRef.current = ws;
 
       ws.on("ready", () => {
+        if (!isMountedRef.current) return;
+
         const dur = ws.getDuration();
         const mins = String(Math.floor(dur / 60)).padStart(2, "0");
         const secs = String(Math.floor(dur % 60)).padStart(2, "0");
         setDuration(`${mins}:${secs}`);
         setRemainingTime(`${mins}:${secs}`);
 
-        // Only play if this was a user-triggered sample switch
+        // NEVER autoplay on initial load or remount - only on explicit user action
         if (shouldAutoPlayRef.current) {
           shouldAutoPlayRef.current = false;
           ws.play();
@@ -91,6 +138,8 @@ const AudioPlayer = forwardRef<AudioPlayerRef, Props>(
       });
 
       ws.on("audioprocess", () => {
+        if (!isMountedRef.current) return;
+
         const current = ws.getCurrentTime();
         setCurrentSeconds(Math.floor(current));
 
@@ -110,24 +159,36 @@ const AudioPlayer = forwardRef<AudioPlayerRef, Props>(
       });
 
       ws.on("play", () => {
+        if (!isMountedRef.current) return;
         setIsPlaying(true);
         onPlayingStateChange?.(true);
       });
 
       ws.on("pause", () => {
+        if (!isMountedRef.current) return;
         setIsPlaying(false);
         onPlayingStateChange?.(false);
       });
 
       ws.on("finish", () => {
+        if (!isMountedRef.current) return;
         setIsPlaying(false);
         onPlayingStateChange?.(false);
+        // Reset to beginning on finish
+        ws.seekTo(0);
+        setCurrentTime("00:00");
+        setCurrentSeconds(0);
       });
 
       return () => {
-        ws.destroy();
+        isMountedRef.current = false;
+        if (ws) {
+          ws.pause();
+          ws.seekTo(0);
+          ws.destroy();
+        }
       };
-    }, [sample?.id]);
+    }, [sample?.id, onPlayingStateChange]);
 
     if (!sample) {
       return (
@@ -218,7 +279,7 @@ const AudioPlayer = forwardRef<AudioPlayerRef, Props>(
         {/* Transcript + Sentiment */}
         <div className="flex h-[400px]">
           <div className="flex-1 overflow-hidden border-r border-gray-200">
-            <Transcript messages={transcript} />
+            <Transcript messages={transcript} currentTimeSec={currentSeconds} />
           </div>
           <div className="flex-1 overflow-hidden">
             <SentimentPanel
