@@ -161,12 +161,12 @@ export default function Navbar() {
 
         {/* Desktop Right */}
         <div className="hidden md:flex items-center gap-4">
-          <Link
+          {/* <Link
             href="#"
             className="text-sm text-gray-600 hover:text-black transition"
           >
             Sign in
-          </Link>
+          </Link> */}
 
           <button
             onClick={handleSectionScroll("demo-request")}
@@ -273,13 +273,13 @@ export default function Navbar() {
               About Us
             </Link>
 
-            <Link
+            {/* <Link
               href="#"
               onClick={() => setOpen(false)}
               className="text-gray-600"
             >
               Sign in
-            </Link>
+            </Link> */}
 
             <button
               onClick={(e) => {
