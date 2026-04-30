@@ -59,11 +59,42 @@
 
 "use client";
 import { useState, useEffect, useRef } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 
 export default function Navbar() {
+  const router = useRouter();
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+
+  // Store the target section ID to scroll to after navigation
+  useEffect(() => {
+    const handleRouteChange = () => {
+      const targetId = sessionStorage.getItem("scrollTarget");
+      if (targetId) {
+        sessionStorage.removeItem("scrollTarget");
+        // Use setTimeout to ensure DOM is ready
+        setTimeout(() => {
+          const section = document.getElementById(targetId);
+          if (section) {
+            const navbarHeight = 64;
+            const targetPosition =
+              section.getBoundingClientRect().top +
+              window.scrollY -
+              navbarHeight;
+            window.scrollTo({
+              top: targetPosition,
+              behavior: "smooth",
+            });
+          }
+        }, 100);
+      }
+    };
+
+    // Scroll on initial load if target was set
+    handleRouteChange();
+  }, [pathname]);
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -85,15 +116,23 @@ export default function Navbar() {
     (sectionId: string) =>
     (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
       e.preventDefault();
-      const section = document.getElementById(sectionId);
-      if (section) {
-        const navbarHeight = 64; // Height of sticky navbar
-        const targetPosition =
-          section.getBoundingClientRect().top + window.scrollY - navbarHeight;
-        window.scrollTo({
-          top: targetPosition,
-          behavior: "smooth",
-        });
+
+      // If already on homepage, scroll directly
+      if (pathname === "/") {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          const navbarHeight = 64; // Height of sticky navbar
+          const targetPosition =
+            section.getBoundingClientRect().top + window.scrollY - navbarHeight;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth",
+          });
+        }
+      } else {
+        // If not on homepage, navigate to home first, then scroll
+        sessionStorage.setItem("scrollTarget", sectionId);
+        router.push("/");
       }
     };
 
