@@ -7,7 +7,7 @@ export default function HeroStats() {
         {HERO_STATS.map((stat, i) => (
           <div
             key={i}
-            className="flex flex-col items-center px-8 py-2 min-w-[120px]"
+            className="flex flex-col items-center px-4 sm:px-8 py-2 min-w-fit sm:min-w-[120px]"
           >
             <span className="text-3xl font-semibold text-gray-900 tracking-tight">
               {stat.value}

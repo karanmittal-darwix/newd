@@ -87,12 +87,12 @@ export default function RequestDemoSection() {
   return (
     <section
       id="demo-request"
-      className="bg-[#eef0ff] py-24 px-6 overflow-hidden relative"
+      className="bg-[#eef0ff] py-16 sm:py-24 px-4 sm:px-6 overflow-hidden relative"
     >
       <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-200 rounded-full blur-[100px] opacity-40 -mr-32 -mt-32"></div>
 
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="grid md:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div className="grid md:grid-cols-2 gap-8 sm:gap-12 lg:gap-24 items-center">
           {/* Left Content */}
           <div className="max-w-lg">
             <span className="inline-block px-4 py-1.5 rounded-full bg-indigo-100 text-indigo-600 text-xs font-bold tracking-widest uppercase mb-6">
@@ -137,7 +137,7 @@ export default function RequestDemoSection() {
           </div>
 
           {/* Form Card */}
-          <div className="bg-white rounded-[32px] p-8 md:p-10 shadow-2xl shadow-indigo-100/50 border border-white">
+          <div className="bg-white rounded-[32px] p-6 sm:p-8 md:p-10 shadow-2xl shadow-indigo-100/50 border border-white">
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid grid-cols-1 gap-5">
                 <div>

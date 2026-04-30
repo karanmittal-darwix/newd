@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import Link from "next/link";
 
@@ -6,9 +5,8 @@ export default function Footer() {
   return (
     <footer className="bg-gray-50 border-t border-gray-200 text-gray-900 relative shadow-[0_-12px_40px_-12px_rgba(0,0,0,0.12)]">
       {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
-
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-24">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 lg:gap-8">
           {/* LEFT COLUMN: Logo, Email, Badges, LinkedIn */}
           <div className="flex flex-col gap-6">
             <Link href="/" className="flex items-center">
@@ -17,7 +15,7 @@ export default function Footer() {
                 alt="Darwix AI"
                 className="h-10 w-auto"
               />
-            </Link>           
+            </Link>
             <div className="flex flex-col gap-2">
               <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold ml-1">
                 Certifications
@@ -40,11 +38,12 @@ export default function Footer() {
                   />
                 </div>
               </div>
-
             </div>
 
             <div className="flex flex-col gap-3">
-              <h3 className="text-[10px] uppercase tracking-widest text-gray-400 font-bold ml-1">FOLLOW US</h3>
+              <h3 className="text-[10px] uppercase tracking-widest text-gray-400 font-bold ml-1">
+                FOLLOW US
+              </h3>
               <Link
                 href="https://www.linkedin.com/company/darwix-ai/"
                 target="_blank"
@@ -61,8 +60,12 @@ export default function Footer() {
                   </div>
                 </div>
                 <div className="flex flex-col leading-tight">
-                  <span className="font-bold text-gray-900 text-sm">LinkedIn</span>
-                  <span className="text-[11px] text-gray-400">Follow Darwix AI</span>
+                  <span className="font-bold text-gray-900 text-sm">
+                    LinkedIn
+                  </span>
+                  <span className="text-[11px] text-gray-400">
+                    Follow Darwix AI
+                  </span>
                 </div>
               </Link>
             </div>
@@ -71,7 +74,9 @@ export default function Footer() {
           {/* MIDDLE COLUMN: Offices */}
           <div className="flex flex-col gap-10">
             <div>
-              <h3 className="text-indigo-600 font-bold text-sm tracking-widest mb-1">INDIA OFFICE</h3>
+              <h3 className="text-indigo-600 font-bold text-sm tracking-widest mb-1">
+                INDIA OFFICE
+              </h3>
               <div className="w-8 h-[2px] bg-indigo-600 mb-6"></div>
               <div className="text-gray-600 space-y-1 leading-relaxed">
                 <p>7th Floor, Imperia MindSpace,</p>
@@ -81,7 +86,9 @@ export default function Footer() {
             </div>
 
             <div>
-              <h3 className="text-indigo-600 font-bold text-sm tracking-widest mb-1">DUBAI OFFICE</h3>
+              <h3 className="text-indigo-600 font-bold text-sm tracking-widest mb-1">
+                DUBAI OFFICE
+              </h3>
               <div className="w-8 h-[2px] bg-indigo-600 mb-6"></div>
               <div className="text-gray-600 space-y-1 leading-relaxed">
                 <p>Innovation One, DIFC</p>
@@ -92,7 +99,9 @@ export default function Footer() {
 
           {/* RIGHT COLUMN: Contact Links */}
           <div className="flex flex-col gap-6">
-            <h3 className="text-gray-400 font-bold text-sm tracking-widest uppercase">CONTACT</h3>
+            <h3 className="text-gray-400 font-bold text-sm tracking-widest uppercase">
+              CONTACT
+            </h3>
 
             <div className="flex flex-col gap-4">
               {[
@@ -106,12 +115,13 @@ export default function Footer() {
                   className="text-lg font-bold text-gray-900 hover:text-indigo-600 transition-colors flex items-center justify-between group max-w-[240px]"
                 >
                   {item.name}
-                  <span className="text-indigo-600 opacity-40 group-hover:opacity-100 group-hover:translate-x-1 transition-all">→</span>
+                  <span className="text-indigo-600 opacity-40 group-hover:opacity-100 group-hover:translate-x-1 transition-all">
+                    →
+                  </span>
                 </Link>
               ))}
             </div>
           </div>
-
         </div>
       </div>
 
@@ -119,7 +129,8 @@ export default function Footer() {
       <div className="bg-indigo-600 px-6 py-4">
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-indigo-100 text-sm font-medium">
-            ©2026 by Darwix AI, CUR8 Ventures Pvt. Ltd. All rights reserved — all wrongs reversed!
+            ©2026 by Darwix AI, CUR8 Ventures Pvt. Ltd. All rights reserved —
+            all wrongs reversed!
           </p>
         </div>
       </div>

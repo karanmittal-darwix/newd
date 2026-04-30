@@ -47,7 +47,7 @@ const LANGUAGES = [
 
 export default function LanguagesSection() {
   return (
-    <section id="languages" className="bg-white py-20 px-6">
+    <section id="languages" className="bg-white py-16 sm:py-20 px-4 sm:px-6">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="text-center mb-10">

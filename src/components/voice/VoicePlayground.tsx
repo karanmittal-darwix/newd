@@ -64,7 +64,10 @@ export default function VoicePlayground() {
   );
 
   return (
-    <section id="voice-playground" className="bg-gray-50 py-20 px-6">
+    <section
+      id="voice-playground"
+      className="bg-gray-50 py-16 sm:py-20 px-4 sm:px-6"
+    >
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="text-center mb-10">
