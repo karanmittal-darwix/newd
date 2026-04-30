@@ -18,7 +18,7 @@ export default function DemoCallSection() {
   };
 
   return (
-    <section className="bg-white py-24 px-6">
+    <section className="bg-white py-16 sm:py-24 px-4 sm:px-6">
       <div className="max-w-3xl mx-auto text-center">
         <p className="text-xs font-semibold uppercase tracking-widest text-indigo-500 mb-4">
           Book a live call with Darwix

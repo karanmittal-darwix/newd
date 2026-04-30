@@ -3,7 +3,10 @@ import ActionTriggers from "./ActionTriggers";
 
 export default function PostCallSection() {
   return (
-    <section id="post-call-actions" className="bg-white py-20 px-6">
+    <section
+      id="post-call-actions"
+      className="bg-white py-16 sm:py-20 px-4 sm:px-6"
+    >
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">

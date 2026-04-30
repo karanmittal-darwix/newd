@@ -63,7 +63,10 @@ const CARDS = [
 
 export default function CapabilitiesSection() {
   return (
-    <section id="capabilities" className="bg-gray-50 py-24 px-6">
+    <section
+      id="capabilities"
+      className="bg-gray-50 py-16 sm:py-24 px-4 sm:px-6"
+    >
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-14">
           <p className="text-xs uppercase tracking-[0.2em] text-indigo-500 font-semibold mb-3">

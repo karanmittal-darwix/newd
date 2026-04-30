@@ -22,7 +22,7 @@ interface SelectProps {
 
 function FilterSelect({ label, options, value, onChange }: SelectProps) {
   return (
-    <div className="flex flex-col gap-1 flex-1 min-w-[140px]">
+    <div className="flex flex-col gap-1 flex-1 sm:min-w-[140px] min-w-fit">
       <label className="text-xs text-gray-400 font-medium px-1">{label}</label>
       <div className="relative">
         <select
@@ -54,8 +54,8 @@ function FilterSelect({ label, options, value, onChange }: SelectProps) {
 
 export default function Filters({ filters, onFilterChange }: Props) {
   return (
-    <div className="border border-gray-200 rounded-xl p-5 bg-white">
-      <div className="flex flex-wrap gap-4">
+    <div className="border border-gray-200 rounded-xl p-4 sm:p-5 bg-white">
+      <div className="flex flex-wrap gap-2 sm:gap-4">
         <FilterSelect
           label="Industry"
           options={INDUSTRY_OPTIONS}
@@ -84,8 +84,18 @@ export default function Filters({ filters, onFilterChange }: Props) {
 
       <div className="flex items-center justify-center gap-3 mt-5">
         <button className="flex items-center gap-2 border border-gray-200 rounded-md px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 transition-colors">
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          <svg
+            className="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={1.5}
+              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+            />
           </svg>
           Request a demo
         </button>

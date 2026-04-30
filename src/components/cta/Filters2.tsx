@@ -22,7 +22,7 @@ interface SelectProps {
 
 function FilterSelect({ label, options, value, onChange }: SelectProps) {
   return (
-    <div className="flex flex-col gap-1 flex-1 min-w-[140px]">
+    <div className="flex flex-col gap-1 flex-1 sm:min-w-[140px] min-w-fit">
       <label className="text-xs text-gray-400 font-medium px-1">{label}</label>
       <div className="relative">
         <select
@@ -54,8 +54,8 @@ function FilterSelect({ label, options, value, onChange }: SelectProps) {
 
 export default function Filters2({ filters, onFilterChange }: Props) {
   return (
-    <div className=" rounded-xl p-5 bg-white">
-      <div className="flex flex-wrap gap-6">
+    <div className=" rounded-xl p-4 sm:p-5 bg-white">
+      <div className="flex flex-wrap gap-2 sm:gap-6">
         <FilterSelect
           label="Industry"
           options={INDUSTRY_OPTIONS}
@@ -81,7 +81,6 @@ export default function Filters2({ filters, onFilterChange }: Props) {
           onChange={(v) => onFilterChange("language", v)}
         />
       </div>
-
     </div>
   );
 }
