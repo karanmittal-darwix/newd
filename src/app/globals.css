@@ -24,7 +24,7 @@
   font-family: Arial, Helvetica, sans-serif;
 } */
 
-
+/* 
 html {
   scroll-behavior: smooth;
 }
@@ -35,5 +35,90 @@ body {
   margin: 0;
   font-family:  sans-serif;
 } 
+ */
 
 
+
+/*
+:root {
+  --background: #FFFFFF;
+  --foreground: #171717;
+} */
+
+/* @theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+} */
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0A0A0A;
+    --foreground: #EDEDED;
+  }
+} */
+
+/* body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+} */
+
+
+@import "tailwindcss";
+
+html {
+ scroll-behavior: smooth;
+}
+
+
+
+body {
+ margin: 0;
+ font-family: sans-serif;
+}
+
+.logo-marquee {
+  overflow: hidden;
+}
+
+.logo-marquee__track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  flex-wrap: nowrap;
+  will-change: transform;
+  animation: logo-marquee-left 28s linear infinite;
+}
+
+.logo-marquee__row {
+ display: flex;
+ align-items: center;
+ gap: 32px;
+ flex: 0 0 auto;
+ flex-wrap: nowrap;
+}
+
+.logo-marquee__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-width: 120px;
+}
+
+@keyframes logo-marquee-left {
+ 0% {
+ transform: translateX(0);
+}
+100% {
+transform: translateX(-50%);
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+.logo-marquee__track { 
+  animation: none;
+ }
+}

@@ -3,7 +3,7 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import Filters from "./Filters";
 import AudioPlayer from "./AudioPlayer";
-import PopularSamples from "@/components/samples/PopularSamples";
+import PopularSamples from "../samples/PopularSamples";
 import { AUDIO_SAMPLES } from "@/data/mockData";
 import type { AudioSample, FilterState } from "@/types";
 

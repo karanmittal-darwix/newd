@@ -33,6 +33,7 @@ export default function SentimentPanel({
     amber: "bg-amber-500",
     yellow: "bg-yellow-400",
     green: "bg-green-500",
+    blue: "bg-blue-500",
   };
 
   const glowRgb: Record<string, string> = {
@@ -41,6 +42,7 @@ export default function SentimentPanel({
     amber: "245,158,11",
     yellow: "234,179,8",
     green: "34,197,94",
+    blue: "59,130,246",
   };
 
   const activeStage = sentiment.sentimentJourney.findIndex(

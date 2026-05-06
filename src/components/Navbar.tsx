@@ -153,48 +153,28 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-6 text-sm text-gray-600">
-          <Link
-            href="#"
-            onClick={handleSectionScroll("voice-playground")}
-            className="hover:text-black transition"
-          >
-            Voice playground
+          <Link href="/" className="hover:text-black transition">
+            Home
           </Link>
 
-          <Link
-            href="#"
-            onClick={handleSectionScroll("capabilities")}
-            className="hover:text-black transition"
-          >
-            Capabilities
+          <Link href="/sherpa" className="hover:text-black transition">
+            Sherpa
           </Link>
 
-          <Link
-            href="#"
-            onClick={handleSectionScroll("parallel-dialing")}
-            className="hover:text-black transition"
-          >
-            Parallel dialing
+          <Link href="/voiceAgent" className="hover:text-black transition">
+            Voice Agents
           </Link>
 
-          <Link
-            href="#"
-            onClick={handleSectionScroll("post-call-actions")}
-            className="hover:text-black transition"
-          >
-            Post-call actions
+          <Link href="#" className="hover:text-black transition">
+            Non-Voice Agents
           </Link>
 
-          <Link
-            href="#"
-            onClick={handleSectionScroll("languages")}
-            className="hover:text-black transition"
-          >
-            Languages
+          <Link href="#" className="hover:text-black transition">
+            Nova
           </Link>
 
           <Link href="/about" className="hover:text-black transition">
-            About Us
+            About
           </Link>
         </div>
 
@@ -207,20 +187,14 @@ export default function Navbar() {
             Sign in
           </Link> */}
 
-          <button
-            onClick={handleSectionScroll("demo-request")}
-            className="bg-indigo-600 hover:bg-indigo-500 text-white text-sm px-5 py-2 rounded-md font-medium transition-all duration-200"
-          >
+          <button className="bg-indigo-600 hover:bg-indigo-500 text-white text-sm px-5 py-2 rounded-md font-medium transition-all duration-200">
             Request a demo
           </button>
         </div>
 
         {/* Mobile */}
         <div className="flex items-center gap-3 md:hidden">
-          <button
-            onClick={handleSectionScroll("demo-request")}
-            className="bg-indigo-600 hover:bg-indigo-500 text-white text-xs px-3 py-2 rounded-md font-medium transition"
-          >
+          <button className="bg-indigo-600 hover:bg-indigo-500 text-white text-xs px-3 py-2 rounded-md font-medium transition">
             Demo
           </button>
 
@@ -258,74 +232,33 @@ export default function Navbar() {
       {open && (
         <div className="md:hidden border-t border-gray-200 bg-white">
           <div className="px-4 py-4 flex flex-col space-y-4 text-sm text-gray-700">
-            <Link
-              href="#"
-              onClick={(e) => {
-                handleSectionScroll("voice-playground")(e);
-                setOpen(false);
-              }}
-            >
-              Voice playground
+            <Link href="/" onClick={() => setOpen(false)}>
+              Home
             </Link>
 
-            <Link
-              href="#"
-              onClick={(e) => {
-                handleSectionScroll("capabilities")(e);
-                setOpen(false);
-              }}
-            >
-              Capabilities
+            <Link href="/sherpa" onClick={() => setOpen(false)}>
+              Sherpa
             </Link>
 
-            <Link
-              href="#"
-              onClick={(e) => {
-                handleSectionScroll("parallel-dialing")(e);
-                setOpen(false);
-              }}
-            >
-              Parallel dialing
+            <Link href="/voiceAgent" onClick={() => setOpen(false)}>
+              Voice Agents
             </Link>
 
-            <Link
-              href="#"
-              onClick={(e) => {
-                handleSectionScroll("post-call-actions")(e);
-                setOpen(false);
-              }}
-            >
-              Post-call actions
+            <Link href="#" onClick={() => setOpen(false)}>
+              Non-Voice Agents
             </Link>
 
-            <Link
-              href="#"
-              onClick={(e) => {
-                handleSectionScroll("languages")(e);
-                setOpen(false);
-              }}
-            >
-              Languages
+            <Link href="#" onClick={() => setOpen(false)}>
+              Nova
             </Link>
 
             <Link href="/about" onClick={() => setOpen(false)}>
-              About Us
+              About
             </Link>
 
-            {/* <Link
-              href="#"
-              onClick={() => setOpen(false)}
-              className="text-gray-600"
-            >
-              Sign in
-            </Link> */}
-
             <button
-              onClick={(e) => {
-                handleSectionScroll("demo-request")(e);
-                setOpen(false);
-              }}
-              className="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-3 rounded-md font-medium"
+              onClick={() => setOpen(false)}
+              className="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-3 rounded-md font-medium text-left"
             >
               Request a demo
             </button>
