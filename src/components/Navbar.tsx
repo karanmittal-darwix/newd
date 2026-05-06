@@ -169,7 +169,7 @@ export default function Navbar() {
             Non-Voice Agents
           </Link>
 
-          <Link href="#" className="hover:text-black transition">
+          <Link href="/nova" className="hover:text-black transition">
             Nova
           </Link>
 
@@ -236,7 +236,6 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {open && (
-        
         <div className="md:hidden border-t border-gray-200 bg-white">
           <div className="px-4 py-4 flex flex-col space-y-4 text-sm text-gray-700">
             <Link href="/" onClick={() => setOpen(false)}>
@@ -255,7 +254,7 @@ export default function Navbar() {
               Non-Voice Agents
             </Link>
 
-            <Link href="#" onClick={() => setOpen(false)}>
+            <Link href="/nova" onClick={() => setOpen(false)}>
               Nova
             </Link>
 
