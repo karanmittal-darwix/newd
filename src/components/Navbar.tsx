@@ -236,6 +236,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {open && (
+        
         <div className="md:hidden border-t border-gray-200 bg-white">
           <div className="px-4 py-4 flex flex-col space-y-4 text-sm text-gray-700">
             <Link href="/" onClick={() => setOpen(false)}>
