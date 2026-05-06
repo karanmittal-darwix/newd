@@ -51,6 +51,7 @@ const renderScenarioIcon = (icon: ScenarioIcon) => (
 	</svg>
 );
 
+
 export default function SherpaPage() {
 	return (
 		<main className={manrope.className}>
