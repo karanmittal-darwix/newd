@@ -34,6 +34,12 @@ const STAGES_DOUBTFUL_RESOLVED = [
   { label: "RESOLVED", color: "bg-green-500" },
 ];
 
+export const STAGES_ENGAGED_RESOLVED = [
+  { label: "ENGAGED", color: "bg-blue-500" },
+  { label: "CONVERTING", color: "bg-orange-400" },
+  { label: "RESOLVED", color: "bg-green-500" },
+];
+
 // ── AUDIO_SAMPLES ─────────────────────────────────────────────────────────────
 
 export const AUDIO_SAMPLES: AudioSample[] = [
@@ -120,10 +126,9 @@ export const AUDIO_SAMPLES: AudioSample[] = [
 
     intelligence: {
       intents: [
-        { label: "Claim eligibility", confidence: 96 },
-        { label: "Required claim process steps", confidence: 93 },
-        { label: "Missing policy document help", confidence: 90 },
-        { label: "WhatsApp details request", confidence: 95 },
+        { label: "Claim eligibility"},
+        { label: "Missing policy document help",  },
+        { label: "WhatsApp details request" },
       ],
       actions: [
         { icon: "whatsapp", text: "Claim details shared via WhatsApp" },
@@ -155,11 +160,11 @@ export const AUDIO_SAMPLES: AudioSample[] = [
       resolved: true,
       stages: STAGES_CONFUSED_RESOLVED,
       sentimentJourney: [
- {label:"Confused",start:2,end:39,color:"red"},
- {label:"Resistant",start:39,end:52,color:"orange"},
- {label:"Converting",start:52,end:111,color:"yellow"},
- {label:"Resolved",start:111,end:145,color:"green"},
-]
+      {label:"Confused",start:2,end:39,color:"red"},
+      {label:"Resistant",start:39,end:52,color:"orange"},
+      {label:"Converting",start:52,end:111,color:"yellow"},
+      {label:"Resolved",start:111,end:145,color:"green"},
+      ]
     },
 
     
@@ -187,10 +192,10 @@ export const AUDIO_SAMPLES: AudioSample[] = [
 
     intelligence: {
       intents: [
-        { label: "KYC documents and video query", confidence: 92 },
-        { label: "Requested RM callback schedule", confidence: 95 },
-        { label: "Bank proof, passbook accepted", confidence: 88 },
-        { label: "KYC timeline and confirmation", confidence: 90 },
+        { label: "KYC documents and video query"},
+        { label: "Requested RM callback schedule"  },
+        { label: "Bank proof, passbook accepted"  },
+        { label: "KYC timeline and confirmation"  },
       ],
       actions: [
         { icon: "whatsapp", text: "KYC information shared via WhatsApp → Raj" },
@@ -255,10 +260,10 @@ export const AUDIO_SAMPLES: AudioSample[] = [
 
     intelligence: {
       intents: [
-        { label: "Policy coverage, minor illness", confidence: 91 },
-        { label: "Waiting period clarification", confidence: 89 },
-        { label: "Premium non-payment impact", confidence: 93 },
-        { label: "Policy details via WhatsApp", confidence: 97 },
+        { label: "Policy coverage, minor illness"},
+        { label: "Waiting period clarification" },
+        { label: "Premium non-payment impact" },
+        { label: "Policy details via WhatsApp" },
       ],
       actions: [
         { icon: "whatsapp", text: "Policy details shared via WhatsApp → Raj" },
@@ -323,10 +328,10 @@ export const AUDIO_SAMPLES: AudioSample[] = [
 
     intelligence: {
       intents: [
-        { label: "Loan eligibility, financial profile", confidence: 94 },
-        { label: "Interest rate and documentation", confidence: 91 },
-        { label: "Prepayment and missed EMI", confidence: 88 },
-        { label: "CIBIL score implications", confidence: 92 },
+        { label: "Loan eligibility, financial profile",  },
+        { label: "Interest rate and documentation" },
+        { label: "Prepayment and missed EMI" },
+        { label: "CIBIL score implications",},
       ],
       actions: [
         { icon: "whatsapp", text: "Business loan details shared via WhatsApp → Raj" },
@@ -383,10 +388,10 @@ export const AUDIO_SAMPLES: AudioSample[] = [
 ],
     intelligence: {
       intents: [
-        { label: "Call purpose, stop repeated calls", confidence: 97 },
-        { label: "Refused identity verification", confidence: 94 },
-        { label: "Payment inability, mental distress", confidence: 96 },
-        { label: "Legitimacy and callback deferral", confidence: 91 },
+        { label: "Call purpose, stop repeated calls",  },
+        { label: "Refused identity verification",  },
+        { label: "Payment inability, mental distress",  },
+        { label: "Legitimacy and callback deferral",  },
       ],
       actions: [
         { icon: "calendar", text: "Future review date set — no immediate calling" },
@@ -452,10 +457,10 @@ export const AUDIO_SAMPLES: AudioSample[] = [
 ],
     intelligence: {
       intents: [
-        { label: "Renewal, new policy needs", confidence: 95 },
-        { label: "Add-ons and NCB transfer", confidence: 92 },
-        { label: "Online renewal process asked", confidence: 90 },
-        { label: "Requested details via WhatsApp", confidence: 97 },
+        { label: "Renewal, new policy needs",  },
+        { label: "Add-ons and NCB transfer", },
+        { label: "Online renewal process asked",  },
+        { label: "Requested details via WhatsApp", },
       ],
       actions: [
         { icon: "whatsapp", text: "Renewal link shared via WhatsApp → Raj" },
@@ -519,10 +524,10 @@ export const AUDIO_SAMPLES: AudioSample[] = [
 
     intelligence: {
       intents: [
-        { label: "Confirmed payment, scheduled funds", confidence: 96 },
-        { label: "Complaint, requested no calls", confidence: 98 },
-        { label: "Early payment date shift", confidence: 93 },
-        { label: "Requested WhatsApp payment link", confidence: 97 },
+        { label: "Confirmed payment, scheduled funds",  },
+        { label: "Complaint, requested no calls",  },
+        { label: "Early payment date shift", },
+        { label: "Requested WhatsApp payment link",  },
       ],
       actions: [
         { icon: "whatsapp", text: "Payment link shared via WhatsApp → Raj" },
@@ -586,10 +591,10 @@ export const AUDIO_SAMPLES: AudioSample[] = [
 ],
     intelligence: {
       intents: [
-        { label: "Investment goal, low risk", confidence: 93 },
-        { label: "Low budget SIP planning", confidence: 90 },
-        { label: "RM guidance for best fund", confidence: 95 },
-        { label: "KYC mandatory, flexibility allowed", confidence: 91 },
+        { label: "Investment goal, low risk",  },
+        { label: "Low budget SIP planning",},
+        { label: "RM guidance for best fund", },
+        { label: "KYC mandatory, flexibility allowed", },
       ],
       actions: [
         { icon: "whatsapp", text: "KYC list shared via WhatsApp → Raj" },
@@ -660,10 +665,10 @@ export const AUDIO_SAMPLES: AudioSample[] = [
 ],
     intelligence: {
       intents: [
-        { label: "Existing policy, coverage review", confidence: 93 },
-        { label: "Tax benefit and savings", confidence: 96 },
-        { label: "Advisor appointment scheduled", confidence: 98 },
-        { label: "Comparison sent via WhatsApp", confidence: 95 },
+        { label: "Existing policy, coverage review",  },
+        { label: "Tax benefit and savings", },
+        { label: "Advisor appointment scheduled", },
+        { label: "Comparison sent via WhatsApp",  },
       ],
       actions: [
         { icon: "whatsapp", text: "Quick comparison shared via WhatsApp → Raj" },
@@ -675,6 +680,87 @@ export const AUDIO_SAMPLES: AudioSample[] = [
       outcome: "Comparison sent via WhatsApp; Advisor appointment Sunday 12 PM",
     },
   },
+
+    // 10 ── Life Insurance Lead Qualification ─────────────────────────────────
+
+  {
+  id: 10,
+
+  header: {
+    industry: "BFSI",
+    product: "Life Insurance",
+    useCase: "Lead Qualification",
+    title: "BFSI Life Insurance Lead Qualification",
+    subtitle: "ROP plan inquiry with WhatsApp follow-up",
+    duration: "2:16",
+    languages: ["Hindi", "English"],
+    voiceGender: "Female",
+    audioSrc: "/audio/v10.mp3",
+  },
+
+   sentiment: {
+  from: "ENGAGED",
+  to: "RESOLVED",
+  resolved: true,
+  stages: STAGES_ENGAGED_RESOLVED,
+
+  sentimentJourney: [
+    { label: "Engaged", start: 0, end: 115, color: "blue" },
+    { label: "Converting", start: 115, end: 132, color: "orange" },
+    { label: "Resolved", start: 132, end: 136, color: "green" }
+  ]
+},
+
+  transcript: [
+    { id: 1, speaker: "agent", name: "Ayesha", time: "00:00", start: 0, end: 9, text: "Hi, this is Ayesha from State Bank of India Life Insurance. Calling to understand your coverage needs. Do you have a moment to talk?", tone: "Professional" },
+
+    { id: 2, speaker: "customer", name: "Raj", time: "00:09", start: 9, end: 15, text: "Yes, but please make it short. Mujhe 10 minutes baad meeting ke liye jaana hai.", event: "Preferred Time Shared" },
+
+    { id: 3, speaker: "agent", name: "Ayesha", time: "00:16", start: 16, end: 19, text: "Sure. May I know your age?", tone: "Courteous" },
+
+    { id: 4, speaker: "customer", name: "Raj", time: "00:19", start: 19, end: 41, text: "I am 29 years old. Mujhe term insurance chahiye with return of premium — agar kuch nahi hota to paisa wapas mil jaaye, aur death pe benefit bhi mile.", event: "Product Interest Shown" },
+
+    { id: 5, speaker: "agent", name: "Ayesha", time: "00:41", start: 41, end: 48, text: "Haan, aise plans available hain. Main aapko guide karungi. Kya aapke paas koi existing life insurance policy hai aur aapki annual income kitni hai?", tone: "Professional" },
+
+    { id: 6, speaker: "customer", name: "Raj", time: "00:48", start: 48, end: 59, text: "Nahi, abhi mere paas koi policy nahi hai. Friend ne refer kiya tha, isliye interest hua. Mujhe premium bhi jaana hai.", event: "Product Interest Shown" },
+
+    { id: 7, speaker: "agent", name: "Ayesha", time: "00:59", start: 59, end: 64, text: "Sure. Aapki annual income kitni hai?", tone: "Professional" },
+
+    { id: 8, speaker: "customer", name: "Raj", time: "01:04", start: 64, end: 68, text: "Around 8 lakh per annum." },
+
+    { id: 9, speaker: "agent", name: "Ayesha", time: "01:09", start: 69, end: 76, text: "Great. Is income par aapko achhe options mil sakte hain. Coverage sirf aapke liye chahiye ya family ke liye bhi?", tone: "Friendly" },
+
+    { id: 10, speaker: "customer", name: "Raj", time: "01:16", start: 76, end: 90, text: "Sirf apne liye. Mujhe life cover bhi chahiye aur agar 60 saal tak kuch nahi hota to premium return ho jaaye — main ROP plan hi dekh raha hoon.", event: "Repeated Requirement" },
+
+    { id: 11, speaker: "agent", name: "Ayesha", time: "01:30", start: 90, end: 100, text: "Haan, return wale plans available hain. Aapka goal retirement return hai ya protection bhi chahiye?", tone: "Professional" },
+
+    { id: 12, speaker: "customer", name: "Raj", time: "01:40", start: 100, end: 115, text: "Protection bhi chahiye. Mujhe accidental death aur critical illness cover bhi include chahiye.", event: "Product Interest Shown" },
+
+    { id: 13, speaker: "agent", name: "Ayesha", time: "01:55", start: 115, end: 122, text: "Samajh gaya. Aapki profile ke hisaab se suitable plan suggest kar sakte hain.", tone: "Professional" },
+
+    { id: 14, speaker: "customer", name: "Raj", time: "02:08", start: 128, end: 132, text: "Aap details WhatsApp par share kar dijiye, abhi mere paas time nahi hai.", event: "WhatsApp Requested" },
+
+    { id: 15, speaker: "agent", name: "Ayesha", time: "02:13", start: 132, end: 136, text: "Bilkul, main WhatsApp par details share kar deti hoon.", trigger: "Post-call action" }
+  ],
+
+  intelligence: {
+    intents: [
+      { label: "Product interest - Term plan with ROP" },
+      { label: "No existing policy - First-time purchase" },
+      { label: "Premium inquiry - Cost estimation" },
+      { label: "WhatsApp details request" }
+    ],
+    actions: [
+      { icon: "whatsapp", text: "Plan details shared via WhatsApp" }
+    ]
+  },
+
+  summary: {
+    text: "Raj showed interest in a term insurance plan with Return of Premium (ROP), including accidental and critical illness coverage. He had no existing policy and asked about premium. Due to time constraints, he requested details via WhatsApp. Agent handled efficiently and shared details.",
+    outcome: "Plan details shared via WhatsApp"
+  }
+},
+
 ];
 
 // ── Filter options ─────────────────────────────────────────────────────────────

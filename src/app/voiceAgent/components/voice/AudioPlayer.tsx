@@ -39,6 +39,7 @@ const AudioPlayer = forwardRef<AudioPlayerRef, Props>(
     const [duration, setDuration] = useState("00:00");
     const [remainingTime, setRemainingTime] = useState("00:00");
     const [currentSeconds, setCurrentSeconds] = useState(0);
+    const [error, setError] = useState<string | null>(null);
 
     useImperativeHandle(ref, () => ({
       play: () => wavesurferRef.current?.play(),
@@ -190,6 +191,14 @@ const AudioPlayer = forwardRef<AudioPlayerRef, Props>(
         setCurrentSeconds(0);
       });
 
+      ws.on("error", (message) => {
+        if (!isMountedRef.current) return;
+        console.error("WaveSurfer error:", message);
+        setError(`Failed to load audio: ${message}`);
+      });
+
+      setError(null); // Clear any previous errors
+
       return () => {
         isMountedRef.current = false;
         if (ws) {
@@ -224,6 +233,12 @@ const AudioPlayer = forwardRef<AudioPlayerRef, Props>(
 
     return (
       <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
+        {error && (
+          <div className="px-6 py-4 bg-red-50 border-b border-red-200">
+            <p className="text-sm text-red-700">⚠️ {error}</p>
+            <p className="text-xs text-red-600 mt-1">Checking: Audio file exists? CORS enabled? Try refreshing the page.</p>
+          </div>
+        )}
         {/* Top Bar */}
         <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
           <div className="flex items-center gap-3">

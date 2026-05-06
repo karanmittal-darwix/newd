@@ -15,7 +15,7 @@ export interface TranscriptMessage {
 
 export interface DetectedIntent {
   label: string;
-  confidence: number;
+  // confidence: number;
 }
 
 export interface PostCallAction {

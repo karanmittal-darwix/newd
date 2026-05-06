@@ -21,7 +21,7 @@ export default function PopularSamples({
 
         <div className="flex items-center gap-3">
           <span className="text-sm text-gray-400">
-            Showing {samples.length} of 240
+            Showing 9 of {samples.length} samples
           </span>
 
           <a
