@@ -152,7 +152,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-6 text-sm text-gray-600">
+        <div className="hidden md:flex items-center gap-8 text-sm text-gray-600">
           <Link href="/" className="hover:text-black transition">
             Home
           </Link>
@@ -187,14 +187,20 @@ export default function Navbar() {
             Sign in
           </Link> */}
 
-          <button className="bg-indigo-600 hover:bg-indigo-500 text-white text-sm px-5 py-2 rounded-md font-medium transition-all duration-200">
+          <button
+            onClick={handleSectionScroll("demo-request")}
+            className="bg-indigo-600 hover:bg-indigo-500 text-white text-sm px-5 py-2 rounded-md font-medium transition-all duration-200"
+          >
             Request a demo
           </button>
         </div>
 
         {/* Mobile */}
         <div className="flex items-center gap-3 md:hidden">
-          <button className="bg-indigo-600 hover:bg-indigo-500 text-white text-xs px-3 py-2 rounded-md font-medium transition">
+          <button
+            onClick={handleSectionScroll("demo-request")}
+            className="bg-indigo-600 hover:bg-indigo-500 text-white text-xs px-3 py-2 rounded-md font-medium transition"
+          >
             Demo
           </button>
 
@@ -257,8 +263,11 @@ export default function Navbar() {
             </Link>
 
             <button
-              onClick={() => setOpen(false)}
-              className="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-3 rounded-md font-medium text-left"
+              onClick={(e) => {
+                handleSectionScroll("demo-request")(e);
+                setOpen(false);
+              }}
+              className="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-3 px-2 rounded-md font-medium text-left"
             >
               Request a demo
             </button>
