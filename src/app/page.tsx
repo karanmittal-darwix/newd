@@ -15,15 +15,30 @@ const manrope = Manrope({
 	weight: ["400", "500", "600"],
 });
 
-const HERO_STATS = [
+const INITIAL_LIVE_CALL_COUNT = 38;
+const INITIAL_ACTIONS_PER_HOUR = 1247;
+const heroMetricFormatter = new Intl.NumberFormat("en-US");
+
+type HeroStat = {
+	value: string;
+	label: string;
+	highlight?: boolean;
+	metric?: "liveCalls" | "actionsPerHour";
+};
+
+const formatHeroMetric = (value: number) => heroMetricFormatter.format(value);
+
+const HERO_STATS: HeroStat[] = [
 	{
 		value: "38 live",
 		label: "Field calls running across India right now.",
 		highlight: true,
+		metric: "liveCalls",
 	},
 	{
 		value: "1,247 /hr",
 		label: "Agent actions orchestrated every hour.",
+		metric: "actionsPerHour",
 	},
 	{
 		value: "22 langs",
@@ -60,7 +75,7 @@ const STACK_ITEMS = [
 		id: "02",
 		title: "Agentic suite",
 		description:
-			"Voice agents (Darwix LP) and non-voice agents (CRM, LOS, comms) act on those tokens before the call ends.",
+			"Voice agents and non-voice agents (CRM, LOS, comms) act on those tokens before the call ends.",
 		icon: (
 			<svg
 				viewBox="0 0 24 24"
@@ -480,6 +495,11 @@ const SCENARIO_CARDS = [
 
 export default function HomePage() {
 	const [activeActionIndex, setActiveActionIndex] = useState(-1);
+	const [liveCallCount, setLiveCallCount] = useState(INITIAL_LIVE_CALL_COUNT);
+	const [actionsPerHour, setActionsPerHour] = useState(
+		INITIAL_ACTIONS_PER_HOUR,
+	);
+	const [heroMetricTick, setHeroMetricTick] = useState(0);
 	const activeActionTokens = ACTION_TOKEN_SETS[activeActionIndex] || STREAMING_TOKENS;
 
 	useEffect(() => {
@@ -491,6 +511,63 @@ export default function HomePage() {
 
 		return () => window.clearInterval(intervalId);
 	}, []);
+
+	useEffect(() => {
+		let timeoutId: number;
+
+		const scheduleNextUpdate = () => {
+			const delay = 2800 + Math.random() * 2600;
+
+			timeoutId = window.setTimeout(() => {
+				const liveCallIncrease = Math.floor(Math.random() * 3) + 1;
+				const actionIncrease =
+					liveCallIncrease * (12 + Math.floor(Math.random() * 9)) +
+					Math.floor(Math.random() * 17);
+
+				setLiveCallCount((currentCount) => currentCount + liveCallIncrease);
+				setActionsPerHour((currentCount) => currentCount + actionIncrease);
+				setHeroMetricTick((currentTick) => currentTick + 1);
+				scheduleNextUpdate();
+			}, delay);
+		};
+
+		scheduleNextUpdate();
+
+		return () => window.clearTimeout(timeoutId);
+	}, []);
+
+	const scrollToSection = (sectionId: string) => {
+		const section = document.getElementById(sectionId);
+		if (section) {
+			const navbarHeight = 64;
+			const targetPosition =
+				section.getBoundingClientRect().top + window.scrollY - navbarHeight;
+			window.scrollTo({
+				top: targetPosition,
+				behavior: "smooth",
+			});
+		}
+	};
+
+	const handleDemoScroll = () => {
+		scrollToSection("demo-request");
+	};
+
+	const handleLiveCallScroll = () => {
+		scrollToSection("live-field-intelligence");
+	};
+
+	const getHeroStatValue = (stat: HeroStat) => {
+		if (stat.metric === "liveCalls") {
+			return `${formatHeroMetric(liveCallCount)} live`;
+		}
+
+		if (stat.metric === "actionsPerHour") {
+			return `${formatHeroMetric(actionsPerHour)} /hr`;
+		}
+
+		return stat.value;
+	};
 
 	const renderScenarioVisual = (visual: string) => {
 		switch (visual) {
@@ -642,12 +719,14 @@ export default function HomePage() {
 					<div className="mt-8 flex items-center justify-center gap-3 sm:gap-4">
 						<button
 							type="button"
+							onClick={handleLiveCallScroll}
 							className="rounded-[12px] border border-[#5b5ce8] bg-white px-6 py-2.5 text-[13px] font-semibold text-[#5b5ce8] shadow-sm transition hover:border-[#4e4fd9]"
 						>
 							Watch a live call
 						</button>
 						<button
 							type="button"
+							onClick={handleDemoScroll}
 							className="rounded-[12px] bg-[#5b5ce8] px-6 py-2.5 text-[13px] font-semibold text-white shadow-lg shadow-indigo-200/80 transition hover:bg-[#5152d8]"
 						>
 							Book a demo
@@ -659,7 +738,7 @@ export default function HomePage() {
 					<div className="w-full max-w-[980px] mx-auto grid grid-cols-2 gap-y-6 sm:grid-cols-4">
 						{HERO_STATS.map((stat, index) => (
 							<div
-								key={stat.value}
+								key={stat.label}
 								className={`flex flex-col items-center gap-1 px-4 text-center sm:gap-2 ${
 									index === 0 ? "" : "sm:border-l sm:border-gray-200"
 								}`}
@@ -671,11 +750,18 @@ export default function HomePage() {
 								>
 									{stat.highlight && (
 										<span
-											className="h-2 w-2 rounded-full bg-green-500"
+											className="hero-live-dot h-2 w-2 rounded-full bg-green-500"
 											aria-hidden="true"
 										/>
 									)}
-									<span>{stat.value}</span>
+									<span
+										key={stat.metric ? `${stat.metric}-${heroMetricTick}` : stat.value}
+										className={`tabular-nums ${
+											stat.metric ? "hero-stat-value" : ""
+										}`}
+									>
+										{getHeroStatValue(stat)}
+									</span>
 								</div>
 								<span className="text-[11px] sm:text-xs text-[#8a8a8a] leading-snug">
 									{stat.label}
@@ -732,7 +818,10 @@ export default function HomePage() {
 				</div>
 			</section>
 
-			<section className="bg-white px-4 sm:px-6 lg:px-[129px] pb-20 sm:pb-24 lg:pb-28">
+			<section
+				id="live-field-intelligence"
+				className="bg-white px-4 sm:px-6 lg:px-[129px] pb-20 sm:pb-24 lg:pb-28"
+			>
 				<div className="mx-auto max-w-[1182px]">
 					<div className="text-center">
 						<p className="text-[11px] tracking-[0.4em] text-[#5b5ce8] font-semibold uppercase">
