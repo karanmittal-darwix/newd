@@ -127,8 +127,8 @@ export default function Navbar() {
           </Link>
 
           <Link
-            href="#"
-            className="transition-all duration-300 text-gray-600 hover:text-black font-normal"
+            href="/nonvoice-agent"
+            className={getNavItemClasses("/nonvoice-agent")}
           >
             Non-Voice Agents
           </Link>

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { submitDemoRequest } from "@/app/actions/demo";
+import { manrope } from "@/lib/font";
 
 export default function RequestDemoSection() {
   const [formData, setFormData] = useState({
@@ -47,7 +48,7 @@ export default function RequestDemoSection() {
 
   if (isSuccess) {
     return (
-      <section className="bg-[#eef0ff] py-24 px-6">
+      <section className={`${manrope.className} bg-[#eef0ff] py-24 px-6`}>
         <div className="max-w-4xl mx-auto bg-white rounded-[40px] p-12 text-center shadow-xl shadow-indigo-100 border border-indigo-50">
           <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
             <svg
@@ -87,7 +88,7 @@ export default function RequestDemoSection() {
   return (
     <section
       id="demo-request"
-      className="bg-[#eef0ff] py-16 sm:py-24 px-4 sm:px-6 overflow-hidden relative"
+      className={`${manrope.className} bg-[#eef0ff] py-16 sm:py-24 px-4 sm:px-6 overflow-hidden relative`}
     >
       <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-200 rounded-full blur-[100px] opacity-40 -mr-32 -mt-32"></div>
 
