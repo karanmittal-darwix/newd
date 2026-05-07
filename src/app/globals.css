@@ -122,3 +122,40 @@ transform: translateX(-50%);
   animation: none;
  }
 }
+
+/* Wave bar animation for Sherpa page — horizontal motion */
+.wave-rect {
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform, opacity;
+  animation: wave-horizontal 1.6s ease-in-out infinite;
+}
+
+@keyframes wave-horizontal {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  25% {
+    transform: translateX(4px);
+    opacity: 0.96;
+  }
+  50% {
+    transform: translateX(8px);
+    opacity: 0.92;
+  }
+  75% {
+    transform: translateX(4px);
+    opacity: 0.96;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wave-rect {
+    animation: none;
+  }
+}
