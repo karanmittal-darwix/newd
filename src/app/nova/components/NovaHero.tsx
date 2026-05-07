@@ -25,12 +25,12 @@ export default function NovaHero() {
   };
   return (
     <section
-      className={`${manrope.className} relative w-full overflow-hidden`}
-      style={{
-        background:
-          "linear-gradient(160deg, #eeeeff 0%, #f0f0ff 25%, #f5f5ff 55%, #ffffff 100%)",
-      }}
-    >
+  className={`${manrope.className} relative w-full overflow-hidden`}
+  style={{
+    backgroundImage:
+      "linear-gradient(90deg, #565ADD1F 0%, #565ADD00 100%)",
+  }}
+>
       {/* Radial glow */}
       <div
         className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2"
@@ -64,7 +64,7 @@ export default function NovaHero() {
         {/* Body */}
         <p className="mt-6 text-center text-[13px] sm:text-[15px] text-[#6e6e80] max-w-[640px] mx-auto leading-[1.75]">
           Where Sherpa is the field RM's wearable, Nova is the in-store AI
-          concierge — a screen, a kiosk, a presence at the counter. Senses the
+          concierge a screen, a kiosk, a presence at the counter. Senses the
           customer. Understands their need. Acts and converts. Same brain.
           Different skin.
         </p>

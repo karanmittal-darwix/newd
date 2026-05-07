@@ -80,7 +80,7 @@ export default function VoicePlayground() {
           </h2>
           <p className="mt-4 text-gray-500 max-w-2xl mx-auto text-base">
             Pick a combination below. Every sample was produced by the live
-            Darwix agent — no pre-recorded actors, no post-editing.
+            Darwix agent no pre-recorded actors, no post-editing.
           </p>
         </div>
 

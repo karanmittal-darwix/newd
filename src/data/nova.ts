@@ -10,7 +10,7 @@ export const NOVA_PILLARS = [
     tag: "SENSE & GREET",
     title: "Intelligent first touch.",
     description:
-      "Nova detects customers at the counter, understands their language, and greets them instantly — starting the conversation before staff steps in.",
+      "Nova detects customers at the counter, understands their language, and greets them instantly starting the conversation before staff steps in.",
     features: [
       "Person detection · zero PI storage",
       "Auto language pick · 22 langs · code-switch",

@@ -23,7 +23,7 @@ export default function NovaSurfacesSection() {
              On a <span className="text-[#5b5ce8]">kiosk.</span> On a{" "} <span className="text-[#5b5ce8]">screen.</span> At the counter. </h2>
 
           <p className="mt-6 text-[15px] leading-[1.75] text-[#7a7a7a] max-w-[820px] mx-auto">
-            Nova adapts to multiple in-store surfaces — from standalone
+            Nova adapts to multiple in-store surfaces from standalone
             kiosks to assisted retail counters and immersive display walls —
             all powered by the same conversational intelligence layer.
           </p>

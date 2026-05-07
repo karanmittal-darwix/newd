@@ -43,14 +43,14 @@ export default function LogoMarquee({
             {logos.map((logo) => (
               <div
                 key={logo.src}
-                className={`logo-marquee__item h-8 sm:h-10 ${itemClassName}`}
+                className={`logo-marquee__item flex items-center justify-center w-[150px] h-10 shrink-0 ${itemClassName}`}
               >
                 <Image
                   src={logo.src}
                   alt={logo.alt}
                   width={130}
                   height={35}
-                  className={`h-full w-auto opacity-95 brightness-0 invert ${imageClassName}`}
+                  className={`max-h-full w-auto object-contain opacity-95 brightness-0 invert ${imageClassName}`}
                 />
               </div>
             ))}
@@ -61,14 +61,14 @@ export default function LogoMarquee({
             {logos.map((logo, index) => (
               <div
                 key={`${logo.src}-dup-${index}`}
-                className={`logo-marquee__item h-8 sm:h-10 ${itemClassName}`}
+                className={`logo-marquee__item flex items-center justify-center w-[140px] h-10 shrink-0 ${itemClassName}`}
               >
                 <Image
                   src={logo.src}
                   alt=""
                   width={130}
                   height={35}
-                  className={`h-full w-auto opacity-95 brightness-0 invert ${imageClassName}`}
+                  className={`max-h-full w-auto object-contain opacity-95 brightness-0 invert ${imageClassName}`}
                 />
               </div>
             ))}

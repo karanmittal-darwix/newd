@@ -22,7 +22,7 @@ const TrackBotSummary: React.FC = () => {
         </h1>
         <p className="mt-2 text-sm text-gray-500 leading-relaxed">
           Auto-generated compliance reports per call: disclosures, mis-selling
-          flags, regulated-word triggers — pre-formatted for your auditor.
+          flags, regulated-word triggers pre-formatted for your auditor.
         </p>
       </div>
 

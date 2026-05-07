@@ -32,20 +32,11 @@ export default function Hero() {
     <section
       className={`${manrope.className} relative overflow-hidden pt-16 sm:pt-20 pb-20 sm:pb-24 px-4 sm:px-6`}
       style={{
-        background:
-          "linear-gradient(160deg, #eeeeff 0%, #f0f0ff 30%, #f5f5ff 60%, #ffffff 100%)",
-      }}
+  backgroundImage:
+    "linear-gradient(90deg, #565ADD1F 0%, #565ADD00 100%)",
+}}
     >
-      {/* Soft radial glow */}
-      <div
-        className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2"
-        style={{
-          width: 900,
-          height: 520,
-          background:
-            "radial-gradient(ellipse at 50% 0%, rgba(91,92,232,0.12) 0%, transparent 72%)",
-        }}
-      />
+
 
       <div className="relative w-full max-w-[1400px] mx-auto text-center">
         {/* Heading */}
