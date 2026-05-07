@@ -12,7 +12,7 @@ const manrope = Manrope({ subsets: ["latin"], weight: ["400", "500", "600"] });
 export const metadata = {
   title: "Nova | Darwix AI",
   description:
-    "Physical AI for the real world. Voice, agents, and field in lockstep. Nova is the in-store AI concierge — a screen, a kiosk, a presence at the counter.",
+    "Physical AI for the real world. Voice, agents, and field in lockstep. Nova is the in-store AI concierge a screen, a kiosk, a presence at the counter.",
 };
 
 export default function NovaPage() {

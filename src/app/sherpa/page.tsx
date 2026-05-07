@@ -107,7 +107,7 @@ export default function SherpaPage() {
       >
         <div className="relative max-w-[1182px] mx-auto text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#e3e7f5] bg-white px-3.5 py-1.5 text-[11px] font-medium text-[#7b7b7b] shadow-sm">
-            <span className="inline-flex h-2.5 w-2.5 rotate-45 rounded-[2px] bg-[#5b5ce8]" />
+            <img src="/images/star.svg" alt="Star" />
             <span>Physical AI Assist</span>
             <span className="text-[#d0d3e4]">&middot;</span>
             <span>BFSI field-grade</span>

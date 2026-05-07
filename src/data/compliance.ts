@@ -15,7 +15,7 @@ export const CERTIFICATIONS = [
     badge: "DPDP ACT",
     title: "Consent + masking",
     description:
-      "Aligned with India's Digital Personal Data Protection Act — purpose limitation, masking, retention.",
+      "Aligned with India's Digital Personal Data Protection Act purpose limitation, masking, retention.",
   },
   {
     badge: "RBI · 2018 PDL",
@@ -27,7 +27,7 @@ export const CERTIFICATIONS = [
     badge: "RBI · 2025 OUTSOURCING",
     title: "Supervisory access",
     description:
-      "Aligned to the 2025 Outsourcing Directions — supervisory access, exit transition, audit.",
+      "Aligned to the 2025 Outsourcing Directions supervisory access, exit transition, audit.",
   },
   {
     badge: "FREE-AI",
@@ -39,7 +39,7 @@ export const CERTIFICATIONS = [
     badge: "IRDAI MITC",
     title: "Verbal disclosure trail",
     description:
-      "Captures and audits IRDAI Most Important Terms & Conditions disclosures — verbal + written.",
+      "Captures and audits IRDAI Most Important Terms & Conditions disclosures verbal + written.",
   },
   {
     badge: "TRAI · DLT",
@@ -76,35 +76,35 @@ export const PLATFORM_GUARANTEES = [
     number: "01",
     title: "Data Residency",
     description:
-      "Every byte of customer payment data lives on Indian soil — RBI 2018 Payment Data Localisation directive. On-prem, VPC, or sovereign cloud. Your choice. Never US-routed.",
+      "Every byte of customer payment data lives on Indian soil RBI 2018 Payment Data Localisation directive. On-prem, VPC, or sovereign cloud. Your choice. Never US-routed.",
     tags: ["RBI 2018", "India-only"],
   },
   {
     number: "04",
     title: "Consent Framework",
     description:
-      "Granular customer consent capture — purpose, retention, withdrawal. DPDP-aligned, IRDAI-aligned, TRAI-aligned. One trail across voice, SMS, WhatsApp.",
+      "Granular customer consent capture purpose, retention, withdrawal. DPDP-aligned, IRDAI-aligned, TRAI-aligned. One trail across voice, SMS, WhatsApp.",
     tags: ["DPDP", "withdrawal"],
   },
   {
     number: "02",
     title: "Supervisory Access",
     description:
-      "RBI 2025 Outsourcing Directions compliance — your regulator gets read access to controls, logs, and audit trails. Exit transition is rehearsed quarterly.",
+      "RBI 2025 Outsourcing Directions compliance your regulator gets read access to controls, logs, and audit trails. Exit transition is rehearsed quarterly.",
     tags: ["RBI 2025", "read-access"],
   },
   {
     number: "05",
     title: "Model Governance",
     description:
-      "FREE-AI aligned governance — model lineage, training-data provenance, drift monitoring, override audit. Your CISO gets a dashboard. Your regulator gets the trail.",
+      "FREE-AI aligned governance model lineage, training-data provenance, drift monitoring, override audit. Your CISO gets a dashboard. Your regulator gets the trail.",
     tags: ["FREE-AI", "drift mon"],
   },
   {
     number: "03",
     title: "PI Masking · Live",
     description:
-      "Mobile, Aadhaar, PAN, DOB masked from transcript and replay — both at speech time and at storage time. Live PI shield indicator visible to the agent.",
+      "Mobile, Aadhaar, PAN, DOB masked from transcript and replay both at speech time and at storage time. Live PI shield indicator visible to the agent.",
     tags: ["DPDP", "at-source"],
   },
   {

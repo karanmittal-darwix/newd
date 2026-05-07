@@ -23,11 +23,9 @@ export default function ComplianceHero() {
       {/* Subtle radial glow top-center */}
       <div
         className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2"
-        style={{
-          width: 800,
-          height: 500,
-          background:
-            "radial-gradient(ellipse at 50% 0%, rgba(91,92,232,0.10) 0%, transparent 70%)",
+         style={{
+          backgroundImage:
+            "linear-gradient(90deg, #565ADD1F 0%, #565ADD00 100%)",
         }}
       />
 

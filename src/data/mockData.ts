@@ -96,7 +96,7 @@ export const AUDIO_SAMPLES: AudioSample[] = [
     
     transcript: [
   { id: 1,  speaker: "agent",    name: "Ayesha",   time: "00:01", start: 1,   end: 6,   text: "Hi, this is Ayesha from Edelweiss Life Insurance. How can I help you today?", tone: "Friendly" },
-  { id: 2,  speaker: "customer", name: "Raj", time: "00:06", start: 6,   end: 23,  text: "Hi Ayesha. I purchased a term insurance plan, but the major problem is my proposer and nominee both are demised — I'm unable to claim.", event: "Issue Reported" },
+  { id: 2,  speaker: "customer", name: "Raj", time: "00:06", start: 6,   end: 23,  text: "Hi Ayesha. I purchased a term insurance plan, but the major problem is my proposer and nominee both are demised I'm unable to claim.", event: "Issue Reported" },
   { id: 3,  speaker: "agent",    name: "Ayesha",   time: "00:23", start: 23,  end: 30,  text: "I'm sorry for the trouble. Do you mean you cannot access policy documents, or you're concerned about claim eligibility?", tone: "Empathetic" },
   { id: 4,  speaker: "customer", name: "Raj", time: "00:30", start: 30,  end: 41,  text: "Both actually. Documents bhi access nahi ho rahe and proposer nominee dono ki death ho chuki hai." },
   { id: 5,  speaker: "agent",    name: "Ayesha",   time: "00:41", start: 41,  end: 48,  text: "Ye sunke mujhe afsos hua. If nominee is unavailable, claim can proceed through legal heir process.", tone: "Empathetic" },

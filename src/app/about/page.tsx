@@ -232,7 +232,7 @@ const manrope = Manrope({ subsets: ["latin"], weight: ["400", "500", "600"] });
 export const metadata = {
   title: "Compliance | Darwix AI",
   description:
-    "Built for India's regulated stack — RBI, DPDP, IRDAI MITC, FREE-AI, TRAI. SOC 2, ISO 27001 certified.",
+    "Built for India's regulated stack RBI, DPDP, IRDAI MITC, FREE-AI, TRAI. SOC 2, ISO 27001 certified.",
 };
 
 export default function CompliancePage() {

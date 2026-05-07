@@ -627,10 +627,10 @@ const NonVoiceAgentHero: React.FC = () => {
   return (
     <section
       className={`${manrope.className} relative w-full overflow-hidden px-4 sm:px-6 pt-16 sm:pt-20 lg:pt-[88px] pb-14 text-center`}
-      style={{
-        background:
-          "linear-gradient(160deg, #eeeeff 0%, #f0f0ff 25%, #f5f5ff 55%, #ffffff 100%)",
-      }}
+       style={{
+          backgroundImage:
+            "linear-gradient(90deg, #565ADD1F 0%, #565ADD00 100%)",
+        }}
     >
       {/* Subtle radial glow */}
       <div

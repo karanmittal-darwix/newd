@@ -9,7 +9,7 @@ const TRIGGERS = [
       { label: "+91 98•• ••12", arrow: "→" },
     ],
     description:
-      "Send sanction letter, invoice, policy document, payment link — from pre-approved templates.",
+      "Send sanction letter, invoice, policy document, payment link from pre-approved templates.",
   },
   {
     icon: "/images/postcall/email.svg",
