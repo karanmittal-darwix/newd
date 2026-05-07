@@ -179,7 +179,7 @@ export default function RequestDemoSection() {
                       value={formData.email}
                       onChange={handleChange}
                       type="text"
-                      placeholder="example@company.com"
+                      placeholder="example@company.in"
                       className="w-full h-14 px-5 rounded-2xl bg-gray-50 border border-gray-100 focus:outline-none focus:ring-4 focus:ring-indigo-50 focus:border-indigo-400 transition-all text-gray-900 font-medium placeholder:text-gray-300"
                     />
                   </div>

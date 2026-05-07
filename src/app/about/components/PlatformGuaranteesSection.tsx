@@ -13,8 +13,8 @@ export default function PlatformGuaranteesSection() {
           <h2 className="text-[32px] sm:text-[40px] lg:text-[48px] font-semibold text-[#4b4b4b] tracking-[-0.03em] leading-[1.1]">
             Six guarantees. Built into the platform.
           </h2>
-          <p className="mt-4 text-sm sm:text-base text-[#7a7a7a] max-w-[540px] mx-auto leading-relaxed">
-            Each capability is measurable, benchmarked quarterly against human agents
+          <p className="mt-4 text-sm sm:text-base text-[#7a7a7a] max-w-[800px] mx-auto leading-relaxed">
+            Six core assurances are deeply embedded into the platform architecture, continuously measured and benchmarked to deliver consistent, reliable performance across every deployment.
           </p>
         </div>
 
@@ -23,8 +23,13 @@ export default function PlatformGuaranteesSection() {
           {PLATFORM_GUARANTEES.map((item) => (
             <div
               key={item.number}
-              className="rounded-[16px] border border-[#eceef4] bg-white p-6 sm:p-7 shadow-[0_8px_24px_rgba(37,44,97,0.05)] hover:shadow-[0_12px_32px_rgba(91,92,232,0.08)] hover:border-[#d4d6ff] transition-all duration-200"
+              className="relative overflow-hidden border border-[#f0f1f7] bg-white px-6 py-6 sm:px-7"
             >
+              <span
+                className="absolute inset-y-0 left-0 w-[3px] bg-[#5b5ce8]"
+                aria-hidden="true"
+              />
+
               {/* Number + tags row */}
               <div className="flex items-start justify-between gap-4 mb-4">
                 <span className="text-[11px] font-semibold text-[#9aa0b2] tracking-[0.2em]">

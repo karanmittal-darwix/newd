@@ -128,8 +128,8 @@ const INTEGRATIONS: {
     { name: "Salesforce", logo: "/images/company/salesforce.svg" },
     { name: "HubSpot", logo: "/images/company/hubspot.svg" },
     { name: "Zoho", logo: "", textLogo: true, textColor: "text-red-500" },
-    { name: "LeadSquared", logo: "/images/int-leadsquared.svg" },
-    { name: "FreshSales", logo: "/images/company/freshsales.svg" },
+    { name: "", logo: "/images/company/lead.svg", logoClass: "w-15 h-12" },
+    { name: "", logo: "/images/company/fresh.svg", logoClass: "w-15 h-12" },
     { name: "", logo: "/images/company/pipedrive.svg", logoClass: "w-15 h-12" },
   ],
 ];

@@ -14,9 +14,8 @@ export default function CertificationsSection() {
             Eight frames.{" "}
             <span className="text-[#5b5ce8]">Audited</span> annually.
           </h2>
-          <p className="mt-4 text-sm sm:text-base text-[#7a7a7a] max-w-[520px] mx-auto leading-relaxed">
-            Voice intent → field nudges → ops actions → SLM training. The flywheel
-            compounds with every call.
+          <p className="mt-4 text-sm sm:text-base text-[#7a7a7a] max-w-[800px] mx-auto leading-relaxed">
+            A robust compliance backbone built on globally recognized frameworks, independently audited each year to ensure security, availability, and regulatory alignment at scale.
           </p>
         </div>
 

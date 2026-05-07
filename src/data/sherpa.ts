@@ -67,8 +67,8 @@ export const WAVE_BAR_MAX = 60;
 
 export const WAVE_ROWS = [
 	{ color: "text-[#5b5ce8]", db: "67dB", text: "Raw Input" },
-	{ color: "text-[#cfd3e6]", db: "-42dB", text: "Noise Floor" },
-	{ color: "text-[#5b5ce8]", db: "+18dB", text: "Clean Out" },
+	{ color: "text-[#cfd3e6]", db: "42dB", text: "Noise Floor" },
+	{ color: "text-[#5b5ce8]", db: "25dB", text: "Clean Out" },
 ];
 
 export const CAPABILITY_ITEMS = [

@@ -1,8 +1,27 @@
+"use client";
+
 import React from "react";
 import DemoRequestSection from "@/components/DemoRequestSection";
 import { Manrope } from "next/font/google";
 
 const manrope = Manrope({ subsets: ["latin"], weight: ["400", "500", "600"] });
+
+const scrollToSection = (sectionId: string) => {
+  const section = document.getElementById(sectionId);
+  if (section) {
+    const navbarHeight = 64;
+    const targetPosition =
+      section.getBoundingClientRect().top + window.scrollY - navbarHeight;
+    window.scrollTo({
+      top: targetPosition,
+      behavior: "smooth",
+    });
+  }
+};
+
+const handleAgentCatalogueScroll = () => {
+  scrollToSection("agent-catalogue");
+};
 
 interface Stat {
   value: string;
@@ -313,7 +332,10 @@ const SquadCard: React.FC<{ squad: Squad }> = ({ squad }) => (
 );
 
 const SquadAgents: React.FC = () => (
-  <section className={`${manrope.className} w-full bg-white px-4 sm:px-6 py-16`}>
+  <section
+    id="agent-catalogue"
+    className={`${manrope.className} w-full bg-white px-4 sm:px-6 py-16`}
+  >
     <div className="text-center mb-12">
       <p className="text-[11px] font-semibold tracking-[0.3em] text-[#5b5ce8] uppercase mb-3">
         Two squads of agents
@@ -366,8 +388,7 @@ const UtteranceToActions: React.FC = () => (
             </span>
           </div>
           <p className="text-sm text-[#4b4b4b] leading-relaxed">
-            &ldquo;Bhai, mera spouse bhi co-applicant hai. Aap surveyor Saturday
-            11 baje bhej do, EMI date 10th rakh dijiye.&rdquo;
+            &ldquo;My spouse is also a co-applicant. Please send the surveyor on Saturday at 11 AM, and keep the EMI date as the 10th rakh dijiye.&rdquo;
           </p>
         </div>
 
@@ -594,12 +615,12 @@ const StopHiringCTA: React.FC = () => (
             conversation. The factory takes care of the rest.
           </p>
           <div className="flex flex-wrap gap-3">
-            <button className="rounded-[10px] border border-[#5b5ce8] bg-white px-6 py-2.5 text-[13px] font-semibold text-[#5b5ce8] shadow-sm transition-all hover:bg-[#f5f5ff]">
+            {/* <button className="rounded-[10px] border border-[#5b5ce8] bg-white px-6 py-2.5 text-[13px] font-semibold text-[#5b5ce8] shadow-sm transition-all hover:bg-[#f5f5ff]">
               View the agent catalogue
             </button>
             <button className="rounded-[10px] bg-[#5b5ce8] px-6 py-2.5 text-[13px] font-semibold text-white shadow-lg shadow-indigo-200/70 transition-all hover:bg-[#4e4fd9]">
               Book a non-voice pilot
-            </button>
+            </button> */}
           </div>
         </div>
 
@@ -672,7 +693,11 @@ const NonVoiceAgentHero: React.FC = () => {
 
       {/* CTA buttons */}
       <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
-          <button className="rounded-[10px] bg-[#5b5ce8] px-6 py-2.5 text-[13px] font-semibold text-white shadow-lg shadow-indigo-200/70 transition-all hover:bg-[#4e4fd9]">
+          <button
+            type="button"
+            onClick={handleAgentCatalogueScroll}
+            className="rounded-[10px] bg-[#5b5ce8] px-6 py-2.5 text-[13px] font-semibold text-white shadow-lg shadow-indigo-200/70 transition-all hover:bg-[#4e4fd9]"
+          >
           View the agent catalogue
         </button>
         {/* <button className="rounded-[10px] bg-[#5b5ce8] px-6 py-2.5 text-[13px] font-semibold text-white shadow-lg shadow-indigo-200/70 transition-all hover:bg-[#4e4fd9]">

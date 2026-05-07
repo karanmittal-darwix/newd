@@ -128,11 +128,12 @@ export default function SherpaPage() {
 
           <h1 className="mt-8 text-4xl sm:text-5xl lg:text-[69px] font-semibold text-[#4b4b4b] tracking-tight lg:tracking-[-2.13px] leading-[1.1] lg:leading-[77.52px] lg:whitespace-nowrap">
             The voice in your on{" "}
-            <span className="text-[#5b5ce8]">ground team&apos;s ear.</span>
+            <span className="text-[#5b5ce8]">ground team&apos;s </span>
+						ear.
           </h1>
 
           <p className="mt-5 text-sm sm:text-base text-[#7a7a7a] max-w-[780px] mx-auto leading-relaxed">
-            Sherpa rides alongside the agent on every in-person BFSI call,
+            Sherpa rides alongside the agent on every in-person call,
             capturing studio-grade audio, scoring the script live, and
             whispering nudges before the customer finishes their objection.
           </p>
@@ -162,12 +163,12 @@ export default function SherpaPage() {
           </div>
 
           <div className="mt-8 flex items-center justify-center gap-3 sm:gap-4">
-            <button
+            {/* <button
               type="button"
               className="rounded-[12px] border border-[#5b5ce8] bg-white px-6 py-2.5 text-[13px] font-semibold text-[#5b5ce8] shadow-sm transition hover:border-[#4e4fd9]"
             >
               Meet the device
-            </button>
+            </button> */}
             <button
               type="button"
               onClick={handleDemoScroll}
@@ -178,7 +179,7 @@ export default function SherpaPage() {
           </div>
         </div>
 
-        <div className="mt-12 sm:mt-14">
+        {/* <div className="mt-12 sm:mt-14">
           <div className="w-full max-w-[920px] mx-auto min-h-[151px] grid grid-cols-2 sm:grid-cols-4">
             {DEVICE_STATS.map((stat) => (
               <div
@@ -194,7 +195,7 @@ export default function SherpaPage() {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </section>
 
       <section className="bg-white px-4 sm:px-6">
@@ -401,10 +402,10 @@ export default function SherpaPage() {
         <div className="max-w-6xl mx-auto pt-4 sm:pt-8 pb-16 sm:pb-24">
           <div className="text-center">
             <p className="text-xs font-semibold tracking-[0.3em] text-indigo-500 uppercase">
-              Built for BFSI
+              Built for field Calls
             </p>
             <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-semibold text-gray-600 tracking-tight">
-              Four <span className="text-indigo-600">field scenarios</span>{" "}
+               <span className="text-indigo-600">Scenarios</span>{" "}
               already in production.
             </h2>
           </div>
@@ -471,7 +472,7 @@ export default function SherpaPage() {
             <div className="flex flex-col lg:flex-row lg:items-center gap-10">
               <div className="flex-1">
                 <h3 className="text-3xl sm:text-4xl font-semibold text-gray-600 leading-tight">
-                  Loop in. Tag. Coach. Mid-call.
+                  Loop in. Tag. Coach. <span className="text-indigo-600">Mid-call.</span>
                 </h3>
                 <p className="mt-4 text-sm sm:text-base text-gray-400 max-w-lg">
                   Managers see the floor live. They can join any call, drop a
@@ -544,13 +545,13 @@ export default function SherpaPage() {
                 A device built to do{" "}
                 <span className="text-indigo-600">multiple things well.</span>
               </h2>
-              <p className="mt-4 text-sm sm:text-base text-gray-400 max-w-xl">
+              <p className="mt-4 text-sm sm:text-base text-gray-400 max-w-md">
                 Phone capture works in quiet settings. For noisy field
                 environments, Sherpa is the purpose-built clip-on with always-on
                 listening and low-latency in-ear nudges.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
-                <button
+                {/* <button
                   type="button"
                   className="rounded-xl border border-indigo-300 bg-white px-5 sm:px-6 py-2.5 text-sm font-semibold text-indigo-600 shadow-sm shadow-indigo-100/80 transition hover:border-indigo-400"
                 >
@@ -561,7 +562,7 @@ export default function SherpaPage() {
                   className="rounded-xl bg-indigo-600 px-5 sm:px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-200/80 transition hover:bg-indigo-500"
                 >
                   Order eval kit
-                </button>
+                </button> */}
               </div>
             </div>
 
