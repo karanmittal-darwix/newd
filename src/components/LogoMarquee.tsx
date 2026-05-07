@@ -1,67 +1,80 @@
 import Image from "next/image";
 
 type Logo = {
-	src: string;
-	alt: string;
+  src: string;
+  alt: string;
 };
 
 type LogoMarqueeProps = {
-	logos: readonly Logo[];
-	className?: string;
-	barClassName?: string;
-	itemClassName?: string;
-	imageClassName?: string;
+  logos: readonly Logo[];
+  title?: string;
+  className?: string;
+  barClassName?: string;
+  itemClassName?: string;
+  imageClassName?: string;
 };
 
 export default function LogoMarquee({
-	logos,
-	className = "",
-	barClassName = "",
-	itemClassName = "",
-	imageClassName = "",
+  logos,
+  title = "Trusted by Top Enterprises Globally",
+  className = "",
+  barClassName = "",
+  itemClassName = "",
+  imageClassName = "",
 }: LogoMarqueeProps) {
-	return (
-		<div
-			className={`relative left-1/2 right-1/2 w-screen -ml-[50vw] -mr-[50vw] ${className}`}
-		>
-			<div
-				className={`w-screen logo-marquee rounded-xl bg-indigo-600 py-4 px-6 sm:px-10 ${barClassName}`}
-			>
-				<div className="logo-marquee__track">
-					<div className="logo-marquee__row">
-						{logos.map((logo) => (
-							<div
-								key={logo.src}
-								className={`logo-marquee__item h-6 sm:h-7 ${itemClassName}`}
-							>
-								<Image
-									src={logo.src}
-									alt={logo.alt}
-									width={110}
-									height={28}
-									className={`h-full w-auto opacity-90 brightness-0 invert ${imageClassName}`}
-								/>
-							</div>
-						))}
-					</div>
-					<div className="logo-marquee__row" aria-hidden="true">
-						{logos.map((logo, index) => (
-							<div
-								key={`${logo.src}-dup-${index}`}
-								className={`logo-marquee__item h-6 sm:h-7 ${itemClassName}`}
-							>
-								<Image
-									src={logo.src}
-									alt=""
-									width={110}
-									height={28}
-									className={`h-full w-auto opacity-90 brightness-0 invert ${imageClassName}`}
-								/>
-							</div>
-						))}
-					</div>
-				</div>
-			</div>
-		</div>
-	);
+  return (
+    <div
+      className={`relative left-1/2 right-1/2 w-screen -ml-[50vw] -mr-[50vw] ${className}`}
+    >
+      {/* Top heading line */}
+      <div className="flex items-center justify-center  bg-white px-6 py-3">
+        <p className="text-[14px] sm:text-[15px] font-semibold text-[#4b4b4b] tracking-[-0.01em]">
+          {title}
+        </p>
+      </div>
+
+      {/* Marquee bar */}
+      <div
+        className={`w-screen overflow-hidden bg-[#5b5ce8] py-5 px-6 sm:px-10 ${barClassName}`}
+      >
+        <div className="logo-marquee__track">
+          {/* First Row */}
+          <div className="logo-marquee__row">
+            {logos.map((logo) => (
+              <div
+                key={logo.src}
+                className={`logo-marquee__item h-8 sm:h-10 ${itemClassName}`}
+              >
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={130}
+                  height={35}
+                  className={`h-full w-auto opacity-95 brightness-0 invert ${imageClassName}`}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Duplicate Row */}
+          <div className="logo-marquee__row" aria-hidden="true">
+            {logos.map((logo, index) => (
+              <div
+                key={`${logo.src}-dup-${index}`}
+                className={`logo-marquee__item h-8 sm:h-10 ${itemClassName}`}
+              >
+                <Image
+                  src={logo.src}
+                  alt=""
+                  width={130}
+                  height={35}
+                  className={`h-full w-auto opacity-95 brightness-0 invert ${imageClassName}`}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }

@@ -31,7 +31,7 @@ export default function ComplianceHero() {
         }}
       />
 
-      <div className="relative mx-auto max-w-[1182px] px-4 sm:px-6 lg:px-[129px] pt-16 sm:pt-20 lg:pt-[88px] pb-0">
+      <div className="relative mx-auto max-w-[1182px] px-4 sm:px-6 lg:px-[129px] pt-16 sm:pt-20 lg:pt-[88px] pb-16 sm:pb-20 lg:pb-24">
         {/* Pill badge */}
         <div className="flex justify-center mb-8">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#dddff0] bg-white/80 px-4 py-1.5 text-[11px] font-medium text-[#7b7b7b] shadow-sm backdrop-blur-sm">
