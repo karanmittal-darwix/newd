@@ -96,6 +96,19 @@ export default function SherpaPage() {
     return () => window.clearInterval(intervalId);
   }, []);
 
+  const handleDemoScroll = () => {
+    const section = document.getElementById("demo-request");
+    if (section) {
+      const navbarHeight = 64;
+      const targetPosition =
+        section.getBoundingClientRect().top + window.scrollY - navbarHeight;
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <main className={manrope.className}>
       <section
@@ -157,6 +170,7 @@ export default function SherpaPage() {
             </button>
             <button
               type="button"
+              onClick={handleDemoScroll}
               className="rounded-[12px] bg-[#5b5ce8] px-6 py-2.5 text-[13px] font-semibold text-white shadow-lg shadow-indigo-200/80 transition hover:bg-[#5152d8]"
             >
               Book a demo

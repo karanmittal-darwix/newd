@@ -123,6 +123,45 @@ transform: translateX(-50%);
  }
 }
 
+.hero-live-dot {
+  animation: hero-live-dot-pulse 2.4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.hero-stat-value {
+  animation: hero-stat-fade 360ms ease-out;
+}
+
+@keyframes hero-live-dot-pulse {
+  0%,
+  100% {
+    opacity: 0.72;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+}
+
+@keyframes hero-stat-fade {
+  0% {
+    opacity: 0.72;
+    transform: translateY(1px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-live-dot,
+  .hero-stat-value {
+    animation: none;
+  }
+}
+
 /* Wave bar animation for Sherpa page — horizontal motion */
 .wave-rect {
   transform-box: fill-box;

@@ -63,10 +63,7 @@ export default function NovaHero() {
 
         {/* Body */}
         <p className="mt-6 text-center text-[13px] sm:text-[15px] text-[#6e6e80] max-w-[640px] mx-auto leading-[1.75]">
-          Where Sherpa is the field RM's wearable, Nova is the in-store AI
-          concierge a screen, a kiosk, a presence at the counter. Senses the
-          customer. Understands their need. Acts and converts. Same brain.
-          Different skin.
+          Nova is the Darwix's brain, re-imagined for stores, kiosks, dealerships and showrooms. Out of the cloud, into the floor. Listens, speaks, responds in real time, in the customer's language.
         </p>
 
         {/* CTAs */}
