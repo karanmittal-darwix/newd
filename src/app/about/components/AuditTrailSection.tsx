@@ -22,7 +22,7 @@ export default function AuditTrailSection() {
             What the audit trail looks like
           </p>
 
-          <h2 className="mt-5 text-[32px] sm:text-[42px] lg:text-[54px] font-semibold text-[#4b4b4b] tracking-[-0.045em] leading-[1.08] max-w-[980px] mx-auto">
+          <h2 className="mt-5 text-[10px] sm:text-[42px] lg:text-[54px] font-semibold text-[#4b4b4b] tracking-[-0.045em] leading-[1.08] max-w-[980px] mx-auto">
             Every call leaves a{" "}
             <span className="text-[#5b5ce8]">trail</span>{" "}
             your{" "}

@@ -98,7 +98,7 @@ const STACK_ITEMS = [
     id: "03",
     title: "BFSI Small Language Model",
     description:
-      "The SLM at the core. Trained on 4M+ Indian enterprise calls. Each wedge gets sharper from the previous one's experience.",
+      "The SLM at the core. Trained on 4M+ Indian enterprise calls. Each interaction gets sharper from the previous one's experience.",
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -440,7 +440,7 @@ const SLM_METRICS = [
 
 const WEDGE_CARDS = [
   {
-    id: "WEDGE 01",
+    id: "1",
     title: "Voice intent",
     description:
       "62 BFSI objection patterns, 22 Indian languages, code-switch native. Tagged in real time.",
@@ -449,7 +449,7 @@ const WEDGE_CARDS = [
     metricTone: "text-[#19a84b]",
   },
   {
-    id: "WEDGE 02",
+    id: "2",
     title: "Field nudges",
     description:
       "Live prompts during in-person Sherpa calls, scoring agents on script, compliance, and tone.",
@@ -458,7 +458,7 @@ const WEDGE_CARDS = [
     metricTone: "text-[#19a84b]",
   },
   {
-    id: "WEDGE 03",
+    id: "3",
     title: "Agentic ops",
     description:
       "Auto-CRM, auto-LOS, auto-SR - every BFSI workflow wired before the call ends.",
@@ -467,10 +467,10 @@ const WEDGE_CARDS = [
     metricTone: "text-[#19a84b]",
   },
   {
-    id: "WEDGE 04 · LAUNCHING SOON",
+    id: "4",
     title: "SLM flywheel",
     description:
-      "Each wedge feeds proprietary tokens back to the SLM. Three months in, the model knows your customers.",
+      "Each interaction feeds proprietary tokens back to the SLM. Three months in, the model knows your customers.",
     metricLabel: "Per quarter",
     metricValue: "+12% nudge accuracy",
     metricTone: "text-[#19a84b]",
@@ -479,10 +479,10 @@ const WEDGE_CARDS = [
 ];
 
 const VALUE_METRICS = [
-  { value: "10×", label: "Agent Productivity" },
-  { value: "5×", label: "Field Value" },
-  { value: "-42%", label: "Cycle Time" },
-  { value: "+27%", label: "Conversion Lift" },
+  { value: "12 ×", label: "Agent Productivity" },
+  { value: "8 ×", label: "Field Value" },
+  { value: "-42 %", label: "Cycle Time" },
+  { value: "+27 %", label: "Conversion Lift" },
 ];
 
 const SUITE_CARDS = [
@@ -833,7 +833,7 @@ export default function HomePage() {
           </div>
 
           <h1 className="mt-8 text-4xl sm:text-5xl lg:text-[64px] font-semibold text-[#4b4b4b] tracking-tight lg:tracking-[-2px] leading-[1.1]">
-            One BFSI brain. Voice, agents, and field{" "}
+            One BFSI brain. Voice Automation, agents, and field{" "}
             <span className="text-[#5b5ce8]">in lockstep.</span>
           </h1>
 
@@ -841,7 +841,7 @@ export default function HomePage() {
             Darwix orchestrates the Sherpa field call, the parallel voice
             campaign and a hundred back-office agents from a single proprietary
             stack. Real-time tokens flow into an in-house SLM that learns from
-            every wedge.
+            every interaction.
           </p>
 
           <div className="mt-8 flex items-center justify-center gap-3 sm:gap-4">
@@ -1193,13 +1193,13 @@ export default function HomePage() {
           <div className="mt-20 sm:mt-24">
             <div className="text-center max-w-[760px] mx-auto">
               <p className="text-[11px] tracking-[0.38em] text-[#5b5ce8] font-semibold uppercase">
-                Proprietary BFSI Wedges
+                Proprietary BFSI SLM
               </p>
               <h2 className="mt-4 text-[28px] sm:text-[36px] lg:text-[42px] font-semibold text-[#4b4b4b] leading-[1.15] tracking-[-0.02em]">
-                Each wedge gets sharper from
+                Each interaction gets sharper from
                 <br />
                 <span className="text-[#5b5ce8]">
-                  the previous one’s experience.
+                  the previous experience.
                 </span>
               </h2>
               <p className="mt-4 text-sm sm:text-base text-[#7a7a7a] leading-relaxed">
@@ -1223,7 +1223,7 @@ export default function HomePage() {
                       card.featured ? "text-[#5b5ce8]" : "text-[#9aa0b2]"
                     }`}
                   >
-                    {card.id}
+                    {/* {card.id} */}
                   </p>
                   <h3 className="mt-4 text-[19px] font-semibold tracking-[-0.01em] text-[#4b4b4b]">
                     {card.title}
@@ -1296,7 +1296,7 @@ export default function HomePage() {
               Explore the suite
             </p>
             <h2 className="mt-4 text-[32px] sm:text-[40px] lg:text-[44px] font-semibold text-[#4b4b4b] leading-[1.1] tracking-[-0.03em]">
-              <span className="text-[#5b5ce8]">Multiple Agents one brain.</span>
+              <span className="text-[#5b5ce8]">Multiple  <span className="text-[#4b4b4b]">agents. One brain.</span></span>
             </h2>
           </div>
 
