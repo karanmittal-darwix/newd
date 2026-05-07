@@ -1,62 +1,3 @@
-// import Link from "next/link";
-
-// export default function Navbar() {
-//   return (
-//     <nav className="bg-white sticky top-0 z-50 w-full border-b border-gray-200">
-
-//       <div className="max-w-7xl mx-auto px-6 h-[64px] flex items-center justify-between">
-
-//         {/* LOGO */}
-//         <Link href="/" className="flex items-center">
-//           <img
-//             src="/images/darwix.svg"
-//             alt="Darwix AI"
-//             className="h-10 w-auto"
-//           />
-//         </Link>
-
-//         {/* CENTER */}
-//         <div className="hidden md:flex items-center gap-6 text-sm text-gray-600">
-//           <Link href="#" className="hover:text-black transition">
-//             Voice playground
-//           </Link>
-//           <Link href="#" className="hover:text-black transition">
-//             Capabilities
-//           </Link>
-//           <Link href="#" className="hover:text-black transition">
-//             Parallel dialing
-//           </Link>
-//           <Link href="#" className="hover:text-black transition">
-//             Post-call actions
-//           </Link>
-//           <Link href="#" className="hover:text-black transition">
-//             Languages
-//           </Link>
-//           <Link href="/about" className="hover:text-black transition">
-//             About Us
-//           </Link>
-
-//         </div>
-
-//         {/* RIGHT */}
-//         <div className="flex items-center gap-4">
-//           <Link
-//             href="#"
-//             className="text-sm text-gray-600 hover:text-black transition"
-//           >
-//             Sign in
-//           </Link>
-
-//           <button className="bg-indigo-600 hover:bg-indigo-500 text-white text-sm px-5 py-2 rounded-md font-medium transition-all duration-200">
-//             Request a demo
-//           </button>
-//         </div>
-
-//       </div>
-//     </nav>
-//   );
-// }
-
 "use client";
 import { useState, useEffect, useRef } from "react";
 import { useRouter, usePathname } from "next/navigation";
@@ -66,7 +7,27 @@ export default function Navbar() {
   const router = useRouter();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
+  const menuRef = useRef<HTMLElement>(null);
+
+  // Helper function to check if a route is active
+  const isActive = (href: string): boolean => {
+    if (href === "/") {
+      return pathname === "/";
+    }
+    return pathname.startsWith(href);
+  };
+
+  // Helper to get nav item classes
+  const getNavItemClasses = (href: string): string => {
+    const isCurrentActive = isActive(href);
+    const baseClasses = "transition-all duration-300 relative";
+
+    if (isCurrentActive) {
+      return `${baseClasses} text-[#5b5ce8] font-semibold after:absolute after:bottom-[-8px] after:left-0 after:right-0 after:h-[3px] after:bg-[#5b5ce8] after:rounded-t`;
+    }
+
+    return `${baseClasses} text-gray-600 hover:text-black font-normal`;
+  };
 
   // Store the target section ID to scroll to after navigation
   useEffect(() => {
@@ -137,11 +98,11 @@ export default function Navbar() {
     };
 
   return (
-    <nav className="sticky top-0 z-50 w-full bg-white border-b border-gray-200">
-      <div
-        ref={menuRef}
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[64px] flex items-center justify-between"
-      >
+    <nav
+      ref={menuRef}
+      className="sticky top-0 z-50 w-full bg-white border-b border-gray-200"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[64px] flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center shrink-0">
           <img
@@ -152,28 +113,31 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8 text-sm text-gray-600">
-          <Link href="/" className="hover:text-black transition">
+        <div className="hidden md:flex items-center gap-8 text-sm">
+          <Link href="/" className={getNavItemClasses("/")}>
             Home
           </Link>
 
-          <Link href="/sherpa" className="hover:text-black transition">
+          <Link href="/sherpa" className={getNavItemClasses("/sherpa")}>
             Sherpa
           </Link>
 
-          <Link href="/voiceAgent" className="hover:text-black transition">
-            Voice Agents
+          <Link href="/voiceAgent" className={getNavItemClasses("/voiceAgent")}>
+            Voice Automation
           </Link>
 
-          <Link href="#" className="hover:text-black transition">
+          <Link
+            href="#"
+            className="transition-all duration-300 text-gray-600 hover:text-black font-normal"
+          >
             Non-Voice Agents
           </Link>
 
-          <Link href="/nova" className="hover:text-black transition">
+          <Link href="/nova" className={getNavItemClasses("/nova")}>
             Nova
           </Link>
 
-          <Link href="/about" className="hover:text-black transition">
+          <Link href="/about" className={getNavItemClasses("/about")}>
             About
           </Link>
         </div>
@@ -236,38 +200,86 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {open && (
-        <div className="md:hidden border-t border-gray-200 bg-white">
-          <div className="px-4 py-4 flex flex-col space-y-4 text-sm text-gray-700">
-            <Link href="/" onClick={() => setOpen(false)}>
+        <div className="md:hidden border-t border-gray-200 bg-white pointer-events-auto relative z-40">
+          <div className="px-4 py-4 flex flex-col space-y-4 text-sm">
+            <Link
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                setOpen(false);
+                router.push("/");
+              }}
+              className={`${getNavItemClasses("/")} py-2`}
+            >
               Home
             </Link>
 
-            <Link href="/sherpa" onClick={() => setOpen(false)}>
+            <Link
+              href="/sherpa"
+              onClick={(e) => {
+                e.preventDefault();
+                setOpen(false);
+                router.push("/sherpa");
+              }}
+              className={`${getNavItemClasses("/sherpa")} py-2`}
+            >
               Sherpa
             </Link>
 
-            <Link href="/voiceAgent" onClick={() => setOpen(false)}>
+            <Link
+              href="/voiceAgent"
+              onClick={(e) => {
+                e.preventDefault();
+                setOpen(false);
+                router.push("/voiceAgent");
+              }}
+              className={`${getNavItemClasses("/voiceAgent")} py-2`}
+            >
               Voice Agents
             </Link>
 
-            <Link href="#" onClick={() => setOpen(false)}>
+            <Link
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                setOpen(false);
+              }}
+              className="transition-all duration-300 text-gray-600 hover:text-black font-normal py-2"
+            >
               Non-Voice Agents
             </Link>
 
-            <Link href="/nova" onClick={() => setOpen(false)}>
+            <Link
+              href="/nova"
+              onClick={(e) => {
+                e.preventDefault();
+                setOpen(false);
+                router.push("/nova");
+              }}
+              className={`${getNavItemClasses("/nova")} py-2`}
+            >
               Nova
             </Link>
 
-            <Link href="/about" onClick={() => setOpen(false)}>
+            <Link
+              href="/about"
+              onClick={(e) => {
+                e.preventDefault();
+                setOpen(false);
+                router.push("/about");
+              }}
+              className={`${getNavItemClasses("/about")} py-2`}
+            >
               About
             </Link>
 
             <button
               onClick={(e) => {
+                e.stopPropagation();
                 handleSectionScroll("demo-request")(e);
                 setOpen(false);
               }}
-              className="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-3 px-2 rounded-md font-medium text-left"
+              className="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-3 px-2 rounded-md font-medium text-center transition-all duration-200 mt-4"
             >
               Request a demo
             </button>
