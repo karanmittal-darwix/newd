@@ -3,6 +3,18 @@
 import DemoRequestSection from "@/components/DemoRequestSection";
 import LogoMarquee from "@/components/LogoMarquee";
 import { Manrope } from "next/font/google";
+import Image from "next/image";
+import { useState } from "react";
+import AgentAssistNudges from "./components/AgentAssistNudges";
+import AuditCompliance from "./components/AuditCompilance";
+import CommitAutoTasks from "./components/CommitAutoTasks";
+import RedactPiiMasking from "./components/RedactPiiMasking";
+import ScoreAIBreakdown from "./components/ScoreAIBreakdown";
+import SentinelMonitor from "./components/SentinelMonitor";
+import TrackBotSummary from "./components/TrackBotSummary";
+import VerifyAutoKYC from "./components/VerifyAutoKYC";
+import connectorImage from "./images/connector.png";
+import watchImage from "./images/watch.png";
 import {
   ANATOMY_CARDS,
   BFSI_SCENARIOS,

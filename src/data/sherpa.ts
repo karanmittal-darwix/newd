@@ -83,36 +83,50 @@ export const CAPABILITY_ITEMS = [
 		id: "02",
 		title: "Redact AI",
 		subtitle: "PII masking",
+		description:
+			"Real-time, context-aware prompts triggered on customer intent. Audio-enabled so the FO never glances at a screen.",
 	},
 	{
 		id: "03",
 		title: "Verify AI",
 		subtitle: "auto-KYC",
+		description:
+			"Real-time, context-aware prompts triggered on customer intent. Audio-enabled so the FO never glances at a screen.",
 	},
 	{
 		id: "04",
 		title: "Commit AI",
 		subtitle: "auto-PD & tasks",
+		description:
+			"Real-time, context-aware prompts triggered on customer intent. Audio-enabled so the FO never glances at a screen.",
 	},
 	{
 		id: "05",
 		title: "Sentinel AI",
 		subtitle: "manager monitor",
+		description:
+			"Real-time, context-aware prompts triggered on customer intent. Audio-enabled so the FO never glances at a screen.",
 	},
 	{
 		id: "06",
 		title: "Audit AI",
 		subtitle: "compliance reports",
+		description:
+			"Real-time, context-aware prompts triggered on customer intent. Audio-enabled so the FO never glances at a screen.",
 	},
 	{
 		id: "07",
 		title: "TrackBot AI",
 		subtitle: "summary & commitments",
+		description:
+			"Real-time, context-aware prompts triggered on customer intent. Audio-enabled so the FO never glances at a screen.",
 	},
 	{
 		id: "08",
 		title: "Score AI",
 		subtitle: "parameter breakdown",
+		description:
+			"Real-time, context-aware prompts triggered on customer intent. Audio-enabled so the FO never glances at a screen.",
 	},
 ];
 
