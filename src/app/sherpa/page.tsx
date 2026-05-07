@@ -126,7 +126,7 @@ export default function SherpaPage() {
             <span>BFSI field-grade</span>
           </div>
 
-          <h1 className="mt-8 text-4xl sm:text-5xl lg:text-[69px] font-semibold text-[#4b4b4b] tracking-tight lg:tracking-[-2.13px] leading-[1.1] lg:leading-[77.52px] lg:whitespace-nowrap">
+          <h1 className="mt-8 text-4xl sm:text-5xl lg:text-[69px] font-semibold text-[#4b4b4b] tracking-tight lg:tracking-[-2.13px] leading-[1.1] lg:leading-[77.52px]">
             The voice in your on{" "}
             <span className="text-[#5b5ce8]">ground team&apos;s </span>
 						ear.
@@ -251,7 +251,7 @@ export default function SherpaPage() {
           <div className="rounded-3xl bg-[#eef0ff] p-6 sm:p-10 md:p-12">
             <div className="flex flex-col lg:flex-row lg:items-center gap-10">
               <div className="flex-1">
-                <h3 className="w-[577.756px] h-[203px] text-[46px] font-semibold text-[#4b4b4b] leading-[50.6px] tracking-[-0.92px]">
+                <h3 className="max-w-[578px] text-3xl sm:text-4xl lg:text-[46px] font-semibold text-[#4b4b4b] leading-tight lg:leading-[50.6px] tracking-tight lg:tracking-[-0.92px]">
                   Branch noise
                   <br />
                   <span className="text-[#5b5ce8]">cancelled.</span>
