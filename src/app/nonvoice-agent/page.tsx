@@ -672,12 +672,12 @@ const NonVoiceAgentHero: React.FC = () => {
 
       {/* CTA buttons */}
       <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
-        <button className="rounded-[10px] border border-[#5b5ce8] bg-white px-6 py-2.5 text-[13px] font-semibold text-[#5b5ce8] shadow-sm transition-all hover:bg-[#f5f5ff]">
+          <button className="rounded-[10px] bg-[#5b5ce8] px-6 py-2.5 text-[13px] font-semibold text-white shadow-lg shadow-indigo-200/70 transition-all hover:bg-[#4e4fd9]">
           View the agent catalogue
         </button>
-        <button className="rounded-[10px] bg-[#5b5ce8] px-6 py-2.5 text-[13px] font-semibold text-white shadow-lg shadow-indigo-200/70 transition-all hover:bg-[#4e4fd9]">
+        {/* <button className="rounded-[10px] bg-[#5b5ce8] px-6 py-2.5 text-[13px] font-semibold text-white shadow-lg shadow-indigo-200/70 transition-all hover:bg-[#4e4fd9]">
           Book a non-voice pilot
-        </button>
+        </button> */}
       </div>
 
       {/* Stats row */}

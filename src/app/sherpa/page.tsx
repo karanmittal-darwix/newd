@@ -295,7 +295,7 @@ export default function SherpaPage() {
                         className="flex items-center gap-4"
                       >
                         <span className="text-[11px] text-[#9aa0b2] tracking-[0.2em]">
-                          RAW INPUT
+                          {row.text}
                         </span>
                         <svg
                           viewBox="0 0 360 60"
@@ -505,21 +505,21 @@ export default function SherpaPage() {
                     {LIVE_CALLS.map((call) => (
                       <div
                         key={call.name}
-                        className="flex items-center justify-between gap-4 py-3"
+                        className="grid grid-cols-[minmax(0,1fr)_92px_86px] items-center gap-3 py-3.5 sm:grid-cols-[minmax(0,1fr)_140px_104px] sm:gap-4"
                       >
-                        <div>
-                          <p className="text-sm font-semibold text-gray-700">
+                        <div className="min-w-0">
+                          <p className="truncate text-sm font-semibold leading-tight text-gray-700">
                             {call.name}
                           </p>
-                          <p className="text-xs text-gray-400">
+                          <p className="mt-1 truncate text-xs leading-tight text-gray-400">
                             {call.location}
                           </p>
                         </div>
-                        <p className="text-xs text-gray-500 flex-1 text-center">
+                        <p className="w-full text-left text-xs text-gray-500">
                           {call.metric}
                         </p>
                         <span
-                          className={`rounded-full px-3 py-1 text-[11px] font-semibold ${
+                          className={`justify-self-end whitespace-nowrap rounded-full px-3 py-1 text-[11px] font-semibold ${
                             STATUS_STYLES[call.statusTone]
                           }`}
                         >

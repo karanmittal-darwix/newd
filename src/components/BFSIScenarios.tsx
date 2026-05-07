@@ -38,17 +38,15 @@ const ChecklistVisual: React.FC = () => (
               item.done
                 ? "bg-[#5B5CE8] text-white"
                 : item.warn
-                ? "bg-amber-400 text-white"
-                : "bg-slate-200 text-slate-400"
+                  ? "bg-amber-400 text-white"
+                  : "bg-slate-200 text-slate-400"
             }`}
         >
           {item.done ? "✓" : item.warn ? "!" : "✕"}
         </span>
         <span
           className={`text-[12px] ${
-            item.error
-              ? "text-[#C4C7D2] line-through"
-              : "text-[#65697A]"
+            item.error ? "text-[#C4C7D2] line-through" : "text-[#65697A]"
           }`}
         >
           {item.label}
@@ -66,12 +64,8 @@ const RiskProfileVisual: React.FC = () => (
     </div>
 
     <div className="flex items-center justify-between rounded-lg bg-[#5B5CE8] px-3 py-2">
-      <span className="text-[12px] font-semibold text-white">
-        Risk profile
-      </span>
-      <span className="text-[12px] font-semibold text-white">
-        Moderate
-      </span>
+      <span className="text-[12px] font-semibold text-white">Risk profile</span>
+      <span className="text-[12px] font-semibold text-white">Moderate</span>
     </div>
 
     <div className="flex justify-between text-[11px] pt-0.5">
@@ -94,12 +88,8 @@ const PortfolioVisual: React.FC = () => (
       { label: "Alt", pct: 32, color: "bg-[#E0E1F8]" },
     ].map((item) => (
       <div key={item.label} className="flex items-center gap-3">
-        <span
-          className={`h-3 w-3 rounded-sm flex-shrink-0 ${item.color}`}
-        />
-        <span className="text-[12px] text-[#65697A] flex-1">
-          {item.label}
-        </span>
+        <span className={`h-3 w-3 rounded-sm flex-shrink-0 ${item.color}`} />
+        <span className="text-[12px] text-[#65697A] flex-1">{item.label}</span>
         <span className="text-[12px] font-semibold text-[#4B4B4B]">
           {item.pct}%
         </span>
@@ -282,9 +272,7 @@ const VisitStepsVisual: React.FC = () => (
 
         <span
           className={`text-[12px] ${
-            step.active
-              ? "text-[#4B4B4B] font-medium"
-              : "text-[#9AA0B2]"
+            step.active ? "text-[#4B4B4B] font-medium" : "text-[#9AA0B2]"
           }`}
         >
           {step.label}
@@ -301,8 +289,7 @@ const scenarios: ScenarioCard[] = [
     id: "home-loan",
     visual: <ChecklistVisual />,
     title: "Home Loan & MSME Underwriting",
-    description:
-      "Sherpa briefs underwriters live with key checks and cues.",
+    description: "Sherpa briefs underwriters live with key checks and cues.",
     stats: [
       { label: "Applications:", value: "4,200+" },
       { label: "Speed:", value: "+29%", accent: true },
@@ -441,9 +428,7 @@ const BFSIScenarios: React.FC = () => (
       <h2 className="mt-4 text-[28px] sm:text-[36px] lg:text-[42px] font-semibold text-[#4B4B4B] leading-[1.15] tracking-[-0.02em]">
         Built for one industry.
         <br />
-        <span className="text-[#5B5CE8]">
-          Tuned to many sub-verticals.
-        </span>
+        <span className="text-[#5B5CE8]">Tuned to many sub-verticals.</span>
       </h2>
     </div>
 
@@ -452,6 +437,9 @@ const BFSIScenarios: React.FC = () => (
         <ScenarioCard key={card.id} card={card} />
       ))}
     </div>
+<p className="mt-7 text-center text-[16px] sm:text-[15px] font-medium text-[#6b6b74] tracking-[-0.01em]">
+  And many more sub-verticals...
+</p>
   </section>
 );
 
