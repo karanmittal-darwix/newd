@@ -3,6 +3,10 @@
 import { Manrope } from "next/font/google";
 import LogoMarquee from "@/components/LogoMarquee";
 import DemoRequestSection from "@/components/DemoRequestSection";
+
+import { BFSI_SCENARIOS, TRUST_LOGOS } from "@/data/sherpa";
+import AgentOrb from "./voiceAgent/components/hero/AgentOrb";
+import { useEffect, useState } from "react";
 import { marLogos } from "@/data/marLogos";
 
 const manrope = Manrope({
@@ -195,7 +199,6 @@ const ACTION_EVENTS = [
     icon: "card",
     status: "firing",
     statusClass: "bg-[#4f58de] text-white",
-    highlight: true,
   },
   {
     name: "Calendar · site-visit 24 Apr",
@@ -387,6 +390,29 @@ const STREAMING_TOKENS = [
   "payment_calendar",
 ];
 
+const ACTION_TOKEN_SETS = [
+  ["doc_sanction_v1", "channel_as_pref", "wa_template_v3", "consent_captured"],
+  ["crm_stage_disburse", "emi_shift_10th", "next_disburse", "owner_sync"],
+  ["sr_emi_change", "ops_auto_route", "sla_clock_started", "payment_calendar"],
+  ["kyc_reverify", "address_proof_needed", "risk_band_b", "customer_360"],
+  [
+    "rm_summary_email",
+    "next_step_owner",
+    "hot_lead_context",
+    "sentiment_resolved",
+  ],
+  ["los_disbursement_note", "btm_pending", "scheduled_t1", "lap_24081"],
+  ["hot_lead_inr40l", "manager_route_priya", "sentiment_up", "priority_notify"],
+  ["payment_link_generated", "emi_inr2480", "wa_delivery", "expires_6h"],
+  [
+    "site_visit_24_apr",
+    "calendar_invite_sent",
+    "rm_availability",
+    "branch_followup",
+  ],
+  ["risk_rescore", "band_b_to_a", "bureau_pull_t8", "score_band"],
+];
+
 const SLM_METRICS = [
   { label: "Params", value: "3.7B" },
   { label: "Calls trained", value: "4.2M" },
@@ -537,18 +563,20 @@ const SCENARIO_CARDS = [
 ];
 
 export default function HomePage() {
-  const handleBookDemo = () => {
-    const section = document.getElementById("demo-request");
-    if (section) {
-      const navbarHeight = 64;
-      const targetPosition =
-        section.getBoundingClientRect().top + window.scrollY - navbarHeight;
-      window.scrollTo({
-        top: targetPosition,
-        behavior: "smooth",
-      });
-    }
-  };
+  const [activeActionIndex, setActiveActionIndex] = useState(-1);
+  const activeActionTokens =
+    ACTION_TOKEN_SETS[activeActionIndex] || STREAMING_TOKENS;
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setActiveActionIndex((currentIndex) =>
+        currentIndex >= ACTION_EVENTS.length - 1 ? -1 : currentIndex + 1,
+      );
+    }, 1200);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
+
   const renderScenarioVisual = (visual: string) => {
     switch (visual) {
       case "checklist":
@@ -720,7 +748,7 @@ export default function HomePage() {
       >
         <div className="relative mx-auto max-w-[1182px] text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#e3e7f5] bg-white px-3.5 py-1.5 text-[11px] font-medium text-[#7b7b7b] shadow-sm">
-            <img src="/images/star.svg" alt="Star" />
+            <span className="inline-flex h-2.5 w-2.5 rotate-45 rounded-[2px] bg-[#5b5ce8]" />
             <span>Built for BFSI</span>
             <span className="text-[#d0d3e4]">&middot;</span>
             <span>Powered by an in-house SLM</span>
@@ -739,14 +767,13 @@ export default function HomePage() {
           </p>
 
           <div className="mt-8 flex items-center justify-center gap-3 sm:gap-4">
-            {/* <button
+            <button
               type="button"
               className="rounded-[12px] border border-[#5b5ce8] bg-white px-6 py-2.5 text-[13px] font-semibold text-[#5b5ce8] shadow-sm transition hover:border-[#4e4fd9]"
             >
               Watch a live call
-            </button> */}
+            </button>
             <button
-              onClick={handleBookDemo}
               type="button"
               className="rounded-[12px] bg-[#5b5ce8] px-6 py-2.5 text-[13px] font-semibold text-white shadow-lg shadow-indigo-200/80 transition hover:bg-[#5152d8]"
             >
@@ -811,7 +838,7 @@ export default function HomePage() {
                 className="rounded-2xl border border-[#e5e7f5] bg-[#f7f8ff] px-5 py-4 sm:px-6 sm:py-5 flex items-start justify-between gap-4"
               >
                 <div className="flex items-start gap-4">
-                  <div className="h-10 w-10 rounded-full border border-[#e5e7f5] bg-white text-xs font-semibold text-[#5b5ce8] flex items-center justify-center">
+                  <div className="h-10 min-h-10 w-10 min-w-10 shrink-0 rounded-full border border-[#e5e7f5] bg-white text-xs font-semibold text-[#5b5ce8] flex items-center justify-center">
                     {item.id}
                   </div>
                   <div>
@@ -943,7 +970,7 @@ export default function HomePage() {
                     BFSI tokens streaming to SLM
                   </p>
                   <div className="mt-2 flex flex-wrap gap-1.5">
-                    {STREAMING_TOKENS.map((token) => (
+                    {activeActionTokens.map((token) => (
                       <span
                         key={token}
                         className="rounded-md border border-[#e7e9f7] bg-[#f2f3fb] px-2.5 py-1 text-[10px] font-semibold text-[#4f58de]"
@@ -965,35 +992,58 @@ export default function HomePage() {
               <div className="mt-4 border-b border-dashed border-[#d8d9df]" />
 
               <div className="mt-5 space-y-2.5">
-                {ACTION_EVENTS.map((event) => (
-                  <div
-                    key={event.name}
-                    className={`rounded-xl border px-3.5 py-3 flex items-start justify-between gap-3 ${
-                      event.highlight
-                        ? "border-[#5b62e8] bg-[#f3f4ff]"
-                        : "border-[#e4e4e8] bg-[#f5f5f6]"
-                    }`}
-                  >
-                    <div className="flex items-start gap-3">
-                      <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-[#d8d9df] bg-[#f7f7f8]">
-                        {renderActionIcon(event.icon)}
-                      </div>
-                      <div>
-                        <p className="align-middle text-[12px] font-semibold leading-[14.4px] tracking-[0] text-[#27304d]">
-                          {event.name}
-                        </p>
-                        <p className="mt-0.5 text-[12px] leading-tight text-[#7d808c]">
-                          {event.subtitle}
-                        </p>
-                      </div>
-                    </div>
-                    <span
-                      className={`mt-0.5 rounded-md px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] ${event.statusClass}`}
+                {ACTION_EVENTS.map((event, index) => {
+                  const isActiveAction = index === activeActionIndex;
+                  const isCompletedAction =
+                    activeActionIndex >= 0 && index < activeActionIndex;
+                  const isPendingAction =
+                    activeActionIndex >= 0 && index > activeActionIndex;
+                  const actionButtonClass = isActiveAction
+                    ? "border-[#4f58de] bg-[#f3f4ff] shadow-[0_0_0_1px_rgba(79,88,222,0.14)]"
+                    : isCompletedAction
+                      ? "border-[#19a84b] bg-[#effaf3]"
+                      : "border-[#e4e4e8] bg-white";
+                  const statusBadgeClass = isActiveAction
+                    ? "border border-[#4f58de] bg-[#4f58de] text-white"
+                    : isCompletedAction
+                      ? "border border-[#19a84b] bg-[#19a84b] text-white"
+                      : "border border-[#d6d8df] bg-white text-[#9ca0aa]";
+                  const statusLabel = isActiveAction
+                    ? "firing"
+                    : isCompletedAction
+                      ? "wired"
+                      : event.status;
+
+                  return (
+                    <button
+                      type="button"
+                      key={event.name}
+                      onClick={() => setActiveActionIndex(index)}
+                      className={`w-full rounded-xl border px-3.5 py-3 flex items-start justify-between gap-3 text-left transition ${actionButtonClass}`}
                     >
-                      {event.status}
-                    </span>
-                  </div>
-                ))}
+                      <div className="flex items-start gap-3">
+                        <div
+                          className={`mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md border ${isActiveAction ? "border-[#c8cdfa] bg-white" : isCompletedAction ? "border-[#bfe6cb] bg-white" : "border-[#d8d9df] bg-[#f7f7f8]"}`}
+                        >
+                          {renderActionIcon(event.icon)}
+                        </div>
+                        <div>
+                          <p className="align-middle text-[12px] font-semibold leading-[14.4px] tracking-[0] text-[#27304d]">
+                            {event.name}
+                          </p>
+                          <p className="mt-0.5 text-[12px] leading-tight text-[#7d808c]">
+                            {event.subtitle}
+                          </p>
+                        </div>
+                      </div>
+                      <span
+                        className={`mt-0.5 rounded-md px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] ${statusBadgeClass}`}
+                      >
+                        {statusLabel}
+                      </span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
@@ -1009,12 +1059,8 @@ export default function HomePage() {
               <div className="mt-4 border-b border-dashed border-[#d8d9df]" />
 
               <div className="mt-7 flex justify-center">
-                <div className="relative h-[190px] w-[190px]">
-                  <div className="absolute inset-[10px] rounded-full border border-[#a8aeff]" />
-                  <div className="absolute inset-[2px] rounded-full border border-[#d8dcff]" />
-                  <div className="absolute inset-[14px] rounded-full border border-[#f0f1f6] bg-[radial-gradient(circle_at_35%_30%,#ffffff_0%,#ececf1_52%,#dddddf_100%)]" />
-                  <div className="absolute left-1/2 top-1/2 h-[82px] w-[82px] -translate-x-1/2 -translate-y-1/2 rounded-[20px] bg-[#6a70ea]/70 blur-[10px]" />
-                  <div className="absolute left-[58%] top-[52%] h-[58px] w-[58px] -translate-x-1/2 -translate-y-1/2 rounded-[16px] bg-[#5d63e4]/60 blur-[8px]" />
+                <div className="h-[190px] w-[190px] overflow-hidden rounded-full">
+                  <AgentOrb />
                 </div>
               </div>
 
@@ -1025,10 +1071,10 @@ export default function HomePage() {
                     className="border-b border-dashed border-[#d8d9df] py-3 first:pt-0"
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-[17px] text-[#6f717a]">
+                      <span className="text-[12px] text-[#6f717a]">
                         {metric.label}
                       </span>
-                      <span className="text-[16px] font-semibold text-[#232846]">
+                      <span className="text-[12px] font-semibold text-[#232846]">
                         {metric.value}
                       </span>
                     </div>
@@ -1249,8 +1295,8 @@ export default function HomePage() {
             </h2>
           </div>
 
-          <div className="mx-auto mt-8 max-w-[1182px] rounded-[18px] border border-[#ececf3] bg-[#fbfbfd] px-5 py-8 shadow-[0_12px_38px_rgba(37,44,97,0.04)] sm:px-6 lg:px-6 lg:py-12">
-            <div className="grid items-stretch gap-5 lg:grid-cols-[1fr_36px_1fr_36px_1fr_36px_1fr]">
+          <div className="mx-auto mt-8 max-w-[1320px] rounded-[18px] border border-[#ececf3] bg-[#fbfbfd] px-5 py-8 shadow-[0_12px_38px_rgba(37,44,97,0.04)] sm:px-6 lg:px-6 lg:py-12">
+            <div className="grid items-stretch gap-5 lg:grid-cols-[1fr_44px_1fr_44px_1fr_44px_1fr]">
               <div className="flex min-h-[338px] flex-col rounded-[14px] border border-[#eceef6] bg-white p-5 text-left shadow-[0_10px_24px_rgba(37,44,97,0.04)]">
                 <div className="flex items-start justify-between">
                   <span className="text-[11px] font-semibold text-[#5b5ce8]">
@@ -1301,7 +1347,7 @@ export default function HomePage() {
 
               <div className="hidden items-center justify-center lg:flex">
                 <div className="relative h-px w-full bg-[#5b5ce8]">
-                  <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[125%] rounded-full border border-[#dfe1ea] bg-white px-2 py-1 text-[10px] font-semibold text-[#686d7a]">
+                  <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[125%] whitespace-nowrap rounded-full border border-[#dfe1ea] bg-white px-2 py-1 text-[10px] font-semibold text-[#686d7a]">
                     Handoff
                   </span>
                   <span className="absolute -right-1 top-1/2 h-2 w-2 -translate-y-1/2 rotate-45 border-r border-t border-[#5b5ce8]" />
@@ -1365,8 +1411,8 @@ export default function HomePage() {
 
               <div className="hidden items-center justify-center lg:flex">
                 <div className="relative h-px w-full bg-[#5b5ce8]">
-                  <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[125%] rounded-full border border-[#dfe1ea] bg-white px-2 py-1 text-[10px] font-semibold text-[#686d7a]">
-                    Walk-in
+                  <span className="absolute left-1/2 top-1/2 min-w-[54px] -translate-x-1/2 -translate-y-[125%] whitespace-nowrap rounded-full border border-[#dfe1ea] bg-white px-2 py-1 text-center text-[10px] font-semibold text-[#686d7a] [word-break:keep-all]">
+                    Walk&#8209;in
                   </span>
                   <span className="absolute -right-1 top-1/2 h-2 w-2 -translate-y-1/2 rotate-45 border-r border-t border-[#5b5ce8]" />
                 </div>
@@ -1428,7 +1474,7 @@ export default function HomePage() {
 
               <div className="hidden items-center justify-center lg:flex">
                 <div className="relative h-px w-full bg-[#5b5ce8]">
-                  <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[125%] rounded-full border border-[#dfe1ea] bg-white px-2 py-1 text-[10px] font-semibold text-[#686d7a]">
+                  <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[125%] whitespace-nowrap rounded-full border border-[#dfe1ea] bg-white px-2 py-1 text-[10px] font-semibold text-[#686d7a]">
                     Closed
                   </span>
                   <span className="absolute -right-1 top-1/2 h-2 w-2 -translate-y-1/2 rotate-45 border-r border-t border-[#5b5ce8]" />
@@ -1487,6 +1533,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
       <DemoRequestSection />
     </main>
   );
