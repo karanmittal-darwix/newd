@@ -1,54 +1,86 @@
 "use client";
 
+import { Manrope } from "next/font/google";
 import HeroStats from "./HeroStats";
 import AgentOrb from "./AgentOrb";
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 export default function Hero() {
   const handleDemoScroll = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+
     const demoSection = document.getElementById("demo-request");
+
     if (demoSection) {
-      const navbarHeight = 64; // Height of sticky navbar
+      const navbarHeight = 64;
+
       const targetPosition =
         demoSection.getBoundingClientRect().top + window.scrollY - navbarHeight;
+
       window.scrollTo({
         top: targetPosition,
         behavior: "smooth",
       });
     }
   };
+
   return (
-    <section className="bg-white pt-16 sm:pt-20 pb-0 px-4 sm:px-6 overflow-hidden">
-      <div className="max-w-5xl mx-auto text-center">
-        <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight max-w-4xl mx-auto">
-          An <span className="text-indigo-600">AI Agent</span> that actually{" "}
-          <span className="text-indigo-600">holds the line</span>
+    <section
+      className={`${manrope.className} relative overflow-hidden pt-16 sm:pt-20 pb-20 sm:pb-24 px-4 sm:px-6`}
+      style={{
+        background:
+          "linear-gradient(160deg, #eeeeff 0%, #f0f0ff 30%, #f5f5ff 60%, #ffffff 100%)",
+      }}
+    >
+      {/* Soft radial glow */}
+      <div
+        className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2"
+        style={{
+          width: 900,
+          height: 520,
+          background:
+            "radial-gradient(ellipse at 50% 0%, rgba(91,92,232,0.12) 0%, transparent 72%)",
+        }}
+      />
+
+      <div className="relative w-full max-w-[1400px] mx-auto text-center">
+        {/* Heading */}
+        <h1 className="text-[38px] sm:text-[52px] lg:text-[64px] font-semibold tracking-[-0.055em] leading-[1.02] max-w-[1400px] mx-auto text-[#3a3a4a]">
+          An <span className="text-[#5b5ce8]">AI Agent</span> that actually{" "}
+          <span className="text-[#5b5ce8]">holds the line</span>
         </h1>
 
-        <p className="mt-6 text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
+        {/* Body */}
+        <p className="mt-7 text-[15px] sm:text-[17px] text-[#6e6e80] max-w-3xl mx-auto leading-[1.8]">
           Darwix dials thousands of your customers in parallel, speaks their
           language, handles objections, and triggers the right action the moment
           the call ends.
         </p>
 
-        {/* Dynamic Orb */}
-        <div className="mt-10 flex justify-center">
+        {/* Orb */}
+        <div className="mt-12 flex justify-center">
           <div className="max-w-5xl w-full">
             <AgentOrb />
           </div>
         </div>
 
-        <div className="mt-5">
+        {/* CTA */}
+        <div className="mt-8">
           <button
             onClick={handleDemoScroll}
-            className="bg-indigo-600 hover:bg-indigo-500 text-white text-sm px-5 py-3 rounded-md font-medium shadow-lg transition-all duration-200"
+            className="rounded-[12px] bg-[#5b5ce8] px-6 py-3 text-[14px] font-semibold text-white shadow-lg shadow-indigo-200/70 transition-all duration-200 hover:bg-[#4e4fd9] hover:shadow-indigo-300/60"
           >
             Request a demo
           </button>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto">
+      {/* Stats */}
+      <div className="relative max-w-7xl mx-auto mt-16">
         <HeroStats />
       </div>
     </section>
