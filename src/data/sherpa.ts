@@ -1,5 +1,5 @@
 export const FEATURE_ITEMS = [
-	{ title: "9,800 FOs", subtitle: "equipped", hasDot: true },
+	{ title: "9,800 FOS", subtitle: "equipped", hasDot: true },
 	{ title: "Active noise cancellation", subtitle: "built-in" },
 	{ title: "8KB on-device", subtitle: "storage" },
 ];
@@ -66,9 +66,9 @@ export const WAVE_BAR_GAP = 4;
 export const WAVE_BAR_MAX = 60;
 
 export const WAVE_ROWS = [
-	{ color: "text-[#5b5ce8]", db: "67dB" },
-	{ color: "text-[#cfd3e6]", db: "67dB" },
-	{ color: "text-[#5b5ce8]", db: "67dB" },
+	{ color: "text-[#5b5ce8]", db: "67dB", text: "Raw Input" },
+	{ color: "text-[#cfd3e6]", db: "-42dB", text: "Noise Floor" },
+	{ color: "text-[#5b5ce8]", db: "+18dB", text: "Clean Out" },
 ];
 
 export const CAPABILITY_ITEMS = [
@@ -256,7 +256,7 @@ export const LIVE_CALLS = [
 	{
 		name: "Jordan Lee",
 		location: "Wealth · London",
-		metric: "smnt ↑ +0.4",
+		metric: "smnt ↑ +8.4",
 		status: "Success",
 		statusTone: "success",
 	},
@@ -268,8 +268,8 @@ export const LIVE_CALLS = [
 		statusTone: "warning",
 	},
 	{
-		name: "Meera I",
-		location: "Casey Nguyen · Pune",
+		name: "Meera Gupta",
+		location: "Insurance · Pune",
 		metric: "eligibility match",
 		status: "Live · 04:08",
 		statusTone: "live",
