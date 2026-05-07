@@ -647,7 +647,7 @@ const NonVoiceAgentHero: React.FC = () => {
 
       {/* Pill badge */}
       <div className="inline-flex items-center gap-2 rounded-full border border-[#dddff0] bg-white/80 px-4 py-1.5 text-[11px] font-medium text-[#7b7b7b] shadow-sm backdrop-blur-sm mb-8">
-        <span className="h-1.5 w-1.5 rounded-full bg-indigo-500" />
+        <img src="/images/star.svg" alt="Star" />
         42 agents
         <span className="text-indigo-200 mx-0.5">·</span>
         198ms avg

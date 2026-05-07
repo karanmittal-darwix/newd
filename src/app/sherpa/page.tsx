@@ -91,7 +91,7 @@ export default function SherpaPage() {
       setActiveIndex(
         (currentIndex) => (currentIndex + 1) % CAPABILITY_ITEMS.length,
       );
-    }, 600);
+    }, 1800);
 
     return () => window.clearInterval(intervalId);
   }, []);
