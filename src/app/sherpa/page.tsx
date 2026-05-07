@@ -4,7 +4,7 @@ import DemoRequestSection from "@/components/DemoRequestSection";
 import LogoMarquee from "@/components/LogoMarquee";
 import { Manrope } from "next/font/google";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AgentAssistNudges from "./components/AgentAssistNudges";
 import AuditCompliance from "./components/AuditCompilance";
 import CommitAutoTasks from "./components/CommitAutoTasks";
@@ -18,7 +18,6 @@ import watchImage from "./images/watch.png";
 import {
   ANATOMY_CARDS,
   BFSI_SCENARIOS,
-  CAPABILITY_DETAIL,
   CAPABILITY_ITEMS,
   COMMITMENTS,
   DEVICE_STATS,
@@ -28,6 +27,7 @@ import {
   POST_CALL_NOTES,
   STAT_TONE,
   STATUS_STYLES,
+  TRUST_LOGOS,
   WAVE_BARS,
   WAVE_BAR_GAP,
   WAVE_BAR_MAX,
@@ -70,19 +70,32 @@ const renderScenarioIcon = (icon: ScenarioIcon) => (
   </svg>
 );
 
+const capabilityCards = [
+  AgentAssistNudges,
+  RedactPiiMasking,
+  VerifyAutoKYC,
+  CommitAutoTasks,
+  SentinelMonitor,
+  AuditCompliance,
+  TrackBotSummary,
+  ScoreAIBreakdown,
+];
+
 export default function SherpaPage() {
-  const handleBookDemo = () => {
-    const section = document.getElementById("demo-request");
-    if (section) {
-      const navbarHeight = 64;
-      const targetPosition =
-        section.getBoundingClientRect().top + window.scrollY - navbarHeight;
-      window.scrollTo({
-        top: targetPosition,
-        behavior: "smooth",
-      });
-    }
-  };
+  const [activeIndex, setActiveIndex] = useState(0);
+  const ActiveCapabilityCard =
+    capabilityCards[activeIndex] || AgentAssistNudges;
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setActiveIndex(
+        (currentIndex) => (currentIndex + 1) % CAPABILITY_ITEMS.length,
+      );
+    }, 600);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
+
   return (
     <main className={manrope.className}>
       <section
@@ -94,7 +107,7 @@ export default function SherpaPage() {
       >
         <div className="relative max-w-[1182px] mx-auto text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#e3e7f5] bg-white px-3.5 py-1.5 text-[11px] font-medium text-[#7b7b7b] shadow-sm">
-            <img src="/images/star.svg" alt="Star" />
+            <span className="inline-flex h-2.5 w-2.5 rotate-45 rounded-[2px] bg-[#5b5ce8]" />
             <span>Physical AI Assist</span>
             <span className="text-[#d0d3e4]">&middot;</span>
             <span>BFSI field-grade</span>
@@ -102,7 +115,7 @@ export default function SherpaPage() {
 
           <h1 className="mt-8 text-4xl sm:text-5xl lg:text-[69px] font-semibold text-[#4b4b4b] tracking-tight lg:tracking-[-2.13px] leading-[1.1] lg:leading-[77.52px] lg:whitespace-nowrap">
             The voice in your on{" "}
-            <span className="text-[#5b5ce8]">ground team's ear.</span>
+            <span className="text-[#5b5ce8]">ground team&apos;s ear.</span>
           </h1>
 
           <p className="mt-5 text-sm sm:text-base text-[#7a7a7a] max-w-[780px] mx-auto leading-relaxed">
@@ -136,14 +149,13 @@ export default function SherpaPage() {
           </div>
 
           <div className="mt-8 flex items-center justify-center gap-3 sm:gap-4">
-            {/* <button
+            <button
               type="button"
               className="rounded-[12px] border border-[#5b5ce8] bg-white px-6 py-2.5 text-[13px] font-semibold text-[#5b5ce8] shadow-sm transition hover:border-[#4e4fd9]"
             >
               Meet the device
-            </button> */}
+            </button>
             <button
-              onClick={handleBookDemo}
               type="button"
               className="rounded-[12px] bg-[#5b5ce8] px-6 py-2.5 text-[13px] font-semibold text-white shadow-lg shadow-indigo-200/80 transition hover:bg-[#5152d8]"
             >
@@ -172,9 +184,9 @@ export default function SherpaPage() {
       </section>
 
       <section className="bg-white px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto pt-10 sm:pt-12">
-          <LogoMarquee logos={marLogos} className="mt-3" />
-        </div>
+								<div className="mt-10">
+									<LogoMarquee logos={marLogos} barClassName="bg-[#5b5ce8]" />
+								</div>
 
         <div className="max-w-6xl mx-auto pt-14 sm:pt-16 pb-12 sm:pb-16">
           <div className="text-center">
@@ -234,9 +246,9 @@ export default function SherpaPage() {
                   Customer voice clear.
                 </h3>
                 <p className="mt-4 text-sm sm:text-base text-[#7a7a7a] max-w-lg">
-                  Sherpa's active noise cancellation isolates agent and customer
-                  voices on busy branch floors. Noise is suppressed, transcripts
-                  stay clean, nudges accurate, scoring fair.
+                  Sherpa&apos;s active noise cancellation isolates agent and
+                  customer voices on busy branch floors. Noise is suppressed,
+                  transcripts stay clean, nudges accurate, scoring fair.
                 </p>
                 <div className="mt-6 flex flex-wrap gap-6 text-[11px] tracking-[0.2em] text-[#9aa0b2]">
                   <div>
@@ -288,6 +300,10 @@ export default function SherpaPage() {
                                 width={WAVE_BAR_WIDTH}
                                 height={height}
                                 rx={3}
+                                className="wave-rect"
+                                style={{
+                                  animationDelay: `${(index * 0.12 + (barIndex % 6) * 0.06).toFixed(2)}s`,
+                                }}
                               />
                             );
                           })}
@@ -319,11 +335,13 @@ export default function SherpaPage() {
             <div className="rounded-2xl border border-gray-200 bg-white p-3 sm:p-4 shadow-sm">
               <div className="space-y-0">
                 {CAPABILITY_ITEMS.map((item, index) => {
-                  const isActive = index === 0;
+                  const isActive = index === activeIndex;
                   return (
-                    <div
+                    <button
                       key={item.id}
-                      className={`rounded-xl border px-4 sm:px-5 py-3 sm:py-4 ${
+                      type="button"
+                      onClick={() => setActiveIndex(index)}
+                      className={`w-full text-left rounded-xl border px-4 sm:px-5 py-3 sm:py-4 ${
                         isActive
                           ? "border-indigo-300 bg-indigo-50/60"
                           : "border-gray-200 bg-white"
@@ -336,9 +354,7 @@ export default function SherpaPage() {
                           </span>
                           <div>
                             <p
-                              className={`text-sm sm:text-base font-semibold ${
-                                isActive ? "text-indigo-600" : "text-gray-700"
-                              }`}
+                              className={`text-sm sm:text-base font-semibold ${isActive ? "text-indigo-600" : "text-gray-700"}`}
                             >
                               {item.title}{" "}
                               <span className="text-gray-500 font-medium">
@@ -356,61 +372,14 @@ export default function SherpaPage() {
                           {isActive ? "×" : "+"}
                         </span>
                       </div>
-                    </div>
+                    </button>
                   );
                 })}
               </div>
             </div>
 
-            <div className="rounded-2xl border border-[#e6e9f6] bg-white p-6 sm:p-7 shadow-sm">
-              <p className="text-[11px] font-semibold tracking-[0.3em] text-[#5b5ce8] uppercase">
-                {CAPABILITY_DETAIL.label}
-              </p>
-              <h3 className="mt-3 text-xl sm:text-2xl font-semibold text-[#4b4b4b]">
-                {CAPABILITY_DETAIL.title}{" "}
-                <span className="text-[#7b7b7b] font-medium">
-                  &middot; {CAPABILITY_DETAIL.subtitle}
-                </span>
-              </h3>
-              <p className="mt-3 text-sm text-[#7a7a7a] leading-relaxed">
-                {CAPABILITY_DETAIL.description}
-              </p>
-
-              <div className="mt-6 rounded-2xl border border-[#6f6ff5] bg-[#eff0ff] p-4 sm:p-5">
-                <div className="flex items-start gap-4">
-                  <div className="h-12 w-12 rounded-full bg-[#5b5ce8] text-white flex items-center justify-center">
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      className="h-6 w-6"
-                      aria-hidden="true"
-                    >
-                      <path d="M8 9h8M10 13h4" />
-                      <rect x="4" y="5" width="16" height="14" rx="3" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-xs font-semibold tracking-[0.2em] text-[#7b7b7b]">
-                      {CAPABILITY_DETAIL.cardLabel}:
-                    </p>
-                    <p className="mt-1 text-sm font-semibold text-[#1f1f1f]">
-                      {CAPABILITY_DETAIL.cardTitle}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="mt-4 h-px w-full bg-[#6f6ff5]" />
-
-                <div className="mt-4 rounded-xl bg-white p-4 shadow-sm">
-                  <ul className="space-y-2 text-sm text-[#5a5a5a] list-disc pl-5">
-                    {CAPABILITY_DETAIL.bullets.map((bullet) => (
-                      <li key={bullet}>{bullet}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+            <div className="flex justify-center lg:justify-end">
+              <ActiveCapabilityCard />
             </div>
           </div>
         </div>
@@ -583,114 +552,25 @@ export default function SherpaPage() {
             </div>
 
             <div className="rounded-2xl border border-gray-200 bg-white p-5 sm:p-6 shadow-sm">
-              <div className="relative rounded-2xl bg-[#f1f2ff] p-4 sm:p-6">
-                <span className="absolute right-4 top-4 rounded-md bg-indigo-600 px-2 py-1 text-[11px] font-semibold text-white">
+              <div className="relative min-h-[320px] overflow-hidden rounded-2xl bg-[#f1f2ff] p-4 sm:p-6">
+                <span className="absolute left-4 top-4 rounded-md bg-indigo-600 px-2 py-1 text-[11px] font-semibold text-white">
                   RFID
                 </span>
-                <div className="relative h-48 sm:h-56">
-                  <svg
-                    viewBox="0 0 420 240"
-                    className="h-full w-full"
-                    aria-hidden="true"
-                  >
-                    <defs>
-                      <linearGradient id="clip" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0" stopColor="#0f1115" />
-                        <stop offset="1" stopColor="#2a2d36" />
-                      </linearGradient>
-                      <linearGradient id="disc" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0" stopColor="#1f2128" />
-                        <stop offset="1" stopColor="#3b3f4b" />
-                      </linearGradient>
-                    </defs>
-                    <rect
-                      x="40"
-                      y="140"
-                      width="170"
-                      height="70"
-                      rx="18"
-                      fill="url(#clip)"
-                    />
-                    <rect
-                      x="62"
-                      y="162"
-                      width="20"
-                      height="8"
-                      rx="4"
-                      fill="#6ee7b7"
-                    />
-                    <rect
-                      x="170"
-                      y="162"
-                      width="12"
-                      height="8"
-                      rx="4"
-                      fill="#6ee7b7"
-                    />
-                    <rect
-                      x="96"
-                      y="150"
-                      width="40"
-                      height="40"
-                      rx="10"
-                      fill="#111318"
-                    />
-                    <text
-                      x="115"
-                      y="176"
-                      fill="#f8fafc"
-                      fontSize="18"
-                      fontFamily="Arial, sans-serif"
-                      fontWeight="700"
-                    >
-                      D
-                    </text>
-                    <circle cx="300" cy="90" r="64" fill="url(#disc)" />
-                    <circle cx="300" cy="90" r="54" fill="#111318" />
-                    <rect
-                      x="284"
-                      y="80"
-                      width="32"
-                      height="32"
-                      rx="8"
-                      fill="#1f2937"
-                    />
-                    <text
-                      x="294"
-                      y="102"
-                      fill="#f8fafc"
-                      fontSize="14"
-                      fontFamily="Arial, sans-serif"
-                      fontWeight="700"
-                    >
-                      D
-                    </text>
-                    <circle
-                      cx="120"
-                      cy="118"
-                      r="10"
-                      fill="none"
-                      stroke="#60a5fa"
-                      strokeWidth="2"
-                    />
-                    <circle
-                      cx="120"
-                      cy="118"
-                      r="18"
-                      fill="none"
-                      stroke="#93c5fd"
-                      strokeWidth="2"
-                    />
-                    <circle
-                      cx="120"
-                      cy="118"
-                      r="26"
-                      fill="none"
-                      stroke="#bfdbfe"
-                      strokeWidth="2"
-                    />
-                  </svg>
-                </div>
+                <Image
+                  src={watchImage}
+                  alt="Sherpa watch"
+                  width={196}
+                  height={196}
+                  className="absolute right-5 top-5 h-[196px] w-[196px] object-contain"
+                  priority
+                />
+                <Image
+                  src={connectorImage}
+                  alt="Sherpa connector"
+                  width={282}
+                  height={181}
+                  className="absolute bottom-5 left-5 w-[236px] sm:w-[282px] h-auto object-contain"
+                />
               </div>
               <p className="mt-4 text-center text-[11px] tracking-[0.3em] text-gray-400">
                 CLIP-ON · 38G · IP54 · BLUETOOTH + LTE
