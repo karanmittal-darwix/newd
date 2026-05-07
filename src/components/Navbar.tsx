@@ -138,7 +138,7 @@ export default function Navbar() {
           </Link>
 
           <Link href="/about" className={getNavItemClasses("/about")}>
-            About
+            Compliance
           </Link>
         </div>
 
@@ -270,7 +270,7 @@ export default function Navbar() {
               }}
               className={`${getNavItemClasses("/about")} py-2`}
             >
-              About
+              Compliance
             </Link>
 
             <button
