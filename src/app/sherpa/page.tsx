@@ -112,12 +112,12 @@ export default function SherpaPage() {
   return (
     <main className={manrope.className}>
       <section
-        className="relative w-full pt-16 sm:pt-20 lg:pt-[88px] pb-12 sm:pb-16 lg:pb-[96px] px-4 sm:px-6 lg:px-[129px] lg:min-h-[500px]"
-        style={{
-          backgroundImage:
-            "linear-gradient(90deg, #565ADD1F 0%, #565ADD00 100%)",
-        }}
-      >
+  className="relative w-full pt-16 sm:pt-20 lg:pt-[88px] pb-12 sm:pb-16 lg:pb-[96px] px-4 sm:px-6 lg:px-[129px] lg:min-h-[700px]"
+  style={{
+    backgroundImage:
+      "linear-gradient(90deg, #565ADD1F 0%, #565ADD00 100%)",
+  }}
+>
         <div className="relative max-w-[1182px] mx-auto text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#e3e7f5] bg-white px-3.5 py-1.5 text-[11px] font-medium text-[#7b7b7b] shadow-sm">
             <img src="/images/star.svg" alt="Star" />
@@ -172,7 +172,7 @@ export default function SherpaPage() {
             <button
               type="button"
               onClick={handleDemoScroll}
-              className="rounded-[12px] bg-[#5b5ce8] px-6 py-2.5 text-[13px] font-semibold text-white shadow-lg shadow-indigo-200/80 transition hover:bg-[#5152d8]"
+              className="mt-10 rounded-[12px] bg-[#5b5ce8] px-6 py-2.5 text-[13px] font-semibold text-white shadow-lg shadow-indigo-200/80 transition hover:bg-[#5152d8]"
             >
               Book a demo
             </button>
