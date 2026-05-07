@@ -149,50 +149,28 @@ export const CAPABILITY_DETAIL = {
 
 export const BFSI_SCENARIOS = [
 	{
-		title: "HNI Wealth Management",
-		subtitle: "Portfolio reviews, advisory calls, family-office briefings",
+		title: "Lending - Field Visit & Repayment",
+		subtitle: "Application pickup, on-site KYC, repayment follow-ups",
 		icon: {
 			shapes: [
-				{ type: "path", d: "M4 15l6-6 4 4 6-7" },
-				{ type: "path", d: "M16 6h4v4" },
+				{ type: "circle", cx: 12, cy: 8, r: 3 },
+				{ type: "path", d: "M6 19c0-3.3 2.7-6 6-6s6 2.7 6 6" },
 			],
 		},
 		whispers: [
-			"Risk-band shift since last quarter",
-			"Top 3 advisory opportunities, ranked",
-			"Compliance: suitability rationale prompts",
-			"Client's family event flags from CRM",
+			"Doc checklist live during pickup",
+			"Co-applicant prompts employer verification",
+			"Repayment plan calculator on-call",
+			"Cross-sell trigger: top-up eligibility",
 		],
 		stats: [
-			{ label: "Wallet share", value: "+22%", tone: "positive" },
-			{ label: "RM productivity", value: "+38%", tone: "positive" },
-			{ label: "Mis-sell flags", value: "-71%", tone: "negative" },
-			{ label: "RMs on Sherpa", value: "1,400+", tone: "neutral" },
+			{ label: "Disbursal cycle", value: "-2.3 days", tone: "negative" },
+			{ label: "FO productivity", value: "+41%", tone: "positive" },
+			{ label: "On-time EMI", value: "+19%", tone: "positive" },
+			{ label: "FOs equipped", value: "9,800+", tone: "neutral" },
 		],
 	},
-	{
-		title: "NPA & Collections",
-		subtitle: "Field recovery, soft-collection visits, settlement negotiation",
-		icon: {
-			shapes: [
-				{ type: "circle", cx: 12, cy: 12, r: 9 },
-				{ type: "path", d: "M12 7v5l3 3" },
-			],
-		},
-		whispers: [
-			"Promise-to-pay date capture, auto-tracked",
-			"Settlement bands within policy",
-			"RBI fair-practice prompts (tone, threats)",
-			"Escalation cue if bucket worsens",
-		],
-		stats: [
-			{ label: "Recovery rate", value: "+34%", tone: "positive" },
-			{ label: "Cost per promise", value: "-61%", tone: "negative" },
-			{ label: "Compliance breaches", value: "-88%", tone: "negative" },
-			{ label: "Visits / month", value: "340k", tone: "neutral" },
-		],
-	},
-	{
+		{
 		title: "Branch Banking Insurance",
 		subtitle: "Cross-sell at the teller window, premium pitches, renewals",
 		icon: {
@@ -215,28 +193,55 @@ export const BFSI_SCENARIOS = [
 			{ label: "Branches", value: "2,300+", tone: "neutral" },
 		],
 	},
+	
 	{
-		title: "Lending - Field Visit & Repayment",
-		subtitle: "Application pickup, on-site KYC, repayment follow-ups",
+		title: "NPA & Collections",
+		subtitle: "Field recovery, soft-collection visits, settlement negotiation",
 		icon: {
 			shapes: [
-				{ type: "circle", cx: 12, cy: 8, r: 3 },
-				{ type: "path", d: "M6 19c0-3.3 2.7-6 6-6s6 2.7 6 6" },
+				{ type: "circle", cx: 12, cy: 12, r: 9 },
+				{ type: "path", d: "M12 7v5l3 3" },
 			],
 		},
 		whispers: [
-			"Doc checklist live during pickup",
-			"Co-applicant prompts employer verification",
-			"Repayment plan calculator on-call",
-			"Cross-sell trigger: top-up eligibility",
+			"Promise-to-pay date capture, auto-tracked",
+			"Settlement bands within policy",
+			"RBI fair-practice prompts (tone, threats)",
+			"Escalation cue if bucket worsens",
 		],
 		stats: [
-			{ label: "Disbursal cycle", value: "-2.3 days", tone: "negative" },
-			{ label: "FO productivity", value: "+41%", tone: "positive" },
-			{ label: "On-time EMI", value: "+19%", tone: "positive" },
-			{ label: "FOs equipped", value: "9,800+", tone: "neutral" },
+			{ label: "Recovery rate", value: "+34%", tone: "positive" },
+			{ label: "Cost per promise", value: "-61%", tone: "negative" },
+			{ label: "Compliance breaches", value: "-88%", tone: "negative" },
+			{ label: "Visits / month", value: "340k", tone: "neutral" },
 		],
 	},
+		{
+		title: "HNI Wealth Management",
+		subtitle: "Portfolio reviews, advisory calls, family-office briefings",
+		icon: {
+			shapes: [
+				{ type: "path", d: "M4 15l6-6 4 4 6-7" },
+				{ type: "path", d: "M16 6h4v4" },
+			],
+		},
+		whispers: [
+			"Risk-band shift since last quarter",
+			"Top 3 advisory opportunities, ranked",
+			"Compliance: suitability rationale prompts",
+			"Client's family event flags from CRM",
+		],
+		stats: [
+			{ label: "Wallet share", value: "+22%", tone: "positive" },
+			{ label: "RM productivity", value: "+38%", tone: "positive" },
+			{ label: "Mis-sell flags", value: "-71%", tone: "negative" },
+			{ label: "RMs on Sherpa", value: "1,400+", tone: "neutral" },
+		],
+	},
+
+	
+
+	
 ] as const;
 
 export const STAT_TONE = {

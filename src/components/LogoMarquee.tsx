@@ -23,9 +23,7 @@ export default function LogoMarquee({
   imageClassName = "",
 }: LogoMarqueeProps) {
   return (
-    <div
-      className={`relative left-1/2 right-1/2 w-screen -ml-[50vw] -mr-[50vw] ${className}`}
-    >
+    <div className={`relative w-full overflow-hidden ${className}`}>
       {/* Top heading line */}
       <div className="flex items-center justify-center  bg-white px-6 py-3">
         <p className="text-[14px] sm:text-[15px] font-semibold text-[#4b4b4b] tracking-[-0.01em]">
@@ -35,7 +33,7 @@ export default function LogoMarquee({
 
       {/* Marquee bar */}
       <div
-        className={`w-screen overflow-hidden bg-[#5b5ce8] py-5 px-6 sm:px-10 ${barClassName}`}
+        className={`w-full overflow-hidden bg-[#5b5ce8] py-5 px-6 sm:px-10 ${barClassName}`}
       >
         <div className="logo-marquee__track">
           {/* First Row */}
