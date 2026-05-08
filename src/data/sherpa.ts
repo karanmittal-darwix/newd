@@ -5,7 +5,7 @@ export const FEATURE_ITEMS = [
 ];
 
 export const DEVICE_STATS = [
-	{ value: "12+ hr", label: "Device Runtim" },
+	{ value: "12+ hr", label: "Device Runtime" },
 	{ value: "0 KB", label: "On-Device Audio" },
 	{ value: "RFID", label: "Identity - Locked" },
 	{ value: "Offline", label: "Zero Bandwidth Mode" },
