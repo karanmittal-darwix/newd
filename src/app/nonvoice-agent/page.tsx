@@ -178,15 +178,47 @@ const squads: Squad[] = [
 ];
 
 const agentActions: AgentAction[] = [
-  { number: "01", category: "Credit - KYC", action: "Generate KYC pack for spouse" },
-  { number: "02", category: "Credit - FOIR", action: "Recompute eligibility with co-app" },
-  { number: "03", category: "Ops - Surveyor", action: "Schedule visit Sat 11:00 AM" },
-  { number: "04", category: "Comms - WhatsApp", action: "e-KYC link to spouse" },
+  {
+    number: "01",
+    category: "Credit - KYC",
+    action: "Generate KYC pack for spouse",
+  },
+  {
+    number: "02",
+    category: "Credit - FOIR",
+    action: "Recompute eligibility with co-app",
+  },
+  {
+    number: "03",
+    category: "Ops - Surveyor",
+    action: "Schedule visit Sat 11:00 AM",
+  },
+  {
+    number: "04",
+    category: "Comms - WhatsApp",
+    action: "e-KYC link to spouse",
+  },
   { number: "05", category: "CRM - Stage", action: "Opp to sanction-doc" },
-  { number: "06", category: "Collections - NACH", action: "Pre-stage e-mandate - 10th" },
-  { number: "07", category: "Compliance - MITC", action: "Mark verbal MITC confirmation" },
-  { number: "08", category: "Sales - RM", action: "Notify RM manager - hot LAP" },
-  { number: "09", category: "Training - Coach", action: "Tag as best-practice exemplar" },
+  {
+    number: "06",
+    category: "Collections - NACH",
+    action: "Pre-stage e-mandate - 10th",
+  },
+  {
+    number: "07",
+    category: "Compliance - MITC",
+    action: "Mark verbal MITC confirmation",
+  },
+  {
+    number: "08",
+    category: "Sales - RM",
+    action: "Notify RM manager - hot LAP",
+  },
+  {
+    number: "09",
+    category: "Training - Coach",
+    action: "Tag as best-practice exemplar",
+  },
 ];
 
 const tokens = [
@@ -223,16 +255,40 @@ const losFields: LOSField[] = [
     value: "2BHK - Andheri East - Mumbai - 400069",
     status: "checked",
   },
-  { label: "Property Market Value", value: "INR 1,80,00,000", status: "checked" },
+  {
+    label: "Property Market Value",
+    value: "INR 1,80,00,000",
+    status: "checked",
+  },
   { label: "LTV", value: "19% (within LAP policy)", status: "checked" },
-  { label: "Co-applicant", value: "Spouse - KYC pack queued", status: "checked" },
-  { label: "FOIR", value: "recomputing with co-app - ETA 1.4s", status: "computing" },
-  { label: "EMI Date Preference", value: "10th of every month", status: "checked" },
+  {
+    label: "Co-applicant",
+    value: "Spouse - KYC pack queued",
+    status: "checked",
+  },
+  {
+    label: "FOIR",
+    value: "recomputing with co-app - ETA 1.4s",
+    status: "computing",
+  },
+  {
+    label: "EMI Date Preference",
+    value: "10th of every month",
+    status: "checked",
+  },
   { label: "Tenure", value: "15 years - 9.15% pa", status: "checked" },
   { label: "EMI", value: "INR 35,800", status: "checked" },
   { label: "CIBIL", value: "762 - band C+ - pulled 09:39", status: "checked" },
-  { label: "Bank Account", value: "ICICI G*5821 - NACH-ready", status: "queued" },
-  { label: "MITC Verbal", value: "confirmed - audio reference attached", status: "checked" },
+  {
+    label: "Bank Account",
+    value: "ICICI G*5821 - NACH-ready",
+    status: "queued",
+  },
+  {
+    label: "MITC Verbal",
+    value: "confirmed - audio reference attached",
+    status: "checked",
+  },
 ];
 
 const losStats = [
@@ -256,7 +312,10 @@ const LiveDot: React.FC = () => (
   </span>
 );
 
-const StatItem: React.FC<{ stat: Stat; isLast: boolean }> = ({ stat, isLast }) => (
+const StatItem: React.FC<{ stat: Stat; isLast: boolean }> = ({
+  stat,
+  isLast,
+}) => (
   <div
     className={`flex flex-col items-center px-6 py-1 ${
       !isLast ? "border-r border-indigo-100" : ""
@@ -270,7 +329,9 @@ const StatItem: React.FC<{ stat: Stat; isLast: boolean }> = ({ stat, isLast }) =
       {stat.isLive && <LiveDot />}
       {stat.value}
     </div>
-    <p className="mt-1.5 text-[11px] text-[#9498a8] text-center leading-snug">{stat.label}</p>
+    <p className="mt-1.5 text-[11px] text-[#9498a8] text-center leading-snug">
+      {stat.label}
+    </p>
   </div>
 );
 
@@ -297,7 +358,9 @@ const AgentCard: React.FC<{ agent: Agent }> = ({ agent }) => (
     <h4 className="text-sm font-semibold text-[#4b4b4b] mb-1 leading-snug">
       {agent.title}
     </h4>
-    <p className="text-xs text-[#8a8a8a] leading-relaxed">{agent.description}</p>
+    <p className="text-xs text-[#8a8a8a] leading-relaxed">
+      {agent.description}
+    </p>
   </div>
 );
 
@@ -341,8 +404,8 @@ const SquadAgents: React.FC = () => (
         Two squads of agents
       </p>
       <h2 className="mx-auto max-w-4xl text-3xl sm:text-4xl md:text-5xl font-semibold text-[#4b4b4b] leading-tight tracking-[-0.035em] mb-4">
-        Squad 01 runs ops <span className="text-[#5b5ce8]">today.</span>{" "}
-        Squad 02 runs comms <span className="text-[#5b5ce8]">next.</span>
+        Squad 01 runs ops <span className="text-[#5b5ce8]">today.</span> Squad
+        02 runs comms <span className="text-[#5b5ce8]">next.</span>
       </h2>
       <p className="mx-auto max-w-[620px] text-sm sm:text-[15px] text-[#6e6e80] leading-[1.7]">
         Today, the back-office agents are live in production. The communications
@@ -360,7 +423,9 @@ const SquadAgents: React.FC = () => (
 );
 
 const UtteranceToActions: React.FC = () => (
-  <section className={`${manrope.className} w-full bg-white px-4 sm:px-6 py-16`}>
+  <section
+    className={`${manrope.className} w-full bg-white px-4 sm:px-6 py-16`}
+  >
     <div className="text-center mb-10">
       <p className="text-[11px] font-semibold tracking-[0.3em] text-[#5b5ce8] uppercase mb-3">
         How one utterance becomes nine actions
@@ -388,7 +453,9 @@ const UtteranceToActions: React.FC = () => (
             </span>
           </div>
           <p className="text-sm text-[#4b4b4b] leading-relaxed">
-            &ldquo;My spouse is also a co-applicant. Please send the surveyor on Saturday at 11 AM, and keep the EMI date as the 10th rakh dijiye.&rdquo;
+            &ldquo;My spouse is also a co-applicant. Please send the surveyor on
+            Saturday at 11 AM, and keep the EMI date as the 10th rakh
+            dijiye.&rdquo;
           </p>
         </div>
 
@@ -505,7 +572,9 @@ const FieldRow: React.FC<{ field: LOSField; isLast: boolean }> = ({
     </span>
     <span
       className={`text-xs flex-1 ${
-        field.status === "computing" ? "text-[#9498a8] italic" : "text-[#4b4b4b]"
+        field.status === "computing"
+          ? "text-[#9498a8] italic"
+          : "text-[#4b4b4b]"
       } font-medium`}
     >
       {field.value}
@@ -523,6 +592,9 @@ const FieldRow: React.FC<{ field: LOSField; isLast: boolean }> = ({
 );
 
 const LOSAgent: React.FC = () => {
+  const filledCount = losFields.filter(
+    (field) => field.status === "checked",
+  ).length;
   const totalCount = losFields.length;
   const initialLiveElapsedSeconds = 74;
   const [activeFieldIndex, setActiveFieldIndex] = useState(0);
@@ -579,16 +651,22 @@ const LOSAgent: React.FC = () => {
   const liveSeconds = (liveElapsedSeconds % 60).toString().padStart(2, "0");
 
   return (
-    <section className={`${manrope.className} w-full bg-[#F8F8F8] px-4 sm:px-6 py-16`}>
+    <section
+      className={`${manrope.className} w-full bg-[#F8F8F8] px-4 sm:px-6 py-16`}
+    >
       <div className="w-full px-5 sm:px-8 lg:px-10 py-12">
         <div className="text-center mb-12">
           <p className="text-[11px] font-semibold tracking-[0.3em] text-[#5b5ce8] uppercase mb-3">
             A single agent in detail
           </p>
           <h2 className="mx-auto max-w-4xl text-3xl sm:text-4xl md:text-5xl font-semibold text-[#4b4b4b] leading-tight tracking-[-0.035em] mb-4">
-            The LOS Agent. <span className="text-[#5b5ce8]">Always running.</span>
+            The LOS Agent.{" "}
+            <span className="text-[#5b5ce8]">Always running.</span>
           </h2>
           <p className="mx-auto max-w-[620px] text-sm sm:text-[15px] text-[#6e6e80] leading-[1.7]">
+            One of 42. Listens live, captures customer details, and pre-fills
+            your LOS across Finnone, Newgen, and Lentra to 78% before agent
+            input.
             One of 42. Listens live, captures customer details, and pre-fills your
             LOS to 78% before agent input.
           </p>
@@ -604,7 +682,9 @@ const LOSAgent: React.FC = () => {
                 <p className="text-[28px] sm:text-[32px] font-semibold text-[#5b5ce8] tracking-[-0.03em] leading-none mb-2">
                   {stat.value}
                 </p>
-                <p className="text-xs text-[#9498a8] leading-snug">{stat.label}</p>
+                <p className="text-xs text-[#9498a8] leading-snug">
+                  {stat.label}
+                </p>
               </div>
             ))}
           </div>
@@ -646,7 +726,9 @@ const LOSAgent: React.FC = () => {
 };
 
 const StopHiringCTA: React.FC = () => (
-  <section className={`${manrope.className} w-full bg-white px-4 sm:px-6 py-14 sm:py-16`}>
+  <section
+    className={`${manrope.className} w-full bg-white px-4 sm:px-6 py-14 sm:py-16`}
+  >
     <div className="max-w-4xl mx-auto rounded-2xl bg-indigo-50 px-6 sm:px-10 py-12">
       <div className="flex flex-col lg:flex-row items-start gap-10">
         <div className="flex-1 min-w-0">
@@ -698,11 +780,10 @@ const StopHiringCTA: React.FC = () => (
 const NonVoiceAgentHero: React.FC = () => {
   return (
     <section
-      className={`${manrope.className} relative w-full overflow-hidden px-4 sm:px-6 pt-16 sm:pt-20 lg:pt-[88px] pb-14 text-center`}
-       style={{
-          backgroundImage:
-            "linear-gradient(90deg, #565ADD1F 0%, #565ADD00 100%)",
-        }}
+      className={`${manrope.className} relative w-full overflow-hidden lg:min-h-[720px] px-4 sm:px-6 pt-16 sm:pt-20 lg:pt-[88px] pb-14 text-center`}
+      style={{
+        backgroundImage: "linear-gradient(90deg, #565ADD1F 0%, #565ADD00 100%)",
+      }}
     >
       {/* Subtle radial glow */}
       <div
@@ -716,46 +797,57 @@ const NonVoiceAgentHero: React.FC = () => {
       />
 
       <div className="relative mx-auto max-w-[1182px]">
+        {/* Pill badge */}
+        <div className="inline-flex items-center gap-2 rounded-full border border-[#dddff0] bg-white/80 px-4 py-1.5 text-[11px] font-medium text-[#7b7b7b] shadow-sm backdrop-blur-sm mb-8">
+          <img src="/images/star.svg" alt="Star" />
+          42 agents
+          <span className="text-indigo-200 mx-0.5">·</span>
+          198ms avg
+          <span className="text-indigo-200 mx-0.5">·</span>
+          99.94% success
+        </div>
 
-      {/* Pill badge */}
-      <div className="inline-flex items-center gap-2 rounded-full border border-[#dddff0] bg-white/80 px-4 py-1.5 text-[11px] font-medium text-[#7b7b7b] shadow-sm backdrop-blur-sm mb-8">
-        <img src="/images/star.svg" alt="Star" />
-        42 agents
-        <span className="text-indigo-200 mx-0.5">·</span>
-        198ms avg
-        <span className="text-indigo-200 mx-0.5">·</span>
-        99.94% success
-      </div>
+        {/* Headline */}
+        <h1 className="hero-heading">
+          Agents that
+          <br />
+          <span className="text-[#5b5ce8]">never sleep</span>
+          <span>, never slip, never miss.</span>
+        </h1>
 
-      {/* Headline */}
-      <h1 className="max-w-[920px] mx-auto text-[40px] sm:text-[54px] lg:text-[60px] font-semibold text-[#3a3a4a] tracking-[-0.04em] leading-[1.03] mb-5">
-        Agents that
-        <br />
-        <span className="text-[#5b5ce8]">never sleep</span>
-        <span>, never slip, never miss.</span>
-      </h1>
+        {/* Subheading */}
+        <p className="hero-subheading max-w-[680px] mb-9">
+          An always-on factory of background workers. Each minion picks up an
+          intent from the conversation and quietly closes the loop in CRM, LOS,
+          data lake, ledger and database. The agent talks. The minion finishes
+          the work.
+        </p>
 
-      {/* Subheading */}
-      <p className="mx-auto max-w-[680px] text-[13px] sm:text-[15px] leading-[1.75] text-[#6e6e80] mb-9">
-        An always-on factory of background workers. Each minion picks up an intent from the
-        conversation and quietly closes the loop in CRM, LOS, data lake, ledger and database.
-        The agent talks. The minion finishes the work.
-      </p>
-
-      {/* CTA buttons */}
-      <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
+        {/* CTA buttons */}
+        <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
           <button
             type="button"
             onClick={handleAgentCatalogueScroll}
             className="rounded-[10px] bg-[#5b5ce8] px-6 py-2.5 text-[13px] font-semibold text-white shadow-lg shadow-indigo-200/70 transition-all hover:bg-[#4e4fd9]"
           >
-          View the agent catalogue
-        </button>
-        {/* <button className="rounded-[10px] bg-[#5b5ce8] px-6 py-2.5 text-[13px] font-semibold text-white shadow-lg shadow-indigo-200/70 transition-all hover:bg-[#4e4fd9]">
+            View the agent catalogue
+          </button>
+          {/* <button className="rounded-[10px] bg-[#5b5ce8] px-6 py-2.5 text-[13px] font-semibold text-white shadow-lg shadow-indigo-200/70 transition-all hover:bg-[#4e4fd9]">
           Book a non-voice pilot
         </button> */}
-      </div>
+        </div>
 
+        {/* Stats row */}
+        <div className="mt-16 pt-4">
+          <div className="grid grid-cols-2 gap-y-4 sm:grid-cols-4">
+            {stats.map((stat, i) => (
+              <StatItem
+                key={stat.label}
+                stat={stat}
+                isLast={i === stats.length - 1}
+              />
+            ))}
+          </div>
       {/* Stats row */}
       <div className="mt-16 pt-8">
         <div className="grid grid-cols-2 gap-y-6 sm:grid-cols-4">
@@ -763,7 +855,6 @@ const NonVoiceAgentHero: React.FC = () => {
             <StatItem key={stat.label} stat={stat} isLast={i === stats.length - 1} />
           ))}
         </div>
-      </div>
       </div>
     </section>
   );

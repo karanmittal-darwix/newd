@@ -9,13 +9,12 @@ export default function NovaAdaptiveSection() {
       className={`${manrope.className} bg-[#f7f8ff] px-4 sm:px-6 lg:px-[129px] py-20 sm:py-24`}
     >
       <div className="mx-auto max-w-[1182px]">
-
         {/* Header */}
         <div className="text-center mb-14">
           <p className="text-[11px] tracking-[0.38em] text-[#5b5ce8] font-semibold uppercase mb-4">
             What makes Nova adaptive
           </p>
-          <h2 className="text-[32px] sm:text-[40px] lg:text-[50px] font-semibold text-[#4b4b4b] tracking-[-0.03em] leading-[1.1]">
+          <h2 className="section-heading text-[32px] sm:text-[40px] lg:text-[50px] text-[#4b4b4b] tracking-[-0.03em] leading-[1.1]">
             Built for any counter.
             <br />
             Any <span className="text-[#5b5ce8]">persona.</span> Any{" "}
@@ -62,7 +61,6 @@ export default function NovaAdaptiveSection() {
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

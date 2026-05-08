@@ -25,12 +25,11 @@ export default function NovaHero() {
   };
   return (
     <section
-  className={`${manrope.className} relative w-full overflow-hidden`}
-  style={{
-    backgroundImage:
-      "linear-gradient(90deg, #565ADD1F 0%, #565ADD00 100%)",
-  }}
->
+      className={`${manrope.className} relative w-full overflow-hidden`}
+      style={{
+        backgroundImage: "linear-gradient(90deg, #565ADD1F 0%, #565ADD00 100%)",
+      }}
+    >
       {/* Radial glow */}
       <div
         className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2"
@@ -54,7 +53,7 @@ export default function NovaHero() {
         </div>
 
         {/* Heading */}
-        <h1 className="max-w-[1280px] mx-auto text-center text-[40px] sm:text-[54px] lg:text-[56px] font-semibold text-[#3a3a4a] tracking-[-0.045em] leading-[1.03]">
+        <h1 className="hero-heading text-center">
           Physical AI for the real world.
           <br />
           Voice, agents, and field{" "}
@@ -62,8 +61,10 @@ export default function NovaHero() {
         </h1>
 
         {/* Body */}
-        <p className="mt-6 text-center text-[13px] sm:text-[15px] text-[#6e6e80] max-w-[640px] mx-auto leading-[1.75]">
-          Nova is the Darwix's brain, re-imagined for stores, kiosks, dealerships and showrooms. Out of the cloud, into the floor. Listens, speaks, responds in real time, in the customer's language.
+        <p className="hero-subheading text-center max-w-[640px]">
+          Nova is the Darwix's brain, re-imagined for stores, kiosks,
+          dealerships and showrooms. Out of the cloud, into the floor. Listens,
+          speaks, responds in real time, in the customer's language.
         </p>
 
         {/* CTAs */}

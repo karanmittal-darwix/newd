@@ -832,7 +832,7 @@ export default function HomePage() {
   return (
     <main className={manrope.className}>
       <section
-        className="relative w-full pt-16 sm:pt-20 lg:pt-[88px] pb-12 sm:pb-16 lg:pb-[88px] px-4 sm:px-6 lg:px-[129px]"
+        className="relative w-full pt-16 sm:pt-20 lg:pt-[88px] pb-12 sm:pb-16 lg:pb-[88px] px-4 sm:px-6 lg:px-[129px] lg:min-h-[700px]"
         style={{
           backgroundImage:
             "linear-gradient(90deg, #565ADD1F 0%, #565ADD00 100%)",
@@ -846,12 +846,12 @@ export default function HomePage() {
             <span>Powered by an in-house SLM</span>
           </div>
 
-          <h1 className="mt-8 text-4xl sm:text-5xl lg:text-[64px] font-semibold text-[#4b4b4b] tracking-tight lg:tracking-[-2px] leading-[1.1]">
+          <h1 className="hero-heading mt-8">
             One BFSI brain. Voice Automation, agents, and field{" "}
             <span className="text-[#5b5ce8]">in lockstep.</span>
           </h1>
 
-          <p className="mt-5 text-sm sm:text-base text-[#7a7a7a] max-w-[820px] mx-auto leading-relaxed">
+          <p className="hero-subheading">
             Darwix orchestrates the Sherpa field call, the parallel voice
             campaign and a hundred back-office agents from a single proprietary
             stack. Real-time tokens flow into an in-house SLM that learns from
@@ -924,7 +924,7 @@ export default function HomePage() {
             <p className="text-[11px] tracking-[0.3em] text-[#5b5ce8] font-semibold uppercase">
               The Darwix stack
             </p>
-            <h2 className="mt-4 text-3xl sm:text-4xl lg:text-[46px] font-semibold text-[#4b4b4b] leading-tight">
+            <h2 className="section-heading mt-4 text-3xl sm:text-4xl lg:text-[46px] leading-tight">
               <span className="text-[#5b5ce8]">Omnichannel</span> layers,
               <br />
               one proprietary brain.
@@ -970,134 +970,214 @@ export default function HomePage() {
       >
         <div className="px-4 sm:px-6 lg:px-[129px]">
           <div className="mx-auto max-w-[1182px]">
-          <div className="text-center">
-            <p className="text-[11px] tracking-[0.4em] text-[#5b5ce8] font-semibold uppercase">
-              Live field intelligence
-            </p>
-            <h2 className="mt-4 text-3xl sm:text-4xl lg:text-[46px] font-semibold text-[#4b4b4b] leading-tight">
-              One meeting.{" "}
-              <span className="text-[#5b5ce8]">Multiple actions</span> firing
-              simultaneously.
-            </h2>
-            <div className="mt-4 flex flex-wrap justify-center gap-4 text-[11px] text-[#8a8a8a]">
-              {LIVE_FIELD_META.map((item) => (
-                <div key={item.label} className="flex items-center gap-2">
-                  <span className="uppercase tracking-[0.2em] text-[#b0b3c5]">
-                    {item.label}
-                  </span>
-                  <span className="font-semibold text-[#4b4b4b]">
-                    {item.value}
+            <div className="text-center">
+              <p className="text-[11px] tracking-[0.4em] text-[#5b5ce8] font-semibold uppercase">
+                Live field intelligence
+              </p>
+              <h2 className="section-heading mt-4 text-3xl sm:text-4xl lg:text-[46px] leading-tight">
+                One meeting.{" "}
+                <span className="text-[#5b5ce8]">Multiple actions</span> firing
+                simultaneously.
+              </h2>
+              <div className="mt-4 flex flex-wrap justify-center gap-4 text-[11px] text-[#8a8a8a]">
+                {LIVE_FIELD_META.map((item) => (
+                  <div key={item.label} className="flex items-center gap-2">
+                    <span className="uppercase tracking-[0.2em] text-[#b0b3c5]">
+                      {item.label}
+                    </span>
+                    <span className="font-semibold text-[#4b4b4b]">
+                      {item.value}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-10 grid gap-6 lg:grid-cols-3">
+              <div className="flex h-full flex-col rounded-[18px] border border-[#e4e4e8] bg-[#F8F8F8] p-5 sm:p-6 shadow-[0_6px_18px_rgba(46,55,88,0.08)]">
+                <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.28em] text-[#9698a3]">
+                  <span>SHERPA &middot; FIELD CALL &middot; IN PROGRESS</span>
+                  <span className="flex items-center gap-1 text-green-600 font-semibold">
+                    <span className="h-2 w-2 rounded-full bg-green-500" />
+                    Live
                   </span>
                 </div>
-              ))}
-            </div>
-          </div>
 
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            <div className="flex h-full flex-col rounded-[18px] border border-[#e4e4e8] bg-[#F8F8F8] p-5 sm:p-6 shadow-[0_6px_18px_rgba(46,55,88,0.08)]">
-              <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.28em] text-[#9698a3]">
-                <span>SHERPA &middot; FIELD CALL &middot; IN PROGRESS</span>
-                <span className="flex items-center gap-1 text-green-600 font-semibold">
-                  <span className="h-2 w-2 rounded-full bg-green-500" />
-                  Live
-                </span>
-              </div>
+                <div className="mt-4 border-b border-dashed border-[#d8d9df]" />
 
-              <div className="mt-4 border-b border-dashed border-[#d8d9df]" />
+                <div className="mt-4 min-h-[430px] space-y-4 text-[13px] text-[#4b4b4b]">
+                  {CALL_TRANSCRIPT.map((line, index) => {
+                    const isNudge = line.role === "nudge";
+                    const roleLabel =
+                      line.role === "agent"
+                        ? "AGENT"
+                        : line.role === "cust"
+                          ? "CUST"
+                          : "";
 
-              <div className="mt-4 min-h-[430px] space-y-4 text-[13px] text-[#4b4b4b]">
-                {CALL_TRANSCRIPT.map((line, index) => {
-                  const isNudge = line.role === "nudge";
-                  const roleLabel =
-                    line.role === "agent"
-                      ? "AGENT"
-                      : line.role === "cust"
-                        ? "CUST"
-                        : "";
-
-                  return (
-                    <div key={`${line.role}-${index}`} className="flex gap-3">
-                      <div className="w-[66px] shrink-0 pt-0.5">
-                        {!isNudge && (
-                          <>
-                            <p className="text-[10px] uppercase tracking-[0.24em] text-[#9da0ab]">
-                              {roleLabel}
-                            </p>
-                            <p className="mt-0.5 text-[11px] text-[#a6a9b5] tabular-nums">
-                              {line.time}
-                            </p>
-                          </>
-                        )}
-                      </div>
-                      <div className="flex-1">
-                        {isNudge ? (
-                          <div className="rounded-[11px] border border-dashed border-[#6770ee] bg-[#f3f4ff] px-4 py-3 text-[#4f58de]">
-                            <p className="text-[10px] font-semibold uppercase tracking-[0.2em]">
-                              + Nudge
-                            </p>
-                            <p className="text-[13px] leading-[1.45]">
+                    return (
+                      <div key={`${line.role}-${index}`} className="flex gap-3">
+                        <div className="w-[66px] shrink-0 pt-0.5">
+                          {!isNudge && (
+                            <>
+                              <p className="text-[10px] uppercase tracking-[0.24em] text-[#9da0ab]">
+                                {roleLabel}
+                              </p>
+                              <p className="mt-0.5 text-[11px] text-[#a6a9b5] tabular-nums">
+                                {line.time}
+                              </p>
+                            </>
+                          )}
+                        </div>
+                        <div className="flex-1">
+                          {isNudge ? (
+                            <div className="rounded-[11px] border border-dashed border-[#6770ee] bg-[#f3f4ff] px-4 py-3 text-[#4f58de]">
+                              <p className="text-[10px] font-semibold uppercase tracking-[0.2em]">
+                                + Nudge
+                              </p>
+                              <p className="text-[13px] leading-[1.45]">
+                                {line.text}
+                              </p>
+                            </div>
+                          ) : (
+                            <p className="text-[13px] leading-[1.45] text-[#4b4b4b]">
                               {line.text}
                             </p>
-                          </div>
-                        ) : (
-                          <p className="text-[13px] leading-[1.45] text-[#4b4b4b]">
-                            {line.text}
-                          </p>
-                        )}
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  );
-                })}
-              </div>
-
-              <div className="mt-auto border-t border-dashed border-[#d8d9df] pt-5">
-                <div className="grid grid-cols-3 gap-3 text-[10px] uppercase tracking-[0.2em] text-[#9aa0b2]">
-                  <div>
-                    Sentiment
-                    <span className="block mt-1 text-green-600 font-semibold">
-                      Resolved &uarr;
-                    </span>
-                  </div>
-                  <div>
-                    Script fit
-                    <span className="block mt-1 text-[#5b5ce8] font-semibold">
-                      94% &uarr;
-                    </span>
-                  </div>
-                  <div>
-                    Risk flags
-                    <span className="block mt-1 text-orange-500 font-semibold">
-                      0 &darr;
-                    </span>
-                  </div>
+                    );
+                  })}
                 </div>
 
-                <div className="mt-4 border-t border-dashed border-[#d8d9df]" />
-
-                <div className="mt-4">
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-[#9aa0b2]">
-                    BFSI tokens streaming to SLM
-                  </p>
-                  <div className="mt-2 flex flex-wrap gap-1.5">
-                    {activeActionTokens.map((token) => (
-                      <span
-                        key={token}
-                        className="rounded-md border border-[#e7e9f7] bg-[#f2f3fb] px-2.5 py-1 text-[10px] font-semibold text-[#4f58de]"
-                      >
-                        {token}
+                <div className="mt-auto border-t border-dashed border-[#d8d9df] pt-5">
+                  <div className="grid grid-cols-3 gap-3 text-[10px] uppercase tracking-[0.2em] text-[#9aa0b2]">
+                    <div>
+                      Sentiment
+                      <span className="block mt-1 text-green-600 font-semibold">
+                        Resolved &uarr;
                       </span>
-                    ))}
+                    </div>
+                    <div>
+                      Script fit
+                      <span className="block mt-1 text-[#5b5ce8] font-semibold">
+                        94% &uarr;
+                      </span>
+                    </div>
+                    <div>
+                      Risk flags
+                      <span className="block mt-1 text-orange-500 font-semibold">
+                        0 &darr;
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="mt-4 border-t border-dashed border-[#d8d9df]" />
+
+                  <div className="mt-4">
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-[#9aa0b2]">
+                      BFSI tokens streaming to SLM
+                    </p>
+                    <div className="mt-2 flex flex-wrap gap-1.5">
+                      {activeActionTokens.map((token) => (
+                        <span
+                          key={token}
+                          className="rounded-md border border-[#e7e9f7] bg-[#f2f3fb] px-2.5 py-1 text-[10px] font-semibold text-[#4f58de]"
+                        >
+                          {token}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div className="rounded-[18px] border border-[#e4e4e8] bg-[#F8F8F8] p-5 sm:p-6 shadow-[0_6px_18px_rgba(46,55,88,0.08)]">
-              <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.28em] text-[#9698a3]">
-                <span>Agentic suite - 8 actions parallel</span>
-                <span className="text-[#4b4b4b] font-semibold">02:09</span>
+              <div className="rounded-[18px] border border-[#e4e4e8] bg-[#F8F8F8] p-5 sm:p-6 shadow-[0_6px_18px_rgba(46,55,88,0.08)]">
+                <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.28em] text-[#9698a3]">
+                  <span>Agentic suite - 8 actions parallel</span>
+                  <span className="text-[#4b4b4b] font-semibold">02:09</span>
+                </div>
+
+                <div className="mt-4 border-b border-dashed border-[#d8d9df]" />
+
+                <div className="mt-5 space-y-2.5">
+                  {ACTION_EVENTS.map((event, index) => {
+                    const isActiveAction = index === activeActionIndex;
+                    const isCompletedAction =
+                      activeActionIndex >= 0 && index < activeActionIndex;
+                    const isPendingAction =
+                      activeActionIndex >= 0 && index > activeActionIndex;
+                    const actionButtonClass = isActiveAction
+                      ? "border-[#4f58de] bg-[#f3f4ff] shadow-[0_0_0_1px_rgba(79,88,222,0.14)]"
+                      : isCompletedAction
+                        ? "border-[#19a84b] bg-[#effaf3]"
+                        : "border-[#e4e4e8] bg-white";
+                    const statusBadgeClass = isActiveAction
+                      ? "border border-[#4f58de] bg-[#4f58de] text-white"
+                      : isCompletedAction
+                        ? "border border-[#19a84b] bg-[#19a84b] text-white"
+                        : "border border-[#d6d8df] bg-white text-[#9ca0aa]";
+                    const statusLabel = isActiveAction
+                      ? "firing"
+                      : isCompletedAction
+                        ? "wired"
+                        : event.status;
+
+                    return (
+                      <button
+                        type="button"
+                        key={event.name}
+                        onClick={() => setActiveActionIndex(index)}
+                        className={`w-full rounded-xl border px-3.5 py-3 flex items-start justify-between gap-3 text-left transition ${actionButtonClass}`}
+                      >
+                        <div className="flex items-start gap-3">
+                          <div
+                            className={`mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md border ${isActiveAction ? "border-[#c8cdfa] bg-white" : isCompletedAction ? "border-[#bfe6cb] bg-white" : "border-[#d8d9df] bg-[#f7f7f8]"}`}
+                          >
+                            {renderActionIcon(event.icon)}
+                          </div>
+                          <div>
+                            <p className="align-middle text-[12px] font-semibold leading-[14.4px] tracking-[0] text-[#27304d]">
+                              {event.name}
+                            </p>
+                            <p className="mt-0.5 text-[12px] leading-tight text-[#7d808c]">
+                              {event.subtitle}
+                            </p>
+                          </div>
+                        </div>
+                        <span
+                          className={`mt-0.5 rounded-md px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] ${statusBadgeClass}`}
+                        >
+                          {statusLabel}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
 
+              <div className="flex h-full flex-col rounded-[18px] border border-[#e4e4e8] bg-[#F8F8F8] p-5 sm:p-6 shadow-[0_6px_18px_rgba(46,55,88,0.08)]">
+                <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.28em] text-[#9698a3]">
+                  <span>SLM core</span>
+                  <span className="flex items-center gap-2 text-green-600 font-semibold">
+                    <span className="h-2 w-2 rounded-full bg-green-500" />
+                    v24.11
+                  </span>
+                </div>
+
+                <div className="mt-4 border-b border-dashed border-[#d8d9df]" />
+
+                <div className="mt-7 flex justify-center">
+                  <div className="h-[190px] w-[190px] overflow-hidden rounded-full">
+                    <AgentOrb />
+                  </div>
+                </div>
+
+                <div className="mt-8">
+                  {SLM_METRICS.map((metric) => (
+                    <div
+                      key={metric.label}
+                      className="border-b border-dashed border-[#d8d9df] py-3 first:pt-0"
               <div className="mt-4 border-b border-dashed border-[#d8d9df]" />
 
               <div className="mt-5 space-y-2.5">
@@ -1126,77 +1206,27 @@ export default function HomePage() {
                       key={event.name}
                       className={`w-full rounded-xl border px-3.5 py-3 flex items-start justify-between gap-3 text-left transition ${actionButtonClass}`}
                     >
-                      <div className="flex items-start gap-3">
-                        <div
-                          className={`mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md border ${isActiveAction ? "border-[#c8cdfa] bg-white" : isCompletedAction ? "border-[#bfe6cb] bg-white" : "border-[#d8d9df] bg-[#f7f7f8]"}`}
-                        >
-                          {renderActionIcon(event.icon)}
-                        </div>
-                        <div>
-                          <p className="align-middle text-[12px] font-semibold leading-[14.4px] tracking-[0] text-[#27304d]">
-                            {event.name}
-                          </p>
-                          <p className="mt-0.5 text-[12px] leading-tight text-[#7d808c]">
-                            {event.subtitle}
-                          </p>
-                        </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-[12px] text-[#6f717a]">
+                          {metric.label}
+                        </span>
+                        <span className="text-[12px] font-semibold text-[#232846]">
+                          {metric.value}
+                        </span>
                       </div>
-                      <span
-                        className={`mt-0.5 rounded-md px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] ${statusBadgeClass}`}
-                      >
-                        {statusLabel}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
+                    </div>
+                  ))}
+                </div>
 
-            <div className="flex h-full flex-col rounded-[18px] border border-[#e4e4e8] bg-[#F8F8F8] p-5 sm:p-6 shadow-[0_6px_18px_rgba(46,55,88,0.08)]">
-              <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.28em] text-[#9698a3]">
-                <span>SLM core</span>
-                <span className="flex items-center gap-2 text-green-600 font-semibold">
-                  <span className="h-2 w-2 rounded-full bg-green-500" />
-                  v24.11
-                </span>
-              </div>
-
-              <div className="mt-4 border-b border-dashed border-[#d8d9df]" />
-
-              <div className="mt-7 flex justify-center">
-                <div className="h-[190px] w-[190px] overflow-hidden rounded-full">
-                  <AgentOrb />
+                <div className="mt-auto pt-10">
+                  <div className="border-t border-dashed border-[#d8d9df]" />
+                  <p className="mt-5 text-[10px] leading-[1.6] text-[#a0a2ac]">
+                    No tenant data leaves your VPC. Model updates ship as data
+                    weights.
+                  </p>
                 </div>
               </div>
-
-              <div className="mt-8">
-                {SLM_METRICS.map((metric) => (
-                  <div
-                    key={metric.label}
-                    className="border-b border-dashed border-[#d8d9df] py-3 first:pt-0"
-                  >
-                    <div className="flex items-center justify-between">
-                      <span className="text-[12px] text-[#6f717a]">
-                        {metric.label}
-                      </span>
-                      <span className="text-[12px] font-semibold text-[#232846]">
-                        {metric.value}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-auto pt-10">
-                <div className="border-t border-dashed border-[#d8d9df]" />
-                <p className="mt-5 text-[10px] leading-[1.6] text-[#a0a2ac]">
-                  No tenant data leaves your VPC. Model updates ship as data
-                  weights.
-                </p>
-              </div>
             </div>
-          </div>
-
           </div>
         </div>
 
@@ -1206,134 +1236,181 @@ export default function HomePage() {
 
         <div className="px-4 sm:px-6 lg:px-[129px]">
           <div className="mx-auto max-w-[1182px]">
-          <div className="mt-20 sm:mt-24">
-            <div className="text-center max-w-[760px] mx-auto">
-              <p className="text-[11px] tracking-[0.38em] text-[#5b5ce8] font-semibold uppercase">
-                Proprietary BFSI SLM
-              </p>
-              <h2 className="mt-4 text-[28px] sm:text-[36px] lg:text-[42px] font-semibold text-[#4b4b4b] leading-[1.15] tracking-[-0.02em]">
-                Each interaction gets sharper from
-                <br />
-                <span className="text-[#5b5ce8]">
-                  the previous experience.
-                </span>
-              </h2>
-              <p className="mt-4 text-sm sm:text-base text-[#7a7a7a] leading-relaxed">
-                Voice intent → field nudges → ops actions → SLM training. The
-                flywheel compounds with every call.
-              </p>
-            </div>
-
-            <div className="mt-12 grid gap-3 sm:gap-4 lg:grid-cols-4">
-              {WEDGE_CARDS.map((card) => (
-                <div
-                  key={card.id}
-                  className={`rounded-[14px] border bg-white p-5 sm:p-6 shadow-[0_8px_24px_rgba(37,44,97,0.06)] ${
-                    card.featured
-                      ? "border-[#cfd3ff] bg-[#f7f7ff]"
-                      : "border-[#eceef4]"
-                  }`}
-                >
-                  <p
-                    className={`text-[10px] font-semibold uppercase tracking-[0.26em] ${
-                      card.featured ? "text-[#5b5ce8]" : "text-[#9aa0b2]"
-                    }`}
-                  >
-                    {/* {card.id} */}
-                  </p>
-                  <h3 className="mt-4 text-[19px] font-semibold tracking-[-0.01em] text-[#4b4b4b]">
-                    {card.title}
-                  </h3>
-                  <p className="mt-4 text-[13px] leading-[1.55] text-[#7a7a7a]">
-                    {card.description}
-                  </p>
-                  <div className="mt-7 border-t border-dashed border-[#e6e8ef] pt-4 flex items-end justify-between gap-4">
-                    <div className="text-[10px] leading-none text-[#a0a4b3]">
-                      {card.metricLabel}
-                    </div>
-                    <div
-                      className={`text-right text-[12px] font-semibold leading-none ${card.metricTone}`}
-                    >
-                      {card.metricValue}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-20 sm:mt-24">
-          <BFSIScenarios />
-        </div>
-
-        <div className="mt-20 sm:mt-24">
-          <div className="rounded-[28px] border border-[#d9dcff] bg-[#eef0ff] px-6 py-8 sm:px-10 sm:py-12 lg:px-12 lg:py-14 shadow-[0_10px_30px_rgba(91,92,232,0.05)]">
-            <div className="grid items-center gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
-              <div className="max-w-[520px]">
-                <h2 className="text-[32px] sm:text-[42px] lg:text-[52px] font-semibold leading-[1.03] tracking-[-0.03em] text-[#4b4b4b]">
-                  This is what buys
+            <div className="mt-20 sm:mt-24">
+              <div className="text-center max-w-[760px] mx-auto">
+                <p className="text-[11px] tracking-[0.38em] text-[#5b5ce8] font-semibold uppercase">
+                  Proprietary BFSI SLM
+                </p>
+                <h2 className="section-heading mt-4 text-[28px] sm:text-[36px] lg:text-[42px] leading-[1.15]">
+                  Each interaction gets sharper from
                   <br />
-                  you <span className="text-[#5b5ce8]">
-                    10× productivity
-                  </span>{" "}
-                  and <span className="text-[#5b5ce8]">5× more value</span> on
-                  field.
+                  <span className="text-[#5b5ce8]">
+                    the previous experience.
+                  </span>
                 </h2>
-                <p className="mt-6 max-w-[470px] text-[15px] leading-[1.65] text-[#6e7390]">
-                  Most BFSI vendors give you a feature. Darwix gives you a
-                  stack, proprietary tokens, agentic suite, in-house SLM that
-                  compounds every quarter your customers stay on the platform.
+                <p className="mt-4 text-sm sm:text-base text-[#7a7a7a] leading-relaxed">
+                  Voice intent → field nudges → ops actions → SLM training. The
+                  flywheel compounds with every call.
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
-                {VALUE_METRICS.map((metric) => (
+              <div className="mt-12 grid gap-3 sm:gap-4 lg:grid-cols-4">
+                {WEDGE_CARDS.map((card) => (
                   <div
-                    key={metric.label}
-                    className="rounded-[14px] border border-[#d9dcff] bg-[#f8f8ff] px-5 py-5 shadow-[0_1px_0_rgba(255,255,255,0.9)_inset]"
+                    key={card.id}
+                    className={`rounded-[14px] border bg-white p-5 sm:p-6 shadow-[0_8px_24px_rgba(37,44,97,0.06)] ${
+                      card.featured
+                        ? "border-[#cfd3ff] bg-[#f7f7ff]"
+                        : "border-[#eceef4]"
+                    }`}
                   >
-                    <div className="text-[42px] font-semibold leading-none tracking-[-0.04em] text-[#4b4b4b]">
-                      {metric.value}
-                    </div>
-                    <p className="mt-5 text-[13px] leading-none text-[#6e7390]">
-                      {metric.label}
+                    <p
+                      className={`text-[10px] font-semibold uppercase tracking-[0.26em] ${
+                        card.featured ? "text-[#5b5ce8]" : "text-[#9aa0b2]"
+                      }`}
+                    >
+                      {/* {card.id} */}
                     </p>
+                    <h3 className="mt-4 text-[19px] font-semibold tracking-[-0.01em] text-[#4b4b4b]">
+                      {card.title}
+                    </h3>
+                    <p className="mt-4 text-[13px] leading-[1.55] text-[#7a7a7a]">
+                      {card.description}
+                    </p>
+                    <div className="mt-7 border-t border-dashed border-[#e6e8ef] pt-4 flex items-end justify-between gap-4">
+                      <div className="text-[10px] leading-none text-[#a0a4b3]">
+                        {card.metricLabel}
+                      </div>
+                      <div
+                        className={`text-right text-[12px] font-semibold leading-none ${card.metricTone}`}
+                      >
+                        {card.metricValue}
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="mt-20 sm:mt-24">
-          <div className="text-center">
-            <p className="text-[11px] tracking-[0.38em] text-[#5b5ce8] font-semibold uppercase">
-              Explore the suite
-            </p>
-            <h2 className="mt-4 text-[32px] sm:text-[40px] lg:text-[44px] font-semibold text-[#4b4b4b] leading-[1.1] tracking-[-0.03em]">
-              <span className="text-[#5b5ce8]">Multiple  <span className="text-[#4b4b4b]">agents. One brain.</span></span>
-            </h2>
+          <div className="mt-20 sm:mt-24">
+            <BFSIScenarios />
           </div>
 
-          <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            {SUITE_CARDS.map((card) => (
-              <div
-                key={card.title}
-                className={`min-h-[250px] rounded-[18px] border px-6 py-6 shadow-[0_8px_22px_rgba(37,44,97,0.05)] ${
-                  card.featured
-                    ? "border-[#cfd3ff] bg-[#f7f7ff]"
-                    : "border-[#eceef4] bg-white"
-                }`}
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <h3 className="text-[21px] font-semibold leading-none tracking-[-0.02em] text-[#4b4b4b]">
-                    {card.title}
-                  </h3>
-                  {card.featured && (
-                    <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.18em] text-[#8d90a3]">
-                      Launching SOON!
+          <div className="mt-20 sm:mt-24">
+            <div className="rounded-[28px] border border-[#d9dcff] bg-[#eef0ff] px-6 py-8 sm:px-10 sm:py-12 lg:px-12 lg:py-14 shadow-[0_10px_30px_rgba(91,92,232,0.05)]">
+              <div className="grid items-center gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
+                <div className="max-w-[520px]">
+                  <h2 className="section-heading text-[32px] sm:text-[42px] lg:text-[52px] leading-[1.03]">
+                    This is what buys
+                    <br />
+                    you <span className="text-[#5b5ce8]">
+                      10x productivity
+                    </span>{" "}
+                    and <span className="text-[#5b5ce8]">5x more value</span> on
+                    field.
+                  </h2>
+                  <p className="mt-6 max-w-[470px] text-[15px] leading-[1.65] text-[#6e7390]">
+                    Most BFSI vendors give you a feature. Darwix gives you a
+                    stack, proprietary tokens, agentic suite, in-house SLM that
+                    compounds every quarter your customers stay on the platform.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
+                  {VALUE_METRICS.map((metric) => (
+                    <div
+                      key={metric.label}
+                      className="rounded-[14px] border border-[#d9dcff] bg-[#f8f8ff] px-5 py-5 shadow-[0_1px_0_rgba(255,255,255,0.9)_inset]"
+                    >
+                      <div className="text-[42px] font-semibold leading-none tracking-[-0.04em] text-[#4b4b4b]">
+                        {metric.value}
+                      </div>
+                      <p className="mt-5 text-[13px] leading-none text-[#6e7390]">
+                        {metric.label}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-20 sm:mt-24">
+            <div className="text-center">
+              <p className="text-[11px] tracking-[0.38em] text-[#5b5ce8] font-semibold uppercase">
+                Explore the suite
+              </p>
+              <h2 className="section-heading mt-4 text-[32px] sm:text-[40px] lg:text-[44px] leading-[1.1]">
+                <span className="text-[#5b5ce8]">
+                  Multiple{" "}
+                  <span className="text-[#4b4b4b]">agents. One brain.</span>
+                </span>
+              </h2>
+            </div>
+
+            <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+              {SUITE_CARDS.map((card) => (
+                <div
+                  key={card.title}
+                  className={`min-h-[250px] rounded-[18px] border px-6 py-6 shadow-[0_8px_22px_rgba(37,44,97,0.05)] ${
+                    card.featured
+                      ? "border-[#cfd3ff] bg-[#f7f7ff]"
+                      : "border-[#eceef4] bg-white"
+                  }`}
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <h3 className="text-[21px] font-semibold leading-none tracking-[-0.02em] text-[#4b4b4b]">
+                      {card.title}
+                    </h3>
+                    {card.featured && (
+                      <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.18em] text-[#8d90a3]">
+                        Launching SOON!
+                      </span>
+                    )}
+                  </div>
+
+                  <p className="mt-8 max-w-[220px] text-[14px] leading-[1.5] text-[#6f7485]">
+                    {card.description}
+                  </p>
+
+                  <div className="mt-10 pt-5">
+                    <a
+                      href="#"
+                      className="text-[12px] font-semibold text-[#5b5ce8]"
+                    >
+                      {card.cta}
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <p className="mt-7 text-center text-[16px] sm:text-[15px] font-medium text-[#6b6b74] tracking-[-0.01em]">
+            Add many more agents...
+          </p>
+
+          <div className="mt-20 sm:mt-24">
+            <div className="mx-auto max-w-[1182px] text-center">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.4em] text-[#5b5ce8]">
+                How the products work together
+              </p>
+              <h2 className="section-heading mt-6 text-[34px] sm:text-[44px] lg:text-[52px] leading-tight">
+                One conversation.{" "}
+                <span className="text-[#5b5ce8]">Every system in motion.</span>
+              </h2>
+            </div>
+
+            <div className="mx-auto mt-8 max-w-[1320px] rounded-[18px] border border-[#ececf3] bg-[#fbfbfd] px-5 py-8 shadow-[0_12px_38px_rgba(37,44,97,0.04)] sm:px-6 lg:px-6 lg:py-12">
+              <div className="grid items-stretch gap-5 lg:grid-cols-[1fr_44px_1fr_44px_1fr_44px_1fr]">
+                <div className="flex min-h-[338px] flex-col rounded-[14px] border border-[#eceef6] bg-white p-5 text-left shadow-[0_10px_24px_rgba(37,44,97,0.04)]">
+                  <div className="flex items-start justify-between">
+                    <span className="text-[11px] font-semibold text-[#5b5ce8]">
+                      01
                     </span>
+                    <span className="rounded-full bg-[#f0efff] px-3 py-1 text-[11px] font-semibold text-[#5b5ce8]">
+                      Physical
                   )}
                 </div>
 
@@ -1395,217 +1472,234 @@ export default function HomePage() {
                     <span className="font-semibold text-[#5b5ce8]">
                       Sherpa - EMI shift, band 4
                     </span>
+                  </div>
+                  <h3 className="mt-5 text-[20px] font-semibold tracking-[-0.02em] text-[#4b4b4b]">
+                    Sherpa
+                  </h3>
+                  <p className="mt-1 text-[13px] text-[#9498a4]">
+                    At the client site - field visit
                   </p>
-                </div>
-                <p className="mt-4 text-[13px] leading-[1.45] text-[#767a85]">
-                  Live face-to-face capture. Contextual prompts in-ear. Rich
-                  fidelity consumer signals from every visit.
-                </p>
-                <div className="mt-auto border-t border-dashed border-[#e6e8ef] pt-4">
-                  <div className="flex items-center justify-between gap-3 text-[9px] text-[#8f94a3]">
-                    <span className="flex items-center gap-2 font-semibold text-[#4f5567]">
-                      <span className="h-1.5 w-1.5 rounded-full bg-[#5b5ce8]" />
-                      Next-actions initiated
-                    </span>
-                    <span>CRM</span>
+                  <div className="mt-4 rounded-[9px] border border-[#eff0f5] bg-[#fbfbfd] px-3 py-3 text-[10px] leading-relaxed text-[#858995]">
+                    <p>
+                      14:08&nbsp;&nbsp; Customer: &quot;We need to
+                      settle...&quot;
+                    </p>
+                    <p>
+                      14:08&nbsp;&nbsp;{" "}
+                      <span className="font-semibold text-[#5b5ce8]">
+                        Sherpa - EMI shift, band 4
+                      </span>
+                    </p>
                   </div>
-                  <div className="mt-2 flex items-center justify-between gap-3 text-[9px] text-[#8f94a3]">
-                    <span className="flex items-center gap-2 font-semibold text-[#4f5567]">
-                      <span className="h-1.5 w-1.5 rounded-full bg-[#5b5ce8]" />
-                      Consumer persona updated
-                    </span>
-                    <span>Data</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="hidden items-center justify-center lg:flex">
-                <div className="relative h-px w-full bg-[#5b5ce8]">
-                  <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[125%] whitespace-nowrap rounded-full border border-[#dfe1ea] bg-white px-2 py-1 text-[10px] font-semibold text-[#686d7a]">
-                    Handoff
-                  </span>
-                  <span className="absolute -right-1 top-1/2 h-2 w-2 -translate-y-1/2 rotate-45 border-r border-t border-[#5b5ce8]" />
-                </div>
-              </div>
-
-              <div className="flex min-h-[338px] flex-col rounded-[14px] border border-[#eceef6] bg-white p-5 text-left shadow-[0_10px_24px_rgba(37,44,97,0.04)]">
-                <div className="flex items-start justify-between">
-                  <span className="text-[11px] font-semibold text-[#5b5ce8]">
-                    02
-                  </span>
-                  <span className="rounded-full bg-[#f0efff] px-3 py-1 text-[11px] font-semibold text-[#5b5ce8]">
-                    Support
-                  </span>
-                </div>
-                <h3 className="mt-5 text-[20px] font-semibold tracking-[-0.02em] text-[#4b4b4b]">
-                  Voice agent
-                </h3>
-                <p className="mt-1 text-[13px] text-[#9498a4]">
-                  Reminders - Confirm - Follow-Ups
-                </p>
-                <div className="mt-4 flex items-center gap-3 rounded-[9px] border border-[#eff0f5] bg-[#fbfbfd] px-3 py-3">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#5b5ce8] text-[11px] font-semibold text-white">
-                    ▶
-                  </span>
-                  <div className="flex flex-1 items-center gap-1">
-                    {[18, 26, 19, 30, 24, 34, 23, 31, 20, 28, 18].map(
-                      (height, index) => (
-                        <span
-                          key={index}
-                          className="w-1 rounded-full bg-[#9ea3f6]"
-                          style={{ height }}
-                        />
-                      ),
-                    )}
-                  </div>
-                  <span className="text-[10px] text-[#a0a4b0]">00:42</span>
-                </div>
-                <p className="mt-4 text-[13px] leading-[1.45] text-[#767a85]">
-                  The silent connective tissue. Branch-visit reminders,
-                  confirmation calls, follow-throughs, placed at scale, exactly
-                  when needed.
-                </p>
-                <div className="mt-auto border-t border-dashed border-[#e6e8ef] pt-4">
-                  <div className="flex items-center justify-between gap-3 text-[9px] text-[#8f94a3]">
-                    <span className="flex items-center gap-2 font-semibold text-[#4f5567]">
-                      <span className="h-1.5 w-1.5 rounded-full bg-[#5b5ce8]" />
-                      Voice reminder triggered
-                    </span>
-                    <span>Voice</span>
-                  </div>
-                  <div className="mt-2 flex items-center justify-between gap-3 text-[9px] text-[#8f94a3]">
-                    <span className="flex items-center gap-2 font-semibold text-[#4f5567]">
-                      <span className="h-1.5 w-1.5 rounded-full bg-[#5b5ce8]" />
-                      Welcome asset triggered
-                    </span>
-                    <span>Comms</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="hidden items-center justify-center lg:flex">
-                <div className="relative h-px w-full bg-[#5b5ce8]">
-                  <span className="absolute left-1/2 top-1/2 min-w-[54px] -translate-x-1/2 -translate-y-[125%] whitespace-nowrap rounded-full border border-[#dfe1ea] bg-white px-2 py-1 text-center text-[10px] font-semibold text-[#686d7a] [word-break:keep-all]">
-                    Walk&#8209;in
-                  </span>
-                  <span className="absolute -right-1 top-1/2 h-2 w-2 -translate-y-1/2 rotate-45 border-r border-t border-[#5b5ce8]" />
-                </div>
-              </div>
-
-              <div className="flex min-h-[338px] flex-col rounded-[14px] border border-[#eceef6] bg-white p-5 text-left shadow-[0_10px_24px_rgba(37,44,97,0.04)]">
-                <div className="flex items-start justify-between">
-                  <span className="text-[11px] font-semibold text-[#5b5ce8]">
-                    03
-                  </span>
-                  <span className="rounded-full bg-[#f0efff] px-3 py-1 text-[11px] font-semibold text-[#5b5ce8]">
-                    Physical
-                  </span>
-                </div>
-                <h3 className="mt-5 text-[20px] font-semibold tracking-[-0.02em] text-[#4b4b4b]">
-                  Nova
-                </h3>
-                <p className="mt-1 text-[13px] text-[#9498a4]">
-                  At the branch - Assisted visit
-                </p>
-                <div className="mt-4 rounded-[9px] border border-[#eff0f5] bg-[#fbfbfd] px-3 py-3 text-[10px] leading-relaxed text-[#858995]">
-                  <div className="grid grid-cols-[1fr_auto] gap-3">
-                    <span>Context loaded:</span>
-                    <span className="font-semibold text-[#5b5ce8]">
-                      Sherpa visit
-                    </span>
-                    <span>Pre-approval:</span>
-                    <span className="font-semibold text-[#5b5ce8]">
-                      EMI shift
-                    </span>
-                    <span>Stage:</span>
-                    <span className="font-semibold text-[#5b5ce8]">
-                      04 - 05
-                    </span>
-                  </div>
-                </div>
-                <p className="mt-4 text-[13px] leading-[1.45] text-[#767a85]">
-                  Branch-officer-side assist with everything Sherpa captured
-                  plus everything voice confirmed. Real-time fulfilment,
-                  structured capture.
-                </p>
-                <div className="mt-auto border-t border-dashed border-[#e6e8ef] pt-4">
-                  <div className="flex items-center justify-between gap-3 text-[9px] text-[#8f94a3]">
-                    <span className="flex items-center gap-2 font-semibold text-[#4f5567]">
-                      <span className="h-1.5 w-1.5 rounded-full bg-[#5b5ce8]" />
-                      Workflow initiated
-                    </span>
-                    <span>LOS</span>
-                  </div>
-                  <div className="mt-2 flex items-center justify-between gap-3 text-[9px] text-[#8f94a3]">
-                    <span className="flex items-center gap-2 font-semibold text-[#4f5567]">
-                      <span className="h-1.5 w-1.5 rounded-full bg-[#5b5ce8]" />
-                      Next-step push triggered
-                    </span>
-                    <span>Comms</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="hidden items-center justify-center lg:flex">
-                <div className="relative h-px w-full bg-[#5b5ce8]">
-                  <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[125%] whitespace-nowrap rounded-full border border-[#dfe1ea] bg-white px-2 py-1 text-[10px] font-semibold text-[#686d7a]">
-                    Closed
-                  </span>
-                  <span className="absolute -right-1 top-1/2 h-2 w-2 -translate-y-1/2 rotate-45 border-r border-t border-[#5b5ce8]" />
-                </div>
-              </div>
-
-              <div className="flex min-h-[338px] flex-col rounded-[14px] border border-[#ccd1ff] bg-[#f0f1ff] p-5 text-left shadow-[0_10px_24px_rgba(91,92,232,0.06)]">
-                <div className="flex items-start justify-between">
-                  <span className="text-[11px] font-semibold text-[#5b5ce8]">
-                    04
-                  </span>
-                  <span className="text-[11px] font-semibold text-[#5b5ce8]">
-                    Outcome
-                  </span>
-                </div>
-                <h3 className="mt-5 text-[20px] font-semibold leading-snug tracking-[-0.02em] text-[#4b4b4b]">
-                  Consumer journey progressed.
-                </h3>
-                <div className="mt-6 space-y-3 text-[13px] leading-snug text-[#686d7a]">
-                  {[
-                    "Profile enriched across touchpoints",
-                    "Actions triggered across systems",
-                    "Reminders & support activated",
-                    "Onboarding moves forward",
-                  ].map((item) => (
-                    <div key={item} className="flex gap-3">
-                      <span className="font-semibold text-[#5b5ce8]">✓</span>
-                      <span>{item}</span>
+                  <p className="mt-4 text-[13px] leading-[1.45] text-[#767a85]">
+                    Live face-to-face capture. Contextual prompts in-ear. Rich
+                    fidelity consumer signals from every visit.
+                  </p>
+                  <div className="mt-auto border-t border-dashed border-[#e6e8ef] pt-4">
+                    <div className="flex items-center justify-between gap-3 text-[9px] text-[#8f94a3]">
+                      <span className="flex items-center gap-2 font-semibold text-[#4f5567]">
+                        <span className="h-1.5 w-1.5 rounded-full bg-[#5b5ce8]" />
+                        Next-actions initiated
+                      </span>
+                      <span>CRM</span>
                     </div>
-                  ))}
+                    <div className="mt-2 flex items-center justify-between gap-3 text-[9px] text-[#8f94a3]">
+                      <span className="flex items-center gap-2 font-semibold text-[#4f5567]">
+                        <span className="h-1.5 w-1.5 rounded-full bg-[#5b5ce8]" />
+                        Consumer persona updated
+                      </span>
+                      <span>Data</span>
+                    </div>
+                  </div>
                 </div>
-                <div className="mt-auto border-t border-[#d9ddff] pt-4">
-                  <div className="grid grid-cols-3 gap-3 text-[10px] text-[#9297a8]">
-                    <div>
-                      Touchpoints
-                      <span className="block pt-1 text-center text-[11px] font-semibold text-[#4b4b4b]">
-                        4
+
+                <div className="hidden items-center justify-center lg:flex">
+                  <div className="relative h-px w-full bg-[#5b5ce8]">
+                    <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[125%] whitespace-nowrap rounded-full border border-[#dfe1ea] bg-white px-2 py-1 text-[10px] font-semibold text-[#686d7a]">
+                      Handoff
+                    </span>
+                    <span className="absolute -right-1 top-1/2 h-2 w-2 -translate-y-1/2 rotate-45 border-r border-t border-[#5b5ce8]" />
+                  </div>
+                </div>
+
+                <div className="flex min-h-[338px] flex-col rounded-[14px] border border-[#eceef6] bg-white p-5 text-left shadow-[0_10px_24px_rgba(37,44,97,0.04)]">
+                  <div className="flex items-start justify-between">
+                    <span className="text-[11px] font-semibold text-[#5b5ce8]">
+                      02
+                    </span>
+                    <span className="rounded-full bg-[#f0efff] px-3 py-1 text-[11px] font-semibold text-[#5b5ce8]">
+                      Support
+                    </span>
+                  </div>
+                  <h3 className="mt-5 text-[20px] font-semibold tracking-[-0.02em] text-[#4b4b4b]">
+                    Voice agent
+                  </h3>
+                  <p className="mt-1 text-[13px] text-[#9498a4]">
+                    Reminders - Confirm - Follow-Ups
+                  </p>
+                  <div className="mt-4 flex items-center gap-3 rounded-[9px] border border-[#eff0f5] bg-[#fbfbfd] px-3 py-3">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#5b5ce8] text-[11px] font-semibold text-white">
+                      ▶
+                    </span>
+                    <div className="flex flex-1 items-center gap-1">
+                      {[18, 26, 19, 30, 24, 34, 23, 31, 20, 28, 18].map(
+                        (height, index) => (
+                          <span
+                            key={index}
+                            className="w-1 rounded-full bg-[#9ea3f6]"
+                            style={{ height }}
+                          />
+                        ),
+                      )}
+                    </div>
+                    <span className="text-[10px] text-[#a0a4b0]">00:42</span>
+                  </div>
+                  <p className="mt-4 text-[13px] leading-[1.45] text-[#767a85]">
+                    The silent connective tissue. Branch-visit reminders,
+                    confirmation calls, follow-throughs, placed at scale,
+                    exactly when needed.
+                  </p>
+                  <div className="mt-auto border-t border-dashed border-[#e6e8ef] pt-4">
+                    <div className="flex items-center justify-between gap-3 text-[9px] text-[#8f94a3]">
+                      <span className="flex items-center gap-2 font-semibold text-[#4f5567]">
+                        <span className="h-1.5 w-1.5 rounded-full bg-[#5b5ce8]" />
+                        Voice reminder triggered
+                      </span>
+                      <span>Voice</span>
+                    </div>
+                    <div className="mt-2 flex items-center justify-between gap-3 text-[9px] text-[#8f94a3]">
+                      <span className="flex items-center gap-2 font-semibold text-[#4f5567]">
+                        <span className="h-1.5 w-1.5 rounded-full bg-[#5b5ce8]" />
+                        Welcome asset triggered
+                      </span>
+                      <span>Comms</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="hidden items-center justify-center lg:flex">
+                  <div className="relative h-px w-full bg-[#5b5ce8]">
+                    <span className="absolute left-1/2 top-1/2 min-w-[54px] -translate-x-1/2 -translate-y-[125%] whitespace-nowrap rounded-full border border-[#dfe1ea] bg-white px-2 py-1 text-center text-[10px] font-semibold text-[#686d7a] [word-break:keep-all]">
+                      Walk&#8209;in
+                    </span>
+                    <span className="absolute -right-1 top-1/2 h-2 w-2 -translate-y-1/2 rotate-45 border-r border-t border-[#5b5ce8]" />
+                  </div>
+                </div>
+
+                <div className="flex min-h-[338px] flex-col rounded-[14px] border border-[#eceef6] bg-white p-5 text-left shadow-[0_10px_24px_rgba(37,44,97,0.04)]">
+                  <div className="flex items-start justify-between">
+                    <span className="text-[11px] font-semibold text-[#5b5ce8]">
+                      03
+                    </span>
+                    <span className="rounded-full bg-[#f0efff] px-3 py-1 text-[11px] font-semibold text-[#5b5ce8]">
+                      Physical
+                    </span>
+                  </div>
+                  <h3 className="mt-5 text-[20px] font-semibold tracking-[-0.02em] text-[#4b4b4b]">
+                    Nova
+                  </h3>
+                  <p className="mt-1 text-[13px] text-[#9498a4]">
+                    At the branch - Assisted visit
+                  </p>
+                  <div className="mt-4 rounded-[9px] border border-[#eff0f5] bg-[#fbfbfd] px-3 py-3 text-[10px] leading-relaxed text-[#858995]">
+                    <div className="grid grid-cols-[1fr_auto] gap-3">
+                      <span>Context loaded:</span>
+                      <span className="font-semibold text-[#5b5ce8]">
+                        Sherpa visit
+                      </span>
+                      <span>Pre-approval:</span>
+                      <span className="font-semibold text-[#5b5ce8]">
+                        EMI shift
+                      </span>
+                      <span>Stage:</span>
+                      <span className="font-semibold text-[#5b5ce8]">
+                        04 - 05
                       </span>
                     </div>
-                    <div>
-                      Time
-                      <span className="block pt-1 text-center text-[11px] font-semibold text-[#4b4b4b]">
-                        6m
+                  </div>
+                  <p className="mt-4 text-[13px] leading-[1.45] text-[#767a85]">
+                    Branch-officer-side assist with everything Sherpa captured
+                    plus everything voice confirmed. Real-time fulfilment,
+                    structured capture.
+                  </p>
+                  <div className="mt-auto border-t border-dashed border-[#e6e8ef] pt-4">
+                    <div className="flex items-center justify-between gap-3 text-[9px] text-[#8f94a3]">
+                      <span className="flex items-center gap-2 font-semibold text-[#4f5567]">
+                        <span className="h-1.5 w-1.5 rounded-full bg-[#5b5ce8]" />
+                        Workflow initiated
                       </span>
+                      <span>LOS</span>
                     </div>
-                    <div>
-                      Systems
-                      <span className="block pt-1 text-center text-[11px] font-semibold text-[#4b4b4b]">
-                        12
+                    <div className="mt-2 flex items-center justify-between gap-3 text-[9px] text-[#8f94a3]">
+                      <span className="flex items-center gap-2 font-semibold text-[#4f5567]">
+                        <span className="h-1.5 w-1.5 rounded-full bg-[#5b5ce8]" />
+                        Next-step push triggered
                       </span>
+                      <span>Comms</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="hidden items-center justify-center lg:flex">
+                  <div className="relative h-px w-full bg-[#5b5ce8]">
+                    <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[125%] whitespace-nowrap rounded-full border border-[#dfe1ea] bg-white px-2 py-1 text-[10px] font-semibold text-[#686d7a]">
+                      Closed
+                    </span>
+                    <span className="absolute -right-1 top-1/2 h-2 w-2 -translate-y-1/2 rotate-45 border-r border-t border-[#5b5ce8]" />
+                  </div>
+                </div>
+
+                <div className="flex min-h-[338px] flex-col rounded-[14px] border border-[#ccd1ff] bg-[#f0f1ff] p-5 text-left shadow-[0_10px_24px_rgba(91,92,232,0.06)]">
+                  <div className="flex items-start justify-between">
+                    <span className="text-[11px] font-semibold text-[#5b5ce8]">
+                      04
+                    </span>
+                    <span className="text-[11px] font-semibold text-[#5b5ce8]">
+                      Outcome
+                    </span>
+                  </div>
+                  <h3 className="mt-5 text-[20px] font-semibold leading-snug tracking-[-0.02em] text-[#4b4b4b]">
+                    Consumer journey progressed.
+                  </h3>
+                  <div className="mt-6 space-y-3 text-[13px] leading-snug text-[#686d7a]">
+                    {[
+                      "Profile enriched across touchpoints",
+                      "Actions triggered across systems",
+                      "Reminders & support activated",
+                      "Onboarding moves forward",
+                    ].map((item) => (
+                      <div key={item} className="flex gap-3">
+                        <span className="font-semibold text-[#5b5ce8]">✓</span>
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-auto border-t border-[#d9ddff] pt-4">
+                    <div className="grid grid-cols-3 gap-3 text-[10px] text-[#9297a8]">
+                      <div>
+                        Touchpoints
+                        <span className="block pt-1 text-center text-[11px] font-semibold text-[#4b4b4b]">
+                          4
+                        </span>
+                      </div>
+                      <div>
+                        Time
+                        <span className="block pt-1 text-center text-[11px] font-semibold text-[#4b4b4b]">
+                          6m
+                        </span>
+                      </div>
+                      <div>
+                        Systems
+                        <span className="block pt-1 text-center text-[11px] font-semibold text-[#4b4b4b]">
+                          12
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
         </div>
       </section>
 

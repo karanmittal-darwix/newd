@@ -12,22 +12,20 @@ export default function NovaPillarsSection() {
       className={`${manrope.className} bg-white px-4 sm:px-6 lg:px-[129px] py-24 sm:py-28`}
     >
       <div className="mx-auto max-w-[1320px]">
-
         {/* Header */}
         <div className="text-center">
           <p className="text-[11px] tracking-[0.42em] text-[#5b5ce8] font-semibold uppercase">
             How Nova works in store
           </p>
 
-          <h2 className="mt-5 text-[40px] sm:text-[54px] lg:text-[72px] font-semibold text-[#4b4b4b] tracking-[-0.05em] leading-[1.02]">
-            Sense. Understand.{" "}
-            <span className="text-[#5b5ce8]">Act.</span>
+          <h2 className="section-heading mt-5 text-[40px] sm:text-[54px] lg:text-[72px] text-[#4b4b4b] tracking-[-0.05em] leading-[1.02]">
+            Sense. Understand. <span className="text-[#5b5ce8]">Act.</span>
           </h2>
 
           <p className="mt-5 text-[15px] text-[#7a7a7a] max-w-[760px] mx-auto leading-[1.7]">
             Three pillars. Same brain. Three things have to happen at the
-            counter. Nova does all three on the same SLM that powers Sherpa
-            and the voice agents.
+            counter. Nova does all three on the same SLM that powers Sherpa and
+            the voice agents.
           </p>
         </div>
 
@@ -100,7 +98,6 @@ export default function NovaPillarsSection() {
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

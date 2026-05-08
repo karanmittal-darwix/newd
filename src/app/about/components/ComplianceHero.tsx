@@ -23,7 +23,7 @@ export default function ComplianceHero() {
       {/* Subtle radial glow top-center */}
       <div
         className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2"
-         style={{
+        style={{
           backgroundImage:
             "linear-gradient(90deg, #565ADD1F 0%, #565ADD00 100%)",
         }}
@@ -41,13 +41,13 @@ export default function ComplianceHero() {
         </div>
 
         {/* Heading */}
-        <h1 className="max-w-[800px] mx-auto text-center text-[38px] sm:text-[48px] lg:text-[60px] font-semibold text-[#3a3a4a] tracking-[-0.04em] leading-[1.02]">
+        <h1 className="hero-heading text-center">
           Built for <span className="text-[#5b5ce8]">India&apos;s</span>{" "}
           regulated stack.
         </h1>
 
         {/* Body copy */}
-        <p className="mt-6 text-center text-[14px] sm:text-[15px] text-[#6e6e80] max-w-[800px] mx-auto leading-[1.7]">
+        <p className="hero-subheading text-center max-w-[800px]">
           India's BFSI regulators don't write footnotes. Neither do we.
           <br />
           Darwix is built from model to deployment on the most demanding
@@ -73,7 +73,7 @@ export default function ComplianceHero() {
         </div>
 
         {/* Stat strip — label + value, no icons */}
-         <div className="mt-16 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
+        <div className="mt-16 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
           {INFRA_STATS.map((stat, i) => (
             <div
               key={stat.label}

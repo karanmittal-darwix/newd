@@ -12,20 +12,21 @@ export default function NovaSurfacesSection() {
       className={`${manrope.className} bg-white px-4 sm:px-6 lg:px-[129px] py-24 sm:py-28`}
     >
       <div className="mx-auto max-w-[1280px]">
-
         {/* Header */}
         <div className="text-center mb-16">
           <p className="text-[11px] tracking-[0.42em] text-[#5b5ce8] font-semibold uppercase mb-5">
             Surfaces Nova lives on
           </p>
 
-          <h2 className="text-[32px] sm:text-[40px] lg:text-[50px] font-semibold text-[#4b4b4b] tracking-[-0.03em] leading-[1.1]">
-             On a <span className="text-[#5b5ce8]">kiosk.</span> On a{" "} <span className="text-[#5b5ce8]">screen.</span> At the counter. </h2>
+          <h2 className="section-heading text-[32px] sm:text-[40px] lg:text-[50px] text-[#4b4b4b] tracking-[-0.03em] leading-[1.1]">
+            On a <span className="text-[#5b5ce8]">kiosk.</span> On a{" "}
+            <span className="text-[#5b5ce8]">screen.</span> At the counter.{" "}
+          </h2>
 
           <p className="mt-6 text-[15px] leading-[1.75] text-[#7a7a7a] max-w-[820px] mx-auto">
-            Nova adapts to multiple in-store surfaces from standalone
-            kiosks to assisted retail counters and immersive display walls —
-            all powered by the same conversational intelligence layer.
+            Nova adapts to multiple in-store surfaces from standalone kiosks to
+            assisted retail counters and immersive display walls — all powered
+            by the same conversational intelligence layer.
           </p>
         </div>
 
@@ -65,7 +66,6 @@ export default function NovaSurfacesSection() {
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

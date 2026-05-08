@@ -4,18 +4,19 @@ export default function CertificationsSection() {
   return (
     <section className="bg-white px-4 sm:px-6 lg:px-[129px] py-20 sm:py-24">
       <div className="mx-auto max-w-[1182px]">
-
         {/* Header */}
         <div className="text-center mb-14">
           <p className="text-[11px] tracking-[0.38em] text-[#5b5ce8] font-semibold uppercase mb-4">
             Certifications section
           </p>
-          <h2 className="text-[32px] sm:text-[40px] lg:text-[48px] font-semibold text-[#4b4b4b] tracking-[-0.03em] leading-[1.1]">
-            Eight frames.{" "}
-            <span className="text-[#5b5ce8]">Audited</span> annually.
+          <h2 className="section-heading text-[32px] sm:text-[40px] lg:text-[48px] text-[#4b4b4b] tracking-[-0.03em] leading-[1.1]">
+            Eight frames. <span className="text-[#5b5ce8]">Audited</span>{" "}
+            annually.
           </h2>
           <p className="mt-4 text-sm sm:text-base text-[#7a7a7a] max-w-[800px] mx-auto leading-relaxed">
-            A robust compliance backbone built on globally recognized frameworks, independently audited each year to ensure security, availability, and regulatory alignment at scale.
+            A robust compliance backbone built on globally recognized
+            frameworks, independently audited each year to ensure security,
+            availability, and regulatory alignment at scale.
           </p>
         </div>
 
@@ -38,7 +39,6 @@ export default function CertificationsSection() {
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

@@ -1,8 +1,5 @@
 import { Manrope } from "next/font/google";
-import {
-  AUDIT_CALL_DETAILS,
-  AUDIT_TRAIL_EVENTS,
-} from "@/data/compliance";
+import { AUDIT_CALL_DETAILS, AUDIT_TRAIL_EVENTS } from "@/data/compliance";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -15,31 +12,27 @@ export default function AuditTrailSection() {
       className={`${manrope.className} bg-white px-4 sm:px-6 lg:px-[129px] py-24 sm:py-28`}
     >
       <div className="mx-auto max-w-[1182px]">
-
         {/* Header */}
         <div className="text-center">
           <p className="text-[11px] tracking-[0.38em] text-[#5b5ce8] font-semibold uppercase">
             What the audit trail looks like
           </p>
 
-          <h2 className="mt-5 text-[10px] sm:text-[42px] lg:text-[54px] font-semibold text-[#4b4b4b] tracking-[-0.045em] leading-[1.08] max-w-[980px] mx-auto">
-            Every call leaves a{" "}
-            <span className="text-[#5b5ce8]">trail</span>{" "}
-            your{" "}
-            <span className="text-[#5b5ce8]">auditor</span>{" "}
-            will read in plain English.
+          <h2 className="section-heading mt-5 text-[40px] sm:text-[42px] lg:text-[54px] text-[#4b4b4b] tracking-[-0.045em] leading-[1.08] max-w-[980px] mx-auto">
+            Every call leaves a <span className="text-[#5b5ce8]">trail</span>{" "}
+            your <span className="text-[#5b5ce8]">auditor</span> will read in
+            plain English.
           </h2>
 
           <p className="mt-5 text-[15px] text-[#7a7a7a] max-w-[760px] mx-auto leading-[1.7]">
             Every interaction is automatically translated into a clear,
-            human-readable audit trail, giving regulators and auditors
-            full visibility without the need to decode complex system logs.
+            human-readable audit trail, giving regulators and auditors full
+            visibility without the need to decode complex system logs.
           </p>
         </div>
 
         {/* Main Panel */}
         <div className="mt-16 rounded-[24px] border border-[#e7e8f3] bg-[#f3f4ff] px-7 sm:px-8 lg:px-10 py-8 sm:py-10">
-
           {/* Label */}
           <p className="text-[18px] font-semibold text-[#5d6170] mb-6">
             Call Details
@@ -47,7 +40,6 @@ export default function AuditTrailSection() {
 
           {/* Grid */}
           <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-
             {/* Left Metadata Card */}
             <div className="rounded-[16px] border border-[#eceef4] bg-white px-7 py-1.8">
               {AUDIT_CALL_DETAILS.map((item, i) => (
@@ -92,10 +84,8 @@ export default function AuditTrailSection() {
                 </div>
               ))}
             </div>
-
           </div>
         </div>
-
       </div>
     </section>
   );
