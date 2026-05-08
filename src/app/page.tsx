@@ -579,7 +579,8 @@ const SCENARIO_CARDS = [
 ];
 
 export default function HomePage() {
-  const [activeActionIndex, setActiveActionIndex] = useState(-1);
+  const [activeActionIndex, setActiveActionIndex] = useState(0);
+  const [firedActionIndices, setFiredActionIndices] = useState<number[]>([]);
   const [liveCallCount, setLiveCallCount] = useState(INITIAL_LIVE_CALL_COUNT);
   const [actionsPerHour, setActionsPerHour] = useState(
     INITIAL_ACTIONS_PER_HOUR,
@@ -590,10 +591,23 @@ export default function HomePage() {
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
-      setActiveActionIndex((currentIndex) =>
-        currentIndex >= ACTION_EVENTS.length - 1 ? -1 : currentIndex + 1,
-      );
-    }, 1200);
+      setActiveActionIndex((currentIndex) => {
+        const nextIndex =
+          currentIndex >= ACTION_EVENTS.length - 1 ? 0 : currentIndex + 1;
+
+        setFiredActionIndices((currentFiredIndices) => {
+          if (nextIndex === 0) {
+            return [];
+          }
+
+          return currentFiredIndices.includes(currentIndex)
+            ? currentFiredIndices
+            : [...currentFiredIndices, currentIndex];
+        });
+
+        return nextIndex;
+      });
+    }, 1300);
 
     return () => window.clearInterval(intervalId);
   }, []);
@@ -1164,6 +1178,33 @@ export default function HomePage() {
                     <div
                       key={metric.label}
                       className="border-b border-dashed border-[#d8d9df] py-3 first:pt-0"
+              <div className="mt-4 border-b border-dashed border-[#d8d9df]" />
+
+              <div className="mt-5 space-y-2.5">
+                {ACTION_EVENTS.map((event, index) => {
+                  const isActiveAction = index === activeActionIndex;
+                  const isCompletedAction = firedActionIndices.includes(index);
+                  const actionButtonClass = isActiveAction
+                    ? "border-[#4f58de] bg-[#f3f4ff] shadow-[0_0_0_1px_rgba(79,88,222,0.14)]"
+                    : isCompletedAction
+                      ? "border-[#19a84b] bg-[#effaf3]"
+                      : "border-[#e4e4e8] bg-white";
+                  const statusBadgeClass = isActiveAction
+                    ? "border border-[#4f58de] bg-[#4f58de] text-white"
+                    : isCompletedAction
+                      ? "border border-[#19a84b] bg-[#19a84b] text-white"
+                      : "border border-[#d6d8df] bg-white text-[#9ca0aa]";
+                  const statusLabel = isActiveAction
+                    ? "firing"
+                    : isCompletedAction
+                      ? "fired"
+                      : "queued";
+
+                  return (
+                    <button
+                      type="button"
+                      key={event.name}
+                      className={`w-full rounded-xl border px-3.5 py-3 flex items-start justify-between gap-3 text-left transition ${actionButtonClass}`}
                     >
                       <div className="flex items-center justify-between">
                         <span className="text-[12px] text-[#6f717a]">
@@ -1370,6 +1411,66 @@ export default function HomePage() {
                     </span>
                     <span className="rounded-full bg-[#f0efff] px-3 py-1 text-[11px] font-semibold text-[#5b5ce8]">
                       Physical
+                  )}
+                </div>
+
+                <p className="mt-8 max-w-[220px] text-[14px] leading-[1.5] text-[#6f7485]">
+                  {card.description}
+                </p>
+
+                <div className="mt-10 pt-5">
+                  <a
+                    href="#"
+                    className="text-[12px] font-semibold text-[#5b5ce8]"
+                  >
+                    {card.cta}
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <p className="mt-7 text-center text-[16px] sm:text-[15px] font-medium text-[#6b6b74] tracking-[-0.01em]">
+          Add many more ...
+        </p>
+
+        <div className="mt-20 sm:mt-24">
+          <div className="mx-auto max-w-[1182px] text-center">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.4em] text-[#5b5ce8]">
+              How the products work together
+            </p>
+            <h2 className="mt-6 text-[34px] font-semibold leading-tight tracking-[-0.03em] text-[#4b4b4b] sm:text-[44px] lg:text-[52px]">
+              One conversation.{" "}
+              <span className="text-[#5b5ce8]">Every system in motion.</span>
+            </h2>
+          </div>
+
+          <div className="mx-auto mt-8 max-w-[1320px] rounded-[18px] border border-[#ececf3] bg-[#fbfbfd] px-5 py-8 shadow-[0_12px_38px_rgba(37,44,97,0.04)] sm:px-6 lg:px-6 lg:py-12">
+            <div className="grid items-stretch gap-5 lg:grid-cols-[1fr_44px_1fr_44px_1fr_44px_1fr]">
+              <div className="flex min-h-[338px] flex-col rounded-[14px] border border-[#eceef6] bg-white p-5 text-left shadow-[0_10px_24px_rgba(37,44,97,0.04)]">
+                <div className="flex items-start justify-between">
+                  <span className="text-[11px] font-semibold text-[#5b5ce8]">
+                    01
+                  </span>
+                  <span className="rounded-full bg-[#f0efff] px-3 py-1 text-[11px] font-semibold text-[#5b5ce8]">
+                    Physical
+                  </span>
+                </div>
+                <h3 className="mt-5 text-[20px] font-semibold tracking-[-0.02em] text-[#4b4b4b]">
+                  Sherpa
+                </h3>
+                <p className="mt-1 text-[13px] text-[#9498a4]">
+                  At the client site - field visit
+                </p>
+                <div className="mt-4 rounded-[9px] border border-[#eff0f5] bg-[#fbfbfd] px-3 py-3 text-[10px] leading-relaxed text-[#858995]">
+                  <p>
+                    14:08&nbsp;&nbsp; Customer: &quot;We need to settle...&quot;
+                  </p>
+                  <p>
+                    14:08&nbsp;&nbsp;{" "}
+                    <span className="font-semibold text-[#5b5ce8]">
+                      Sherpa - EMI shift, band 4
                     </span>
                   </div>
                   <h3 className="mt-5 text-[20px] font-semibold tracking-[-0.02em] text-[#4b4b4b]">

@@ -180,6 +180,7 @@ export default function SherpaPage() {
         </div>
 
         <div className="mt-12 sm:mt-14">
+         <div className="mt-12 sm:mt-14">
           <div className="w-full max-w-[920px] mx-auto min-h-[151px] grid grid-cols-2 sm:grid-cols-4">
             {DEVICE_STATS.map((stat) => (
               <div
@@ -196,6 +197,7 @@ export default function SherpaPage() {
             ))}
           </div>
         </div>
+        </div> 
       </section>
 
       <section className="bg-white">

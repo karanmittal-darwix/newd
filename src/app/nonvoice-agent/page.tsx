@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import DemoRequestSection from "@/components/DemoRequestSection";
 import { Manrope } from "next/font/google";
 
@@ -596,7 +596,59 @@ const LOSAgent: React.FC = () => {
     (field) => field.status === "checked",
   ).length;
   const totalCount = losFields.length;
+  const initialLiveElapsedSeconds = 74;
+  const [activeFieldIndex, setActiveFieldIndex] = useState(0);
+  const [liveElapsedSeconds, setLiveElapsedSeconds] = useState(
+    initialLiveElapsedSeconds,
+  );
+
+  useEffect(() => {
+    const tickLoopId = window.setInterval(() => {
+      setActiveFieldIndex((currentIndex) => {
+        if (currentIndex >= totalCount - 1) {
+          setLiveElapsedSeconds(initialLiveElapsedSeconds);
+          return 0;
+        }
+
+        return currentIndex + 1;
+      });
+    }, 900);
+
+    return () => window.clearInterval(tickLoopId);
+  }, [initialLiveElapsedSeconds, totalCount]);
+
+  useEffect(() => {
+    const timerId = window.setInterval(() => {
+      setLiveElapsedSeconds((currentSeconds) => currentSeconds + 1);
+    }, 1000);
+
+    return () => window.clearInterval(timerId);
+  }, []);
+
+  const displayFields = useMemo(
+    () =>
+      losFields.map((field, index) => {
+        if (index < activeFieldIndex) {
+          return { ...field, status: "checked" as const };
+        }
+
+        if (index === activeFieldIndex) {
+          return { ...field, status: "computing" as const };
+        }
+
+        return { ...field, status: "queued" as const };
+      }),
+    [activeFieldIndex],
+  );
+
+  const filledCount = displayFields.filter(
+    (field) => field.status === "checked",
+  ).length;
   const completionPct = Math.round((filledCount / totalCount) * 100);
+  const liveMinutes = Math.floor(liveElapsedSeconds / 60)
+    .toString()
+    .padStart(2, "0");
+  const liveSeconds = (liveElapsedSeconds % 60).toString().padStart(2, "0");
 
   return (
     <section
@@ -615,6 +667,8 @@ const LOSAgent: React.FC = () => {
             One of 42. Listens live, captures customer details, and pre-fills
             your LOS across Finnone, Newgen, and Lentra to 78% before agent
             input.
+            One of 42. Listens live, captures customer details, and pre-fills your
+            LOS to 78% before agent input.
           </p>
         </div>
 
@@ -642,16 +696,16 @@ const LOSAgent: React.FC = () => {
               </span>
               <span className="flex items-center gap-1.5 text-[10px] font-semibold text-emerald-600">
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                Live - 00:01:14
+                Live - 00:{liveMinutes}:{liveSeconds}
               </span>
             </div>
 
             <div className="px-5">
-              {losFields.map((field, index) => (
+              {displayFields.map((field, index) => (
                 <FieldRow
                   key={field.label}
                   field={field}
-                  isLast={index === losFields.length - 1}
+                  isLast={index === displayFields.length - 1}
                 />
               ))}
             </div>
@@ -794,6 +848,12 @@ const NonVoiceAgentHero: React.FC = () => {
               />
             ))}
           </div>
+      {/* Stats row */}
+      <div className="mt-16 pt-8">
+        <div className="grid grid-cols-2 gap-y-6 sm:grid-cols-4">
+          {stats.map((stat, i) => (
+            <StatItem key={stat.label} stat={stat} isLast={i === stats.length - 1} />
+          ))}
         </div>
       </div>
     </section>
