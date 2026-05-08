@@ -952,9 +952,10 @@ export default function HomePage() {
 
       <section
         id="live-field-intelligence"
-        className="bg-white px-4 sm:px-6 lg:px-[129px] pb-20 sm:pb-24 lg:pb-28"
+        className="bg-white pb-20 sm:pb-24 lg:pb-28"
       >
-        <div className="mx-auto max-w-[1182px]">
+        <div className="px-4 sm:px-6 lg:px-[129px]">
+          <div className="mx-auto max-w-[1182px]">
           <div className="text-center">
             <p className="text-[11px] tracking-[0.4em] text-[#5b5ce8] font-semibold uppercase">
               Live field intelligence
@@ -1186,10 +1187,15 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="mt-10">
-            <LogoMarquee logos={marLogos} barClassName="bg-[#5b5ce8]" />
           </div>
+        </div>
 
+        <div className="mt-10 overflow-hidden py-5">
+          <LogoMarquee logos={marLogos} barClassName="bg-[#5b5ce8]" />
+        </div>
+
+        <div className="px-4 sm:px-6 lg:px-[129px]">
+          <div className="mx-auto max-w-[1182px]">
           <div className="mt-20 sm:mt-24">
             <div className="text-center max-w-[760px] mx-auto">
               <p className="text-[11px] tracking-[0.38em] text-[#5b5ce8] font-semibold uppercase">
@@ -1589,6 +1595,7 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </section>
 
