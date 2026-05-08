@@ -198,12 +198,13 @@ export default function SherpaPage() {
         </div> */}
       </section>
 
-      <section className="bg-white px-4 sm:px-6">
-								<div className="mt-10">
-									<LogoMarquee logos={marLogos} barClassName="bg-[#5b5ce8]" />
-								</div>
+      <section className="bg-white">
+        <div className="mt-10 overflow-hidden py-5">
+          <LogoMarquee logos={marLogos} barClassName="bg-[#5b5ce8]" />
+        </div>
 
-        <div className="max-w-6xl mx-auto pt-14 sm:pt-16 pb-12 sm:pb-16">
+        <div className="px-4 sm:px-6">
+          <div className="max-w-6xl mx-auto pt-14 sm:pt-16 pb-12 sm:pb-16">
           <div className="text-center">
             <p className="text-xs font-semibold tracking-[0.3em] text-indigo-500 uppercase">
               Anatomy of Sherpa
@@ -698,6 +699,7 @@ export default function SherpaPage() {
                 ))}
               </div>
             </div>
+          </div>
           </div>
         </div>
       </section>
