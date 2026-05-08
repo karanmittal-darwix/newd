@@ -757,7 +757,7 @@ const NonVoiceAgentHero: React.FC = () => {
       </div>
 
       {/* Stats row */}
-      <div className="mt-16 border-t border-[#e4e5f5] pt-8">
+      <div className="mt-16 pt-8">
         <div className="grid grid-cols-2 gap-y-6 sm:grid-cols-4">
           {stats.map((stat, i) => (
             <StatItem key={stat.label} stat={stat} isLast={i === stats.length - 1} />
