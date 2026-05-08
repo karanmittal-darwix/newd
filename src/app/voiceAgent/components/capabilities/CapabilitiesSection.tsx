@@ -73,7 +73,7 @@ export default function CapabilitiesSection() {
             Capabilities
           </p>
 
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight">
+          <h2 className="section-heading text-3xl md:text-5xl text-gray-900 leading-tight">
             Things most voice bots fake.
             <br />
             <span className="text-indigo-600">Darwix</span> actually does them.

@@ -32,21 +32,18 @@ export default function Hero() {
     <section
       className={`${manrope.className} relative overflow-hidden pt-16 sm:pt-20 pb-20 sm:pb-24 px-4 sm:px-6`}
       style={{
-  backgroundImage:
-    "linear-gradient(90deg, #565ADD1F 0%, #565ADD00 100%)",
-}}
+        backgroundImage: "linear-gradient(90deg, #565ADD1F 0%, #565ADD00 100%)",
+      }}
     >
-
-
       <div className="relative w-full max-w-[1400px] mx-auto text-center">
         {/* Heading */}
-        <h1 className="text-[38px] sm:text-[52px] lg:text-[64px] font-semibold tracking-[-0.055em] leading-[1.02] max-w-[1400px] mx-auto text-[#3a3a4a]">
+        <h1 className="hero-heading">
           An <span className="text-[#5b5ce8]">AI Agent</span> that actually{" "}
           <span className="text-[#5b5ce8]">holds the line</span>
         </h1>
 
         {/* Body */}
-        <p className="mt-7 text-[15px] sm:text-[17px] text-[#6e6e80] max-w-3xl mx-auto leading-[1.8]">
+        <p className="hero-subheading mt-7">
           Darwix dials thousands of your customers in parallel, speaks their
           language, handles objections, and triggers the right action the moment
           the call ends.

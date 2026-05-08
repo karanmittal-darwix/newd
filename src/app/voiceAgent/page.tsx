@@ -1,3 +1,4 @@
+import { Manrope } from "next/font/google";
 import Hero from "./components/hero/Hero";
 import VoicePlayground from "./components/voice/VoicePlayground";
 import CapabilitiesSection from "./components/capabilities/CapabilitiesSection";
@@ -8,9 +9,11 @@ import IntegrationsSection from "./components/integrations/integrationsSection";
 import DemoCallSection from "./components/cta/DemoCallSection";
 import DemoRequestSection from "@/components/DemoRequestSection";
 
+const manrope = Manrope({ subsets: ["latin"], weight: ["400", "500", "600"] });
+
 export default function Home() {
   return (
-    <main>
+    <main className={manrope.className}>
       <Hero />
       <VoicePlayground />
       <CapabilitiesSection />
