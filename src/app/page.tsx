@@ -579,7 +579,8 @@ const SCENARIO_CARDS = [
 ];
 
 export default function HomePage() {
-  const [activeActionIndex, setActiveActionIndex] = useState(-1);
+  const [activeActionIndex, setActiveActionIndex] = useState(0);
+  const [firedActionIndices, setFiredActionIndices] = useState<number[]>([]);
   const [liveCallCount, setLiveCallCount] = useState(INITIAL_LIVE_CALL_COUNT);
   const [actionsPerHour, setActionsPerHour] = useState(
     INITIAL_ACTIONS_PER_HOUR,
@@ -590,10 +591,23 @@ export default function HomePage() {
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
-      setActiveActionIndex((currentIndex) =>
-        currentIndex >= ACTION_EVENTS.length - 1 ? -1 : currentIndex + 1,
-      );
-    }, 1200);
+      setActiveActionIndex((currentIndex) => {
+        const nextIndex =
+          currentIndex >= ACTION_EVENTS.length - 1 ? 0 : currentIndex + 1;
+
+        setFiredActionIndices((currentFiredIndices) => {
+          if (nextIndex === 0) {
+            return [];
+          }
+
+          return currentFiredIndices.includes(currentIndex)
+            ? currentFiredIndices
+            : [...currentFiredIndices, currentIndex];
+        });
+
+        return nextIndex;
+      });
+    }, 1300);
 
     return () => window.clearInterval(intervalId);
   }, []);
@@ -1089,10 +1103,7 @@ export default function HomePage() {
               <div className="mt-5 space-y-2.5">
                 {ACTION_EVENTS.map((event, index) => {
                   const isActiveAction = index === activeActionIndex;
-                  const isCompletedAction =
-                    activeActionIndex >= 0 && index < activeActionIndex;
-                  const isPendingAction =
-                    activeActionIndex >= 0 && index > activeActionIndex;
+                  const isCompletedAction = firedActionIndices.includes(index);
                   const actionButtonClass = isActiveAction
                     ? "border-[#4f58de] bg-[#f3f4ff] shadow-[0_0_0_1px_rgba(79,88,222,0.14)]"
                     : isCompletedAction
@@ -1106,14 +1117,13 @@ export default function HomePage() {
                   const statusLabel = isActiveAction
                     ? "firing"
                     : isCompletedAction
-                      ? "wired"
-                      : event.status;
+                      ? "fired"
+                      : "queued";
 
                   return (
                     <button
                       type="button"
                       key={event.name}
-                      onClick={() => setActiveActionIndex(index)}
                       className={`w-full rounded-xl border px-3.5 py-3 flex items-start justify-between gap-3 text-left transition ${actionButtonClass}`}
                     >
                       <div className="flex items-start gap-3">
@@ -1345,7 +1355,7 @@ export default function HomePage() {
         </div>
 
         <p className="mt-7 text-center text-[16px] sm:text-[15px] font-medium text-[#6b6b74] tracking-[-0.01em]">
-          Add many more agents...
+          Add many more ...
         </p>
 
         <div className="mt-20 sm:mt-24">

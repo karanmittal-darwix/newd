@@ -11,6 +11,8 @@ export const DEVICE_STATS = [
 	{ value: "Offline", label: "Zero Bandwidth Mode" },
 ];
 
+
+
 export const TRUST_LOGOS = [
 	{ src: "/images/company/salesforce.svg", alt: "Salesforce" },
 	{ src: "/images/company/razorpay.svg", alt: "Razorpay" },
@@ -23,6 +25,8 @@ export const TRUST_LOGOS = [
 	{ src: "/images/company/pipedrive.svg", alt: "Pipedrive" },
 	{ src: "/images/company/cal.svg", alt: "Cal" },
 ];
+
+
 
 export const ANATOMY_CARDS = [
 	{
