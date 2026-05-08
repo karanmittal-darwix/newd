@@ -5,11 +5,13 @@ export const FEATURE_ITEMS = [
 ];
 
 export const DEVICE_STATS = [
-	{ value: "12+ hr", label: "Device Runtime" },
+	{ value: "12+ hr", label: "Device Runtim" },
 	{ value: "0 KB", label: "On-Device Audio" },
 	{ value: "RFID", label: "Identity - Locked" },
 	{ value: "Offline", label: "Zero Bandwidth Mode" },
 ];
+
+
 
 export const TRUST_LOGOS = [
 	{ src: "/images/company/salesforce.svg", alt: "Salesforce" },
@@ -23,6 +25,8 @@ export const TRUST_LOGOS = [
 	{ src: "/images/company/pipedrive.svg", alt: "Pipedrive" },
 	{ src: "/images/company/cal.svg", alt: "Cal" },
 ];
+
+
 
 export const ANATOMY_CARDS = [
 	{
