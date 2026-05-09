@@ -817,6 +817,7 @@ export default function HomePage() {
 
   return (
     <main className={manrope.className}>
+      {/* ── Hero ── */}
       <section
         className="relative w-full pt-16 sm:pt-20 lg:pt-[88px] pb-12 sm:pb-16 lg:pb-[88px] px-4 sm:px-6 lg:px-[129px] lg:min-h-[700px]"
         style={{
@@ -904,6 +905,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── Darwix Stack ── */}
       <section className="mt-12 bg-white px-4 sm:px-6 lg:px-[129px] pb-16 sm:pb-20 lg:pb-24">
         <div className="mx-auto max-w-[1182px] grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
           <div>
@@ -950,6 +952,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── Live Field Intelligence ── */}
       <section
         id="live-field-intelligence"
         className="bg-white pb-20 sm:pb-24 lg:pb-28"
@@ -980,6 +983,7 @@ export default function HomePage() {
             </div>
 
             <div className="mt-10 grid gap-6 lg:grid-cols-3">
+              {/* Card 1: Sherpa Field Call */}
               <div className="flex h-full flex-col rounded-[18px] border border-[#e4e4e8] bg-[#F8F8F8] p-5 sm:p-6 shadow-[0_6px_18px_rgba(46,55,88,0.08)]">
                 <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.28em] text-[#9698a3]">
                   <span>SHERPA &middot; FIELD CALL &middot; IN PROGRESS</span>
@@ -1078,6 +1082,7 @@ export default function HomePage() {
                 </div>
               </div>
 
+              {/* Card 2: Agentic Suite */}
               <div className="rounded-[18px] border border-[#e4e4e8] bg-[#F8F8F8] p-5 sm:p-6 shadow-[0_6px_18px_rgba(46,55,88,0.08)]">
                 <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.28em] text-[#9698a3]">
                   <span>Agentic suite - 8 actions parallel</span>
@@ -1142,6 +1147,7 @@ export default function HomePage() {
                 </div>
               </div>
 
+              {/* Card 3: SLM Core */}
               <div className="flex h-full flex-col rounded-[18px] border border-[#e4e4e8] bg-[#F8F8F8] p-5 sm:p-6 shadow-[0_6px_18px_rgba(46,55,88,0.08)]">
                 <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.28em] text-[#9698a3]">
                   <span>SLM core</span>
@@ -1160,39 +1166,24 @@ export default function HomePage() {
                 </div>
 
                 <div className="mt-8">
-                  {SLM_METRICS.map((metric) => (
-                    <div
-                      key={metric.label}
-                      className="border-b border-dashed border-[#d8d9df] py-3 first:pt-0"
-                    >
-                      <div className="flex items-center justify-between">
-                        <span className="text-[12px] text-[#6f717a]">
-                          {metric.label}
-                        </span>
-                        <span className="text-[12px] font-semibold text-[#232846]">
-                          {metric.value}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-auto pt-10">
-                  <div className="border-t border-dashed border-[#d8d9df]" />
-                  <p className="mt-5 text-[10px] leading-[1.6] text-[#a0a2ac]">
-                    No tenant data leaves your VPC. Model updates ship as data
-                    weights.
-                  </p>
+                  <div className="mt-auto pt-10">
+                    <div className="border-t border-dashed border-[#d8d9df]" />
+                    <p className="mt-5 text-[10px] leading-[1.6] text-[#a0a2ac]">
+                      No tenant data leaves your VPC. Model updates ship as data
+                      weights.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </section>
 
-        <div className="mt-10 overflow-hidden py-5">
-          <LogoMarquee logos={marLogos} barClassName="bg-[#5b5ce8]" />
-        </div>
+      <LogoMarquee logos={marLogos} barClassName="bg-[#5b5ce8]" />
 
+      {/* ── SLM Flywheel + BFSI Scenarios + Value + Suite ── */}
+      <section className="bg-white pb-20 sm:pb-24 lg:pb-28">
         <div className="px-4 sm:px-6 lg:px-[129px]">
           <div className="mx-auto max-w-[1182px]">
             <div className="mt-20 sm:mt-24">
@@ -1208,8 +1199,8 @@ export default function HomePage() {
                   </span>
                 </h2>
                 <p className="mt-4 text-sm sm:text-base text-[#7a7a7a] leading-relaxed">
-                  Voice intent → field nudges → ops actions → SLM training. The
-                  flywheel compounds with every call.
+                  Voice intent → field nudges → ops actions → SLM training.
+                  The flywheel compounds with every call.
                 </p>
               </div>
 
@@ -1227,9 +1218,7 @@ export default function HomePage() {
                       className={`text-[10px] font-semibold uppercase tracking-[0.26em] ${
                         card.featured ? "text-[#5b5ce8]" : "text-[#9aa0b2]"
                       }`}
-                    >
-                      {/* {card.id} */}
-                    </p>
+                    />
                     <h3 className="mt-4 text-[19px] font-semibold tracking-[-0.01em] text-[#4b4b4b]">
                       {card.title}
                     </h3>
@@ -1250,112 +1239,117 @@ export default function HomePage() {
                 ))}
               </div>
             </div>
-          </div>
 
-          <div className="mt-20 sm:mt-24">
-            <BFSIScenarios />
-          </div>
+            <div className="mt-20 sm:mt-24">
+              <BFSIScenarios />
+            </div>
 
-          <div className="mt-20 sm:mt-24">
-            <div className="rounded-[28px] border border-[#d9dcff] bg-[#eef0ff] px-6 py-8 sm:px-10 sm:py-12 lg:px-12 lg:py-14 shadow-[0_10px_30px_rgba(91,92,232,0.05)]">
-              <div className="grid items-center gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
-                <div className="max-w-[520px]">
-                  <h2 className="section-heading text-[32px] sm:text-[42px] lg:text-[52px] leading-[1.03]">
-                    This is what buys
-                    <br />
-                    you <span className="text-[#5b5ce8]">
-                      10x productivity
-                    </span>{" "}
-                    and <span className="text-[#5b5ce8]">5x more value</span> on
-                    field.
-                  </h2>
-                  <p className="mt-6 max-w-[470px] text-[15px] leading-[1.65] text-[#6e7390]">
-                    Most BFSI vendors give you a feature. Darwix gives you a
-                    stack, proprietary tokens, agentic suite, in-house SLM that
-                    compounds every quarter your customers stay on the platform.
-                  </p>
-                </div>
+            {/* ── Value Banner ── */}
+            <div className="mt-20 sm:mt-24">
+              <div className="rounded-[28px] border border-[#d9dcff] bg-[#eef0ff] px-6 py-8 sm:px-10 sm:py-12 lg:px-12 lg:py-14 shadow-[0_10px_30px_rgba(91,92,232,0.05)]">
+                <div className="grid items-center gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
+                  <div className="max-w-[520px]">
+                    <h2 className="section-heading text-[32px] sm:text-[42px] lg:text-[52px] leading-[1.03]">
+                      This is what buys
+                      <br />
+                      you{" "}
+                      <span className="text-[#5b5ce8]">
+                        10x productivity
+                      </span>{" "}
+                      and <span className="text-[#5b5ce8]">5x more value</span>{" "}
+                      on field.
+                    </h2>
+                    <p className="mt-6 max-w-[470px] text-[15px] leading-[1.65] text-[#6e7390]">
+                      Most BFSI vendors give you a feature. Darwix gives you a
+                      stack, proprietary tokens, agentic suite, in-house SLM
+                      that compounds every quarter your customers stay on the
+                      platform.
+                    </p>
+                  </div>
 
-                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
-                  {VALUE_METRICS.map((metric) => (
-                    <div
-                      key={metric.label}
-                      className="rounded-[14px] border border-[#d9dcff] bg-[#f8f8ff] px-5 py-5 shadow-[0_1px_0_rgba(255,255,255,0.9)_inset]"
-                    >
-                      <div className="text-[42px] font-semibold leading-none tracking-[-0.04em] text-[#4b4b4b]">
-                        {metric.value}
+                  <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
+                    {VALUE_METRICS.map((metric) => (
+                      <div
+                        key={metric.label}
+                        className="rounded-[14px] border border-[#d9dcff] bg-[#f8f8ff] px-5 py-5 shadow-[0_1px_0_rgba(255,255,255,0.9)_inset]"
+                      >
+                        <div className="text-[42px] font-semibold leading-none tracking-[-0.04em] text-[#4b4b4b]">
+                          {metric.value}
+                        </div>
+                        <p className="mt-5 text-[13px] leading-none text-[#6e7390]">
+                          {metric.label}
+                        </p>
                       </div>
-                      <p className="mt-5 text-[13px] leading-none text-[#6e7390]">
-                        {metric.label}
-                      </p>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div className="mt-20 sm:mt-24">
-            <div className="text-center">
-              <p className="text-[11px] tracking-[0.38em] text-[#5b5ce8] font-semibold uppercase">
-                Explore the suite
-              </p>
-              <h2 className="section-heading mt-4 text-[32px] sm:text-[40px] lg:text-[44px] leading-[1.1]">
-                <span className="text-[#5b5ce8]">
-                  Multiple{" "}
-                  <span className="text-[#4b4b4b]">agents. One brain.</span>
-                </span>
-              </h2>
+            {/* ── Suite Cards ── */}
+            <div className="mt-20 sm:mt-24">
+              <div className="text-center">
+                <p className="text-[11px] tracking-[0.38em] text-[#5b5ce8] font-semibold uppercase">
+                  Explore the suite
+                </p>
+                <h2 className="section-heading mt-4 text-[32px] sm:text-[40px] lg:text-[44px] leading-[1.1]">
+                  <span className="text-[#5b5ce8]">
+                    Multiple{" "}
+                    <span className="text-[#4b4b4b]">agents. One brain.</span>
+                  </span>
+                </h2>
+              </div>
+
+              <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+                {SUITE_CARDS.map((card) => (
+                  <div
+                    key={card.title}
+                    className={`min-h-[250px] rounded-[18px] border px-6 py-6 shadow-[0_8px_22px_rgba(37,44,97,0.05)] ${
+                      card.featured
+                        ? "border-[#cfd3ff] bg-[#f7f7ff]"
+                        : "border-[#eceef4] bg-white"
+                    }`}
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <h3 className="text-[21px] font-semibold leading-none tracking-[-0.02em] text-[#4b4b4b]">
+                        {card.title}
+                      </h3>
+                      {card.featured && (
+                        <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.18em] text-[#8d90a3]">
+                          Launching SOON!
+                        </span>
+                      )}
+                    </div>
+
+                    <p className="mt-8 max-w-[220px] text-[14px] leading-[1.5] text-[#6f7485]">
+                      {card.description}
+                    </p>
+
+                    <div className="mt-10 pt-5">
+                      <a
+                        href="#"
+                        className="text-[12px] font-semibold text-[#5b5ce8]"
+                      >
+                        {card.cta}
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-              {SUITE_CARDS.map((card) => (
-                <div
-                  key={card.title}
-                  className={`min-h-[250px] rounded-[18px] border px-6 py-6 shadow-[0_8px_22px_rgba(37,44,97,0.05)] ${
-                    card.featured
-                      ? "border-[#cfd3ff] bg-[#f7f7ff]"
-                      : "border-[#eceef4] bg-white"
-                  }`}
-                >
-                  <div className="flex items-start justify-between gap-4">
-                    <h3 className="text-[21px] font-semibold leading-none tracking-[-0.02em] text-[#4b4b4b]">
-                      {card.title}
-                    </h3>
-                    {card.featured && (
-                      <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.18em] text-[#8d90a3]">
-                        Launching SOON!
-                      </span>
-                    )}
-                  </div>
-
-                  <p className="mt-8 max-w-[220px] text-[14px] leading-[1.5] text-[#6f7485]">
-                    {card.description}
-                  </p>
-
-                  <div className="mt-10 pt-5">
-                    <a
-                      href="#"
-                      className="text-[12px] font-semibold text-[#5b5ce8]"
-                    >
-                      {card.cta}
-                    </a>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <p className="mt-7 text-center text-[16px] sm:text-[15px] font-medium text-[#6b6b74] tracking-[-0.01em]">
+              Add many more agents...
+            </p>
           </div>
 
-          <p className="mt-7 text-center text-[16px] sm:text-[15px] font-medium text-[#6b6b74] tracking-[-0.01em]">
-            Add many more agents...
-          </p>
-
+          {/* ── How the products work together ── */}
           <div className="mt-20 sm:mt-24">
             <div className="mx-auto max-w-[1182px] text-center">
               <p className="text-[11px] font-semibold uppercase tracking-[0.4em] text-[#5b5ce8]">
                 How the products work together
               </p>
-              <h2 className="section-heading mt-6 text-[34px] sm:text-[44px] lg:text-[52px] leading-tight">
+              <h2 className="mt-6 text-[34px] font-semibold leading-tight tracking-[-0.03em] text-[#4b4b4b] sm:text-[44px] lg:text-[52px]">
                 One conversation.{" "}
                 <span className="text-[#5b5ce8]">Every system in motion.</span>
               </h2>
@@ -1363,6 +1357,8 @@ export default function HomePage() {
 
             <div className="mx-auto mt-8 max-w-[1320px] rounded-[18px] border border-[#ececf3] bg-[#fbfbfd] px-5 py-8 shadow-[0_12px_38px_rgba(37,44,97,0.04)] sm:px-6 lg:px-6 lg:py-12">
               <div className="grid items-stretch gap-5 lg:grid-cols-[1fr_44px_1fr_44px_1fr_44px_1fr]">
+
+                {/* Step 01 – Sherpa */}
                 <div className="flex min-h-[338px] flex-col rounded-[14px] border border-[#eceef6] bg-white p-5 text-left shadow-[0_10px_24px_rgba(37,44,97,0.04)]">
                   <div className="flex items-start justify-between">
                     <span className="text-[11px] font-semibold text-[#5b5ce8]">
@@ -1412,6 +1408,7 @@ export default function HomePage() {
                   </div>
                 </div>
 
+                {/* Arrow 1 */}
                 <div className="hidden items-center justify-center lg:flex">
                   <div className="relative h-px w-full bg-[#5b5ce8]">
                     <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[125%] whitespace-nowrap rounded-full border border-[#dfe1ea] bg-white px-2 py-1 text-[10px] font-semibold text-[#686d7a]">
@@ -1421,6 +1418,7 @@ export default function HomePage() {
                   </div>
                 </div>
 
+                {/* Step 02 – Voice Agent */}
                 <div className="flex min-h-[338px] flex-col rounded-[14px] border border-[#eceef6] bg-white p-5 text-left shadow-[0_10px_24px_rgba(37,44,97,0.04)]">
                   <div className="flex items-start justify-between">
                     <span className="text-[11px] font-semibold text-[#5b5ce8]">
@@ -1476,6 +1474,7 @@ export default function HomePage() {
                   </div>
                 </div>
 
+                {/* Arrow 2 */}
                 <div className="hidden items-center justify-center lg:flex">
                   <div className="relative h-px w-full bg-[#5b5ce8]">
                     <span className="absolute left-1/2 top-1/2 min-w-[54px] -translate-x-1/2 -translate-y-[125%] whitespace-nowrap rounded-full border border-[#dfe1ea] bg-white px-2 py-1 text-center text-[10px] font-semibold text-[#686d7a] [word-break:keep-all]">
@@ -1485,6 +1484,7 @@ export default function HomePage() {
                   </div>
                 </div>
 
+                {/* Step 03 – Nova */}
                 <div className="flex min-h-[338px] flex-col rounded-[14px] border border-[#eceef6] bg-white p-5 text-left shadow-[0_10px_24px_rgba(37,44,97,0.04)]">
                   <div className="flex items-start justify-between">
                     <span className="text-[11px] font-semibold text-[#5b5ce8]">
@@ -1539,6 +1539,7 @@ export default function HomePage() {
                   </div>
                 </div>
 
+                {/* Arrow 3 */}
                 <div className="hidden items-center justify-center lg:flex">
                   <div className="relative h-px w-full bg-[#5b5ce8]">
                     <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[125%] whitespace-nowrap rounded-full border border-[#dfe1ea] bg-white px-2 py-1 text-[10px] font-semibold text-[#686d7a]">
@@ -1548,6 +1549,7 @@ export default function HomePage() {
                   </div>
                 </div>
 
+                {/* Step 04 – Outcome */}
                 <div className="flex min-h-[338px] flex-col rounded-[14px] border border-[#ccd1ff] bg-[#f0f1ff] p-5 text-left shadow-[0_10px_24px_rgba(91,92,232,0.06)]">
                   <div className="flex items-start justify-between">
                     <span className="text-[11px] font-semibold text-[#5b5ce8]">
@@ -1596,6 +1598,7 @@ export default function HomePage() {
                     </div>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>

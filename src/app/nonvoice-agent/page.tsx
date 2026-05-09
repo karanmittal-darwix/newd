@@ -784,8 +784,8 @@ const NonVoiceAgentHero: React.FC = () => {
         </div>
 
         {/* Stats row */}
-        <div className="mt-16 pt-4">
-          <div className="grid grid-cols-2 gap-y-4 sm:grid-cols-4">
+        <div className="mt-16 pt-8">
+          <div className="grid grid-cols-2 gap-y-6 sm:grid-cols-4">
             {stats.map((stat, i) => (
               <StatItem
                 key={stat.label}
