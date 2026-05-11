@@ -41,7 +41,7 @@ const HERO_STATS: HeroStat[] = [
     metric: "actionsPerHour",
   },
   {
-    value: "22 langs",
+    value: "22 languages",
     label: "Indian languages with Hindi-Eng code-switch.",
   },
   {
@@ -1147,7 +1147,7 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Card 3: SLM Core */}
+              {/* Card 3: SLM Core (inlined) */}
               <div className="flex h-full flex-col rounded-[18px] border border-[#e4e4e8] bg-[#F8F8F8] p-5 sm:p-6 shadow-[0_6px_18px_rgba(46,55,88,0.08)]">
                 <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.28em] text-[#9698a3]">
                   <span>SLM core</span>
@@ -1165,14 +1165,26 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                <div className="mt-8">
-                  <div className="mt-auto pt-10">
-                    <div className="border-t border-dashed border-[#d8d9df]" />
-                    <p className="mt-5 text-[10px] leading-[1.6] text-[#a0a2ac]">
-                      No tenant data leaves your VPC. Model updates ship as data
-                      weights.
-                    </p>
-                  </div>
+                <div className="mt-6">
+                  <table className="w-full mb-3">
+                    <tbody>
+                      {SLM_METRICS.map((stat, i) => (
+                        <tr key={stat.label} className={i === SLM_METRICS.length - 1 ? "" : "border-b border-gray-100"}>
+                          <td className="py-2.5 text-sm text-[#6b7182]">{stat.label}</td>
+                          <td className={`py-2.5 text-sm text-right ${i === SLM_METRICS.length - 1 ? "font-semibold text-[#27304d]" : "font-medium text-[#27304d]"}`}>
+                            {stat.value}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                <div className="mt-auto pt-4">
+                  <div className="border-t border-dashed border-[#d8d9df]" />
+                  <p className="mt-3 text-[10px] leading-[1.6] text-[#a0a2ac]">
+                    No tenant data leaves your VPC. Model updates shipped as delta weights.
+                  </p>
                 </div>
               </div>
             </div>
