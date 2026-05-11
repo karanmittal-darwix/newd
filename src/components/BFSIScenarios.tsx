@@ -21,40 +21,85 @@ interface ScenarioCard {
 }
 
 /* ── Tiny visual sub-components ── */
+const ChecklistVisual: React.FC = () => {
+  const items = [
+    { label: "Income · Form 16", type: "done" as const },
+    { label: "Bureau · 762",     type: "done" as const },
+    { label: "Address · proof",  type: "warn" as const },
+    { label: "Co-applicant ID",  type: "done" as const },
+    { label: "GST-mismatch",     type: "error" as const },
+  ];
 
-const ChecklistVisual: React.FC = () => (
-  <div className="flex flex-col gap-2 p-5">
-    {[
-      { label: "Income · Form 16", done: true },
-      { label: "Bureau · 762", done: true },
-      { label: "Address · proof", warn: true },
-      { label: "Co-applicant ID", done: true },
-      { label: "GST-mismatch", error: true },
-    ].map((item) => (
-      <div key={item.label} className="flex items-center gap-2.5">
-        <span
-          className={`flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded text-[10px] font-bold
-            ${
-              item.done
-                ? "bg-[#5B5CE8] text-white"
-                : item.warn
-                  ? "bg-amber-400 text-white"
-                  : "bg-slate-200 text-slate-400"
-            }`}
-        >
-          {item.done ? "✓" : item.warn ? "!" : "✕"}
-        </span>
-        <span
-          className={`text-[12px] ${
-            item.error ? "text-[#C4C7D2] line-through" : "text-[#65697A]"
-          }`}
-        >
-          {item.label}
-        </span>
-      </div>
-    ))}
-  </div>
-);
+  const symbols = { done: "✓", warn: "!", error: "✕" };
+
+  const [tickedIndex, setTickedIndex] = React.useState<number>(-1);
+  const [completed, setCompleted] = React.useState<boolean[]>(
+    new Array(items.length).fill(false)
+  );
+
+  React.useEffect(() => {
+    let timeout: ReturnType<typeof setTimeout>;
+
+    const runTick = (index: number, current: boolean[]) => {
+      if (index >= items.length) {
+        // All ticked — pause then reset
+        timeout = setTimeout(() => {
+          setTickedIndex(-1);
+          setCompleted(new Array(items.length).fill(false));
+          timeout = setTimeout(() => runTick(0, new Array(items.length).fill(false)), 600);
+        }, 1200);
+        return;
+      }
+
+      const next = [...current];
+      next[index] = true;
+      setTickedIndex(index);
+      setCompleted(next);
+
+      timeout = setTimeout(() => runTick(index + 1, next), 480);
+    };
+
+    timeout = setTimeout(() => runTick(0, new Array(items.length).fill(false)), 800);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  return (
+    <div className="checklist-container flex flex-col gap-2 p-5">
+      {items.map((item, index) => {
+        const isTicked = completed[index];
+        const isActive = tickedIndex === index;
+
+        return (
+          <div key={item.label} className="flex items-center gap-2.5">
+            <span
+              className={`relative flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded text-[10px] font-bold transition-all duration-300
+                ${
+                  isTicked
+                    ? item.type === "done"
+                      ? "bg-[#5B5CE8] text-white"
+                      : item.type === "warn"
+                        ? "bg-amber-400 text-white"
+                        : "bg-slate-200 text-slate-400"
+                    : "bg-slate-200 text-slate-400"
+                }
+                ${isActive ? "ring-2 ring-[#5B5CE8] ring-offset-1 scale-110" : ""}
+              `}
+            >
+              {symbols[item.type]}
+            </span>
+            <span
+              className={`text-[12px] ${
+                item.type === "error" ? "text-[#C4C7D2] line-through" : "text-[#65697A]"
+              }`}
+            >
+              {item.label}
+            </span>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
 
 const RiskProfileVisual: React.FC = () => (
   <div className="p-5 space-y-2.5 w-full">
@@ -100,50 +145,52 @@ const PortfolioVisual: React.FC = () => (
 
 const LocationVisual: React.FC = () => (
   <div className="flex flex-col items-center justify-center py-8 gap-2 w-full">
-    <svg
-      viewBox="0 0 40 48"
-      className="w-10 h-12 text-[#5B5CE8]"
-      fill="currentColor"
-    >
-      <path d="M20 0C12.268 0 6 6.268 6 14c0 10.5 14 34 14 34s14-23.5 14-34C34 6.268 27.732 0 20 0zm0 19a5 5 0 110-10 5 5 0 010 10z" />
-    </svg>
+    
+    <div className="animate-[pinPulse_2s_ease-in-out_infinite]">
+      <svg
+        viewBox="0 0 40 48"
+        className="w-10 h-12 text-[#5B5CE8]"
+        fill="currentColor"
+      >
+        <path d="M20 0C12.268 0 6 6.268 6 14c0 10.5 14 34 14 34s14-23.5 14-34C34 6.268 27.732 0 20 0zm0 19a5 5 0 110-10 5 5 0 010 10z" />
+      </svg>
+    </div>
 
     <span className="text-[9px] font-mono text-[#A3A7B3] tracking-wide">
       12.9716° N · 77.5946° E
     </span>
+
+    <style jsx>{`
+      @keyframes pinPulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.18);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+    `}</style>
   </div>
 );
-
 const BarChartVisual: React.FC = () => {
   const bars = [3, 5, 4, 6, 5, 7, 9, 10, 7, 6];
   const max = Math.max(...bars);
-  const peakIndex = bars.indexOf(max);
-  const animationDurations = [
-    "1.85s",
-    "1.62s",
-    "1.98s",
-    "1.74s",
-    "1.9s",
-    "1.68s",
-    "2.05s",
-    "1.78s",
-    "1.7s",
-    "1.95s",
-  ];
+  const totalBars = bars.length;
 
   return (
-    <div className="flex items-end gap-[3px] px-5 pb-4 pt-6 h-32 w-full">
+    <div className="hni-chart-container flex items-end gap-[3px] px-5 pb-4 pt-6 h-32 w-full cursor-pointer">
       {bars.map((h, i) => (
         <div
           key={i}
-          className={`hni-chart-bar flex-1 rounded-t-sm ${
-            i === peakIndex ? "bg-[#5B5CE8]" : "bg-[#C9CBF4]"
-          }`}
+          className="hni-chart-color-sweep flex-1 rounded-t-sm bg-[#C9CBF4]"
           style={{
             height: `${(h / max) * 100}%`,
-            animationDelay: `${i * 90}ms`,
-            animationDuration: animationDurations[i],
-          }}
+            "--bar-index": i,
+            "--total-bars": totalBars,
+          } as React.CSSProperties & { "--bar-index": number; "--total-bars": number }}
         />
       ))}
     </div>

@@ -131,20 +131,128 @@ transform: translateX(-50%);
 
 .hni-chart-bar {
   transform-origin: bottom center;
-  will-change: transform, opacity;
-  animation: hni-chart-pulse ease-in-out infinite;
+  will-change: auto;
+  animation: none;
 }
 
-@keyframes hni-chart-pulse {
-  0%,
-  100% {
-    transform: scaleY(0.72);
-    opacity: 0.78;
+.hni-chart-container {
+  transition: background-color 0.2s ease;
+}
+
+.hni-chart-color-sweep {
+  animation: hni-color-sweep 4s ease-in-out infinite;
+  will-change: background-color;
+}
+
+@keyframes hni-color-sweep {
+  0% {
+    background-color: #C9CBF4;
+  }
+  35% {
+    background-color: #C9CBF4;
   }
   50% {
-    transform: scaleY(1.04);
-    opacity: 1;
+    background-color: #5B5CE8;
   }
+  65% {
+    background-color: #C9CBF4;
+  }
+  100% {
+    background-color: #C9CBF4;
+  }
+}
+
+.hni-chart-color-sweep:nth-child(1) {
+  animation-delay: 0s;
+}
+.hni-chart-color-sweep:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.hni-chart-color-sweep:nth-child(3) {
+  animation-delay: 0.8s;
+}
+.hni-chart-color-sweep:nth-child(4) {
+  animation-delay: 1.2s;
+}
+.hni-chart-color-sweep:nth-child(5) {
+  animation-delay: 1.6s;
+}
+.hni-chart-color-sweep:nth-child(6) {
+  animation-delay: 2.0s;
+}
+.hni-chart-color-sweep:nth-child(7) {
+  animation-delay: 2.4s;
+}
+.hni-chart-color-sweep:nth-child(8) {
+  animation-delay: 2.8s;
+}
+.hni-chart-color-sweep:nth-child(9) {
+  animation-delay: 3.2s;
+}
+.hni-chart-color-sweep:nth-child(10) {
+  animation-delay: 3.6s;
+}
+
+.location-hover-container:hover .location-pin-icon {
+  animation: location-pulse 1.2s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes location-pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.checklist-item {
+  will-change: opacity;
+}
+
+@keyframes checklist-fill-1 {
+  0%, 19% { opacity: 0.5; }
+  20%, 100% { opacity: 1; }
+}
+
+@keyframes checklist-fill-2 {
+  0%, 39% { opacity: 0.5; }
+  40%, 100% { opacity: 1; }
+}
+
+@keyframes checklist-fill-3 {
+  0%, 59% { opacity: 0.5; }
+  60%, 100% { opacity: 1; }
+}
+
+@keyframes checklist-fill-4 {
+  0%, 79% { opacity: 0.5; }
+  80%, 100% { opacity: 1; }
+}
+
+@keyframes checklist-fill-5 {
+  0%, 99% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.checklist-item:nth-child(1) {
+  animation: checklist-fill-1 2.5s infinite;
+}
+.checklist-item:nth-child(2) {
+  animation: checklist-fill-2 2.5s infinite;
+}
+.checklist-item:nth-child(3) {
+  animation: checklist-fill-3 2.5s infinite;
+}
+.checklist-item:nth-child(4) {
+  animation: checklist-fill-4 2.5s infinite;
+}
+.checklist-item:nth-child(5) {
+  animation: checklist-fill-5 2.5s infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
