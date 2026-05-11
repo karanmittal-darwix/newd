@@ -422,7 +422,7 @@ const SquadCard: React.FC<{ squad: Squad }> = ({ squad }) => {
   return (
     <div className="flex-1 min-w-0 rounded-2xl border border-gray-200 bg-[#f8f9ff] p-5 shadow-sm">
     <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-4">
-      <div className="inline-flex w-fit items-center gap-1.5 rounded-full border border-[#dddff0] bg-white px-3 py-1 text-[10px] font-semibold tracking-[0.16em] text-[#7b7b7b] uppercase">
+      <div className="inline-flex w-fit items-center gap-1.5 rounded-full border border-[#dddff0] bg-[##565ADD] px-3 py-1 text-[10px] font-semibold tracking-[0.16em] text-[#7b7b7b] uppercase">
         <span
           className={`h-1.5 w-1.5 rounded-full ${
             squad.status === "live" ? "bg-emerald-500" : "bg-gray-400"

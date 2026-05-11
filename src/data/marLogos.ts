@@ -8,7 +8,7 @@ export const marLogos: readonly Logo[] = [
 	{ src: "/images/marLogos/emaar.svg", alt: "Emaar" },
 	{ src: "/images/marLogos/home%20credit.svg", alt: "Home Credit" },
 	{ src: "/images/marLogos/mashreq.svg", alt: "Mashreq" },
-	{ src: "/images/marLogos/mokobara.svg", alt: "Mokobara" },
+	
 	{ src: "/images/marLogos/noor.svg", alt: "Noor" },
 	{ src: "/images/marLogos/poonawalla.svg", alt: "Poonawalla" },
 	{ src: "/images/marLogos/arabia.svg", alt: "Arabia" },
