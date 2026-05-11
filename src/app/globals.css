@@ -105,6 +105,96 @@ transform: translateX(-50%);
   }
 }
 
+.voice-wave-bar {
+  transform-origin: center;
+  will-change: transform, opacity;
+  animation: voice-wave-pulse 1.05s ease-in-out infinite;
+}
+
+@keyframes voice-wave-pulse {
+  0%,
+  100% {
+    transform: scaleY(0.45);
+    opacity: 0.62;
+  }
+  50% {
+    transform: scaleY(1.1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .voice-wave-bar {
+    animation: none;
+  }
+}
+
+.hni-chart-bar {
+  transform-origin: bottom center;
+  will-change: transform, opacity;
+  animation: hni-chart-pulse ease-in-out infinite;
+}
+
+@keyframes hni-chart-pulse {
+  0%,
+  100% {
+    transform: scaleY(0.72);
+    opacity: 0.78;
+  }
+  50% {
+    transform: scaleY(1.04);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hni-chart-bar {
+    animation: none;
+  }
+}
+
+.branch-network-link {
+  will-change: stroke-dashoffset, opacity;
+  animation: branch-network-flow 1.6s linear infinite;
+}
+
+.branch-network-node {
+  transform-origin: center;
+  transform-box: fill-box;
+  will-change: transform, opacity;
+  animation: branch-network-node-pulse 1.85s ease-in-out infinite;
+}
+
+@keyframes branch-network-flow {
+  0% {
+    stroke-dashoffset: 16;
+    opacity: 0.58;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes branch-network-node-pulse {
+  0%,
+  100% {
+    transform: scale(0.78);
+    opacity: 0.72;
+  }
+  50% {
+    transform: scale(1.28);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .branch-network-link,
+  .branch-network-node {
+    animation: none;
+  }
+}
+
 /* Wave bar animation for Sherpa page — horizontal motion */
 .wave-rect {
   transform-box: fill-box;

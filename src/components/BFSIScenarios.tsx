@@ -118,16 +118,32 @@ const BarChartVisual: React.FC = () => {
   const bars = [3, 5, 4, 6, 5, 7, 9, 10, 7, 6];
   const max = Math.max(...bars);
   const peakIndex = bars.indexOf(max);
+  const animationDurations = [
+    "1.85s",
+    "1.62s",
+    "1.98s",
+    "1.74s",
+    "1.9s",
+    "1.68s",
+    "2.05s",
+    "1.78s",
+    "1.7s",
+    "1.95s",
+  ];
 
   return (
     <div className="flex items-end gap-[3px] px-5 pb-4 pt-6 h-32 w-full">
       {bars.map((h, i) => (
         <div
           key={i}
-          className={`flex-1 rounded-t-sm ${
+          className={`hni-chart-bar flex-1 rounded-t-sm ${
             i === peakIndex ? "bg-[#5B5CE8]" : "bg-[#C9CBF4]"
           }`}
-          style={{ height: `${(h / max) * 100}%` }}
+          style={{
+            height: `${(h / max) * 100}%`,
+            animationDelay: `${i * 90}ms`,
+            animationDuration: animationDurations[i],
+          }}
         />
       ))}
     </div>
@@ -192,45 +208,55 @@ const NetworkVisual: React.FC = () => (
         y1="45"
         x2="85"
         y2="28"
+        className="branch-network-link"
         stroke="#C7D2FE"
         strokeWidth="1.5"
         strokeDasharray="5 3"
+        style={{ animationDelay: "0ms" }}
       />
       <line
         x1="85"
         y1="28"
         x2="140"
         y2="45"
+        className="branch-network-link"
         stroke="#C7D2FE"
         strokeWidth="1.5"
         strokeDasharray="5 3"
+        style={{ animationDelay: "180ms" }}
       />
       <line
         x1="140"
         y1="45"
         x2="185"
         y2="32"
+        className="branch-network-link"
         stroke="#C7D2FE"
         strokeWidth="1.5"
         strokeDasharray="5 3"
+        style={{ animationDelay: "340ms" }}
       />
       <line
         x1="85"
         y1="28"
         x2="120"
         y2="65"
+        className="branch-network-link"
         stroke="#C7D2FE"
         strokeWidth="1.5"
         strokeDasharray="5 3"
+        style={{ animationDelay: "520ms" }}
       />
       <line
         x1="140"
         y1="45"
         x2="120"
         y2="65"
+        className="branch-network-link"
         stroke="#C7D2FE"
         strokeWidth="1.5"
         strokeDasharray="5 3"
+        style={{ animationDelay: "680ms" }}
       />
 
       {(
@@ -247,7 +273,9 @@ const NetworkVisual: React.FC = () => (
           cx={cx}
           cy={cy}
           r={isMain ? 6 : 5}
+          className="branch-network-node"
           fill={isMain ? "#4F46E5" : "#818CF8"}
+          style={{ animationDelay: `${i * 140}ms` }}
         />
       ))}
     </svg>

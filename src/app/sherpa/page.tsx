@@ -83,6 +83,7 @@ const capabilityCards = [
 
 export default function SherpaPage() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const ActiveCapabilityCard =
     capabilityCards[activeIndex] || AgentAssistNudges;
 
@@ -354,15 +355,27 @@ export default function SherpaPage() {
                 <div className="space-y-0">
                   {CAPABILITY_ITEMS.map((item, index) => {
                     const isActive = index === activeIndex;
+                    const isHovered = index === hoveredIndex;
+                    const status = isHovered ? "fired" : isActive ? "firing" : "queued";
+
+                    const statusClasses =
+                      status === "queued"
+                        ? "text-amber-600 bg-amber-50 border border-amber-100"
+                        : status === "firing"
+                        ? "text-indigo-600 bg-indigo-50 border border-indigo-100"
+                        : "border border-emerald-600 bg-emerald-600 text-white";
+
                     return (
                       <button
                         key={item.id}
                         type="button"
                         onClick={() => setActiveIndex(index)}
+                        onMouseEnter={() => setHoveredIndex(index)}
+                        onMouseLeave={() => setHoveredIndex(null)}
+                        onFocus={() => setHoveredIndex(index)}
+                        onBlur={() => setHoveredIndex(null)}
                         className={`w-full text-left rounded-xl border px-4 sm:px-5 py-3 sm:py-4 ${
-                          isActive
-                            ? "border-indigo-300 bg-indigo-50/60"
-                            : "border-gray-200 bg-white"
+                          isActive ? "border-indigo-300 bg-indigo-50/60" : "border-gray-200 bg-white"
                         }`}
                       >
                         <div className="flex items-start justify-between gap-4">
@@ -375,8 +388,9 @@ export default function SherpaPage() {
                                 className={`text-sm sm:text-base font-semibold ${isActive ? "text-indigo-600" : "text-gray-700"}`}
                               >
                                 {item.title}{" "}
-                                <span className="text-gray-500 font-medium">
-                                  &middot; {item.subtitle}
+                                <span className="text-gray-500 font-medium">&middot; {item.subtitle}</span>
+                                <span className={`ml-3 inline-flex items-center text-[10px] font-semibold rounded-full px-2 py-0.5 ${statusClasses}`}>
+                                  {status}
                                 </span>
                               </p>
                               {isActive && item.description && (
@@ -386,9 +400,7 @@ export default function SherpaPage() {
                               )}
                             </div>
                           </div>
-                          <span className="text-gray-400 text-lg">
-                            {isActive ? "×" : "+"}
-                          </span>
+                          <span className="text-gray-400 text-lg">{isActive ? "×" : "+"}</span>
                         </div>
                       </button>
                     );

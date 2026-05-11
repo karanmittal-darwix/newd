@@ -164,57 +164,57 @@ const ACTION_EVENTS = [
     name: "WhatsApp · sanction_letter_v3",
     subtitle: "LAP-24081 · pre-approved tpl_v3_mr",
     icon: "message",
-    status: "wired",
-    statusClass: "bg-[#d8eadd] text-[#09a03d]",
+    status: "queued",
+    statusClass: "border border-[#d6d8df] bg-[#f5f5f5] text-[#9ca0aa]",
   },
   {
     name: "CRM write · disposition + EMI",
     subtitle: "Salesforce · LAP-24081 · stage=disburse",
     icon: "doc",
-    status: "wired",
-    statusClass: "bg-[#d8eadd] text-[#09a03d]",
+    status: "queued",
+    statusClass: "border border-[#d6d8df] bg-[#f5f5f5] text-[#9ca0aa]",
   },
   {
     name: "Service request · EMI date change",
     subtitle: "SR-INT-44292 · auto-routing -> ops",
     icon: "clock",
-    status: "wired",
-    statusClass: "bg-[#d8eadd] text-[#09a03d]",
+    status: "queued",
+    statusClass: "border border-[#d6d8df] bg-[#f5f5f5] text-[#9ca0aa]",
   },
   {
     name: "KYC re-verify · address proof",
     subtitle: "Customer 360 · risk band B",
     icon: "user",
     status: "queued",
-    statusClass: "bg-[#d8eadd] text-[#09a03d]",
+    statusClass: "border border-[#d6d8df] bg-[#f5f5f5] text-[#9ca0aa]",
   },
   {
     name: "RM email · summary + next-step",
     subtitle: "to: priya.r@meridian · 5-line nb",
     icon: "mail",
     status: "queued",
-    statusClass: "bg-[#d8eadd] text-[#09a03d]",
+    statusClass: "border border-[#d6d8df] bg-[#f5f5f5] text-[#9ca0aa]",
   },
   {
     name: "LOS · disbursement note",
     subtitle: "Finnone · BTM pending · scheduled T+1",
     icon: "file",
     status: "queued",
-    statusClass: "bg-[#d8eadd] text-[#09a03d]",
+    statusClass: "border border-[#d6d8df] bg-[#f5f5f5] text-[#9ca0aa]",
   },
   {
     name: "Slack #hot-leads · deal > INR40L",
     subtitle: "Routing to Priya · sentiment ^",
     icon: "bolt",
     status: "queued",
-    statusClass: "bg-[#d8eadd] text-[#09a03d]",
+    statusClass: "border border-[#d6d8df] bg-[#f5f5f5] text-[#9ca0aa]",
   },
   {
     name: "Razorpay link · INR2,480 EMI",
     subtitle: "Expires +6h · sent on WA",
     icon: "card",
-    status: "firing",
-    statusClass: "bg-[#4f58de] text-white",
+    status: "queued",
+    statusClass: "border border-[#d6d8df] bg-[#f5f5f5] text-[#9ca0aa]",
   },
   {
     name: "Calendar · site-visit 24 Apr",
@@ -479,8 +479,8 @@ const WEDGE_CARDS = [
 ];
 
 const VALUE_METRICS = [
-  { value: "12 ×", label: "Agent Productivity" },
-  { value: "8 ×", label: "Field Value" },
+  { value: "10 ×", label: "Agent Productivity" },
+  { value: "5 ×", label: "Field Value" },
   { value: "-42 %", label: "Cycle Time" },
   { value: "+27 %", label: "Conversion Lift" },
 ];
@@ -1111,7 +1111,7 @@ export default function HomePage() {
                     const statusLabel = isActiveAction
                       ? "firing"
                       : isCompletedAction
-                        ? "wired"
+                        ? "fired"
                         : event.status;
 
                     return (
@@ -1443,8 +1443,11 @@ export default function HomePage() {
                         (height, index) => (
                           <span
                             key={index}
-                            className="w-1 rounded-full bg-[#9ea3f6]"
-                            style={{ height }}
+                            className="voice-wave-bar w-1 rounded-full bg-[#9ea3f6]"
+                            style={{
+                              height,
+                              animationDelay: `${index * 85}ms`,
+                            }}
                           />
                         ),
                       )}
