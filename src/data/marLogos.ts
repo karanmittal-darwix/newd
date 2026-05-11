@@ -8,7 +8,7 @@ export const marLogos: readonly Logo[] = [
 	{ src: "/images/marLogos/emaar.svg", alt: "Emaar" },
 	{ src: "/images/marLogos/home%20credit.svg", alt: "Home Credit" },
 	{ src: "/images/marLogos/mashreq.svg", alt: "Mashreq" },
-	{ src: "/images/marLogos/mokobara.svg", alt: "Mokobara" },
+	
 	{ src: "/images/marLogos/noor.svg", alt: "Noor" },
 	{ src: "/images/marLogos/poonawalla.svg", alt: "Poonawalla" },
 	{ src: "/images/marLogos/arabia.svg", alt: "Arabia" },
@@ -16,4 +16,10 @@ export const marLogos: readonly Logo[] = [
 	{ src: "/images/marLogos/jm%20finance.svg", alt: "JM Finance" },
 	{ src: "/images/marLogos/nippon.svg", alt: "Nippon" },
 	{ src: "/images/marLogos/tata%20capital.svg", alt: "Tata Capital" },
+	{ src: "/images/marLogos/image 891.svg", alt: "Poonawalla" },
+	{ src: "/images/marLogos/image 892.svg", alt: "Poonawalla" },
+	{ src: "/images/marLogos/image 893.svg", alt: "Poonawalla" },
+	{ src: "/images/marLogos/image 894.svg", alt: "Poonawalla" },
+	{ src: "/images/marLogos/image 895.svg", alt: "Poonawalla" }
+	
 ];

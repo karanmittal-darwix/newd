@@ -1244,7 +1244,9 @@ export default function HomePage() {
                       <div
                         className={`text-right text-[12px] font-semibold leading-none ${card.metricTone}`}
                       >
-                        {card.metricValue}
+                        <span className={card.id === "1" ? "whitespace-nowrap" : ""}>
+                          {card.metricValue}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -1351,7 +1353,7 @@ export default function HomePage() {
             </div>
 
             <p className="mt-7 text-center text-[16px] sm:text-[15px] font-medium text-[#6b6b74] tracking-[-0.01em]">
-              Add many more agents...
+              Add many more...
             </p>
           </div>
 
