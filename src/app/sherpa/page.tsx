@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import AgentAssistNudges from "./components/AgentAssistNudges";
 import AuditCompliance from "./components/AuditCompilance";
 import CommitAutoTasks from "./components/CommitAutoTasks";
-import OneCallManyActionsSection from "./components/OneCallManyActionsSection";
+
 import RedactPiiMasking from "./components/RedactPiiMasking";
 import ScoreAIBreakdown from "./components/ScoreAIBreakdown";
 import SentinelMonitor from "./components/SentinelMonitor";
@@ -485,7 +485,7 @@ export default function SherpaPage() {
             </div>
           </div>
 
-          <OneCallManyActionsSection />
+        
 
           <div className="max-w-6xl mx-auto pt-4 sm:pt-8 pb-16 sm:pb-24">
             <div className="rounded-3xl bg-[#f1f2ff] p-6 sm:p-10 md:p-12">
