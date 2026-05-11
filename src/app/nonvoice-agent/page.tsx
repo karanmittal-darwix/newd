@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import DemoRequestSection from "@/components/DemoRequestSection";
 import { Manrope } from "next/font/google";
 
@@ -36,6 +36,8 @@ interface Agent {
   status: "live" | "soon";
 }
 
+type AgentProgressState = "live" | "pending" | "inprogress" | "completed";
+
 interface Squad {
   id: string;
   tag: string;
@@ -58,6 +60,8 @@ interface LOSField {
   value: string;
   status: "checked" | "queued" | "computing";
 }
+
+type LOSFieldRenderState = "checked" | "active" | "pending";
 
 const stats: Stat[] = [
   { value: "42 live", label: "Agents live in production", isLive: true },
@@ -305,6 +309,14 @@ const ctaStats = [
   { label: "Route", value: "VPC/Prem" },
 ];
 
+const INITIAL_LIVE_SECONDS = 74; // 00:01:14
+
+const formatClock = (seconds: number) => {
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+  return `00:${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+};
+
 const LiveDot: React.FC = () => (
   <span className="relative flex h-2.5 w-2.5 mr-1.5">
     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
@@ -335,25 +347,46 @@ const StatItem: React.FC<{ stat: Stat; isLast: boolean }> = ({
   </div>
 );
 
-const StatusBadge: React.FC<{ status: "live" | "soon" }> = ({ status }) =>
+const StatusBadge: React.FC<{ status: AgentProgressState }> = ({ status }) =>
   status === "live" ? (
     <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-0.5 text-[11px] font-medium text-emerald-700">
       <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
       live
     </span>
+  ) : status === "inprogress" ? (
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-[#cfd4ff] bg-[#eef0ff] px-2.5 py-0.5 text-[11px] font-medium text-[#4f58de]">
+      <span className="h-1.5 w-1.5 rounded-full bg-[#5b5ce8] animate-pulse" />
+      inprogress
+    </span>
+  ) : status === "completed" ? (
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-0.5 text-[11px] font-medium text-emerald-700">
+      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+      completed
+    </span>
   ) : (
     <span className="inline-flex items-center rounded-full border border-gray-200 bg-gray-100 px-2.5 py-0.5 text-[11px] font-medium text-gray-500">
-      soon
+      pending
     </span>
   );
 
-const AgentCard: React.FC<{ agent: Agent }> = ({ agent }) => (
-  <div className="rounded-xl border border-gray-100 bg-white px-4 py-3.5 shadow-sm">
+const AgentCard: React.FC<{
+  agent: Agent;
+  progressState: AgentProgressState;
+}> = ({ agent, progressState }) => (
+  <div
+    className={`h-[132px] rounded-xl border px-4 py-3.5 shadow-sm transition-colors ${
+      progressState === "inprogress"
+        ? "border-[#cfd4ff] bg-[#f5f6ff]"
+        : progressState === "completed"
+          ? "border-emerald-200 bg-emerald-50"
+          : "border-gray-100 bg-white"
+    }`}
+  >
     <div className="flex items-start justify-between gap-2 mb-1.5">
       <span className="text-[11px] font-medium text-[#5b5ce8] tracking-wide">
         {agent.category}
       </span>
-      <StatusBadge status={agent.status} />
+      <StatusBadge status={progressState} />
     </div>
     <h4 className="text-sm font-semibold text-[#4b4b4b] mb-1 leading-snug">
       {agent.title}
@@ -364,8 +397,30 @@ const AgentCard: React.FC<{ agent: Agent }> = ({ agent }) => (
   </div>
 );
 
-const SquadCard: React.FC<{ squad: Squad }> = ({ squad }) => (
-  <div className="flex-1 min-w-0 rounded-2xl border border-gray-200 bg-[#f8f9ff] p-5 shadow-sm">
+const SquadCard: React.FC<{ squad: Squad }> = ({ squad }) => {
+  const isCommsSquad = squad.status === "soon";
+  const [activeCommsIndex, setActiveCommsIndex] = useState(
+    isCommsSquad ? 0 : -1,
+  );
+
+  useEffect(() => {
+    if (!isCommsSquad || squad.agents.length === 0) return;
+
+    const intervalId = window.setInterval(() => {
+      setActiveCommsIndex((currentIndex) => {
+        if (currentIndex >= squad.agents.length) {
+          return 0;
+        }
+
+        return currentIndex + 1;
+      });
+    }, 1000);
+
+    return () => window.clearInterval(intervalId);
+  }, [isCommsSquad, squad.agents.length]);
+
+  return (
+    <div className="flex-1 min-w-0 rounded-2xl border border-gray-200 bg-[#f8f9ff] p-5 shadow-sm">
     <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-4">
       <div className="inline-flex w-fit items-center gap-1.5 rounded-full border border-[#dddff0] bg-white px-3 py-1 text-[10px] font-semibold tracking-[0.16em] text-[#7b7b7b] uppercase">
         <span
@@ -387,12 +442,25 @@ const SquadCard: React.FC<{ squad: Squad }> = ({ squad }) => (
     </p>
 
     <div className="flex flex-col gap-2.5">
-      {squad.agents.map((agent) => (
-        <AgentCard key={agent.title} agent={agent} />
+      {squad.agents.map((agent, index) => (
+        <AgentCard
+          key={agent.title}
+          agent={agent}
+          progressState={
+            !isCommsSquad
+              ? "live"
+              : index < activeCommsIndex
+                ? "completed"
+                : index === activeCommsIndex
+                  ? "inprogress"
+                  : "pending"
+          }
+        />
       ))}
     </div>
   </div>
-);
+  );
+};
 
 const SquadAgents: React.FC = () => (
   <section
@@ -404,7 +472,7 @@ const SquadAgents: React.FC = () => (
         Two squads of agents
       </p>
       <h2 className="mx-auto max-w-4xl text-3xl sm:text-4xl md:text-5xl font-semibold text-[#4b4b4b] leading-tight tracking-[-0.035em] mb-4">
-        Squad 01 runs ops <span className="text-[#5b5ce8]">today.</span> Squad
+        Agentic Suite 01 runs ops <span className="text-[#5b5ce8]">today.</span> Agenitc Suite
         02 runs comms <span className="text-[#5b5ce8]">next.</span>
       </h2>
       <p className="mx-auto max-w-[620px] text-sm sm:text-[15px] text-[#6e6e80] leading-[1.7]">
@@ -558,10 +626,11 @@ const CheckIcon: React.FC = () => (
   </svg>
 );
 
-const FieldRow: React.FC<{ field: LOSField; isLast: boolean }> = ({
-  field,
-  isLast,
-}) => (
+const FieldRow: React.FC<{
+  field: LOSField;
+  isLast: boolean;
+  renderState: LOSFieldRenderState;
+}> = ({ field, isLast, renderState }) => (
   <div
     className={`flex items-center justify-between py-2.5 gap-4 ${
       !isLast ? "border-b border-gray-100" : ""
@@ -572,7 +641,7 @@ const FieldRow: React.FC<{ field: LOSField; isLast: boolean }> = ({
     </span>
     <span
       className={`text-xs flex-1 ${
-        field.status === "computing"
+        renderState === "active"
           ? "text-[#9498a8] italic"
           : "text-[#4b4b4b]"
       } font-medium`}
@@ -580,11 +649,11 @@ const FieldRow: React.FC<{ field: LOSField; isLast: boolean }> = ({
       {field.value}
     </span>
     <div className="flex-shrink-0 w-10 text-right">
-      {field.status === "checked" && <CheckIcon />}
-      {field.status === "queued" && (
+      {renderState === "checked" && <CheckIcon />}
+      {renderState === "pending" && (
         <span className="text-[10px] font-medium text-amber-500">queued</span>
       )}
-      {field.status === "computing" && (
+      {renderState === "active" && (
         <span className="text-[10px] font-medium text-[#5b5ce8]">...</span>
       )}
     </div>
@@ -592,11 +661,30 @@ const FieldRow: React.FC<{ field: LOSField; isLast: boolean }> = ({
 );
 
 const LOSAgent: React.FC = () => {
-  const filledCount = losFields.filter(
-    (field) => field.status === "checked",
-  ).length;
+  const [activeFieldIndex, setActiveFieldIndex] = useState(-1);
+  const [liveSeconds, setLiveSeconds] = useState(INITIAL_LIVE_SECONDS);
+
   const totalCount = losFields.length;
+  const filledCount = Math.max(0, activeFieldIndex + 1);
   const completionPct = Math.round((filledCount / totalCount) * 100);
+  const liveTime = useMemo(() => formatClock(liveSeconds), [liveSeconds]);
+
+  useEffect(() => {
+    const fieldInterval = window.setInterval(() => {
+      setLiveSeconds((current) => current + 1);
+
+      setActiveFieldIndex((currentIndex) => {
+        if (currentIndex >= totalCount - 1) {
+          setLiveSeconds(INITIAL_LIVE_SECONDS);
+          return -1;
+        }
+
+        return currentIndex + 1;
+      });
+    }, 900);
+
+    return () => window.clearInterval(fieldInterval);
+  }, [totalCount]);
 
   return (
     <section
@@ -642,7 +730,7 @@ const LOSAgent: React.FC = () => {
               </span>
               <span className="flex items-center gap-1.5 text-[10px] font-semibold text-emerald-600">
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                Live - 00:01:14
+                Live - {liveTime}
               </span>
             </div>
 
@@ -651,6 +739,13 @@ const LOSAgent: React.FC = () => {
                 <FieldRow
                   key={field.label}
                   field={field}
+                  renderState={
+                    index < filledCount
+                      ? "checked"
+                      : index === filledCount
+                        ? "active"
+                        : "pending"
+                  }
                   isLast={index === losFields.length - 1}
                 />
               ))}
@@ -703,11 +798,11 @@ const StopHiringCTA: React.FC = () => (
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-3 w-full lg:w-72 flex-shrink-0">
+        <div className="grid grid-cols-2 gap-3 w-full lg:w-72 lg:mx-auto flex-shrink-0 my-auto">
           {ctaStats.map((stat) => (
             <div
               key={stat.label}
-              className="rounded-xl border border-gray-200 bg-white px-5 py-4 shadow-sm"
+              className="rounded-xl border border-gray-200 bg-white px-5 py-4 shadow-sm text-center"
             >
               <p className="text-[10px] font-semibold tracking-widest text-[#9498a8] uppercase mb-2">
                 {stat.label}
