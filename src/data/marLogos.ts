@@ -16,4 +16,10 @@ export const marLogos: readonly Logo[] = [
 	{ src: "/images/marLogos/jm%20finance.svg", alt: "JM Finance" },
 	{ src: "/images/marLogos/nippon.svg", alt: "Nippon" },
 	{ src: "/images/marLogos/tata%20capital.svg", alt: "Tata Capital" },
+	{ src: "/images/marLogos/image 891.svg", alt: "Poonawalla" },
+	{ src: "/images/marLogos/image 892.svg", alt: "Poonawalla" },
+	{ src: "/images/marLogos/image 893.svg", alt: "Poonawalla" },
+	{ src: "/images/marLogos/image 894.svg", alt: "Poonawalla" },
+	{ src: "/images/marLogos/image 895.svg", alt: "Poonawalla" }
+	
 ];
