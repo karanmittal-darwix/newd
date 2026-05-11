@@ -1,249 +1,544 @@
-// import React from 'react';
-// import Link from 'next/link';
-
-// export const metadata = {
-//   title: "About Us | Darwix AI",
-//   description: "Learn more about Darwix AI and our mission to level up customer conversations.",
-// };
-
-// export default function AboutPage() {
-//   return (
-//     <div className="bg-white min-h-screen">
-//       {/* Hero Section */}
-//       <section className="relative bg-indigo-600 py-24 md:py-32 overflow-hidden">
-//         {/* Abstract Globe Pattern */}
-//         <div className="absolute inset-0 opacity-20 pointer-events-none">
-//           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-white rounded-full opacity-20 animate-pulse" />
-//           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white rounded-full opacity-10" />
-//           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] border border-white rounded-full opacity-5" />
-//         </div>
-
-//         <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
-//           <span className="inline-block px-4 py-1.5 rounded-full bg-indigo-500/30 text-indigo-100 text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-sm">
-//             Our Journey
-//           </span>
-//           <h1 className="text-4xl md:text-7xl font-extrabold text-white leading-tight mb-8 max-w-5xl mx-auto">
-//             Building the <span className="text-indigo-200 italic">agent-led</span> future to level up customer conversations
-//           </h1>
-//           <p className="text-indigo-100 text-lg md:text-xl max-w-3xl mx-auto opacity-90 leading-relaxed">
-//             We are on a mission to empower omni-channel sales teams across the world with AI that doesn't just respond, but understands and executes.
-//           </p>
-//         </div>
-//       </section>
-
-//       {/* Mission Section */}
-//       <section className="py-24 bg-gray-50">
-//         <div className="max-w-7xl mx-auto px-6">
-//           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-//             <div>
-//               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Leveling up customer conversations</h2>
-//               <p className="text-gray-600 text-lg leading-relaxed mb-8">
-//                 At Darwix AI, we believe that the gap between businesses and customers can only be bridged through authentic, intelligent, and timely interactions. Our platform is built by veterans from India's top colleges and global tech firms to solve complex conversational challenges.
-//               </p>
-//               <div className="flex gap-4">
-//                 <div className="p-4 bg-white rounded-2xl shadow-sm border border-gray-100 flex-1">
-//                   <div className="text-3xl font-bold text-indigo-600 mb-1">10M+</div>
-//                   <div className="text-sm text-gray-500 uppercase tracking-wider font-bold">Minutes Processed</div>
-//                 </div>
-//                 <div className="p-4 bg-white rounded-2xl shadow-sm border border-gray-100 flex-1">
-//                   <div className="text-3xl font-bold text-indigo-600 mb-1">500+</div>
-//                   <div className="text-sm text-gray-500 uppercase tracking-wider font-bold">Global Clients</div>
-//                 </div>
-//               </div>
-//             </div>
-//             <div className="relative aspect-video rounded-3xl bg-indigo-100 overflow-hidden shadow-2xl">
-//               <img
-//                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1200"
-//                 alt="Team collaborating"
-//                 className="w-full h-full object-cover"
-//               />
-//               <div className="absolute inset-0 bg-indigo-600/10 backdrop-grayscale-[0.5]"></div>
-//             </div>
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* Values Section */}
-//       <section className="py-24 bg-white">
-//         <div className="max-w-7xl mx-auto px-6">
-//           <div className="text-center mb-16">
-//             <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Our Values</h2>
-//             <div className="w-20 h-1.5 bg-indigo-600 mx-auto rounded-full"></div>
-//           </div>
-
-//           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-//             {[
-//               {
-//                 title: "Human-Centric",
-//                 desc: "We build AI that complements human intelligence, not replaces it. Empathy is at our core.",
-//                 icon: "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197"
-//               },
-//               {
-//                 title: "Innovation-Led",
-//                 desc: "Pushing the boundaries of what's possible in NLP and LLM orchestration every single day.",
-//                 icon: "M13 10V3L4 14h7v7l9-11h-7z"
-//               },
-//               {
-//                 title: "Radical Transparency",
-//                 desc: "Honesty with our clients and our team is how we build trust and long-term partnerships.",
-//                 icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04M12 2.944v18.112"
-//               }
-//             ].map((val, idx) => (
-//               <div key={idx} className="p-10 rounded-3xl border border-gray-100 bg-gray-50 hover:bg-white hover:shadow-xl transition-all group">
-//                 <div className="w-14 h-14 bg-indigo-100 rounded-2xl flex items-center justify-center mb-6 text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
-//                   <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={val.icon} />
-//                   </svg>
-//                 </div>
-//                 <h3 className="text-xl font-bold text-gray-900 mb-4">{val.title}</h3>
-//                 <p className="text-gray-600 leading-relaxed">{val.desc}</p>
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* AI Recognition & Honours */}
-//       <section className="py-24 bg-gray-50 border-t border-gray-100">
-//         <div className="max-w-7xl mx-auto px-6">
-//           <div className="text-center mb-16">
-//             <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Recognition & Honours</h2>
-//             <p className="text-gray-500 max-w-2xl mx-auto">Acknowledged globally for our commitment to innovation and excellence in the AI space.</p>
-//           </div>
-
-//           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-//             {[
-//               {
-//                 title: "Top AI Startup 2024",
-//                 org: "TechGlobal Awards",
-//                 icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-//               },
-//               {
-//                 title: "Excellence in NLP",
-//                 org: "AI Innovation Forum",
-//                 icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-//               },
-//               {
-//                 title: "Most Secure Platform",
-//                 org: "CyberTrust Review",
-//                 icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04M12 2.944v18.112"
-//               },
-//               {
-//                 title: "Customer Choice",
-//                 org: "B2B Software Hub",
-//                 icon: "M14 10h2a2 2 0 012 2v1a2 2 0 01-2 2H8a2 2 0 01-2-2v-1a2 2 0 012-2h2V7a2 2 0 114 0v3z"
-//               }
-//             ].map((honour, idx) => (
-//               <div key={idx} className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-all text-center group">
-//                 <div className="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center mx-auto mb-6 text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
-//                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={honour.icon} />
-//                   </svg>
-//                 </div>
-//                 <h4 className="text-lg font-bold text-gray-900 mb-1">{honour.title}</h4>
-//                 <p className="text-sm text-indigo-600 font-medium">{honour.org}</p>
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* Leadership Section */}
-//       <section className="py-24 bg-indigo-900 text-white overflow-hidden relative">
-//         {/* Background Accents */}
-//         <div className="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500 rounded-full blur-[120px] opacity-20 -mr-48 -mb-48"></div>
-
-//         <div className="max-w-7xl mx-auto px-6 relative z-10">
-//           <div className="text-center mb-16">
-//             <h2 className="text-3xl md:text-5xl font-bold mb-4">Leadership Team</h2>
-//             <p className="text-indigo-200 opacity-80">Built by leaders from India’s top colleges with global expertise</p>
-//           </div>
-
-//           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12 max-w-4xl mx-auto">
-//             {[
-//               {
-//                 name: "Ajay Pal Singh Sethi",
-//                 role: "Co-Founder",
-//                 img: "/images/company/ajay.webp",
-//                 linkedin: "https://www.linkedin.com/in/ajaypalsinghsethi/"
-//               },
-//               {
-//                 name: "Hanit Awal",
-//                 role: "Co-Founder",
-//                 img: "/images/company/hanit.webp",
-//                 linkedin: "https://www.linkedin.com/in/hanitawal/"
-//               }
-//             ].map((leader, idx) => (
-//               <div key={idx} className="bg-white rounded-[32px] p-8 text-center shadow-2xl">
-//                 <div className="w-48 h-48 mx-auto mb-8 relative rounded-full border-4 border-gray-50 overflow-hidden shadow-inner">
-//                   <img 
-//                     src={leader.img} 
-//                     alt={leader.name}
-//                     className="w-full h-full object-cover grayscale"
-//                   />
-//                 </div>
-//                 <h3 className="text-2xl font-bold text-gray-900 mb-1">{leader.name}</h3>
-//                 <p className="text-gray-400 font-medium mb-6">{leader.role}</p>
-//                 <div className="flex justify-center">
-//                    <Link 
-//                      href={leader.linkedin} 
-//                      target="_blank" 
-//                      className="w-6 h-6 text-[#0077B5] hover:scale-110 transition-transform"
-//                    >
-//                      <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-//                    </Link>
-//                 </div>
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* Footer Call to Action */}
-//       <section className="py-24 bg-white text-center">
-//         <div className="max-w-4xl mx-auto px-6">
-//           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-8">Ready to join the future?</h2>
-//           <div className="flex flex-col md:flex-row gap-4 justify-center">
-//             <Link href="/" className="px-10 py-4 bg-indigo-600 text-white rounded-full font-bold hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-100">
-//               Explore Platform
-//             </Link>
-//             <button className="px-10 py-4 border-2 border-gray-200 text-gray-900 rounded-full font-bold hover:bg-gray-50 transition-all">
-//               Contact Sales
-//             </button>
-//           </div>
-//         </div>
-//       </section>
-//     </div>
-//   );
-// }
+"use client";
 
 
-import { Manrope } from "next/font/google";
 
-import DemoRequestSection from "@/components/DemoRequestSection";
-import ComplianceHero from "./components/ComplianceHero";
-import CertificationsSection from "./components/CertificationsSection";
-import TrustedLogosBar from "./components/TrustedLogosBar";
-import PlatformGuaranteesSection from "./components/PlatformGuaranteesSection";
-import AuditTrailSection from "./components/AuditTrailSection";
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import LogoMarquee from "@/components/LogoMarquee";
+import { aboutLogos } from "@/data/aboutLogos";
+import MissionVisionCards from "./components/MissionVisionCards";
+import FounderCard from "./components/FounderCard";
 
-const manrope = Manrope({ subsets: ["latin"], weight: ["400", "500", "600"] });
 
-export const metadata = {
-  title: "Compliance | Darwix AI",
-  description:
-    "Built for India's regulated stack RBI, DPDP, IRDAI MITC, FREE-AI, TRAI. SOC 2, ISO 27001 certified.",
-};
 
-export default function CompliancePage() {
+const stats = [
+  { value: "$1.5M", label: "Seed raised · 2025" },
+  { value: "50+", label: "CXO & angel backers" },
+  { value: "4", label: "Nations served" },
+  { value: "22", label: "Languages supported" },
+  { value: "1200", label: "Parallel dials / sec" },
+];
+
+const timeline = [
+  { year: "2022", title: "CUR8 founded", desc: "Started as a revenue intelligence platform for BFSI sales teams." },
+  { year: "2023", title: "Sherpa prototyped", desc: "Field-agent wearable for live coaching, built with first BFSI design partners." },
+  { year: "2024", title: "Voice automation live", desc: "Outbound dialer engine in production. 1,200 dials/sec across 22 languages." },
+  { year: "2025", title: "Rebrand & seed round", desc: "$1.5M raised. Non-Voice Agents and Nova retail kiosk unveiled. 4 nations." },
+  { year: "2026", title: "Full agentic OS", desc: "India-hosted SLM in production. Voice, non-voice, and physical AI in lockstep." },
+];
+
+const values = [
+  { icon: "search", title: "Build on Infinite Curiosity", desc: "We challenge every assumption in workflows, systems, and banking operations because curiosity drives better products." },
+  { icon: "bolt", title: "Roll Up Your Sleeves", desc: "Everyone owns the outcome. From client calls to debugging workflows, we step in wherever the work needs to get done." },
+  { icon: "star", title: "Chase Rigor-Backed Rewards", desc: "We measure real business impact, not effort. Every feature is tied to outcomes, metrics, and measurable results." },
+  { icon: "heart", title: "Built Around Customer Needs", desc: "We build for real banking operations with deep focus on compliance, workflows, and everyday customer realities." },
+  { icon: "home", title: "Create Like an Owner", desc: "Ownership is a proactive mindset. We fix problems, build what's missing, and take responsibility for every outcome." },
+  { icon: "check", title: "Cause Immediate Impact", desc: "We build for measurable business impact. Every sprint delivers fast, visible value without compromising quality." },
+];
+
+const angels = [
+  { name: "Shaashi Bakshi", role: "Strategy & Consulting Leader", company: "THOUGHTWORKS", initials: "SB", image: "/images/about/shashi_bakshi.jpg" },
+  { name: "Sanjay Suri", role: "CTO", company: "NYKAA", initials: "SS", image: "/images/about/sanjay_suri.jpg" },
+  { name: "Manish Harodia", role: "Chief Business Officer", company: "CARDEKHO", initials: "MH", image: "/images/about/manish_harodia.jpg" },
+  { name: "Shravan Tickoo", role: "CEO", company: "STEALTH AI", initials: "ST", image: "/images/about/Shravan_tickoo.jpg" },
+  { name: "Amit Lakhotia", role: "CEO", company: "PARK+", initials: "AL", image: "/images/about/amit-lakhotia.jpg" },
+  { name: "Pranshu Dwivedi", role: "Strategy & Consulting Leader", company: "THOUGHTWORKS", initials: "PD", image: "/images/about/Pranshu_dwedi.jpg" },
+  { name: "Vijay Agicha", role: "CTO", company: "NYKAA", initials: "VA", image: "/images/about/vijay agricha.png" },
+  { name: "Naman Sarawagi", role: "Chief Business Officer", company: "CARDEKHO", initials: "NS", image: "/images/about/naman_sarawagi.png" },
+  { name: "Vivek Yelisetti", role: "CEO", company: "STEALTH AI", initials: "VY", image: "/images/about/vivek.png" },
+  { name: "Mekin Maheshwari", role: "CEO", company: "PARK+", initials: "MM", image: "/images/about/mekin_maheshwari.png" },
+  { name: "Suhas Motwani", role: "Strategy & Consulting Leader", company: "THOUGHTWORKS", initials: "SM", image: "/images/about/suhas_motwani.png" },
+  { name: "Sushant Roy", role: "CTO", company: "NYKAA", initials: "SR", image: "/images/about/sanchay.png" },
+  { name: "Abhishek Ayyagari", role: "Chief Business Officer", company: "CARDEKHO", initials: "AA", image: "/images/about/abhishek_ayyagyari.png" },
+  { name: "Tarun Tiwari", role: "CEO", company: "STEALTH AI", initials: "TT", image: "/images/about/tarun tiwari.png" },
+  { name: "Aniket Patki", role: "CEO", company: "PARK+", initials: "AP", image: "/images/about/aniket_patki.png" },
+  { name: "Vipul Choubey", role: "Strategy & Consulting Leader", company: "THOUGHTWORKS", initials: "VC", image: "/images/about/vipul_choubey.png" },
+  { name: "Sanchay Gupta", role: "CTO", company: "NYKAA", initials: "SG", image: "/images/about/sanchay.png" },
+  { name: "Amit Kulkarni", role: "Chief Business Officer", company: "CARDEKHO", initials: "AK", image: "/images/about/amit_kulkarni.png" },
+  { name: "Rajat Gupta", role: "CEO", company: "STEALTH AI", initials: "RG", image: "/images/about/rajat gupta.png" },
+  { name: "Harsh Choudhry", role: "CEO", company: "PARK+", initials: "HC", image: "/images/about/harsh_choudary.png" },
+  { name: "Nikhil Jois", role: "Strategy & Consulting Leader", company: "THOUGHTWORKS", initials: "NJ", image: "/images/about/nikhil_jois.png" },
+  { name: "Bhavishya Chauraisa", role: "CTO", company: "NYKAA", initials: "BC", image: "/images/about/bhavishya_chaurasia.png" },
+  { name: "Pinak Dattaray", role: "Chief Business Officer", company: "CARDEKHO", initials: "PD", image: "/images/about/pinak.png" },
+  { name: "Aabhinandan Chatterjee", role: "CEO", company: "STEALTH AI", initials: "AC", image: "/images/about/aabhinandan_chatterjee.png" },
+  { name: "Sabhareesh M.", role: "CEO", company: "PARK+", initials: "SM", image: "/images/about/sabharesh.png" },
+  { name: "Sharath R. Iyengar", role: "Strategy & Consulting Leader", company: "THOUGHTWORKS", initials: "SI", image: "/images/about/sharath_ramesha.png" },
+  { name: "Adesh Ladha", role: "CTO", company: "NYKAA", initials: "AL", image: "/images/about/adesh_ladha.png" },
+  { name: "Shweta Rani", role: "Chief Business Officer", company: "CARDEKHO", initials: "SR", image: "/images/about/shweta_rani.png" },
+  { name: "Tarun Tiwari", role: "CEO", company: "STEALTH AI", initials: "TT", image: "/images/about/tarun tiwari.png" },
+  { name: "Vaibhav Vardhan", role: "CEO", company: "PARK+", initials: "VV", image: "/images/about/vaibhav_vardhan.png" },
+];
+
+/* ─── SMALL HELPERS ──────────────────────────────────────────── */
+
+function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <main className={manrope.className}>
-      <ComplianceHero />
-      <CertificationsSection />
-      <TrustedLogosBar />
-      <PlatformGuaranteesSection />
-      <AuditTrailSection />
-      <DemoRequestSection />
-    </main>
+    <p className="text-[11px] font-semibold uppercase tracking-[0.3em]" style={{ color: "#5b5ce8" }}>
+      {children}
+    </p>
+  );
+}
+
+function ValueIcon({ type }: { type: string }) {
+  const cls = "h-4 w-4";
+  const stroke = { fill: "none", stroke: "#5b5ce8", strokeWidth: 2, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
+  if (type === "search") return <svg viewBox="0 0 24 24" className={cls} {...stroke}><circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" /></svg>;
+  if (type === "bolt") return <svg viewBox="0 0 24 24" className={cls} {...stroke}><path d="M13 2 3 14h9l-1 8 10-12h-9z" /></svg>;
+  if (type === "star") return <svg viewBox="0 0 24 24" className={cls} {...stroke}><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>;
+  if (type === "heart") return <svg viewBox="0 0 24 24" className={cls} {...stroke}><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /></svg>;
+  if (type === "home") return <svg viewBox="0 0 24 24" className={cls} {...stroke}><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>;
+  return <svg viewBox="0 0 24 24" className={cls} {...stroke}><polyline points="9 11 12 14 22 4" /><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" /></svg>;
+}
+
+function AngelCard({ angel }: { angel: typeof angels[0] }) {
+  return (
+    <div className="flex items-center gap-3 rounded-[14px] border border-[#eceef4] bg-white px-4 py-3 shadow-[0_4px_12px_rgba(37,44,97,0.05)]">
+      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-semibold text-white overflow-hidden" style={{ backgroundColor: "#5b5ce8" }}>
+        {angel.image ? (
+          <img
+            src={angel.image}
+            alt={angel.name}
+            className="h-full w-full object-cover"
+            onError={(e) => {
+              e.currentTarget.style.display = 'none';
+              e.currentTarget.nextElementSibling?.classList.remove('hidden');
+            }}
+          />
+        ) : null}
+        <span className={angel.image ? 'hidden' : ''}>
+          {angel.initials}
+        </span>
+      </div>
+      <div className="min-w-0">
+        <p className="truncate text-[12px] font-semibold" style={{ color: "#4b4b4b" }}>{angel.name}</p>
+        <p className="truncate text-[10px]" style={{ color: "#9aa0b2" }}>{angel.role}</p>
+        <p className="truncate text-[10px] font-semibold tracking-wide" style={{ color: "#5b5ce8" }}>{angel.company}</p>
+      </div>
+    </div>
+  );
+}
+
+/* ─── MAIN PAGE ──────────────────────────────────────────────── */
+
+export default function BFSIPage() {
+  const [mounted, setMounted] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const visibleAngels = expanded ? angels : angels.slice(0, 5);
+
+  useEffect(() => { setMounted(true); }, []);
+
+  return (
+    <div className="w-full font-sans" style={{ fontFamily: "Manrope, sans-serif" }}>
+
+      {/* ── HERO ── */}
+      <section
+        className="relative w-full flex flex-col items-center justify-center px-6 py-20 sm:py-28 text-center overflow-hidden"
+        style={{
+          backgroundImage:
+            "linear-gradient(135deg, #f0f1ff 0%, #f7f7ff 50%, #eef0ff 100%)",
+        }}
+      >
+        {/* Badge */}
+        <div
+          className={`mb-8 inline-flex items-center gap-2 rounded-full border border-[#e3e7f5] bg-white px-4 py-1.5 text-[11px] font-medium shadow-sm transition-all duration-700 ${mounted
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 -translate-y-2"
+            }`}
+          style={{ color: "#7b7b7b" }}
+        >
+          <span style={{ color: "#5b5ce8" }}>✦</span>
+          <span
+            className="font-semibold"
+            style={{ color: "#4b4b4b" }}
+          >
+            IIM Alumni Ventures
+          </span>
+          <span style={{ color: "#d0d3e4" }}>·</span>
+          <span>Backed by 50+ CXOS</span>
+        </div>
+
+        {/* Headline */}
+        <h1
+          className={`mx-auto max-w-7xl text-4xl sm:text-5xl lg:text-[72px] font-medium leading-[1.08] tracking-[-2px] transition-all duration-700 delay-75 ${mounted
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-4"
+            }`}
+          style={{ color: "#4b4b4b" }}
+        >
+          Building the BFSI <br />
+          <span style={{ color: "#5b5ce8" }}>
+            operating system
+          </span>{" "}
+          for the agentic decade.
+        </h1>
+
+        {/* Subtext */}
+        <p
+          className={`mx-auto mt-5 max-w-4xl text-base sm:text-lg leading-relaxed transition-all duration-700 delay-150 ${mounted
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-4"
+            }`}
+          style={{ color: "#7a7a7a" }}
+        >
+          An applied research company turning every customer
+          conversation, voice, text, and physical, into a coordinated
+          agentic workflow. Purpose-built for Indian banking, lending,
+          insurance and wealth management.
+        </p>
+
+        {/* CTA */}
+        <button
+          className={`mt-9 rounded-[12px] px-7 py-2.5 text-[13px] font-semibold text-white shadow-lg transition-all duration-200 active:scale-95 delay-200 ${mounted
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-4"
+            }`}
+          style={{
+            backgroundColor: "#5b5ce8",
+            boxShadow: "0 8px 24px rgba(91,92,232,0.28)",
+            transitionDelay: mounted ? "200ms" : "0ms",
+          }}
+          onMouseEnter={(e) =>
+            (e.currentTarget.style.backgroundColor = "#5152d8")
+          }
+          onMouseLeave={(e) =>
+            (e.currentTarget.style.backgroundColor = "#5b5ce8")
+          }
+        >
+          Book a demo
+        </button>
+
+        {/* Stats */}
+        <div
+          className={`mt-14 flex flex-wrap justify-center w-full max-w-5xl transition-all duration-700 ${mounted
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-4"
+            }`}
+          style={{ transitionDelay: mounted ? "300ms" : "0ms" }}
+        >
+          {stats.map((stat, i) => (
+            <div
+              key={stat.label}
+              className={`flex flex-col items-center gap-1 px-10 py-3 text-center ${i !== 0 ? "border-l border-[#e3e7f5]" : ""
+                }`}
+            >
+              <span
+                className="text-2xl sm:text-3xl font-semibold tabular-nums tracking-tight"
+                style={{ color: "#4b4b4b" }}
+              >
+                {stat.value}
+              </span>
+              <span
+                className="text-[11px] leading-snug"
+                style={{ color: "#8a8a8a" }}
+              >
+                {stat.label}
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── FROM CUR8 TO DARWIX ── */}
+      <section className="w-full bg-white px-6 py-20 flex flex-col items-center">
+        <SectionLabel>Certifications Section</SectionLabel>
+        <h2 className="mt-4 text-3xl sm:text-4xl lg:text-[46px] font-semibold leading-tight tracking-[-0.02em] text-center" style={{ color: "#4b4b4b" }}>
+          From CUR8 to <span style={{ color: "#5b5ce8" }}>Darwix AI</span>
+        </h2>
+        <p className="mt-4 max-w-2xl text-center text-sm sm:text-base leading-relaxed" style={{ color: "#7a7a7a" }}>
+          Darwix AI evolved from CUR8 with a simple belief — every <strong style={{ color: "#4b4b4b" }}>BFSI conversation</strong> should drive outcomes, not get lost in disconnected systems. Built for banks, NBFCs, and insurers, <strong style={{ color: "#4b4b4b" }}>Darwix AI</strong> transforms customer interactions into intelligent, compliant, and automated workflows that improve revenue, operations & customer experience.
+        </p>
+
+        {/* Timeline */}
+        <div className="mt-14 w-full max-w-5xl overflow-x-auto">
+          <div className="relative flex items-start min-w-[600px]">
+            <div className="absolute top-[10px] left-0 right-0 h-px z-0" style={{ backgroundColor: "#d5d7f0" }} />
+            {timeline.map((item) => (
+              <div key={item.year} className="relative flex-1 flex flex-col items-center px-3">
+                <div className="w-5 h-5 rounded-full border-4 border-white z-10 mb-3 shadow-sm flex-shrink-0" style={{ backgroundColor: "#5b5ce8", outline: "2px solid #d5d7f0" }} />
+                <span className="text-[10px] font-semibold tracking-[0.2em] mb-1" style={{ color: "#5b5ce8" }}>{item.year}</span>
+                <span className="text-[12px] font-semibold text-center mb-1" style={{ color: "#4b4b4b" }}>{item.title}</span>
+                <p className="text-[11px] text-center leading-relaxed" style={{ color: "#9aa0b2" }}>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Mission / Vision */}
+        <div className="mt-14 w-full">
+          <MissionVisionCards />
+        </div>
+      </section>
+
+      {/* ── LEADERSHIP ── */}
+      <section className="w-full px-6 py-20 flex flex-col items-center" style={{ backgroundColor: "#fbfbfd" }}>
+        <SectionLabel>Leadership</SectionLabel>
+        <h2 className="mt-4 text-3xl sm:text-4xl lg:text-[46px] font-semibold leading-tight tracking-[-0.02em] text-center" style={{ color: "#4b4b4b" }}>
+          Built by leaders from <span style={{ color: "#5b5ce8" }}>India's</span> top institutions.
+        </h2>
+        <p className="mt-4 max-w-lg text-center text-sm sm:text-base leading-relaxed" style={{ color: "#7a7a7a" }}>
+          Battle-tested at the world's best firms. Deep BFSI domain expertise across operations, product engineering, and go-to-market.
+        </p>
+
+        <div className="mt-12 w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Ajay Sethi - Using New FounderCard Component */}
+          <FounderCard
+            name="Ajay Sethi"
+            role="Co-Founder"
+            bio="14+ years of experience in revenue and product transformation at top firms. Led the original CUR8 vision of fixing the broken conversation layer in Indian banking and insurance."
+            avatarUrl="/images/about/ajay_sethi.png"
+            linkedinUrl="#"
+            brands={[
+              { name: "IIM Calcutta", logo: "/images/about/IIMcalcutta.png" },
+              { name: "Accenture", logo: "/images/about/accenture.png" },
+              { name: "PayU", logo: "/images/about/payu.png" },
+              { name: "CARS24", logo: "/images/about/cars24.png" },
+            ]}
+          />
+
+          {/* Hanit Awal - Using New FounderCard Component */}
+          <FounderCard
+            name="Hanit Awal"
+            role="Co-Founder"
+            bio="12+ years of experience leading M&A, business, and operations across India's top corporates & unicorns. Architects the scalable, intelligent technical backbone of Darwix AI."
+            avatarUrl="/images/about/Hanit_awal.png"
+            linkedinUrl="#"
+            brands={[
+              { name: "IIM Indore", logo: "/images/about/IIMindore.png" },
+              { name: "Accenture", logo: "/images/about/accenture.png" },
+              { name: "Udaan", logo: "/images/about/udaan.png" },
+              { name: "EXL", logo: "/images/about/exl.png" },
+              { name: "S&P Global", logo: "/images/about/s&p.png" },
+            ]}
+          />
+        </div>
+      </section>
+
+      {/* ── OUR VALUES ── */}
+      <section className="w-full bg-white px-6 py-20 flex flex-col items-center">
+        <SectionLabel>Our Values</SectionLabel>
+        <h2 className="mt-4 text-3xl sm:text-4xl lg:text-[46px] font-semibold leading-tight tracking-[-0.02em] text-center" style={{ color: "#4b4b4b" }}>
+          A unique team, a <span style={{ color: "#5b5ce8" }}>unique value system.</span>
+        </h2>
+        <p className="mt-4 max-w-lg text-center text-sm sm:text-base leading-relaxed" style={{ color: "#7a7a7a" }}>
+          Six principles that shape every product decision, every client conversation, and every hire at Darwix AI.
+        </p>
+
+        <div className="mt-12 w-full max-w-5xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {values.map((v) => (
+            <div key={v.title} className="rounded-[18px] border border-[#eceef4] bg-[#f7f8ff] p-6 flex flex-col gap-4 shadow-[0_8px_24px_rgba(37,44,97,0.04)] hover:border-[#d5d7f0] transition-colors duration-200">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-[#e5e7f5] bg-white">
+                <ValueIcon type={v.icon} />
+              </div>
+              <h3 className="text-[15px] font-semibold" style={{ color: "#4b4b4b" }}>{v.title}</h3>
+              <p className="text-[13px] leading-[1.55]" style={{ color: "#7a7a7a" }}>{v.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── RECOGNITION ── */}
+      <section className="w-full px-6 py-20 flex flex-col items-center" style={{ backgroundColor: "#fbfbfd" }}>
+        <SectionLabel>Recognition</SectionLabel>
+        <h2 className="mt-4 text-3xl sm:text-4xl lg:text-[46px] font-semibold leading-tight tracking-[-0.02em] text-center" style={{ color: "#4b4b4b" }}>
+          AI recognition <span style={{ color: "#5b5ce8" }}>& honours</span>
+        </h2>
+
+        <div className="mt-12 w-full max-w-5xl grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {[
+            {
+              logo: (
+                <div className="flex items-center gap-2">
+                  <div className="flex h-9 w-9 items-center justify-center rounded" style={{ backgroundColor: "#b91c1c" }}>
+                    <span className="text-[10px] font-black text-white">ABC</span>
+                  </div>
+                  <div className="leading-tight">
+                    <p className="text-[11px] font-black uppercase" style={{ color: "#b91c1c" }}>Aditya Birla</p>
+                    <p className="text-[11px] font-black uppercase" style={{ color: "#b91c1c" }}>Capital</p>
+                  </div>
+                </div>
+              ),
+              title: "Aditya Birla Capital · Innovation Winner",
+              desc: "Handpicked to present at the Annual Innovation & Business Showcase, recognised for our agentic AI approach to BFSI revenue transformation.",
+            },
+            {
+              logo: <span className="text-[28px] font-black" style={{ color: "#e5451f" }}>nasscom</span>,
+              title: "NASSCOM AI · National Finalist 2025",
+              desc: "Recognised nationally by NASSCOM for innovative AI-first solutions addressing real enterprise challenges in the Indian BFSI sector.",
+            },
+            {
+              logo: (
+                <span className="text-[28px] font-semibold tracking-tight">
+                  <span style={{ color: "#4285F4" }}>G</span><span style={{ color: "#EA4335" }}>o</span><span style={{ color: "#FBBC05" }}>o</span><span style={{ color: "#4285F4" }}>g</span><span style={{ color: "#34A853" }}>l</span><span style={{ color: "#EA4335" }}>e</span>
+                </span>
+              ),
+              title: "Google for Startups · AI First India 2025",
+              desc: "Selected for the Google for Startups Accelerator as part of the AI-First India cohort, for differentiated AI infrastructure for financial services.",
+            },
+          ].map((card) => (
+            <div key={card.title} className="rounded-[18px] border border-[#eceef4] bg-white p-8 flex flex-col items-center text-center gap-5 shadow-[0_8px_22px_rgba(37,44,97,0.05)]">
+              <div className="flex h-14 items-center justify-center">{card.logo}</div>
+              <div className="border-t border-dashed w-full" style={{ borderColor: "#e6e8ef" }} />
+              <div>
+                <p className="text-[13px] font-semibold mb-2" style={{ color: "#4b4b4b" }}>{card.title}</p>
+                <p className="text-[12px] leading-[1.55]" style={{ color: "#7a7a7a" }}>{card.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── IN THE NEWS ── */}
+      <section className="w-full bg-white px-6 py-20 flex flex-col items-center">
+        <SectionLabel>In The News</SectionLabel>
+        <h2 className="mt-4 text-3xl sm:text-4xl lg:text-[46px] font-semibold leading-tight tracking-[-0.02em] text-center" style={{ color: "#4b4b4b" }}>
+          We've been <span style={{ color: "#5b5ce8" }}>making headlines.</span>
+        </h2>
+
+        {/* Media row */}
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-5">
+          {[
+            { label: "The Economic Times", bg: "#C8102E", prefix: "ET" },
+            { label: "PTI", bg: "#1a1a1a", prefix: "PTI" },
+            { label: "indianstartuptimes", bg: "#e63329", prefix: "IST" },
+            { label: "YOURSTORY", bg: null, prefix: "YS", border: "#e63329" },
+            { label: "ENTRACKR", bg: "#FF6B35", prefix: "ENT" },
+            { label: "VCCIRCLE", bg: "#0066FF", prefix: "VCC" },
+          ].map((pub) => (
+            <div key={pub.label} className={`flex items-center gap-1.5 ${pub.border ? "border rounded px-2 py-0.5" : ""}`} style={pub.border ? { borderColor: pub.border } : {}}>
+              {pub.prefix && pub.bg && (
+                <span className="rounded px-1.5 py-0.5 text-[10px] font-black text-white" style={{ backgroundColor: pub.bg }}>{pub.prefix}</span>
+              )}
+              {pub.prefix && !pub.bg && (
+                <span className="text-[10px] font-black" style={{ color: "#e63329" }}>{pub.prefix}</span>
+              )}
+              <span className="text-[12px] font-bold" style={{ color: pub.bg || "#4b4b4b" }}>{pub.label}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Article cards */}
+        <div className="mt-10 w-full max-w-5xl grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {[
+            { source: "Economic Times", title: "GenAI startup Darwix AI raises $1.5 million in seed funding.", desc: "Darwix AI raised $1.5M to build a GenAI stack for omni-channel sales conversations in global BFSI enterprises." },
+            { source: "Indian Startup Times", title: "Darwix AI raises $1.5M to build industry-first Gen AI stack.", desc: "Coverage of Darwix AI's seed round and its mission to level up omni-channel sales conversations across global BFSI enterprises." },
+            { source: "VCCircle", title: "Darwix AI secures funding in latest BFSI AI round.", desc: "VCCircle covers Darwix AI's funding alongside other prominent Indian startups raising capital in the AI-for-enterprise space." },
+          ].map((a) => (
+            <div key={a.title} className="rounded-[18px] border border-[#eceef4] bg-[#f7f8ff] p-6 flex flex-col gap-3 shadow-[0_8px_22px_rgba(37,44,97,0.04)] hover:border-[#d5d7f0] transition-colors duration-200">
+              <span className="self-start rounded-full border border-[#e5e7f5] bg-white px-3 py-1 text-[10px] font-semibold" style={{ color: "#6e7390" }}>{a.source}</span>
+              <h3 className="text-[14px] font-semibold leading-snug" style={{ color: "#4b4b4b" }}>{a.title}</h3>
+              <p className="flex-1 text-[12px] leading-[1.55]" style={{ color: "#7a7a7a" }}>{a.desc}</p>
+              <a href="#" className="mt-1 text-[12px] font-semibold hover:opacity-75 transition-opacity" style={{ color: "#5b5ce8" }}>Read article →</a>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── BACKED BY THE BEST ── */}
+      <section className="w-full px-6 py-20 flex flex-col items-center" style={{ backgroundColor: "#fbfbfd" }}>
+        <SectionLabel>Backed By The Best</SectionLabel>
+        <h2 className="mt-4 text-3xl sm:text-4xl lg:text-[46px] font-semibold leading-tight tracking-[-0.02em] text-center" style={{ color: "#4b4b4b" }}>
+          Leading institutional investors & <span style={{ color: "#5b5ce8" }}>50+ angels.</span>
+        </h2>
+        <p className="mt-4 max-w-xl text-center text-sm sm:text-base leading-relaxed" style={{ color: "#7a7a7a" }}>
+          We're backed by institutional funds and CXO-level angels who bring more than capital, they bring BFSI domain depth, GTM networks, and operator credibility
+        </p>
+
+        <div className="mt-12 w-full max-w-5xl grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+          {[
+            { name: "rebalance", desc: "India's only fund focused on diverse founders", logo: <span className="text-[18px] font-black"><span style={{ color: "#e63329" }}>re</span><span style={{ color: "#4b4b4b" }}>balance</span></span> },
+            { name: "Inflection Point", desc: "India's most active VC investor for 3 years", logo: <div className="flex flex-col items-center gap-1"><div className="flex h-9 w-9 items-center justify-center rounded-full border-2" style={{ borderColor: "#1d4ed8" }}><svg className="h-4 w-4" style={{ color: "#1d4ed8" }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></svg></div><span className="text-[9px] font-bold text-center leading-tight" style={{ color: "#1d4ed8" }}>INFLECTION<br />POINT</span></div> },
+            { name: "Growth91", desc: "Leading jewelry house backed family office", logo: <span className="text-[18px] font-black" style={{ color: "#4b4b4b" }}><span style={{ color: "#5b5ce8" }}>G</span>rowth91</span> },
+            { name: "RR", desc: "Backed by 3 key legacy unicorn LPs", logo: <div className="flex h-11 w-11 items-center justify-center rounded-full border-2" style={{ borderColor: "#4b4b4b" }}><span className="text-[15px] font-black" style={{ color: "#4b4b4b" }}>RR</span></div> },
+            { name: "JITO", desc: "Shaping growth opportunities for start-ups", logo: <div className="flex flex-col items-center gap-1"><div className="flex">{["J", "I", "T", "O"].map((l, i) => <span key={l} className="text-[13px] font-black px-0.5 text-white" style={{ backgroundColor: ["#003087", "#e63329", "#f5a623", "#1a7f3c"][i] }}>{l}</span>)}</div><span className="text-[8px] font-bold text-center leading-tight" style={{ color: "#9aa0b2" }}>INCUBATION &<br />INNOVATION<br />FOUNDATION</span></div> },
+          ].map((inv) => (
+            <div key={inv.name} className="rounded-[18px] border border-[#eceef4] bg-white p-5 flex flex-col items-center text-center gap-3 shadow-[0_8px_22px_rgba(37,44,97,0.05)]">
+              <div className="flex h-14 items-center justify-center">{inv.logo}</div>
+              <p className="text-[11px] leading-relaxed" style={{ color: "#7a7a7a" }}>{inv.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── ANGEL INVESTORS ── */}
+      <section className="w-full bg-white px-6 py-12 flex flex-col items-center border-t border-dashed" style={{ borderColor: "#e6e8ef" }}>
+        <p className="text-[13px] text-center" style={{ color: "#7a7a7a" }}>
+          Also backed by{" "}
+          <span className="font-semibold" style={{ color: "#5b5ce8" }}>50+ angel investors</span>
+        </p>
+        <p className="mt-1 text-[11px] text-center" style={{ color: "#9aa0b2" }}>
+          Industry operators from McKinsey, Goldman Sachs, Jio-Hotstar, PayU, Darwinbox, and more.
+        </p>
+
+        <div className="mt-8 w-full max-w-5xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+          {visibleAngels.map((angel, i) => (
+            <AngelCard key={`${angel.name}-${i}`} angel={angel} />
+          ))}
+        </div>
+
+        <button
+          onClick={() => setExpanded((e) => !e)}
+          className="mt-6 flex h-9 w-9 items-center justify-center rounded-full border border-[#e5e7f5] bg-white transition-colors duration-200 hover:border-[#d5d7f0]"
+          aria-label={expanded ? "Collapse" : "Expand"}
+        >
+          <svg className={`h-4 w-4 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} style={{ color: "#9aa0b2" }} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </button>
+      </section>
+
+      {/* ── OUR OFFICES ── */}
+      <section className="w-full px-6 py-20 flex flex-col items-center" style={{ backgroundColor: "#fbfbfd" }}>
+        <SectionLabel>Our Offices</SectionLabel>
+        <h2 className="mt-4 text-3xl sm:text-4xl lg:text-[46px] font-semibold leading-tight tracking-[-0.02em] text-center" style={{ color: "#4b4b4b" }}>
+          Headquartered in Gurugram. <span style={{ color: "#5b5ce8" }}>Expanding globally.</span>
+        </h2>
+
+        <div className="mt-12 w-full max-w-4xl grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {[
+            { tag: "Headquarters", city: "Gurugram, India", address: "7th Floor, Imperia MindSpace\nGolf Course Extension Road, Sector 62\nGurugram, Haryana 122001", footer: "Engineering · Product · GTM In-Office" },
+            { tag: "Regional Office", city: "Dubai, UAE", address: "Innovation One\nDIFC (Dubai International Financial Centre)\nDubai, United Arab Emirates", footer: "MENA HQ · GCC Partnerships" },
+          ].map((office) => (
+            <div key={office.city} className="rounded-[18px] border border-[#eceef4] bg-white p-8 flex flex-col gap-4 shadow-[0_8px_22px_rgba(37,44,97,0.05)]">
+              <div className="flex items-center gap-2">
+                <svg className="h-4 w-4" style={{ color: "#5b5ce8" }} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" />
+                </svg>
+                <span className="text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ color: "#5b5ce8" }}>{office.tag}</span>
+              </div>
+              <div>
+                <h3 className="text-[20px] font-semibold tracking-[-0.01em]" style={{ color: "#4b4b4b" }}>{office.city}</h3>
+                <p className="mt-2 text-[13px] leading-[1.65] whitespace-pre-line" style={{ color: "#9aa0b2" }}>{office.address}</p>
+              </div>
+              <div className="mt-auto border-t border-dashed pt-4" style={{ borderColor: "#e6e8ef" }}>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ color: "#9aa0b2" }}>{office.footer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── CAREERS ── */}
+      <section
+        className="w-full px-6 py-24 flex flex-col items-center text-center"
+        style={{ backgroundImage: "linear-gradient(135deg, #eef0fb 0%, #e8eaf8 50%, #ede8f8 100%)" }}
+      >
+        <SectionLabel>Careers at Darwix AI</SectionLabel>
+        <h2 className="mt-4 text-3xl sm:text-4xl lg:text-[46px] font-semibold leading-tight tracking-[-0.02em]" style={{ color: "#4b4b4b" }}>
+          Join the team building BFSI's agentic future
+        </h2>
+        <p className="mt-5 max-w-lg text-sm sm:text-base leading-relaxed" style={{ color: "#7a7a7a" }}>
+          We're hiring across engineering, product, and operations. If you want to build AI that runs inside India's most regulated industry, we'd love to talk.
+        </p>
+        <button
+          className="mt-9 rounded-[12px] px-7 py-2.5 text-[13px] font-semibold text-white shadow-lg transition-all duration-200 active:scale-95"
+          style={{ backgroundColor: "#5b5ce8", boxShadow: "0 8px 24px rgba(91,92,232,0.28)" }}
+          onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#5152d8")}
+          onMouseLeave={e => (e.currentTarget.style.backgroundColor = "#5b5ce8")}
+        >
+          Explore all openings
+        </button>
+      </section>
+
+    </div>
   );
 }

@@ -137,8 +137,11 @@ export default function Navbar() {
             Nova
           </Link>
 
-          <Link href="/about" className={getNavItemClasses("/about")}>
+          <Link href="/compliance" className={getNavItemClasses("/compliance")}>
             Compliance
+          </Link>
+           <Link href="/about" className={getNavItemClasses("/about")}>
+            About
           </Link>
         </div>
 
@@ -262,6 +265,19 @@ export default function Navbar() {
             </Link>
 
             <Link
+              href="/compliance"
+              onClick={(e) => {
+                e.preventDefault();
+                setOpen(false);
+                router.push("/compliance");
+              }}
+              className={`${getNavItemClasses("/compliance")} py-2`}
+            >
+              Compliance
+            </Link>
+
+            
+            <Link
               href="/about"
               onClick={(e) => {
                 e.preventDefault();
@@ -270,7 +286,7 @@ export default function Navbar() {
               }}
               className={`${getNavItemClasses("/about")} py-2`}
             >
-              Compliance
+              About
             </Link>
 
             <button
