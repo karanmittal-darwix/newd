@@ -4,8 +4,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Darwix AI",
-  description: "AI powered Solutions",
   icons: {
     icon: "/images/darwix_logo.svg",
   },

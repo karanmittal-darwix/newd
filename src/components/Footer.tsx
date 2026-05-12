@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="flex flex-col gap-6">
             <Link href="/" className="flex items-center">
               <img
-                src="/images/darwix.svg"
+                src="/images/darwixlogo.png"
                 alt="Darwix AI"
                 className="h-10 w-auto"
               />

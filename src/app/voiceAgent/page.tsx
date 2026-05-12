@@ -1,3 +1,14 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Voice Agent | Darwix AI",
+  description: "Darwix dials thousands of your customers in parallel, speaks their language, handles objections, and triggers the right action the moment the call ends.",
+  keywords: "Darwix AI, GenAI platform, omni-channel sales, enterprise AI, sales conversation analytics, AI sales automation, conversation intelligence, customer engagement, sales assistance, AI automation",
+  openGraph: {
+    images: ["/images/darwixlogo.png"],
+  },
+};
+
 import { Manrope } from "next/font/google";
 import Hero from "./components/hero/Hero";
 import VoicePlayground from "./components/voice/VoicePlayground";

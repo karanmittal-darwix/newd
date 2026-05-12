@@ -1,6 +1,10 @@
 export const metadata = {
-  title: "Terms & Conditions - Darwix AI",
+  title: "Terms & Conditions | Darwix AI",
   description: "Read our terms and conditions for using the Darwix AI platform.",
+  keywords: "Darwix AI, GenAI platform, omni-channel sales, enterprise AI, sales conversation analytics, AI sales automation, conversation intelligence, customer engagement, sales assistance, AI automation",
+  openGraph: {
+    images: ["/images/darwixlogo.png"],
+  },
 };
 
 export default function TermsAndConditionsPage() {
