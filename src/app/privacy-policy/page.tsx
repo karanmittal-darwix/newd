@@ -1,6 +1,10 @@
 export const metadata = {
-  title: "Privacy Policy - Darwix AI",
+  title: "Privacy Policy | Darwix AI",
   description: "Read our privacy policy to understand how we handle your data.",
+  keywords: "Darwix AI, GenAI platform, omni-channel sales, enterprise AI, sales conversation analytics, AI sales automation, conversation intelligence, customer engagement, sales assistance, AI automation",
+  openGraph: {
+    images: ["/images/darwixlogo.png"],
+  },
 };
 
 export default function PrivacyPolicyPage() {

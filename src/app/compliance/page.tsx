@@ -231,8 +231,11 @@ const manrope = Manrope({ subsets: ["latin"], weight: ["400", "500", "600"] });
 
 export const metadata = {
   title: "Compliance | Darwix AI",
-  description:
-    "Built for India's regulated stack RBI, DPDP, IRDAI MITC, FREE-AI, TRAI. SOC 2, ISO 27001 certified.",
+  description: "Built for India's regulated stack RBI, DPDP, IRDAI MITC, FREE-AI, TRAI. SOC 2, ISO 27001 certified.",
+  keywords: "Darwix AI, GenAI platform, omni-channel sales, enterprise AI, sales conversation analytics, AI sales automation, conversation intelligence, customer engagement, sales assistance, AI automation",
+  openGraph: {
+    images: ["/images/darwixlogo.png"],
+  },
 };
 
 export default function CompliancePage() {

@@ -239,9 +239,8 @@ export default function Navbar() {
       <nav ref={navRef} className="sticky top-0 z-50 w-full bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[64px] flex items-center justify-between">
 
-          {/* Logo */}
           <Link href="/" className="flex items-center shrink-0">
-            <img src="/images/darwix.svg" alt="Darwix AI" className="h-8 md:h-10 w-auto" />
+            <img src="/images/darwixlogo.png" alt="Darwix AI" className="h-8 md:h-10 w-auto" />
           </Link>
 
           {/* ── Desktop Nav ── */}
