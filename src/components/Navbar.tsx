@@ -79,8 +79,8 @@ const PHYSICAL_AI_ITEMS: DropdownItem[] = [
   {
     label: "Nova",
     href: "/nova",
-    description: "In-store AI concierge for kiosk, counter and screen.",
-    badge: "SOON",
+    description: "In branch / On site AI concierge for kiosk, counter and screen.",
+    badge: "BETA",
     icon: <MonitorIcon />,
   },
 ];

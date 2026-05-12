@@ -14,6 +14,7 @@ import ScoreAIBreakdown from "./components/ScoreAIBreakdown";
 import SentinelMonitor from "./components/SentinelMonitor";
 import TrackBotSummary from "./components/TrackBotSummary";
 import VerifyAutoKYC from "./components/VerifyAutoKYC";
+import Sherpacard from "./components/Sherpacard";
 import connectorImage from "./images/connector.png";
 import watchImage from "./images/watch.png";
 import {
@@ -159,7 +160,7 @@ export default function SherpaPage() {
                   <div className="mt-1 text-[11px] text-[#8a8a8a] leading-tight">
                     {item.subtitle}
                   </div>
-                </div>
+                  </div>
               </div>
             ))}
           </div>
@@ -338,6 +339,10 @@ export default function SherpaPage() {
                 </div>
               </div>
             </div>
+          </div>
+          
+          <div className="w-full pb-10 sm:pb-14">
+            <Sherpacard />
           </div>
 
           <div className="max-w-6xl mx-auto pt-6 sm:pt-10 pb-16 sm:pb-24">
