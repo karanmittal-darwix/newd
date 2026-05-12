@@ -590,6 +590,7 @@ export default function BFSIPage() {
           style={{ backgroundColor: "#5b5ce8", boxShadow: "0 8px 24px rgba(91,92,232,0.28)" }}
           onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#5152d8")}
           onMouseLeave={e => (e.currentTarget.style.backgroundColor = "#5b5ce8")}
+          onClick={() => window.open("https://www.linkedin.com/company/darwix-ai/jobs/", "_blank")}
         >
           Explore all openings
         </button>
